@@ -32,6 +32,8 @@
     'update_xml': [
             'security/setitria_mods_comptabilitat_security.xml',
             'security/ir.model.access.csv',
+            'account_invoice_workflow.xml',
+            'account_invoice_view.xml',
             'setitria_mods_comptabilitat.xml',
         ],   #las vistas, categorias de acceso, etc... (lo que se ha de cargar cada vez que se actualiza, etc...)
     'demo_xml': [],

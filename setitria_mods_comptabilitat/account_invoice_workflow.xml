@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="workflow.activity" id="account.act_open_test">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">re-open</field>
+            <field name="action">write({'state':'unpaid'})</field>
+            <field name="kind">function</field>
+        </record>
+        
+        
+        <record id="account.open_test_to_paid" model="workflow.transition">
+            <field name="act_from" ref="account.act_open_test"/>
+            <field name="act_to" ref="account.act_paid"/>
+            <field name="condition">test_paid()</field>
+        </record>
+    </data>
+</openerp>

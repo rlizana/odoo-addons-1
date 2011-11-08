@@ -136,10 +136,9 @@
             </field>
         </record>
 		
-		
-		<menuitem id="setitria_fitxer_retornat_menu" name="Fitxers Rebuts Retornats" parent="account.menu_finance_bank_and_cash" action="setitria_fitxer_retornat_open" sequence="20"/>
-		
-        <menuitem id="setitria_fitxer_retornat_menu_import" name="Importar Fitxers Rebuts Retornats" parent="account.menu_finance_bank_and_cash" action="action_c19_dev_file_import_wizard" sequence="25"/>
+		<menuitem id="setitria_retornat_menu" name="Remittance returns" parent="account_payment.menu_main_payment" sequence="20"/>
+		<menuitem id="setitria_fitxer_retornat_menu" name="Fitxers Rebuts Retornats" parent="setitria_retornat_menu" action="setitria_fitxer_retornat_open" sequence="20"/>
+        <menuitem id="setitria_fitxer_retornat_menu_import" name="Importar Fitxers Rebuts Retornats" parent="setitria_retornat_menu" action="action_c19_dev_file_import_wizard" sequence="25"/>
         
 <!--
 	Fem que el wizard es pugui executar desde on volem 
