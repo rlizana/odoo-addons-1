@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 5.0.10\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2010-12-17 20:52+0000\n"
-"PO-Revision-Date: 2011-02-15 15:01+0000\n"
+"PO-Revision-Date: 2011-11-08 16:21+0000\n"
 "Last-Translator: Jordi Esteve (www.zikzakmedia.com) "
 "<jesteve@zikzakmedia.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-16 06:13+0000\n"
-"X-Generator: Launchpad (build 12351)\n"
+"X-Launchpad-Export-Date: 2011-11-09 05:14+0000\n"
+"X-Generator: Launchpad (build 14263)\n"
 "Language: ca\n"
 
 #. module: account_payment_extension
@@ -649,6 +649,9 @@ msgstr "Importar comunicaciónes"
 
 #. module: account_payment_extension
 #: view:payment.line:0
-msgid "Atention: all the data of communications will be replaced and writed back at BD. Will you proceed?"
-msgstr "Atención: toda la información de las comunicaciones será reemplazada y guardada en la BD. ¿Desea continuar?"
-
+msgid ""
+"Atention: all the data of communications will be replaced and writed back at "
+"BD. Will you proceed?"
+msgstr ""
+"Atención: toda la información de las comunicaciones será reemplazada y "
+"guardada en la BD. ¿Desea continuar?"
