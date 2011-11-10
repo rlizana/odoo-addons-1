@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 5.0.0-rc1\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2010-12-17 20:52+0000\n"
-"PO-Revision-Date: 2011-02-15 15:01+0000\n"
+"PO-Revision-Date: 2011-11-08 16:22+0000\n"
 "Last-Translator: Jordi Esteve (www.zikzakmedia.com) "
 "<jesteve@zikzakmedia.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-16 06:13+0000\n"
-"X-Generator: Launchpad (build 12351)\n"
+"X-Launchpad-Export-Date: 2011-11-09 05:14+0000\n"
+"X-Generator: Launchpad (build 14263)\n"
 "Language: ca\n"
 
 #. module: account_payment_extension
@@ -553,12 +553,103 @@ msgid "Communications"
 msgstr "Comunicacions"
 
 #. module: account_payment_extension
+#: field:payment.line,communication3:0
+msgid "Communication 3"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication4:0
+msgid "Communication 4"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication5:0
+msgid "Communication 5"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication6:0
+msgid "Communication 6"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication7:0
+msgid "Communication 7"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication8:0
+msgid "Communication 8"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication9:0
+msgid "Communication 9"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication10:0
+msgid "Communication 10"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication11:0
+msgid "Communication 11"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication12:0
+msgid "Communication 12"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication13:0
+msgid "Communication 13"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication14:0
+msgid "Communication 14"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication15:0
+msgid "Communication 15"
+msgstr ""
+
+#. module: account_payment_extension
+#: field:payment.line,communication16:0
+msgid "Communication 16"
+msgstr ""
+
+#. module: account_payment_extension
+#: help:payment.line,communication3:0
+#: help:payment.line,communication4:0
+#: help:payment.line,communication5:0
+#: help:payment.line,communication6:0
+#: help:payment.line,communication7:0
+#: help:payment.line,communication8:0
+#: help:payment.line,communication9:0
+#: help:payment.line,communication10:0
+#: help:payment.line,communication11:0
+#: help:payment.line,communication12:0
+#: help:payment.line,communication13:0
+#: help:payment.line,communication14:0
+#: help:payment.line,communication15:0
+#: help:payment.line,communication16:0
+msgid "The successor message of Communication."
+msgstr ""
+
+#. module: account_payment_extension
 #: view:payment.line:0
 msgid "Import Communications"
 msgstr "Importar comunicacions"
 
 #. module: account_payment_extension
 #: view:payment.line:0
-msgid "Atention: all the data of communications will be replaced and writed back at BD. Will you proceed?"
-msgstr "Atenció: tota la informació de les comunicacions será sustituida i desada en la BD. ¿Desitja continuar?"
-
+msgid ""
+"Atention: all the data of communications will be replaced and writed back at "
+"BD. Will you proceed?"
+msgstr ""
+"Atenció: tota la informació de les comunicacions será sustituida i desada en "
+"la BD. ¿Desitja continuar?"
