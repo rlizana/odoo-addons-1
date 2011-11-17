@@ -34,8 +34,8 @@ FIELDS = {
 }
 
 field_duedate={
-    'startdate':{'string':'Start Date', 'type':'date','required':True, 'default':lambda *a: time.strftime('%Y-%m-%d'),},
-    'duedate': {'string':'Due Date', 'type':'date','required':True, 'default': lambda *a: time.strftime('%Y-%m-%d'),},
+    'startdate':{'string':'Start Date', 'type':'date','required':True, 'default':lambda *a: time.strftime('%Y-%m-%d'), 'help': 'Invoices will be selected by the due date greater than the selected date.'},
+    'duedate': {'string':'Due Date', 'type':'date','required':True, 'default': lambda *a: time.strftime('%Y-%m-%d'), 'help': 'Invoices will be selected by the due date lower than the selected date.'},
     'amount': {'string':'Amount', 'type':'float', 'help': 'Next step will automatically select payments up to this amount as long as account moves have bank account if that is required by the selected payment mode.'},
     'show_refunds': {'string':'Show Refunds','type':'boolean', 'help':'Indicates if search should include refunds.', 'default': lambda *a: False},
     }
