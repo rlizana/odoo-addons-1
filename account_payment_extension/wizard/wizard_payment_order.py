@@ -34,12 +34,14 @@ FIELDS = {
 }
 
 field_duedate={
+    'startdate':{'string':'Start Date', 'type':'date','required':True, 'default':lambda *a: time.strftime('%Y-%m-%d'),},
     'duedate': {'string':'Due Date', 'type':'date','required':True, 'default': lambda *a: time.strftime('%Y-%m-%d'),},
     'amount': {'string':'Amount', 'type':'float', 'help': 'Next step will automatically select payments up to this amount as long as account moves have bank account if that is required by the selected payment mode.'},
     'show_refunds': {'string':'Show Refunds','type':'boolean', 'help':'Indicates if search should include refunds.', 'default': lambda *a: False},
     }
 arch_duedate='''<?xml version="1.0" encoding="utf-8"?>
 <form string="Search Payment lines" col="2">
+    <field name="startdate" />
     <field name="duedate" />
     <field name="amount" />
     <field name="show_refunds" />
@@ -48,6 +50,7 @@ arch_duedate='''<?xml version="1.0" encoding="utf-8"?>
 
 def search_entries(self, cr, uid, data, context):
     search_due_date = data['form']['duedate']
+    search_start_date = data['form']['startdate']
     show_refunds = data['form']['show_refunds']
 
     pool = pooler.get_pool(cr.dbname)
@@ -70,8 +73,10 @@ def search_entries(self, cr, uid, data, context):
 
     if payment.mode:
         domain += [('payment_type','=',payment.mode.type.id)]
+    domain += ['|',('date_maturity','>',search_start_date), ('date_maturity','=',False)]
+    domain += ['|',('date_maturity','<',search_due_date), ('date_maturity','=',False)]
+#    domain += [('date_maturity','<',search_due_date),('date_maturity','>',search_start_date)]
 
-    domain += ['|',('date_maturity','<',search_due_date),('date_maturity','=',False)]
     line_ids = line_obj.search(cr, uid, domain, order='date_maturity', context=context)
     FORM.string = '''<?xml version="1.0" encoding="utf-8"?>
 <form string="Populate Payment:">

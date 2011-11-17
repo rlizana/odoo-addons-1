@@ -376,7 +376,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                             if pline.ml_inv_ref.id == int(codi_dev):
                                 ids = pline.ml_inv_ref.id
                         
-                        if not ids:
+                        if ids==False:
                           inv_list = factura.search(cr,uid,[('partner_id','=',part.id), ('state', '=', 'paid'), ('amount_total', '=', importe)])  
                           if inv_list:
                               ids = inv_list[0] 
@@ -478,7 +478,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                         self.pool.get('account.move.reconcile').unlink(cr, uid, recon_id, context=context)
                                         apunt.reconcile_partial(cr, uid, apunt_lines)
                                         wf_service = netsvc.LocalService("workflow")
-                                        wf_service.trg_validate(uid, 'account.invoice', ids, 'open_test', cr)
+                                        wf_service.trg_validate(uid, 'account.invoice', ids, 'open_test2', cr)
                                     
                                 values['state'] = 'valid' 
                             else:                              
