@@ -116,7 +116,10 @@ def _create_payment_file(self, cr, uid, data, context):
                 })
         else:
             # Cada línea de pago es un recibo
+            kont = 0
             for l in orden.line_ids:
+                kont = kont +1
+                print kont
                 recibos.append({
                     'partner_id': l.partner_id,
                     'bank_id': l.bank_id,
@@ -180,9 +183,9 @@ def _create_payment_file(self, cr, uid, data, context):
     else:
         # Ensure line breaks use MS-DOS (CRLF) format as standards require.
         txt_remesa = txt_remesa.replace('\r\n','\n').replace('\n','\r\n')
-        file = unicode(txt_remesa, "utf-8")
-        file = file.encode("utf-8")
-#        file = base64.encodestring(txt_remesa)
+#        file = unicode(txt_remesa, "utf-8")
+#        file = file.encode("utf-8")
+        file = base64.encodestring(txt_remesa)
         fname = (_('remesa') + '_' + orden.mode.tipo + '_' + orden.reference + '.txt').replace('/','-')
         pool.get('ir.attachment').create(cr, uid, {
             'name': _('Remesa ') + orden.mode.tipo + ' ' + orden.reference,

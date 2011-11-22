@@ -39,5 +39,9 @@
 	       </button>
 	       </field>
 	    </record>
+	    
+	    <act_window context="{'search_default_partner_id':[active_id], 'type':'out_invoice', 'journal_type': 'sale'}" id="act_res_partner_2_account_invoice_opened" domain="[('type','=','out_invoice')]" name="Customer Invoices" res_model="account.invoice" src_model="res.partner"/>
+	    <act_window context="{'search_default_partner_id':[active_id], 'type':'in_invoice', 'journal_type': 'purchase'}" id="act_partner_2_account_supinvoice" domain="[('type','=','in_invoice')]" name="Supplier Invoices"  res_model="account.invoice" src_model="res.partner"/>
+	
 	</data>
 </openerp>
