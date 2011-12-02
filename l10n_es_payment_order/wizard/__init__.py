@@ -1,8 +1,12 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>). All Rights Reserved
+#    Copyright (c) 2006 ACYSOS S.L. (http://acysos.com) All Rights Reserved.
+#                       Pedro Tarrafeta <pedro@acysos.com>
+#    Copyright (c) 2008 Pablo Rocandio. All Rights Reserved.
+#    Copyright (c) 2009 Zikzakmedia S.L. (http://zikzakmedia.com) All Rights Reserved.
+#                       Jordi Esteve <jesteve@zikzakmedia.com>
 #    $Id$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,6 +24,4 @@
 #
 ##############################################################################
 
-import setitria_mods_comptabilitat
-import wizard
-
+import export_remesas
