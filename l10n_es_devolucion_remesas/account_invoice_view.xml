@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="invoice_inh_form" model="ir.ui.view">
+			<field name="name">account.invoice.inh.form</field>
+			<field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_form" />
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<xpath
+					expr="/form/notebook/page/group/group/button[@string='Print Invoice']"
+					position="replace">
+					<button name="%(account.account_invoices)d" string="Print Invoice"
+						type="action" icon="gtk-print" states="open,paid,unpaid,proforma,sale,proforma2" />
+				</xpath>
+			</field>
+		</record>
+		
+		
+		<record id="view_invoice_customer_inh" model="ir.ui.view">
+	       <field name="name">account.invoice.customer.pay.inh</field>
+	       <field name="model">account.invoice</field>
+	       <field name="type">form</field>
+	       <field name="inherit_id" ref="account_voucher.view_invoice_customer"/>
+	       <field name="arch" type="xml">
+	       <button name="invoice_pay_customer" position="replace">
+	           <button name="invoice_pay_customer" type="object" string="Payment" states="open,unpaid" icon="gtk-go-forward"/>
+	       </button>
+	       </field>
+	    </record>
+	    <record id="view_invoice_supplier_inh" model="ir.ui.view">
+	       <field name="name">account.invoice.supplier.pay.inh</field>
+	       <field name="model">account.invoice</field>
+	       <field name="type">form</field>
+	       <field name="inherit_id" ref="account_voucher.view_invoice_supplier"/>
+	       <field name="arch" type="xml">
+	       <button name="invoice_pay_customer" position="replace">
+	           <button name="invoice_pay_customer" type="object" string="Payment" states="open,unpaid" icon="gtk-go-forward"/>
+	       </button>
+	       </field>
+	    </record>
+	    
+	    <act_window context="{'search_default_partner_id':[active_id], 'type':'out_invoice', 'journal_type': 'sale'}" id="act_res_partner_2_account_invoice_opened" domain="[('type','=','out_invoice')]" name="Customer Invoices" res_model="account.invoice" src_model="res.partner"/>
+	    <act_window context="{'search_default_partner_id':[active_id], 'type':'in_invoice', 'journal_type': 'purchase'}" id="act_partner_2_account_supinvoice" domain="[('type','=','in_invoice')]" name="Supplier Invoices"  res_model="account.invoice" src_model="res.partner"/>
+	
+	</data>
+</openerp>
