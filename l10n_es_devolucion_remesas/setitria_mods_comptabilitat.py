@@ -385,8 +385,6 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                               pline_ids = inv.payment_ids
                               if pline_ids:
                                   pay_line_id = pline_ids[0] 
-                              else:
-                                  raise osv.except_osv('Error', 'Ainara!!')
                         if ids:
                             values = {
                                       'fitxer_id'   : fitxer_id,
@@ -431,7 +429,12 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                         inv_o = factura.browse(cr, uid, ids)
                                         reference = 'DEV FACT %s' % inv_o.name
                                         if pline:
-                                            cp_move = pline.payment_move_id.id
+                                            if pline.payment_move_id:
+                                                cp_move = pline.payment_move_id.id
+                                            else:
+                                                values['notes'] = "The payment is not complete."
+                                                lineafit.create(cr,uid,values,context=context) 
+                                                break
                                         else:
                                             cp_move = pay_line_id.move_id.id 
                                         account_move = self.pool.get('account.move').copy(cr, uid, cp_move, {'ref':reference})
@@ -485,12 +488,12 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                             else:                              
                                 values['notes'] = "No s'ha trobat el apunt de contraprestació de la factura"
                             
-                            lineafit.create(cr,uid,values,context=context)
+#                            lineafit.create(cr,uid,values,context=context)
                         else:
-                            
-                            
-                            
-                            raise osv.except_osv('Error tractant el fitxer', 'La factura no es troba.(%s)' % linea['codi_dev'])
+                            values['notes'] = "Invoice not found."
+                        
+                        lineafit.create(cr,uid,values,context=context)  
+#                            raise osv.except_osv('Error tractant el fitxer', 'La factura no es troba.(%s)' % linea['codi_dev'])
                         
                 # Attach the C43 file to the current statement
                 self._attach_file_to_fitxer(cr, uid, c19_wizard.file, c19_wizard.file_name, fitxer_id)          

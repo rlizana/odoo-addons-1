@@ -116,10 +116,7 @@ def _create_payment_file(self, cr, uid, data, context):
                 })
         else:
             # Cada línea de pago es un recibo
-            kont = 0
             for l in orden.line_ids:
-                kont = kont +1
-                print kont
                 recibos.append({
                     'partner_id': l.partner_id,
                     'bank_id': l.bank_id,
