@@ -13,8 +13,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+<<<<<<< TREE
 "X-Launchpad-Export-Date: 2011-11-11 05:23+0000\n"
 "X-Generator: Launchpad (build 14277)\n"
+=======
+"X-Launchpad-Export-Date: 2011-12-03 05:50+0000\n"
+"X-Generator: Launchpad (build 14418)\n"
+>>>>>>> MERGE-SOURCE
 
 #. module: l10n_es_payment_order
 #: report:remesas.report:0
