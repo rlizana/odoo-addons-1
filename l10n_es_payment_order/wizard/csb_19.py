@@ -92,8 +92,7 @@ class csb_19:
         if join:
             texto += str(recibo['name'])[-12:].zfill(12)
         else:
-            texto += str(recibo['name'])[-12:].zfill(12)
-#            texto += str(recibo['partner_id'].id)[-12:].zfill(12)
+            texto += str(recibo['partner_id'].id)[-12:].zfill(12)
         nombre = to_ascii(recibo['partner_id'].name)
         texto += nombre[0:40].ljust(40)
         ccc = recibo['bank_id'] and recibo['bank_id'].acc_number or ''
@@ -102,9 +101,7 @@ class csb_19:
         importe = int(round(abs(recibo['amount'])*100,0))
         texto += str(importe).zfill(10)
         if join:
-            #texto += 16*' '
-            texto += str(recibo['invoice'].id)[-6:].zfill(6)
-            texto += str(recibo['id'])[-10:].zfill(10)
+            texto += 16*' '
         else:
             texto += str(recibo['invoice'].id)[-6:].zfill(6)
             texto += str(recibo['id'])[-10:].zfill(10)
@@ -272,28 +269,28 @@ class csb_19:
                 self.total_payments += 1
                 self.group_payments += 1
                 self.group_amount += abs( recibo['amount'] )
-#                if join:
-#                    if recibo['communication2']:
-#                        txt_remesa += self._individual_opcional_19(recibo)
-#                        #self.num_lineas_opc = self.num_lineas_opc + 1
-#                        self.total_optional_lines += 1
-#                        self.group_optional_lines += 1
-#                else:
-#                    txt_remesa += self._individual_primer_opcional_19(recibo)
-#                    self.total_optional_lines += 1
-#                    self.group_optional_lines += 1
-#                    txt_remesa += self._individual_segundo_opcional_19(recibo)
-#                    self.total_optional_lines += 1
-#                    self.group_optional_lines += 1
-#                    txt_remesa += self._individual_tercero_opcional_19(recibo)
-#                    self.total_optional_lines += 1
-#                    self.group_optional_lines += 1
-#                    txt_remesa += self._individual_cuarto_opcional_19(recibo)
-#                    self.total_optional_lines += 1
-#                    self.group_optional_lines += 1
-#                    txt_remesa += self._individual_quinto_opcional_19(recibo)
-#                    self.total_optional_lines += 1
-#                    self.group_optional_lines += 1
+                if join:
+                    if recibo['communication2']:
+                        txt_remesa += self._individual_opcional_19(recibo)
+                        #self.num_lineas_opc = self.num_lineas_opc + 1
+                        self.total_optional_lines += 1
+                        self.group_optional_lines += 1
+                else:
+                    txt_remesa += self._individual_primer_opcional_19(recibo)
+                    self.total_optional_lines += 1
+                    self.group_optional_lines += 1
+                    txt_remesa += self._individual_segundo_opcional_19(recibo)
+                    self.total_optional_lines += 1
+                    self.group_optional_lines += 1
+                    txt_remesa += self._individual_tercero_opcional_19(recibo)
+                    self.total_optional_lines += 1
+                    self.group_optional_lines += 1
+                    txt_remesa += self._individual_cuarto_opcional_19(recibo)
+                    self.total_optional_lines += 1
+                    self.group_optional_lines += 1
+                    txt_remesa += self._individual_quinto_opcional_19(recibo)
+                    self.total_optional_lines += 1
+                    self.group_optional_lines += 1
                 txt_remesa += self._total_ordenante_19()
         else:
             # Sólo un ordenante

@@ -344,6 +344,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                         print 'motivo_dev: '+ str(linea['motivo_dev'])
                         codi_dev = linea['codi_dev']
                         importe = linea['importe']
+                        values['dev_amount'] = importe
                         partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
                         if partner:
                             part = partner_obj.browse(cr, uid, partner[0])
@@ -401,31 +402,12 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
 #                                                             ,('reconcile_id','=',False)
                                                         ])
                             if id_linea:
-#                                ids_mov = []
-                                
-                                
-#                                for mov_line in fact_obj.move_lines:
-#                                    ids_mov.append(mov_line.id)
-#                                    if mov_line.reconcile_id:
-#                                        id_reconcile = mov_line.reconcile_id.id
-#                                        break
-#                                    
-#                                if id_reconcile:
-#                                    apunt.write(cr,uid,id_linea,{'reconcile_id':id_reconcile},context)
-#                                else:
-#                                id_reconcile = reconc.create(cr,uid,{
-#                                                                     'name' : 'DEV FACT %s' % linea['codi_dev'],
-#                                                                     'type' : 'DEV FACT'
-#                                                                     },context)
                                 for linea in id_linea:
                                     apunt_lines=[]
                                     line_obj = apunt.browse(cr,uid,linea)
                                     invoice_id = line_obj.invoice.id
                                     if invoice_id == ids:
                                         recon_id = False
-#                                        apunt.write(cr, uid, [line_obj.id], {'reconcile_id':False}, context)
-                                        
-#                                        ids_mov.append(linea)
                                         inv_o = factura.browse(cr, uid, ids)
                                         reference = 'DEV FACT %s' % inv_o.name
                                         if pline:
@@ -477,7 +459,6 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                         for payline in fact_obj.payment_ids:
                                             if payline.reconcile_id and payline.reconcile_id.id == recon_id:
                                                 apunt_lines.append(payline.id)
-                                                
                                         self.pool.get('account.move').button_validate(cr, uid, [account_move])
                                         self.pool.get('account.move.reconcile').unlink(cr, uid, recon_id, context=context)
                                         apunt.reconcile_partial(cr, uid, apunt_lines)
@@ -487,15 +468,10 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                 values['state'] = 'valid' 
                             else:                              
                                 values['notes'] = "No s'ha trobat el apunt de contraprestació de la factura"
-                            
-#                            lineafit.create(cr,uid,values,context=context)
                         else:
                             values['notes'] = "Invoice not found."
                         
                         lineafit.create(cr,uid,values,context=context)  
-#                            raise osv.except_osv('Error tractant el fitxer', 'La factura no es troba.(%s)' % linea['codi_dev'])
-                        
-                # Attach the C43 file to the current statement
                 self._attach_file_to_fitxer(cr, uid, c19_wizard.file, c19_wizard.file_name, fitxer_id)          
         
         return {}
@@ -616,7 +592,9 @@ class setitria_fitxerretornat_line(osv.osv):
                                             ('incomplete', 'Incomplert'),
                                             ('valid', 'Complert')
                                         ],'Estat'),
-        'notes'     : fields.text('Notes')
+        'notes'     : fields.text('Notes'),
+        'dev_amount': fields.float('Amount', digits=(13,2)),
+        'num_fitx': fields.char('Fitx num', size=64),
     }
     
     _defaults = {

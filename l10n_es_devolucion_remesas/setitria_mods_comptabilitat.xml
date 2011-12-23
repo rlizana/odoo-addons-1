@@ -42,6 +42,8 @@
             		<field name="invoice_id" />
            			<field name="date"  />
            			<field name="motiu_dev"  />
+           			<field name="dev_amount"/>
+           			<field name="num_fitx"/>
            			<field name="state"  />
 					<field colspan="4" name="notes" />
             	</form>
@@ -58,6 +60,8 @@
             		<field name="invoice_id" />
            			<field name="date" />
            			<field name="motiu_dev"  />
+           			<field name="dev_amount"/>
+           			<field name="num_fitx"/>
            			<field name="state" />
             	</tree>
             </field>
@@ -118,26 +122,10 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 		
-		<record id="view_purchase_order_filter" model="ir.ui.view">
-            <field name="name">setitria.fitxerretornat.select</field>
-            <field name="model">setitria.fitxerretornat</field>
-            <field name="type">search</field>
-            <field name="arch" type="xml">
-            	<search string="Buscar Fitxer de rebuts retornats">
-            	 	<filter icon="terp-document-new" name="incomplete" string="Incomplertas" domain="[('state','=','incomplete')]" separator="1" />
-                    <filter icon="terp-check" name="valid" string="Valides" domain="[('state','=','valid')]" separator="1" />
-                    <separator orientation="vertical"/>
-                    <field name="banc_id" select="1" />
-                    <field name="name" select="1" />
-                    <separator orientation="vertical"/>
-                    <field name="date" select="1" />
-                    <field name="date_imp" select="1" />
-            	</search>
-            </field>
-        </record>
 		
 		<menuitem id="setitria_retornat_menu" name="Remittance returns" parent="account_payment.menu_main_payment" sequence="20"/>
 		<menuitem id="setitria_fitxer_retornat_menu" name="Fitxers Rebuts Retornats" parent="setitria_retornat_menu" action="setitria_fitxer_retornat_open" sequence="20"/>
+        <menuitem id="setitria_fitxer_retornat_line_menu" name="Fitxers Rebuts Retornats Lines" parent="setitria_retornat_menu" action="setitria_fitxer_retornat_line_open" sequence="20"/>
         <menuitem id="setitria_fitxer_retornat_menu_import" name="Importar Fitxers Rebuts Retornats" parent="setitria_retornat_menu" action="action_c19_dev_file_import_wizard" sequence="25"/>
         
 <!--
