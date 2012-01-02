@@ -387,6 +387,21 @@ class payment_line(osv.osv):
         'payment_move_id': fields.many2one('account.move', 'Payment Move', readonly=True, help='Account move that pays this debt.'),
         'account_id': fields.many2one('account.account', 'Account'),
         'type': fields.related('order_id','type', type='selection', selection=[('payable','Payable'),('receivable','Receivable')], readonly=True, store=True, string='Type'),
+         
+        'communication3': fields.char('Communication 3', size=64, help='The successor message of Communication.'),
+        'communication4': fields.char('Communication 4', size=64, help='The successor message of Communication.'),
+        'communication5': fields.char('Communication 5', size=64, help='The successor message of Communication.'),
+        'communication6': fields.char('Communication 6', size=64, help='The successor message of Communication.'),
+        'communication7': fields.char('Communication 7', size=64, help='The successor message of Communication.'),
+        'communication8': fields.char('Communication 8', size=64, help='The successor message of Communication.'),
+        'communication9': fields.char('Communication 9', size=64, help='The successor message of Communication.'),
+        'communication10': fields.char('Communication 10', size=64, help='The successor message of Communication.'),
+        'communication11': fields.char('Communication 11', size=64, help='The successor message of Communication.'),
+        'communication12': fields.char('Communication 12', size=64, help='The successor message of Communication.'),
+        'communication13': fields.char('Communication 13', size=64, help='The successor message of Communication.'),
+        'communication14': fields.char('Communication 14', size=64, help='The successor message of Communication.'),
+        'communication15': fields.char('Communication 15', size=64, help='The successor message of Communication.'),
+        'communication16': fields.char('Communication 16', size=64, help='The successor message of Communication.'),
     }
 
     def onchange_move_line(self, cr, uid, ids, move_line_id, payment_type, date_prefered, date_scheduled, currency=False, company_currency=False, context=None):
@@ -398,7 +413,43 @@ class payment_line(osv.osv):
                 res['value']['communication'] = res['value']['communication'] + '. ' + line.name
             res['value']['account_id'] = line.account_id.id
         return res
-
+    def import_communications(self, cr, uid, ids, context=None):
+        
+        #import communications from invoice's line
+        for payment_line in self.browse(cr,uid, ids):
+            if payment_line.ml_inv_ref:
+                values={
+                            'communication' : '',
+                            'communication2' : '',
+                            'communication3' : '',
+                            'communication4' : '',
+                            'communication5' : '',
+                            'communication6' : '',
+                            'communication7' : '',
+                            'communication8' : '',
+                            'communication9' : '',
+                            'communication10' : '',
+                            'communication11' : '',
+                            'communication12' : '',
+                            'communication13' : '',
+                            'communication14' : '',
+                            'communication15' : '',
+                            'communication16' : '',
+                        }
+                
+                indice = 1
+    
+                for line in payment_line.ml_inv_ref.invoice_line:
+                    name = 'communication'
+                    if indice > 1:
+                        name = name + str(indice)
+                    
+                    values[name] = line.name
+                    indice = indice + 1
+                
+                self.write(cr,uid,payment_line.id,values)
+            
+        return True
 payment_line()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

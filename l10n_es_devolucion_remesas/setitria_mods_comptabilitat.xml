@@ -43,7 +43,6 @@
            			<field name="date"  />
            			<field name="motiu_dev"  />
            			<field name="dev_amount"/>
-           			<field name="num_fitx"/>
            			<field name="state"  />
 					<field colspan="4" name="notes" />
             	</form>
@@ -61,7 +60,6 @@
            			<field name="date" />
            			<field name="motiu_dev"  />
            			<field name="dev_amount"/>
-           			<field name="num_fitx"/>
            			<field name="state" />
             	</tree>
             </field>

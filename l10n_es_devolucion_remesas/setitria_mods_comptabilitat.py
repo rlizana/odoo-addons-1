@@ -344,7 +344,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                         print 'motivo_dev: '+ str(linea['motivo_dev'])
                         codi_dev = linea['codi_dev']
                         importe = linea['importe']
-                        values['dev_amount'] = importe
+                        
                         partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
                         if partner:
                             part = partner_obj.browse(cr, uid, partner[0])
@@ -391,7 +391,8 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                       'fitxer_id'   : fitxer_id,
                                       'invoice_id'  : ids,
                                       'date'        : grupo['fecha'],
-                                      'motiu_dev'   : linea['motivo_dev']
+                                      'motiu_dev'   : linea['motivo_dev'],
+                                      'dev_amount'  : linea['importe']
                                     }
                             
                             fact_obj = factura.browse(cr,uid,ids)
@@ -419,7 +420,8 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                                 break
                                         else:
                                             cp_move = pay_line_id.move_id.id 
-                                        account_move = self.pool.get('account.move').copy(cr, uid, cp_move, {'ref':reference})
+                                        period = self.pool.get('account.period').find(cr,uid,grupo['fecha'],context)
+                                        account_move = self.pool.get('account.move').copy(cr, uid, cp_move, {'ref':reference, 'date':grupo['fecha']})
                                         account_move_o = self.pool.get('account.move').browse(cr, uid, account_move)
                                         lines = account_move_o.line_id
                                         kont=0
@@ -473,7 +475,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                         
                         lineafit.create(cr,uid,values,context=context)  
                 self._attach_file_to_fitxer(cr, uid, c19_wizard.file, c19_wizard.file_name, fitxer_id)          
-        
+                
         return {}
  
  
@@ -594,7 +596,6 @@ class setitria_fitxerretornat_line(osv.osv):
                                         ],'Estat'),
         'notes'     : fields.text('Notes'),
         'dev_amount': fields.float('Amount', digits=(13,2)),
-        'num_fitx': fields.char('Fitx num', size=64),
     }
     
     _defaults = {

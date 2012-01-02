@@ -34,6 +34,7 @@
 ##############################################################################
 
 import pooler
+from osv import osv, fields 
 import wizard
 import base64
 from tools.translate import _
@@ -70,7 +71,17 @@ export_fields = {
     'note' : {'string':'Log', 'type':'text'},
 }
 
-
+def _verify_state(self, cr, uid, data, context):
+   
+    pool = pooler.get_pool(cr.dbname)
+    orden = pool.get('payment.order').browse(cr, uid, data['id'], context)
+    if ((orden.state == 'draft') or (orden.state == 'cancel')):
+        raise osv.except_osv('Error','Confirm the order before export the file.')
+    else:
+        return {
+          
+            'reference': orden.id, 
+            }
 def _create_payment_file(self, cr, uid, data, context):
 
     txt_remesa = ''
@@ -116,7 +127,10 @@ def _create_payment_file(self, cr, uid, data, context):
                 })
         else:
             # Cada línea de pago es un recibo
+            pool = pooler.get_pool(cr.dbname)
+            pool.get('payment.line').import_communications(cr, uid, orden.line_ids, context)
             for l in orden.line_ids:
+
                 recibos.append({
                     'partner_id': l.partner_id,
                     'bank_id': l.bank_id,
@@ -124,22 +138,22 @@ def _create_payment_file(self, cr, uid, data, context):
                     'name_': l.name,
                     'amount': l.amount,
                     'communication': l.name+' '+l.communication,
-                    'communication_': l.communication or '',
-                    'communication2': l.communication2 or '',
-                    'communication3': l.communication3 or '',
-                    'communication4': l.communication4 or '',
-                    'communication5': l.communication5 or '',
-                    'communication6': l.communication6 or '',
-                    'communication7': l.communication7 or '',
-                    'communication8': l.communication8 or '',
-                    'communication9': l.communication9 or '',
-                    'communication10': l.communication10 or '',
-                    'communication11': l.communication11 or '',
-                    'communication12': l.communication12 or '',
-                    'communication13': l.communication13 or '',
-                    'communication14': l.communication14 or '',
-                    'communication15': l.communication15 or '',
-                    'communication16': l.communication16 or '',
+                    'communication_': l.communication,
+                    'communication2': l.communication2,
+                    'communication3': l.communication3,
+                    'communication4': l.communication4,
+                    'communication5': l.communication5,
+                    'communication6': l.communication6,
+                    'communication7': l.communication7,
+                    'communication8': l.communication8,
+                    'communication9': l.communication9,
+                    'communication10': l.communication10,
+                    'communication11': l.communication11,
+                    'communication12': l.communication12,
+                    'communication13': l.communication13,
+                    'communication14': l.communication14,
+                    'communication15': l.communication15,
+                    'communication16': l.communication16,
                     'date': l.date,
                     'ml_maturity_date': l.ml_maturity_date,
                     'create_date': l.create_date,
@@ -147,7 +161,7 @@ def _create_payment_file(self, cr, uid, data, context):
                     'invoice': l.ml_inv_ref,
                     'id': l.id,
                 })
-        
+
         if orden.mode.require_bank_account:
             for line in recibos:
                 ccc = line['bank_id'] and line['bank_id'].acc_number or False
@@ -192,7 +206,8 @@ def _create_payment_file(self, cr, uid, data, context):
             'res_id': orden.id,
             }, context=context)
         log = _("Successfully Exported\n\nSummary:\n Total amount paid: %.2f\n Total Number of Payments: %d\n") % (orden.total, len(recibos))
-        pool.get('payment.order').set_done(cr, uid, [orden.id], context)
+        if orden.open == 'confirm':
+            pool.get('payment.order').set_done(cr, uid, [orden.id], context)
         return {
             'note': log, 
             'reference': orden.id, 
@@ -205,7 +220,7 @@ def _create_payment_file(self, cr, uid, data, context):
 class wizard_payment_file_spain(wizard.interface):
     states = {
         'init' : {
-            'actions' : [],
+            'actions' : [_verify_state],
             'result' : {'type' : 'form',
                         'arch' : join_form,
                         'fields' : join_fields,
