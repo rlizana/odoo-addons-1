@@ -254,43 +254,6 @@
             </field>
         </field>
     </record>
-    
-    <record id="view_payment_order_form_ext3" model="ir.ui.view">
-        <field name="name">payment.order.form.ext3</field>
-        <field name="model">payment.order</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="account_payment.view_payment_order_form"/>
-        <field name="arch" type="xml">
-	        <data>
-	        	<field name="communication" position="replace"/>
-        		<field name="communication2" position="replace"/>
-        		<page string="Payment" position="after">
-        			<page string="Communications">
-        				<group col="6" colspan="4">
-	        				<field name="communication" colspan="3"/>
-	        				<field name="communication2" colspan="3"/>
-	        				<field name="communication3" colspan="3"/>
-	        				<field name="communication4" colspan="3"/>
-	        				<field name="communication5" colspan="3"/>
-	        				<field name="communication6" colspan="3"/>
-	        				<field name="communication7" colspan="3"/>
-	        				<field name="communication8" colspan="3"/>
-	        				<field name="communication9" colspan="3"/>
-	        				<field name="communication10" colspan="3"/>
-	        				<field name="communication11" colspan="3"/>
-	        				<field name="communication12" colspan="3"/>
-	        				<field name="communication13" colspan="3"/>
-	        				<field name="communication14" colspan="3"/>
-	        				<field name="communication15" colspan="3"/>
-	        				<field name="communication16" colspan="3"/>
-	        			</group>
-	        				<separator colspan="4"/>
-	        				<button string="Import Communications" type="object" name="import_communications" colspan="4" confirm="Atention: all the data of communications will be replaced and writed back at BD. Will you proceed?"/>
-        			</page>
-        		</page>
-	        </data>
-        </field>
-    </record>
 
     <record id="view_payment_order_form_cancel" model="ir.ui.view">
         <field name="name">payment.order.form.cancel</field>
@@ -320,45 +283,6 @@
             </field>
         </field>
     </record>
-    
-    <record id="view_payment_line_form_ext2" model="ir.ui.view">
-        <field name="name">payment.line.ext2</field>
-        <field name="model">payment.line</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="account_payment.view_payment_line_form"/>
-        <field name="arch" type="xml">
-        	<data>
-        	    <field name="communication" position="replace"/>
-        		<field name="communication2" position="replace"/>
-        		<page string="Payment" position="after">
-        			<page string="Communications">
-        				<group col="6" colspan="4">
-	        				<field name="communication" colspan="3"/>
-	        				<field name="communication2" colspan="3"/>
-	        				<field name="communication3" colspan="3"/>
-	        				<field name="communication4" colspan="3"/>
-	        				<field name="communication5" colspan="3"/>
-	        				<field name="communication6" colspan="3"/>
-	        				<field name="communication7" colspan="3"/>
-	        				<field name="communication8" colspan="3"/>
-	        				<field name="communication9" colspan="3"/>
-	        				<field name="communication10" colspan="3"/>
-	        				<field name="communication11" colspan="3"/>
-	        				<field name="communication12" colspan="3"/>
-	        				<field name="communication13" colspan="3"/>
-	        				<field name="communication14" colspan="3"/>
-	        				<field name="communication15" colspan="3"/>
-	        				<field name="communication16" colspan="3"/>
-	        				<separator colspan="6"/>
-	        				<button string="Import Communications" type="object" name="import_communications" colspan="6" confirm="Atention: all the data of communications will be replaced and writed back at BD. Will you proceed?"/>
-        				</group>
-        			</page>
-        		</page>
-        	</data>
-	            
-        </field>
-    </record>
-    
 
 
     <!--**************************** PAYABLE PAYMENT ORDER ********************************-->

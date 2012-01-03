@@ -279,6 +279,13 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
 
         return res
     
+    _name = 'setitria.mods.import.dev.c19.wizard'
+    _columns = {
+        'file': fields.binary('Arxiu de retornats del Banc', required=True, filename='file_name'),
+        'file_name': fields.char('Arxiu de retornats del Banc', size=64),
+        'journal_id':fields.many2one('account.journal', 'Journal', required=True)
+        }
+    
     def import_action(self, cr, uid, ids, context=None):
         """
         Imports the C19 file selected by the user on the wizard form
@@ -300,7 +307,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
         for c19_wizard in self.browse(cr,uid,ids,context):
             # Load the file data into the st_data dictionary
             st_data = self._load_c19_file(cr, uid, c19_wizard.file, context=context)
-            
+            journal = c19_wizard.journal_id.id
             for grupoTotal in st_data['groups']:    # per cada grup gran (en principi un per fitxer, pero aixó no es pot control-lar)
                 
                 banc_id = False
@@ -344,7 +351,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                         print 'motivo_dev: '+ str(linea['motivo_dev'])
                         codi_dev = linea['codi_dev']
                         importe = linea['importe']
-                        
+                        fecha_dev = grupoTotal['fecha_fich']
                         partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
                         if partner:
                             part = partner_obj.browse(cr, uid, partner[0])
@@ -361,7 +368,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                     id_compte_430 = part.property_account_receivable.id
                                 else:
                                     raise osv.except_osv('Error', 'Partner not found containing %s Reference number.' % linea['codi_ref'].lstrip('0'))
-                        
+                        partner = partner[0]
                         ids = False
                         pline = False
 #                        pline_ids=[]
@@ -390,17 +397,16 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                             values = {
                                       'fitxer_id'   : fitxer_id,
                                       'invoice_id'  : ids,
-                                      'date'        : grupo['fecha'],
+                                      'date'        : fecha_dev,
                                       'motiu_dev'   : linea['motivo_dev'],
-                                      'dev_amount'  : linea['importe']
+                                      'dev_amount'  : linea['importe'],
+                                      'partner_id'  : partner,
                                     }
                             
                             fact_obj = factura.browse(cr,uid,ids)
                             id_linea = apunt.search(cr, uid,[
                                                              ('account_id','=',id_compte_430),
                                                              ('debit','=',fact_obj.amount_total),
-#                                                            ('date','=',grupo['fecha'])
-#                                                             ,('reconcile_id','=',False)
                                                         ])
                             if id_linea:
                                 for linea in id_linea:
@@ -420,8 +426,8 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                                 break
                                         else:
                                             cp_move = pay_line_id.move_id.id 
-                                        period = self.pool.get('account.period').find(cr,uid,grupo['fecha'],context)
-                                        account_move = self.pool.get('account.move').copy(cr, uid, cp_move, {'ref':reference, 'date':grupo['fecha']})
+                                        period = self.pool.get('account.period').find(cr,uid,fecha_dev,context)[0]
+                                        account_move = self.pool.get('account.move').copy(cr, uid, cp_move, {'ref':reference, 'date':fecha_dev, 'period_id':period, 'journal_id':journal})
                                         account_move_o = self.pool.get('account.move').browse(cr, uid, account_move)
                                         lines = account_move_o.line_id
                                         kont=0
@@ -450,7 +456,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                                 if move_line_o.credit >0.0:
                                                     debit = importe
                                                     apunt_lines.append(move_line_o.id)
-                                                res ={'move_id':int(account_move),'credit':credit, 'debit':debit, 'state':'draft','reconcile_id':False}
+                                                res ={'move_id':int(account_move),'credit':credit, 'debit':debit, 'state':'draft','reconcile_id':False, 'date':fecha_dev, 'journal_id':journal, 'period_id':period}
                                                 apunt.write(cr, uid, [move_line_o.id], res)
                                                 if line_obj.reconcile_id:
                                                     recon_id = line_obj.reconcile_id.id
@@ -461,17 +467,23 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                         for payline in fact_obj.payment_ids:
                                             if payline.reconcile_id and payline.reconcile_id.id == recon_id:
                                                 apunt_lines.append(payline.id)
-                                        self.pool.get('account.move').button_validate(cr, uid, [account_move])
+                                        #self.pool.get('account.move').button_validate(cr, uid, [account_move])
                                         self.pool.get('account.move.reconcile').unlink(cr, uid, recon_id, context=context)
                                         apunt.reconcile_partial(cr, uid, apunt_lines)
                                         wf_service = netsvc.LocalService("workflow")
                                         wf_service.trg_validate(uid, 'account.invoice', ids, 'open_test2', cr)
-                                    
+                                        self.pool.get('account.move').button_validate(cr, uid, [account_move])
                                 values['state'] = 'valid' 
                             else:                              
                                 values['notes'] = "No s'ha trobat el apunt de contraprestació de la factura"
                         else:
-                            values['notes'] = "Invoice not found."
+                            values ={
+                                      'fitxer_id'   : fitxer_id,
+                                      'date'        : fecha_dev,
+                                      'motiu_dev'   : linea['motivo_dev'],
+                                      'dev_amount'  : linea['importe'],
+                                      'notes'       : "Invoice not found."
+                                    }
                         
                         lineafit.create(cr,uid,values,context=context)  
                 self._attach_file_to_fitxer(cr, uid, c19_wizard.file, c19_wizard.file_name, fitxer_id)          
@@ -480,12 +492,9 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
  
  
  
-    _name = 'setitria.mods.import.dev.c19.wizard'
+   
     
-    _columns = {
-        'file': fields.binary('Arxiu de retornats del Banc', required=True, filename='file_name'),
-        'file_name': fields.char('Arxiu de retornats del Banc', size=64)
-        }
+
     
 setitria_mods_import_dev_c19_wizard()
 
@@ -588,13 +597,14 @@ class setitria_fitxerretornat_line(osv.osv):
                                             ('7',"Dec duplicat, indegut, erroni o falten dades "),
                                             ('8',"Sense utilitzar")
                                         ], 'Motiu de devolució'),
-        'invoice_id': fields.many2one('account.invoice','Factura associada'),
+        'invoice_id': fields.many2one('account.invoice','Factura associada', domain="[('type','=','in_invoice')]"),
         'date'      : fields.date('Data de retorn'),
         'state'     : fields.selection([
                                             ('incomplete', 'Incomplert'),
                                             ('valid', 'Complert')
                                         ],'Estat'),
         'notes'     : fields.text('Notes'),
+        'partner_id': fields.many2one('res.partner', 'Customer'),
         'dev_amount': fields.float('Amount', digits=(13,2)),
     }
     

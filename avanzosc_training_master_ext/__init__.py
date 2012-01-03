@@ -20,4 +20,5 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
-import degree
+
+import avanzosc_training_master_ext

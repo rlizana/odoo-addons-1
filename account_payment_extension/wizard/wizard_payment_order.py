@@ -26,7 +26,7 @@ import time
 
 
 def log(missatge):
-    f=open('/home/ainara/Escritorio/log_payment.txt','a')
+    f=open('/home/openerp/log_payment.txt','a')
     f.write(missatge + '\n')
     f.close()
 

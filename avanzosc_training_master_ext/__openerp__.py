@@ -20,19 +20,18 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
+
 {
-    "name": "degree",
+    "name": "Training Extension",
     "version": "1.0",
-    "depends": ["base",
-                "training",
-                ],
-    "author": "Iker Coranti for Avanzosc",
-    "category": "",
+    "depends": ["training"],
+    "author": "Avanzosc(Miren Kotabarria, Iker Coranti, Ana Juaristi)",
+    "category": "Training Course",
     "description": """
-    This module provide : add Degree and Title for Training Module
+    This module provide : Customised fields in Subjects
     """,
     "init_xml": [],
-    'update_xml': ['degree_view.xml'],
+    'update_xml': ['avanzosc_training_master_ext_view.xml'],
     'demo_xml': [],
     'installable': True,
     'active': False,
