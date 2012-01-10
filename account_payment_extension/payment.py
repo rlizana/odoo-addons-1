@@ -347,11 +347,14 @@ class payment_order(osv.osv):
                     self.pool.get('payment.line').write(cr, uid, [line.id], {
                         'payment_move_id': move_id,
                     }, context)
+                    print move_id
                     cr.commit()
             result = super(payment_order, self).set_done(cr, uid, ids, context)
         except Exception, e:
-            tb_s = reduce(lambda x, y: x+y, traceback.format_exception(sys.exc_type, sys.exc_value, sys.exc_traceback))
+#            tb_s = reduce(lambda x, y: x+y, traceback.format_exception(sys.exc_type, sys.exc_value, sys.exc_traceback))
+#            print tb_s
             cr.rollback()
+            raise e
             return False
             
         return result
