@@ -346,11 +346,13 @@ class payment_order(osv.osv):
                         'payment_move_id': move_id,
                     }, context)
                     cr.commit()
-                    
+            result = super(payment_order, self).set_done(cr, uid, ids, context)    
+            
         except Exception, e:
             cr.rollback()
-                
-        result = super(payment_order, self).set_done(cr, uid, ids, context)
+            raise e
+            return False
+        
         return result
 
 payment_order()
