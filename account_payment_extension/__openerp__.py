@@ -4,6 +4,7 @@
 #    OpenERP, Open Source Management Solution
 #    Copyright (c) 2008 Zikzakmedia S.L. (http://zikzakmedia.com) All Rights Reserved.
 #                       Jordi Esteve <jesteve@zikzakmedia.com>
+#		   2011	Avanzosc S.L. <http://avanzosc.com>
 #    $Id$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -24,7 +25,7 @@
 {
     "name" : "Account Payment Extension",
     "version" : "1.1",
-    "author" : "Zikzakmedia SL",
+    "author" : "Zikzakmedia SL, Avanzosc",
     "category" : "Generic Modules/Accounting",
     "website" : "www.zikzakmedia.com",
     "license" : "GPL-3",

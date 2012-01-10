@@ -25,20 +25,30 @@ from tools.misc import UpdateableStr
 import time
 
 
+def log(missatge):
+    f=open('/home/openerp/log_payment.txt','a')
+    f.write(missatge + '\n')
+    f.close()
+
+
+
 FORM = UpdateableStr()
 
 FIELDS = {
     'entries': {'string':'Entries', 'type':'many2many', 'relation':'account.move.line',},
     'communication2': {'string':'Communication 2', 'type':'char', 'size': 64, 'help':'The successor message of payment communication.'},
+    'import': {'string':'Import communication', 'type':'boolean','help':'Imports communications from invoice lines.'},
 }
 
 field_duedate={
-    'duedate': {'string':'Due Date', 'type':'date','required':True, 'default': lambda *a: time.strftime('%Y-%m-%d'),},
+    'startdate':{'string':'Start Date', 'type':'date','required':True, 'default':lambda *a: time.strftime('%Y-%m-%d'), 'help': 'Invoices will be selected by the due date greater than the selected date.'},
+    'duedate': {'string':'Due Date', 'type':'date','required':True, 'default': lambda *a: time.strftime('%Y-%m-%d'), 'help': 'Invoices will be selected by the due date lower than the selected date.'},
     'amount': {'string':'Amount', 'type':'float', 'help': 'Next step will automatically select payments up to this amount as long as account moves have bank account if that is required by the selected payment mode.'},
     'show_refunds': {'string':'Show Refunds','type':'boolean', 'help':'Indicates if search should include refunds.', 'default': lambda *a: False},
     }
 arch_duedate='''<?xml version="1.0" encoding="utf-8"?>
 <form string="Search Payment lines" col="2">
+    <field name="startdate" />
     <field name="duedate" />
     <field name="amount" />
     <field name="show_refunds" />
@@ -46,12 +56,15 @@ arch_duedate='''<?xml version="1.0" encoding="utf-8"?>
 
 
 def search_entries(self, cr, uid, data, context):
+    log("inicio")
     search_due_date = data['form']['duedate']
+    search_start_date = data['form']['startdate']
     show_refunds = data['form']['show_refunds']
 
     pool = pooler.get_pool(cr.dbname)
     order_obj = pool.get('payment.order')
     line_obj = pool.get('account.move.line')
+    account_obj = pool.get('account.account')
 
     payment = order_obj.browse(cr, uid, data['id'],
             context=context)
@@ -60,44 +73,42 @@ def search_entries(self, cr, uid, data, context):
         ctx = '''context="{'journal_id': %d}"''' % payment.mode.journal.id
 
     # Search for move line to pay:
-    domain = [('reconcile_id', '=', False),('account_id.type', '=', payment.type),('amount_to_pay', '<>', 0)]
+    #domain = [('reconcile_id', '=', False),('account_id.type', '=', payment.type),('amount_to_pay', '<>', 0)]
+    domain = [('reconcile_id', '=', False)]
 
     if payment.type =='payable' and not show_refunds:
         domain += [ ('credit','>',0) ]
     elif not show_refunds:
         domain += [ ('debit','>',0) ]
 
-    if payment.mode:
-        domain += [('payment_type','=',payment.mode.type.id)]
-
-    domain += ['|',('date_maturity','<',search_due_date),('date_maturity','=',False)]
-    line_ids = line_obj.search(cr, uid, domain, order='date_maturity', context=context)
-
-
+    #if payment.mode:
+    #    domain += [('payment_type','=',payment.mode.type.id)]
+    #domain += ['|',('date_maturity','>',search_start_date), ('date_maturity','=',False)]
+    #domain += ['|',('date_maturity','<',search_due_date), ('date_maturity','=',False)]
+    domain += [('date_maturity','>=',search_start_date),]
+    domain += [('date_maturity','<=',search_due_date),]
+#    domain += [('date_maturity','<',search_due_date),('date_maturity','>',search_start_date)]
+    log(str(domain))
+    line_ids_total = line_obj.search(cr, uid, domain, order='date_maturity', context=context)
+    line_ids = []
+    for i in line_ids_total:
+        vals1 = line_obj.read(cr,uid,[i],['account_id','amount_to_pay','payment_type'])[0]
+        vals2 = account_obj.read(cr,uid,[vals1['account_id'][0]],['type'])[0]
+        if vals2['type']==payment.type and vals1['amount_to_pay'] <> 0 and (not payment.mode or vals1['payment_type'][0]==payment.mode.type.id):
+            line_ids.append(i)
+    log("post search")
     FORM.string = '''<?xml version="1.0" encoding="utf-8"?>
 <form string="Populate Payment:">
     <field name="entries" colspan="4" height="300" width="800" nolabel="1"
         domain="[('id', 'in', [%s])]" %s/>
     <separator string="Extra message of payment communication" colspan="4"/>
-    <field name="communication2" colspan="4"/>
+    <field name="import" />
+    <group colspan="4" col="1" attrs="{'invisible': [('import', '=', True)]}">
+        <field name="communication2" colspan="4"/>
+    </group>
 </form>''' % (','.join([str(x) for x in line_ids]), ctx)
 
     selected_ids = []
-
-
-#    if payment.mode.require_bank_account and not line.partner_bank_id:
-#        continue
-#    if payment.mode.require_same_bank_account:
-#        if not line.partner_bank_id:
-#            continue
-#        mode_account = payment.mode.bank_id.acc_number or payment.mode.bank_id.iban
-#        line_account = line.partner_bank_id.acc_number or line.partner_bank_id.iban
-#        if mode_account != line_account:
-#            continue
-#    if payment.mode.require_received_check:
-#        if not line.received_check:
-#            continue
-
     amount = data['form']['amount']
     if amount:
         if payment.mode and payment.mode.require_bank_account:
@@ -108,8 +119,11 @@ def search_entries(self, cr, uid, data, context):
         # if payment mode allows bank account to be null.
         for line in pool.get('account.move.line').browse(cr, uid, line_ids, context):
             if abs(line.amount_to_pay) <= amount:
+                if line2bank and not line2bank.get(line.id):
+                    continue
                 amount -= abs(line.amount_to_pay)
                 selected_ids.append( line.id )
+    log("end")
     return {
         'entries': selected_ids,
     }
@@ -129,6 +143,8 @@ def create_payment(self, cr, uid, data, context):
     line2bank = pool.get('account.move.line').line2bank(cr, uid,
             line_ids, t, context)
 
+    line_payment_ids = []
+    
     ## Finally populate the current payment with new lines:
     for line in line_obj.browse(cr, uid, line_ids, context=context):
         if payment.date_prefered == "now":
@@ -143,7 +159,8 @@ def create_payment(self, cr, uid, data, context):
             amount_to_pay = line.amount_to_pay
         else:
             amount_to_pay = -line.amount_to_pay
-        pool.get('payment.line').create(cr,uid,{
+        
+        id= pool.get('payment.line').create(cr,uid,{
             'move_line_id': line.id,
             'amount_currency': amount_to_pay,
             'bank_id': line2bank.get(line.id),
@@ -155,6 +172,12 @@ def create_payment(self, cr, uid, data, context):
             'currency': line.invoice and line.invoice.currency_id.id or False,
             'account_id': line.account_id.id,
             }, context=context)
+        
+        line_payment_ids.append(id)
+        
+    if data['form']['import']:
+        pool.get('payment.line').import_communications(cr,uid,line_payment_ids)
+        
     return {}
 
 

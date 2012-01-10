@@ -26,7 +26,6 @@ import netsvc
 from osv import fields, osv
 from tools.translate import _
 import decimal_precision as dp
-import traceback, sys
 
 class payment_type(osv.osv):
     _name= 'payment.type'
@@ -186,15 +185,15 @@ class payment_order(osv.osv):
             context = {}
 
         #Search for account_moves
-#        remove = []
-#        for move in self.browse(cr,uid,ids,context):
-#            #Search for any line
-#            for line in move.line_ids:
-#                if line.payment_move_id:
-#                    remove += [ line.payment_move_id.id ]
-#        
-#        self.pool.get('account.move').button_cancel( cr, uid, remove, context=context)
-#        self.pool.get('account.move').unlink(cr, uid, remove, context)
+        #remove = []
+        #for move in self.browse(cr,uid,ids,context):
+        #    #Search for any line
+        #    for line in move.line_ids:
+        #        if line.payment_move_id:
+        #            remove += [ line.payment_move_id.id ]
+        
+        #self.pool.get('account.move').button_cancel( cr, uid, remove, context=context)
+        #self.pool.get('account.move').unlink(cr, uid, remove, context)
         self.write( cr, uid, ids, {
             'state':'cancel'
         },context=context)
@@ -229,7 +228,6 @@ class payment_order(osv.osv):
                     if not line.account_id:
                         raise osv.except_osv(_('Error!'), _('Payment order should create account moves but line with amount %.2f for partner "%s" has no account assigned.') % (line.amount, line.partner_id.name ) )
     
-                    print line.ml_inv_ref.name
                     cr.rollback()
                     # This process creates a simple account move with bank and line accounts and line's amount. At the end
                     # it will reconcile or partial reconcile both entries if that is possible.
@@ -320,7 +318,7 @@ class payment_order(osv.osv):
                         lines_to_reconcile = [
                             partner_line_id,
                         ]
-                        print lines_to_reconcile
+    
                         # Check if payment line move is already partially reconciled and use those moves in that case.
                         if line.move_line_id.reconcile_partial_id:
                             for rline in line.move_line_id.reconcile_partial_id.line_partial_ids:
@@ -349,14 +347,22 @@ class payment_order(osv.osv):
                     }, context)
                     print move_id
                     cr.commit()
-            result = super(payment_order, self).set_done(cr, uid, ids, context)
+                    
         except Exception, e:
+<<<<<<< TREE
 #            tb_s = reduce(lambda x, y: x+y, traceback.format_exception(sys.exc_type, sys.exc_value, sys.exc_traceback))
 #            print tb_s
+=======
+>>>>>>> MERGE-SOURCE
             cr.rollback()
+<<<<<<< TREE
             raise e
             return False
             
+=======
+                
+        result = super(payment_order, self).set_done(cr, uid, ids, context)
+>>>>>>> MERGE-SOURCE
         return result
 
 payment_order()
