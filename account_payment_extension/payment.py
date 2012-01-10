@@ -345,24 +345,14 @@ class payment_order(osv.osv):
                     self.pool.get('payment.line').write(cr, uid, [line.id], {
                         'payment_move_id': move_id,
                     }, context)
-                    print move_id
                     cr.commit()
-                    
+            result = super(payment_order, self).set_done(cr, uid, ids, context)    
+            
         except Exception, e:
-<<<<<<< TREE
-#            tb_s = reduce(lambda x, y: x+y, traceback.format_exception(sys.exc_type, sys.exc_value, sys.exc_traceback))
-#            print tb_s
-=======
->>>>>>> MERGE-SOURCE
             cr.rollback()
-<<<<<<< TREE
             raise e
             return False
-            
-=======
-                
-        result = super(payment_order, self).set_done(cr, uid, ids, context)
->>>>>>> MERGE-SOURCE
+        
         return result
 
 payment_order()
