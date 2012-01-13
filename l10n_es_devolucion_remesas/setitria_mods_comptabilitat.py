@@ -352,22 +352,31 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                         codi_dev = linea['codi_dev']
                         importe = linea['importe']
                         fecha_dev = grupoTotal['fecha_fich']
-                        partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
+                        partner = partner_obj.search(cr, uid, [('id', '=', linea['codi_ref']), ('name', 'like', linea['nombre_titular'])])
                         if partner:
                             part = partner_obj.browse(cr, uid, partner[0])
                             id_compte_430 = part.property_account_receivable.id
                         else:
-                            partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'][3:])])
+                            partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
                             if partner:
-                                part = partner_obj.browse(cr, uid, partner[0])
-                                id_compte_430 = part.property_account_receivable.id
+                                 part = partner_obj.browse(cr, uid, partner[0])
+                                 id_compte_430 = part.property_account_receivable.id
                             else:
-                                partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'].lstrip('0'))])
                                 if partner:
                                     part = partner_obj.browse(cr, uid, partner[0])
                                     id_compte_430 = part.property_account_receivable.id
                                 else:
-                                    raise osv.except_osv('Error', 'Partner not found containing %s Reference number.' % linea['codi_ref'].lstrip('0'))
+                                    partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'][3:])])
+                                    if partner:
+                                        part = partner_obj.browse(cr, uid, partner[0])
+                                        id_compte_430 = part.property_account_receivable.id
+                                    else:
+                                        partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'].lstrip('0'))])
+                                        if partner:
+                                            part = partner_obj.browse(cr, uid, partner[0])
+                                            id_compte_430 = part.property_account_receivable.id
+                                        else:
+                                            raise osv.except_osv('Error', 'Partner not found containing %s Reference number.' % linea['codi_ref'].lstrip('0'))
                         partner = partner[0]
                         ids = False
                         pline = False

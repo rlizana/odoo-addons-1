@@ -21,7 +21,7 @@
 #
 ##############################################################################
 import invoice
-#import payment_line
+import payment_line
 import setitria_mods_comptabilitat
 import wizard
 

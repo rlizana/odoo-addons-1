@@ -180,6 +180,8 @@ def _create_payment_file(self, cr, uid, data, context):
     else:
         # Ensure line breaks use MS-DOS (CRLF) format as standards require.
         txt_remesa = txt_remesa.replace('\r\n','\n').replace('\n','\r\n')
+#        file = unicode(txt_remesa, "utf-8")
+#        file = file.encode("utf-8")
         file = base64.encodestring(txt_remesa)
         fname = (_('remesa') + '_' + orden.mode.tipo + '_' + orden.reference + '.txt').replace('/','-')
         pool.get('ir.attachment').create(cr, uid, {

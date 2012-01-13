@@ -190,17 +190,17 @@
         <menuitem id="setitria_fitxer_retornat_line_menu" name="Fitxers Rebuts Retornats Lines" parent="setitria_retornat_menu" action="setitria_fitxer_retornat_line_open" sequence="20"/>
         <menuitem id="setitria_fitxer_retornat_menu_import" name="Importar Fitxers Rebuts Retornats" parent="setitria_retornat_menu" action="action_c19_dev_file_import_wizard" sequence="25"/>
         
-<!--
+	<!--
 	Fem que el wizard es pugui executar desde on volem 
 
         <act_window id="action_c19_dev_file_import_wizard"
     		key2="client_action_multi" name="Import Arxiu Retornats Banc"
     		res_model="setitria.mods.import.dev.c19.wizard" src_model="account.bank.statement"
     		view_mode="form" target="new" view_type="form" groups="account.group_account_manager"/>
---> 
+	--> 
 
 
-<!-- 
+
 
 	    <record model="ir.ui.view" id="payment_line_ext_form_view">
                 <field name="name">payment.line.ext.form</field>
@@ -241,8 +241,7 @@
                                     <field name="ml_maturity_date"/>
                                     <field name="ml_inv_ref"/>
                                     <field name="invoiced_amount"/>
-                                    <field name="payed_amount"/>
-                                    <field name="dev_amount"/>
+                                    <field name="unpayed_amount"/>
                                 </page>
                             </notebook>
                         </form>
@@ -257,17 +256,16 @@
                 <field name="type">tree</field>
                 <field name="arch" type="xml">
                    <tree string="Payment Line">
+                   			<field name="name" select="1"/>
                    			<field name="order_id"/>
-                            <field name="ml_inv_ref" />
+                            <field name="ml_inv_ref" select="1"/>
                             <field name="partner_id" select="1"/>
                             <field name="date" select="1"/>
-                            <field name="amount_currency" string="Amount"/>
-                            <field name="currency"/>
-                            <field name="name" select="1"/>
-                            <field name="amount" sum="Total in Company Currency" invisible="1"/>
+                            <field name="amount_currency" string="Amount payed"/>
                             <field name="invoiced_amount"/>
-                            <field name="payed_amount"/>
-                            <field name="dev_amount"/>
+                            <field name="unpayed_amount" select="1"/>
+                            <field name="currency"/>
+                            <field name="amount" sum="Total in Company Currency" invisible="1"/>
                         </tree>
                 </field>
             </record> 
@@ -283,6 +281,6 @@
 			</record> 
             
             <menuitem id="payment_line_ext_menu" name="Receivable payment lines" action="action_payment_line_ext" parent="account_payment.menu_main_payment" sequence="2"/>
-     -->
+     
     </data>
 </openerp>
