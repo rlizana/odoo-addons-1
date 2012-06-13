@@ -1,0 +1,1115 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* fleet_manager
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.15\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-06-21 15:34:35+0000\n"
+"PO-Revision-Date: 2011-06-21 15:34:35+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fleet_manager
+#: view:fleet.wo:0
+#: model:ir.actions.act_window,name:fleet_manager.fleet_wo_form_act
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_wo
+msgid "Work Orders"
+msgstr "Work Orders"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,workorder:0
+msgid "parent work Order"
+msgstr "parent work Order"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.spares,wotask:0
+msgid "Parent WO Task"
+msgstr "Parent WO Task"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,deprecperd:0
+msgid "Monthly"
+msgstr "Monthly"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Preventive Maintainance"
+msgstr "Preventive Maintainance"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,primarymeter:0
+msgid "Hour Meter"
+msgstr "Hour Meter"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,fueltype:0
+msgid "Diesel"
+msgstr "Diesel"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,itemtype:0
+msgid "Fluids"
+msgstr "Fluids"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_vehicles
+msgid "Holds records of Vehicles"
+msgstr "Holds records of Vehicles"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Seek Approval"
+msgstr "Seek Approval"
+
+#. module: fleet_manager
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Invalid model name in the action definition."
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,vehicle:0
+msgid "Vehicle"
+msgstr "Vehicle"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,state:0
+msgid "Task Status"
+msgstr "Task Status"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqz:0
+msgid "Weeks"
+msgstr "Weeks"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,location:0
+msgid "Select the stock location or create one for each vehicle(recommended) so that the spares, tyres etc are assossiated with the vehicle when issued"
+msgstr "Select the stock location or create one for each vehicle(recommended) so that the spares, tyres etc are assossiated with the vehicle when issued"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,depracc:0
+msgid "Depreciation Account"
+msgstr "Depreciation Account"
+
+#. module: fleet_manager
+#: field:fleet.service.items.spares,product:0
+#: field:fleet.wo.tasks.spares,product:0
+msgid "Spare Part"
+msgstr "Spare Part"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,bdate:0
+msgid "Date on which the mileage is recorded"
+msgstr "Date on which the mileage is recorded"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,log_no:0
+msgid "Log Entry#"
+msgstr "Log Entry#"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_service_items_spares
+msgid "Service items to spare relation"
+msgstr "Service items to spare relation"
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+msgid "Service Item Occurance"
+msgstr "Service Item Occurance"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,company:0
+msgid "Company"
+msgstr "Company"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,bdate:0
+msgid "Recorded Date"
+msgstr "Recorded Date"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,status:0
+msgid "Out of Service"
+msgstr "Out of Service"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_manager_config_service
+msgid "Service Configuration"
+msgstr "Service Configuration"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks,state:0
+msgid "Not Started"
+msgstr "Not Started"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Task Completed"
+msgstr "Task Completed"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,itemtype:0
+msgid "Others"
+msgstr "Others"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,qty:0
+#: field:fleet.service.items.spares,qtyreqd:0
+#: field:fleet.wo.tasks.spares,quantity:0
+msgid "Quantity"
+msgstr "Quantity"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,totalcost:0
+msgid "Total Cost"
+msgstr "Total Cost"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+msgid "Accounting Info."
+msgstr "Accounting Info."
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks,state:0
+msgid "Test/Inspection"
+msgstr "Test/Inspection"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,duedate:0
+msgid "Due Date"
+msgstr "Due Date"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,type:0
+msgid "Car"
+msgstr "Car"
+
+#. module: fleet_manager
+#: model:ir.actions.act_window,name:fleet_manager.fleet_vehicles_form_act
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_vehicles
+msgid "Vehicles"
+msgstr "Vehicles"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqz:0
+msgid "Days"
+msgstr "Days"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.labour,amount:0
+msgid "Amount"
+msgstr "Amount"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,deprecperc:0
+msgid "Depreciation in %"
+msgstr "Depreciation in %"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_sm
+msgid "Service Management"
+msgstr "Service Management"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Fuel and Maintainace"
+msgstr "Fuel and Maintainace"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,deprecperd:0
+msgid "Yearly"
+msgstr "Yearly"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Start Work"
+msgstr "Start Work"
+
+#. module: fleet_manager
+#: field:fleet.service.templ,name:0
+msgid "Template Name"
+msgstr "Template Name"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Financial Details"
+msgstr "Financial Details"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,warrexpmil:0
+msgid "Expiry mileage for warranty of product"
+msgstr "Expiry mileage for warranty of product"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,fueltankcap:0
+msgid "Fuel Tank Capacity"
+msgstr "Fuel Tank Capacity"
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+msgid "Distance Unit"
+msgstr "Distance Unit"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.labour,partner:0
+msgid "Workshop/Payee"
+msgstr "Workshop/Payee"
+
+#. module: fleet_manager
+#: selection:fleet.fuellog,state:0
+msgid "Posted"
+msgstr "Posted"
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+msgid "OR"
+msgstr "OR"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,ownership:0
+msgid "Rented"
+msgstr "Rented"
+
+#. module: fleet_manager
+#: view:fleet.service.items.spares:0
+msgid "Service Item Spares"
+msgstr "Service Item Spares"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_service_templ
+msgid "The Template is a collection of service items."
+msgstr "The Template is a collection of service items."
+
+#. module: fleet_manager
+#: field:fleet.vehicles,startodometer:0
+msgid "Start Odometer"
+msgstr "Start Odometer"
+
+#. module: fleet_manager
+#: field:hr.employee,licexpiry:0
+msgid "License Expiry on"
+msgstr "License Expiry on"
+
+#. module: fleet_manager
+#: field:hr.employee,photo:0
+msgid "Photograph"
+msgstr "Photograph"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,odometer:0
+#: field:fleet.odometer,odometer:0
+#: selection:fleet.vehicles,primarymeter:0
+#: model:ir.actions.act_window,name:fleet_manager.fleet_odometer_form_act
+#: model:ir.actions.act_window,name:fleet_manager.fleet_odometer_tree_act
+msgid "Odometer"
+msgstr "Odometer"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.labour,verified:0
+msgid "Verified By"
+msgstr "Verified By"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,regnno:0
+msgid "Vehicle Registration #"
+msgstr "Vehicle Registration #"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,bmil:0
+msgid "The last recorded mileage"
+msgstr "The last recorded mileage"
+
+#. module: fleet_manager
+#: view:fleet.service.items.spares:0
+msgid "Service Spare Details"
+msgstr "Service Spare Details"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+msgid "Vehicle Info."
+msgstr "Vehicle Info."
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+msgid "Fuel Station Info."
+msgstr "Fuel Station Info."
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+#: field:fleet.service.items,freqd:0
+msgid "Mileage"
+msgstr "Mileage"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,emp_resp:0
+#: field:fleet.odometer,emp_resp:0
+msgid "Employee Responsible"
+msgstr "Employee Responsible"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,ppartner:0
+msgid "Purchased From"
+msgstr "Purchased From"
+
+#. module: fleet_manager
+#: field:fleet.service.items,name:0
+#: field:fleet.service.items.spares,serviceitem:0
+msgid "Service Item"
+msgstr "Service Item"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks.spares,state:0
+msgid "Pending Move"
+msgstr "Pending Move"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Current Details"
+msgstr "Current Details"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqdz:0
+msgid "Hours"
+msgstr "Hours"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_fuellog
+msgid "Records the fuelling entries"
+msgstr "Records the fuelling entries"
+
+#. module: fleet_manager
+#: field:fleet.service.items,freqn:0
+msgid "Frequency"
+msgstr "Frequency"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks.spares,state:0
+msgid "Spare Issued"
+msgstr "Spare Issued"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_manager_config
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,type:0
+msgid "Class"
+msgstr "Class"
+
+#. module: fleet_manager
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: fleet_manager
+#: field:fleet.service.items,itemtype:0
+msgid "Type of Service"
+msgstr "Type of Service"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Task Details"
+msgstr "Task Details"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,pdate:0
+msgid "Date of Purchase of vehicle"
+msgstr "Date of Purchase of vehicle"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks,state:0
+msgid "Waiting for Spares"
+msgstr "Waiting for Spares"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,fueltype:0
+msgid "Gasoline"
+msgstr "Gasoline"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+msgid "Fuel Logbook"
+msgstr "Fuel Logbook"
+
+#. module: fleet_manager
+#: field:fleet.wo,rdate:0
+msgid "Order Date"
+msgstr "Order Date"
+
+#. module: fleet_manager
+#: field:fleet.wo,wono:0
+msgid "Work Order no"
+msgstr "Work Order no"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,wosysgen:0
+msgid "System Generated"
+msgstr "System Generated"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,status:0
+msgid "InActive"
+msgstr "InActive"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_service_items
+msgid "Different types of service tasks"
+msgstr "Different types of service tasks"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,itemtype:0
+msgid "Inspection"
+msgstr "Inspection"
+
+#. module: fleet_manager
+#: view:fleet.service.templ:0
+#: model:ir.actions.act_window,name:fleet_manager.fleet_serv_templ_view
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_serv_templ
+msgid "Service Templates"
+msgstr "Service Templates"
+
+#. module: fleet_manager
+#: view:fleet.odometer:0
+msgid "Odometer Logbook"
+msgstr "Odometer Logbook"
+
+#. module: fleet_manager
+#: help:fleet.fuellog,driver:0
+msgid "Driver who has driven the vehice before this fuelling"
+msgstr "Driver who has driven the vehice before this fuelling"
+
+#. module: fleet_manager
+#: help:fleet.service.templ,name:0
+msgid "Service Templates are a collection of Service Tasks for a specific category of vehicles."
+msgstr "Service Templates are a collection of Service Tasks for a specific category of vehicles."
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,supervisor:0
+msgid "Supervisor"
+msgstr "Supervisor"
+
+#. module: fleet_manager
+#: view:fleet.odometer:0
+msgid "Record Info."
+msgstr "Record Info."
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Re Plan"
+msgstr "Re Plan"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_manager
+msgid "Fleet Manager"
+msgstr "Fleet Manager"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,ownership:0
+msgid "Owned"
+msgstr "Owned"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,itemtype:0
+msgid "Replace"
+msgstr "Replace"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,cmil:0
+msgid "Current Mileage"
+msgstr "Current Mileage"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,currency_id:0
+msgid "Currency"
+msgstr "Currency"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_wo_tasks_labour
+msgid "WO labour Tasks"
+msgstr "WO labour Tasks"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,primarymeter:0
+msgid "Primary Meter"
+msgstr "Primary Meter"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_wo
+msgid "Work Orders for Fleet Maintainance"
+msgstr "Work Orders for Fleet Maintainance"
+
+#. module: fleet_manager
+#: model:ir.actions.act_window,name:fleet_manager.fleet_wo_tasks_spares_act
+msgid "Work Order Tasks Spares"
+msgstr "Work Order Tasks Spares"
+
+#. module: fleet_manager
+#: view:fleet.service.templ:0
+msgid "Service Items in template"
+msgstr "Service Items in template"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,state:0
+#: field:fleet.service.items,freqdz:0
+#: field:fleet.service.items,freqz:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,date:0
+msgid "Transaction Date"
+msgstr "Transaction Date"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.labour,lab_req_no:0
+msgid "Labour Req No"
+msgstr "Labour Req No"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,podometer:0
+msgid "Odometer at Purchase"
+msgstr "Odometer at Purchase"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks.labour,state:0
+msgid "Verified"
+msgstr "Verified"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+#: view:fleet.wo:0
+msgid "Additional Details"
+msgstr "Additional Details"
+
+#. module: fleet_manager
+#: model:ir.module.module,description:fleet_manager.module_meta_information
+msgid "The module is a vertical for fleet operations management"
+msgstr "The module is a vertical for fleet operations management"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,make:0
+msgid "Make"
+msgstr "Make"
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+#: field:fleet.service.templ,items:0
+#: model:ir.actions.act_window,name:fleet_manager.fleet_serv_items
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_serv_items
+msgid "Service Items"
+msgstr "Service Items"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_manager_cmms
+msgid "C.M.M.S"
+msgstr "C.M.M.S"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_wo_tasks_spares
+msgid "WO Tasks spares requirement"
+msgstr "WO Tasks spares requirement"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,schedname:0
+msgid "PM Schedule"
+msgstr "PM Schedule"
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+msgid "Service Item Details"
+msgstr "Service Item Details"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Manufacture Details"
+msgstr "Manufacture Details"
+
+#. module: fleet_manager
+#: selection:fleet.fuellog,state:0
+#: selection:fleet.wo.tasks.labour,state:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: fleet_manager
+#: view:fleet.wo:0
+#: view:fleet.wo.tasks:0
+#: model:ir.actions.act_window,name:fleet_manager.fleet_wo_tasks_act
+#: model:ir.model,name:fleet_manager.model_fleet_wo_tasks
+#: model:ir.ui.menu,name:fleet_manager.temp_menu_fleet_wo_task
+msgid "Work Order Tasks"
+msgstr "Work Order Tasks"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,deprecperd:0
+msgid "Quarterly"
+msgstr "Quarterly"
+
+#. module: fleet_manager
+#: field:fleet.service.items.spares,unit:0
+#: field:fleet.wo.tasks.spares,unit:0
+msgid "Unit Of Use"
+msgstr "Unit Of Use"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Cancel Task"
+msgstr "Cancel Task"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,taskno:0
+msgid "Task No"
+msgstr "Task No"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.spares,state:0
+msgid "State/Status"
+msgstr "State/Status"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.labour,state:0
+msgid "Status"
+msgstr "Status"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,warrexpmil:0
+msgid "(or) Mileage"
+msgstr "(or) Mileage"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,deprecperd:0
+msgid "Depr. period"
+msgstr "Depr. period"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,itemtype:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,fueltype:0
+msgid "Petrol"
+msgstr "Petrol"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,type:0
+msgid "Bus"
+msgstr "Bus"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,driver:0
+msgid "Driver"
+msgstr "Driver"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks.labour,state:0
+msgid "Paid"
+msgstr "Paid"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+#: view:fleet.odometer:0
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_fuellog
+msgid "Fuel Log"
+msgstr "Fuel Log"
+
+#. module: fleet_manager
+#: help:fleet.fuellog,emp_resp:0
+msgid "Employee reporting fuelling details"
+msgstr "Employee reporting fuelling details"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,servitem:0
+msgid "Service Task"
+msgstr "Service Task"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Warranty Expiry"
+msgstr "Warranty Expiry"
+
+#. module: fleet_manager
+#: view:fleet.wo:0
+msgid "Work Order Master Info."
+msgstr "Work Order Master Info."
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqdz:0
+msgid "Kilometers"
+msgstr "Kilometers"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,assetacc:0
+msgid "Asset Account"
+msgstr "Asset Account"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.labour,description:0
+msgid "Description of work"
+msgstr "Description of work"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+#: selection:fleet.fuellog,state:0
+msgid "Proforma"
+msgstr "Proforma"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks.spares:0
+msgid "Work Order Tasks Spare issue"
+msgstr "Work Order Tasks Spare issue"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+msgid "Post Txn"
+msgstr "Post Txn"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,location:0
+msgid "Stk Location"
+msgstr "Stk Location"
+
+#. module: fleet_manager
+#: field:fleet.service.items,sparesreq:0
+#: view:fleet.wo.tasks:0
+#: field:fleet.wo.tasks,spares:0
+msgid "Spares Required"
+msgstr "Spares Required"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqz:0
+msgid "Months"
+msgstr "Months"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Analysis Information"
+msgstr "Analysis Information"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Vehicle Details"
+msgstr "Vehicle Details"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,fueltype:0
+msgid "L.P.G"
+msgstr "L.P.G"
+
+#. module: fleet_manager
+#: field:fleet.wo,tasks:0
+msgid "Tasks in Work Order"
+msgstr "Tasks in Work Order"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,status:0
+msgid "Active"
+msgstr "Active"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqdz:0
+msgid "Miles"
+msgstr "Miles"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,deprecperd:0
+msgid "Half Yearly"
+msgstr "Half Yearly"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,serial:0
+msgid "productSerial #"
+msgstr "productSerial #"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,pcost:0
+msgid "Purchase Value"
+msgstr "Purchase Value"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks.labour,state:0
+msgid "Audited"
+msgstr "Audited"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,fueltype:0
+msgid "C.N.G"
+msgstr "C.N.G"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Task Management"
+msgstr "Task Management"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+msgid "Fuelling Info."
+msgstr "Fuelling Info."
+
+#. module: fleet_manager
+#: field:fleet.fuellog,period_id:0
+#: view:fleet.service.items:0
+msgid "Period"
+msgstr "Period"
+
+#. module: fleet_manager
+#: view:fleet.service.items.spares:0
+msgid "Service Item Spare Requirement"
+msgstr "Service Item Spare Requirement"
+
+#. module: fleet_manager
+#: model:ir.module.module,shortdesc:fleet_manager.module_meta_information
+msgid "Fleet Management System"
+msgstr "Fleet Management System"
+
+#. module: fleet_manager
+#: model:ir.model,name:fleet_manager.model_fleet_odometer
+msgid "Recording of daily odometer reading"
+msgstr "Recording of daily odometer reading"
+
+#. module: fleet_manager
+#: view:fleet.fuellog:0
+#: selection:fleet.fuellog,state:0
+#: selection:fleet.wo.tasks,state:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: fleet_manager
+#: field:fleet.wo,description:0
+msgid "Order Narration"
+msgstr "Order Narration"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,fueltype:0
+msgid "Fuel Used"
+msgstr "Fuel Used"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,invno:0
+msgid "Invoice no"
+msgstr "Invoice no"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks,state:0
+msgid "In Progress"
+msgstr "In Progress"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,pdate:0
+msgid "Purchase Date"
+msgstr "Purchase Date"
+
+#. module: fleet_manager
+#: field:hr.employee,licenseno:0
+msgid "License #"
+msgstr "License #"
+
+#. module: fleet_manager
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "The Object name must start with x_ and not contain any special character !"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,warrexp:0
+msgid "Expiry date for warranty of product"
+msgstr "Expiry date for warranty of product"
+
+#. module: fleet_manager
+#: help:product.product,spare_ok:0
+msgid "Determines if the product is a vehicle spare."
+msgstr "Determines if the product is a vehicle spare."
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Issue Spares"
+msgstr "Issue Spares"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_odometer
+msgid "Odometer Statements"
+msgstr "Odometer Statements"
+
+#. module: fleet_manager
+#: help:fleet.vehicles,schedname:0
+msgid "Preventive maintainance schedule for this vehicle"
+msgstr "Preventive maintainance schedule for this vehicle"
+
+#. module: fleet_manager
+#: selection:fleet.service.items,freqz:0
+msgid "Years"
+msgstr "Years"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,vehicle:0
+#: field:fleet.odometer,vehicle:0
+#: field:fleet.vehicles,name:0
+msgid "Vehicle Name"
+msgstr "Vehicle Name"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,scheddate:0
+msgid "Scheduled Date"
+msgstr "Scheduled Date"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Purchase Details"
+msgstr "Purchase Details"
+
+#. module: fleet_manager
+#: field:fleet.service.templ,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: fleet_manager
+#: field:hr.employee,licensetyp:0
+msgid "License Type"
+msgstr "License Type"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,journal_id:0
+msgid "Journal"
+msgstr "Journal"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,ownership:0
+msgid "Leased"
+msgstr "Leased"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,ownership:0
+msgid "Ownership"
+msgstr "Ownership"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks.spares,state:0
+msgid "Request Draft"
+msgstr "Request Draft"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,pinvoice:0
+msgid "Purchase Invoice"
+msgstr "Purchase Invoice"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Workflow Actions"
+msgstr "Workflow Actions"
+
+#. module: fleet_manager
+#: field:fleet.wo,instr:0
+msgid "Instructions"
+msgstr "Instructions"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,status:0
+msgid "status"
+msgstr "status"
+
+#. module: fleet_manager
+#: view:fleet.service.templ:0
+msgid "Service Template"
+msgstr "Service Template"
+
+#. module: fleet_manager
+#: view:fleet.service.items:0
+msgid "Spares Parts required for service"
+msgstr "Spares Parts required for service"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks,assignee:0
+msgid "Assigned Employee"
+msgstr "Assigned Employee"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,costpl:0
+msgid "Cost Per Ltr"
+msgstr "Cost Per Ltr"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,bmil:0
+msgid "Base Mileage"
+msgstr "Base Mileage"
+
+#. module: fleet_manager
+#: selection:fleet.vehicles,type:0
+msgid "Truck"
+msgstr "Truck"
+
+#. module: fleet_manager
+#: model:ir.ui.menu,name:fleet_manager.menu_fleet_manager_oms
+msgid "Operations Management"
+msgstr "Operations Management"
+
+#. module: fleet_manager
+#: view:fleet.wo.tasks:0
+msgid "Testing Started"
+msgstr "Testing Started"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,model:0
+msgid "Model"
+msgstr "Model"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks,state:0
+msgid "Complete"
+msgstr "Complete"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,move_id:0
+msgid "Account Entry"
+msgstr "Account Entry"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "vehicles"
+msgstr "vehicles"
+
+#. module: fleet_manager
+#: field:fleet.odometer,date:0
+#: field:fleet.vehicles,warrexp:0
+msgid "Date"
+msgstr "Date"
+
+#. module: fleet_manager
+#: view:fleet.vehicles:0
+msgid "Fuel Details"
+msgstr "Fuel Details"
+
+#. module: fleet_manager
+#: model:ir.actions.act_window,name:fleet_manager.fleet_fuellog_form_act
+msgid "Fuellog"
+msgstr "Fuellog"
+
+#. module: fleet_manager
+#: field:fleet.vehicles,year:0
+msgid "Year"
+msgstr "Year"
+
+#. module: fleet_manager
+#: field:fleet.wo.tasks.spares,spare_req_no:0
+msgid "Spares Req. No"
+msgstr "Spares Req. No"
+
+#. module: fleet_manager
+#: field:fleet.fuellog,vendor:0
+msgid "Fuel Station"
+msgstr "Fuel Station"
+
+#. module: fleet_manager
+#: selection:fleet.wo.tasks,state:0
+msgid "Planning Needed"
+msgstr "Planning Needed"
+
+#. module: fleet_manager
+#: field:product.product,spare_ok:0
+msgid "Is a vehicle spare"
+msgstr "Is a vehicle spare"
+
