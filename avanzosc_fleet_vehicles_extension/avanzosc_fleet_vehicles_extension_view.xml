@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<delete id="menu_fleet_manager" model="ir.ui.menu"/>
+		<menuitem name="Fleet Manager" id="menu_fleet_manager_1" groups ="group_fleet_vehicle_manager"/>
+		
+		<record id="fleet_vehicle_services" model="ir.ui.view">
+			<field name="name">fleet.vehicle.services</field>
+			<field name="type">form</field>
+			<field name="model">fleet.vehicles</field> 
+			<field name="inherit_id" ref="fleet_manager.fleet_vehicle_form"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="/form/group/field[@name='location']" position="after">
+						<field name="product_id" domain="[('name','=',name)]" />
+						<field name="depot" />
+				</xpath> 
+				<xpath expr="/form/notebook/page[@string='Fuel and Maintainace']" position="replace">
+					<page string="Fuel and Maintainace">
+						<field name="primarymeter" />
+						<field name="actodometer" />
+						<newline />
+						<separator string="Fuel Details" colspan="4" />
+						<field name="fueltype" />
+						<field name="fueltankcap" />
+<!--						<separator string="Preventive Maintainance" colspan="4" />-->
+<!--						<field name="itv"/>-->
+					</page>
+					<page string="Extra Information">
+						<separator string="Extra Information" colspan="4" />
+						<field name="card"/>
+						<field name="cardexp"/>
+						<field name="viat"/>
+						<separator string="Capacity" colspan="4" />
+						<field name="places"/>
+						<field name="places2"/>
+						<field name="places3"/>
+						<field name="places4"/>
+						<field name="totalplaces"/>
+						<separator string="Insurance" colspan="4" />
+						<field name="insurance"/>
+						<field name="policy"/>
+					</page>
+				</xpath>	
+				<xpath expr="/form/notebook/page[@string='Additional Details']/field[@name='type']" position="after">		
+					<!--<field name="numberwork"/>-->
+					<field name="frame"/>
+					<group colspan="6" col="6" >
+						<field name="tires"/>
+						<field name="serv_time"/>
+						<field name="lowboy"/>
+						<field name="ramp"/>
+					</group>
+				</xpath>
+				<xpath expr="/form/notebook/page[@string='Purchase Details']/field[@name='podometer']" position="after">
+					<field name="enrolldate"/>
+				</xpath>
+				<xpath expr="/form/notebook/page[@string='Additional Details']/field[@name='ownership']" position="after">
+					<field name="ambit"/>
+					<field name="service"/>
+					<field name="lphone"/>
+					<field name="sphone"/>
+					<field name="wifi"/>
+				</xpath>	
+			</data>																
+			</field>
+		</record>
+
+<!-- ===================================================== FUEL LOG ===================================================== -->
+
+	<record id="fleet_fuellog_form_view_inherit" model="ir.ui.view">
+		<field name="name">fleet_fuellog_form_inherit</field>
+		<field name="model">fleet.fuellog</field>
+		<field name="inherit_id" ref="fleet_manager.fleet_fuellog_form_view"/>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<data>
+				<xpath  expr="/form/field[@name='invno']" position="replace">
+				<field name="invoiceno"/>
+				</xpath>
+				<xpath expr="/form/field[@name='date']" position="replace">
+				</xpath>
+				<xpath expr="/form/field[@name='costpl']" position="replace">
+				</xpath>
+				<xpath expr="/form/field[@name='vendor']" position="after">
+				<field name="supplier" />
+				</xpath>
+				<xpath expr="/form/field[@name='odometer']" position="after">
+				<field name="engine" />
+				<field name="d_number"/>
+				</xpath>
+				<xpath expr="/form/separator[@string='Fuelling Info.']" position="after">
+					<field name="date" />
+					<field name="time" />
+					<field name="cost"/>
+				</xpath>
+				<xpath expr="/form/group" position="replace">
+				</xpath>
+				<xpath expr="/form/field[@name='state']" position ="replace"/>
+			</data>
+		</field>
+	</record>
+	
+	<record id="fleet_fuellog_tree_view_inherit" model="ir.ui.view">
+		<field name="name">fleet_fuellog_tree_inherit</field>
+		<field name="model">fleet.fuellog</field>
+		<field name="inherit_id" ref="fleet_manager.fleet_fuellog_tree_view"/>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+		<xpath  expr="/tree[@string='Fuel Log']" position="replace">
+			<tree string="Fuel Log">
+					<field name="vehicle" select="1" />
+					<field name="date" select="1" />
+					<field name="time" />
+					<field name="supplier" select="2" />
+					<field name="qty" select="1" />
+					<field name="odometer" />
+					<field name="engine" />
+					<field name="totalcost" />
+					<field name="d_number" select="2" />
+			</tree>
+		</xpath>
+		</field>
+		</record>
+		
+	</data>
+</openerp>
+

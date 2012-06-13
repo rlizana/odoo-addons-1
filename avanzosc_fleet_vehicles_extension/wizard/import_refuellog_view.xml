@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    <!-- Import Fuel Log Wizard form -->
+
+          <record id="view_import_fuellog" model="ir.ui.view">
+            <field name="name">import.refuellog.form</field>
+            <field name="model">import.fuellog</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import Refuel Log">
+                    <group colspan="4" >
+                          <separator string="" colspan="4"/>
+                          <field name="data" filename="name" />
+                          <field name="name" colspan="2"/>
+                    </group>
+                   <separator string="" colspan="4"/>
+                   <group colspan="4" col="6">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button  icon="gtk-ok" name="action_import" string="Import" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+	<!-- Result Window -->
+	        
+	    <record id="view_import_fuellog_result" model="ir.ui.view">
+            <field name="name">import.refuellog.result.form</field>
+            <field name="model">import.fuellog</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import Refuel Log Info">
+                   <separator string="Fuel Data Log Loaded!" colspan="4"/>
+                   <button  icon="gtk-ok" special="end" string="Accept"/>
+               </form>
+            </field>
+        </record>
+	        
+    <!--  Action of Import Fuel Log wizard -->
+
+    <record id="action_import_refuellog" model="ir.actions.act_window">
+        <field name="name">Import Refuel Log</field>
+        <field name="res_model">import.fuellog</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="view_import_fuellog"/>
+       <field name="target">new</field>
+    </record> 
+   
+    <menuitem  id="menu_import_fuellog" name="Import Fuel Log" action="action_import_refuellog" parent="fleet_manager.menu_fleet_manager_oms"/>
+    
+	</data>
+</openerp>   

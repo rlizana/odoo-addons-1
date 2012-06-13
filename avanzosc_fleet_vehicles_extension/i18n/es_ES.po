@@ -1,0 +1,766 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_fleet_vehicles_extension
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.15\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-11-03 11:04:16+0000\n"
+"PO-Revision-Date: 2011-11-03 12:12+0100\n"
+"Last-Translator: Daniel <danielcampos@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,ambit:0
+msgid "Provincial"
+msgstr "Provincial"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,service:0
+msgid "Service"
+msgstr "Servicio"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,ambit:0
+msgid "Ambit"
+msgstr "Ámbito"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,places3:0
+msgid "Number of DP places"
+msgstr "Número de plazas PMR"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.ui.menu,name:avanzosc_fleet_vehicles_extension.preventive_operations_menu
+msgid "Preventive Mantenance"
+msgstr "Mantenimiento Preventivo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,lowboy:0
+msgid "Lowboy"
+msgstr "Plataforma Baja"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Nombre del modelo inválido en la definición de acción."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.proceed,ivehicle:0
+#: field:vehicle.prev.op,vehicle:0
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:preventive.operations,measUnit:0
+#: selection:preventive.operations,measUnit1:0
+#: selection:preventive.operations,measUnit2:0
+#: selection:vehicle.prev.op,measUnit:0
+#: selection:vehicle.prev.op,measUnit1:0
+#: selection:vehicle.prev.op,measUnit2:0
+msgid "Weeks"
+msgstr "Semanas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.model,name:avanzosc_fleet_vehicles_extension.model_preventive_operations
+msgid "Preventive manteinance operations."
+msgstr "Operaciones preventivas de mantenimiento"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:product.line,product_uom:0
+msgid "Unit of Measure"
+msgstr "Unidad de Medida"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,service:0
+msgid "Urban"
+msgstr "Urbano"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+#: view:vehicle.prev.op:0
+msgid "Next Revision"
+msgstr "Siguiente Revisión"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,insurance:0
+msgid "Insurance Name"
+msgstr "Aseguradora"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,cardexp:0
+msgid "Card Expiration"
+msgstr "Caducidad Tarjeta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.proceed,date1:0
+msgid "1st alert date"
+msgstr "1. Fecha de Alerta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+msgid "1st freq. margin"
+msgstr "1. Margen de frecuencia"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,service:0
+msgid "Discretionary"
+msgstr "Discrecional"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.proceed,date2:0
+msgid "2nd alert date"
+msgstr "2. Fecha de Alerta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/wizard/import_refuellog.py:0
+#, python-format
+msgid "UserError"
+msgstr "Error de Usuario"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,nextdate:0
+msgid "Expected date for the next operation."
+msgstr "Fecha estimada para la siguiente operación."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.proceed:0
+msgid "Alert Information"
+msgstr "Información de Alerta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:preventive.operations,measUnit:0
+#: selection:preventive.operations,measUnit1:0
+#: selection:preventive.operations,measUnit2:0
+#: selection:vehicle.prev.op,measUnit:0
+#: selection:vehicle.prev.op,measUnit1:0
+#: selection:vehicle.prev.op,measUnit2:0
+msgid "Days"
+msgstr "Días"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/avanzosc_fleet_vehicles_extension.py:0
+#, python-format
+msgid "El Vehículo ya existe!"
+msgstr "El Vehículo ya existe!"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/avanzosc_fleet_vehicles_extension.py:0
+#, python-format
+msgid "Error: El nombre del producto y del vehículo deben ser iguales!"
+msgstr "Error: El nombre del producto y del vehículo deben ser iguales!"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/wizard/create_order_wizard.py:0
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.actions.act_window,name:avanzosc_fleet_vehicles_extension.act_product_line
+msgid "Product line"
+msgstr "Lina de Producto"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,policy:0
+msgid "Vehicle policy"
+msgstr "Poliza del Vehículo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+msgid "Fuel and Maintainace"
+msgstr "Combustible y Mantenimiento"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,frame:0
+msgid "Frame Number"
+msgstr "Número de Bastidor"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.ui.menu,name:avanzosc_fleet_vehicles_extension.operations_tree_view
+msgid "Operations"
+msgstr "Operaciones"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:import.fuellog:0
+#: model:ir.actions.act_window,name:avanzosc_fleet_vehicles_extension.action_import_refuellog
+msgid "Import Refuel Log"
+msgstr "Importar Log de Repostaje"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.fuellog,supplier:0
+msgid "Supplier Station"
+msgstr "Base Surtidor"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.proceed,prevname:0
+msgid "Op."
+msgstr "Op."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.model,name:avanzosc_fleet_vehicles_extension.model_import_fuellog
+#: model:ir.ui.menu,name:avanzosc_fleet_vehicles_extension.menu_import_fuellog
+msgid "Import Fuel Log"
+msgstr "Importar Log de Repostaje"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,opcode:0
+msgid "Op.REF"
+msgstr "Op.REF"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,margin_fre1:0
+#: field:preventive.operations,margin_fre2:0
+#: field:vehicle.prev.op,margin_fre1:0
+#: field:vehicle.prev.op,margin_fre2:0
+msgid "Frequency Margin"
+msgstr "Margen por frecuencia"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,ambit:0
+msgid "International"
+msgstr "Internacional"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,margin_km1:0
+#: field:preventive.operations,margin_km2:0
+#: field:vehicle.prev.op,margin_km1:0
+#: field:vehicle.prev.op,margin_km2:0
+msgid "Km. Margin"
+msgstr "Margen Km."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,mileage:0
+msgid "Mileage increment for the next operation. Measured in kilometers."
+msgstr "Incremento de kilometraje para la siguiente operación. Medida en Kilometros."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:import.fuellog:0
+msgid "Import Refuel Log Info"
+msgstr "Importar Información Log Repostaje"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,mileage:0
+#: field:vehicle.prev.op,lastkm:0
+#: field:vehicle.prev.op,nextkm:0
+msgid "Mileage"
+msgstr "Kilometraje"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,code:0
+#: field:vehicle.prev.op,name:0
+msgid "REF"
+msgstr "REF"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:product.line:0
+#: view:vehicle.prev.op:0
+#: field:vehicle.prev.op,material:0
+msgid "Material"
+msgstr "Material"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:import.fuellog,name:0
+msgid "Filename"
+msgstr "Nombre de archivo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.fuellog,cost:0
+msgid "Cost Per Ltr"
+msgstr "Coste por Litro"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.model,name:avanzosc_fleet_vehicles_extension.model_vehicle_prev_op
+msgid "Preventive operations of a vehicle."
+msgstr "Operaciones preventivas por vehículo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,nextkm:0
+msgid "Mileage of the vehicle for the next operation. Measured in kilometers."
+msgstr "Kilometraje del vehículo para la siguiente operación. Medida en Kilometros."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.proceed,opr:0
+#: field:product.line,prevop:0
+msgid "Operation"
+msgstr "Operación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,ambit:0
+msgid "National"
+msgstr "Nacional"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.ui.menu,name:avanzosc_fleet_vehicles_extension.menu_fleet_manager_1
+msgid "Fleet Manager"
+msgstr "Gestor de flota"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:preventive.operations,measUnit:0
+#: selection:preventive.operations,measUnit1:0
+#: selection:preventive.operations,measUnit2:0
+#: selection:vehicle.prev.op,measUnit:0
+#: selection:vehicle.prev.op,measUnit1:0
+#: selection:vehicle.prev.op,measUnit2:0
+msgid "Years"
+msgstr "Años"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/wizard/create_order_wizard.py:0
+#, python-format
+msgid "Create Order"
+msgstr "Crear Orden"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,measUnit:0
+#: field:preventive.operations,measUnit1:0
+#: field:preventive.operations,measUnit2:0
+#: field:vehicle.prev.op,measUnit:0
+#: field:vehicle.prev.op,measUnit1:0
+#: field:vehicle.prev.op,measUnit2:0
+msgid "Meas."
+msgstr "Medida"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.fuellog,engine:0
+msgid "Engine Hours"
+msgstr "Horas de motor"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,preop:0
+msgid "Next Revisions"
+msgstr "Siguiente Revisión"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.fuellog,invoiceno:0
+msgid "Invoice no"
+msgstr "Factura Num."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+msgid "2nd freq. margin"
+msgstr "2. Margen de frecuencia"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,product_id:0
+msgid "Product Associated"
+msgstr "Producto Asociado"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+msgid "Capacity"
+msgstr "Capacidad"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,places4:0
+msgid "Extra Driver Seat"
+msgstr "Asiento guia"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+#: field:fleet.vehicles,alert_list:0
+msgid "Alerts"
+msgstr "Alarmas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+#: view:vehicle.prev.op:0
+msgid "1st Alert"
+msgstr "1. Alarma"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.proceed:0
+msgid "Operation Information"
+msgstr "Información de Operación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,mileage:0
+msgid "Op. Mileage Increment"
+msgstr "Incremento Kilometraje Op."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:import.fuellog:0
+msgid "Import"
+msgstr "Importar"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,ambit:0
+msgid "Local"
+msgstr "Local"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,name:0
+msgid "Operation name"
+msgstr "Operación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,lphone:0
+msgid "Long phone number"
+msgstr "Número teléfono largo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.actions.wizard,name:avanzosc_fleet_vehicles_extension.wizard_vehicle_prev_op
+msgid "Repair case"
+msgstr "Crear reparación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.module.module,description:avanzosc_fleet_vehicles_extension.module_meta_information
+msgid ""
+"This module add new fields for sharoons fleet manager module.\n"
+"    Adds a relation between vehicles <=> Products.\n"
+"    Adds a wizard for automatic refueling data load from a csv file. Disabled Account unlink.\n"
+"    Adds a preventive management repair creator for the vehicles using defined frecuency or milleage created alarms "
+msgstr ""
+"Este modulo añade nuevos campos al modulo fleet manager de Sharoon.\n"
+"   Añade una relación entre vehículos <=> Productos.\n"
+"  Añade un wizard para la carga automatica de repostajes desde un archivo csv. Desactivado el enlace entre cuentas.\n"
+"  Añade un gestor para la creación de  reparaciones preventivas usando unas frecuencias y kilometrajes predefinidos en alarmas."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.model,name:avanzosc_fleet_vehicles_extension.model_product_line
+msgid "New product line."
+msgstr "Nueva linea Producto"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,alert:0
+msgid "1st alert"
+msgstr "1. Alerta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.model,name:avanzosc_fleet_vehicles_extension.model_preventive_proceed
+msgid "All preventive operations scheduled to be done."
+msgstr "Todas las operaciones preventivas "
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.fuellog:0
+msgid "Fuel Log"
+msgstr "Log Repostaje"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,enrolldate:0
+msgid "Enrollment date"
+msgstr "Fecha de matriculación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,lastdate:0
+#: field:vehicle.prev.op,nextdate:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,places:0
+msgid "Number of seat places"
+msgstr "Número de plazas de asiento"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,card:0
+msgid "Card"
+msgstr "Tarjeta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,viat:0
+msgid "VIA-T"
+msgstr "VIA-T"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+#: view:vehicle.prev.op:0
+msgid "2nd Alert"
+msgstr "2. Alarma"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/wizard/create_order_wizard.py:0
+#, python-format
+msgid "There is already an order created for this operation."
+msgstr "Ya existe una orden creada actualmente para esta operación."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,nexttime:0
+msgid "Expected time for the execution of the operation. hh:mm:ss"
+msgstr "Tiempo estimado para completar la operación:  hh:mm:ss"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:preventive.operations,measUnit:0
+#: selection:preventive.operations,measUnit1:0
+#: selection:preventive.operations,measUnit2:0
+#: selection:vehicle.prev.op,measUnit:0
+#: selection:vehicle.prev.op,measUnit1:0
+#: selection:vehicle.prev.op,measUnit2:0
+msgid "Months"
+msgstr "Meses"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,ramp:0
+msgid "Ramp"
+msgstr "Rampa"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:preventive.operations,mileage:0
+msgid "Estimated mileage for the next operation. Measured in kilometers."
+msgstr "Kilometraje estimado para la siguiente operación. Medida en Kilometros."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,serv_time:0
+msgid "Years in Service"
+msgstr "Años en Servicio"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,lasttime:0
+#: field:vehicle.prev.op,nexttime:0
+msgid "Time"
+msgstr "Tiempo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:vehicle.prev.op:0
+msgid "Occurance"
+msgstr "Frecuencia de Operación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,wifi:0
+msgid "Wifi number"
+msgstr "Número Wifi"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,pmr:0
+msgid "Number of PMR doors"
+msgstr "Número de puertas PMR"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:vehicle.prev.op:0
+msgid "Last Revision"
+msgstr "Última Revisión"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:product.line,product_uom_qty:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: code:addons/avanzosc_fleet_vehicles_extension/wizard/import_refuellog.py:0
+#, python-format
+msgid "You need to select a file!"
+msgstr "Necesitas seleccionar un archivo!"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,extra_alert:0
+msgid "2nd alert"
+msgstr "2. Alerta"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,depot:0
+msgid "Depot Location"
+msgstr "Localización Cochera"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,tires:0
+msgid "Tires"
+msgstr "Ruedas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:preventive.operations,frequency:0
+#: field:vehicle.prev.op,frequency:0
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: wizard_button:create.order.wizard,init,end:0
+#: view:import.fuellog:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+msgid "Insurance"
+msgstr "Seguro"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+msgid "2nd km margin"
+msgstr "2. Margen Km."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.module.module,shortdesc:avanzosc_fleet_vehicles_extension.module_meta_information
+msgid "Fleet vehicles extension"
+msgstr "Fleet vehicles extension"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+#: view:vehicle.prev.op:0
+msgid "Information"
+msgstr "Información"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "The Object name must start with x_ and not contain any special character !"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:import.fuellog:0
+msgid "Fuel Data Log Loaded!"
+msgstr "Carga de repostajes completa!"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,totalplaces:0
+msgid "Total places"
+msgstr "Plazas totales"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+msgid "Operation frequency"
+msgstr "Frecuencia de la operación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,sphone:0
+msgid "Short phone number"
+msgstr "Número teléfono corto"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:product.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+#: field:preventive.operations,description:0
+#: view:preventive.proceed:0
+#: field:preventive.proceed,opdescription:0
+#: view:vehicle.prev.op:0
+#: field:vehicle.prev.op,opdescription:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+msgid "1st km margin"
+msgstr "1. Margen de Km."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,lastdate:0
+msgid "Last date on which the operation was done."
+msgstr "Última fecha en la que la operación fue realizada."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:preventive.operations:0
+#: view:vehicle.prev.op:0
+msgid "Preventive Operations"
+msgstr "Operaciones Preventivas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.actions.act_window,name:avanzosc_fleet_vehicles_extension.action_vehicle_operations
+msgid "Vehicle operations"
+msgstr "Operaciones de Vehículo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: wizard_view:create.order.wizard,init:0
+msgid "Create repair case with the defined vehicle?"
+msgstr "¿Crear reparación con el vehículo definido?"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:vehicle.prev.op:0
+msgid "Next revision km"
+msgstr "Siguiente revisión Km."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,actodometer:0
+#: field:vehicle.prev.op,acdometer:0
+msgid "Actual Odometer"
+msgstr "Odometro Actual"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.actions.act_window,name:avanzosc_fleet_vehicles_extension.act_preventive_proceed
+#: view:preventive.proceed:0
+msgid "Preventive to done"
+msgstr "Preventivas por realizar"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,lastkm:0
+msgid "Mileage of the vehicle in the last operation. Measured in kilometers."
+msgstr "Kilometraje del Vehículo en la última operación. Medida en Kilometros."
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.actions.act_window,name:avanzosc_fleet_vehicles_extension.action_preventive_operations
+msgid "Preventive operations"
+msgstr "Operaciones Preventivas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:vehicle.prev.op,lasttime:0
+msgid "Time it takes to make the operation. hh:mm:ss"
+msgstr "Tiempo en realizar la operación"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: wizard_view:create.order.wizard,init:0
+msgid "Repair Case"
+msgstr "Reparación desde Incidencia"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: selection:fleet.vehicles,service:0
+msgid "Lines"
+msgstr "Lineas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+msgid "Extra Information"
+msgstr "Información extra"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.fuellog,d_number:0
+msgid "Driver Number"
+msgstr "Número conductor"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:vehicle.prev.op:0
+msgid "Next revision date"
+msgstr "Fecha del la siguiente revisión"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.fuellog,time:0
+msgid "Transaction Time"
+msgstr "Hora de transacción"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: model:ir.ui.menu,name:avanzosc_fleet_vehicles_extension.Vehicle_op_tree_view
+msgid "Vehicle Operations"
+msgstr "Operaciones de Vehículo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:fleet.vehicles,places2:0
+msgid "Number of standing places "
+msgstr "Número de plazas de pie"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: wizard_button:create.order.wizard,init,create:0
+#: view:import.fuellog:0
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: view:fleet.vehicles:0
+msgid "Fuel Details"
+msgstr "Detalles Combustible"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:import.fuellog,data:0
+msgid "File"
+msgstr "Archivo"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: field:vehicle.prev.op,opname:0
+msgid "Preventive operation"
+msgstr "Operaciones preventivas"
+
+#. module: avanzosc_fleet_vehicles_extension
+#: help:preventive.operations,frequency:0
+#: help:vehicle.prev.op,frequency:0
+msgid "Estimated time for the next operation."
+msgstr "Tiempo estimado para la siguiente operación."
+
