@@ -67,5 +67,12 @@ class account_invoice(osv.osv):
             if residual == 0.0:
                 res = True
         return res
+    def action_unpaid(self, cr, uid, ids, *args):
+        res = False
+        for id in ids:
+            wf_service = netsvc.LocalService("workflow")
+            wf_service.trg_validate(uid, 'account.invoice', id, 'open_test2', cr)
+            res = True
+        return res
 account_invoice()
     

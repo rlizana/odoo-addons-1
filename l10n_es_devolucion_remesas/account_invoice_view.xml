@@ -13,6 +13,12 @@
 					<button name="%(account.account_invoices)d" string="Print Invoice"
 						type="action" icon="gtk-print" states="open,paid,unpaid,proforma,sale,proforma2" />
 				</xpath>
+				<xpath expr="/form/notebook/page[@string='Invoice']/group/group" position="attributes">
+					<attribute name="col">10</attribute>
+				</xpath>
+				<xpath expr="/form/notebook/page[@string='Invoice']/group/group" position="inside">
+					<button name="action_unpaid" states="paid" string="Unpaid" type="object" icon="terp-stock_effects-object-colorize"/>
+				</xpath>
 			</field>
 		</record>
 		

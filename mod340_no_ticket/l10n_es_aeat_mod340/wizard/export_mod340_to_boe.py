@@ -140,7 +140,7 @@ class l10n_es_aeat_mod340_export_to_boe(osv.osv_memory):
             text += self._formatString(report.company_vat, 9)                    # NIF del declarante
             if invoice_issued.partner_country_code == 'ES' and invoice_issued.partner_vat: 
                 text += self._formatString(invoice_issued.partner_vat, 9)
-            elif not invoice_issued.partner_vat and invoice_issued.invoice_id.journal_id.invoice_key != 'J':
+            elif not invoice_issued.partner_vat:
                 raise osv.except_osv(_('La siguiente empresa no tiene asignado nif:'), invoice_issued.invoice_id.partner_id.name)          # NIF del declarado
             else: text += self._formatString(' ', 9) 
             text += self._formatString(invoice_issued.representative_vat, 9)     # NIF del representante legal
@@ -233,7 +233,7 @@ class l10n_es_aeat_mod340_export_to_boe(osv.osv_memory):
             text += self._formatString(report.company_vat, 9)                    # NIF del declarante
             if invoice_received.partner_country_code == 'ES'  and invoice_received.partner_vat: 
                 text += self._formatString(invoice_received.partner_vat, 9)            # NIF del declarado
-            elif not invoice_received.partner_vat and invoice_received.invoice_id.journal_id.invoice_key != 'J':
+            elif not invoice_received.partner_vat:
                 raise osv.except_osv(_('La siguiente empresa no tiene asignado nif:'), invoice_received.invoice_id.partner_id.name)          # NIF del declarado
             else: text += self._formatString(' ', 9) 
             text += self._formatString(invoice_received.representative_vat, 9)     # NIF del representante legal
