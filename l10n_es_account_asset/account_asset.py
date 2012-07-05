@@ -106,11 +106,11 @@ class account_asset_asset(osv.osv):
                 amount = amount_to_depr / (undone_dotation_number - len(posted_depreciation_line_ids))
                 if asset.prorata:
                     amount = amount_to_depr / asset.method_number
-                    days = (total_days - float(depreciation_date.strftime('%j')))+1
+                    days = total_days - float(depreciation_date.strftime('%j'))
                     if i == 1:
                         amount = (amount_to_depr / asset.method_number) / total_days * days
                     elif i == undone_dotation_number:
-                        amount = (amount_to_depr / asset.method_number) / total_days * (total_days - days)                  
+                        amount = (amount_to_depr / asset.method_number) / total_days * (total_days - days)
             elif asset.method == 'degressive':
                 amount = residual_amount * asset.method_progress_factor
                 if asset.prorata:
@@ -157,8 +157,7 @@ class account_asset_asset(osv.osv):
                 amount = self._compute_board_amount(cr, uid, asset, i, residual_amount, amount_to_depr, undone_dotation_number, posted_depreciation_line_ids, total_days, depreciation_date, context=context)
                 residual_amount -= amount
                 if asset.compute_at_end_period:
-                    #if asset.prorata and asset.method_period == 12:
-                    if asset.method_period == 12:
+                    if asset.prorata and asset.method_period == 12:
                         depreciation_date = depreciation_date.replace(year, 12, 31)
                     else:
                         last_month_day = calendar.monthrange(year,month)[1]
