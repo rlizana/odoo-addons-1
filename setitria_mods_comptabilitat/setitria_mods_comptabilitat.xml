@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+ <!-- Import C19 file wizard -->
+        <record model="ir.ui.view" id="c19_dev_file_import_wizard">
+            <field name="name">setitria.mods.import.dev.c19.import.form</field>
+            <field name="model">setitria.mods.import.dev.c19.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Importació de rebuts retornats d'acord a la norma C19">
+                    <group colspan="4">
+                        <label string="Arxiu de retornats del Banc:"/>
+                        <newline/>
+                        <field name="file_name" nolabel="1"/>
+                        <field name="file" filename="file_name" nolabel="1"/>
+                    </group>
+                    <button icon="gtk-cancel" special="cancel" string="Cancel·lar" type="object"/>
+                    <button icon="gtk-ok" name="import_action" string="Importar" type="object"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_c19_dev_file_import_wizard" model="ir.actions.act_window">
+            <field name="name">Wizard d'importació de fitxers de devolucions C19</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">setitria.mods.import.dev.c19.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>    
+        
+  <!-- fi Import C19 file wizard -->
+  
+   <!-- Vistes de les clases dels rebuts retornats -->
+          
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_line_view">
+        	<field name="name">setitria.fitxerretornat.line.form</field>
+        	<field name="model">setitria.fitxerretornat.line</field>
+        	<field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Rebuts Retornats" >
+            		<field name="invoice_id" />
+           			<field name="date"  />
+           			<field name="motiu_dev"  />
+           			<field name="state"  />
+					<field colspan="4" name="notes" />
+            	</form>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_line_view_tree">
+        	<field name="name">setitria.fitxerretornat.line.tree</field>
+        	<field name="model">setitria.fitxerretornat.line</field>
+        	<field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Rebuts Retornats" colors="red:state=='incomplete'" >
+            		<field name="invoice_id" />
+           			<field name="date" />
+           			<field name="motiu_dev"  />
+           			<field name="state" />
+            	</tree>
+            </field>
+        </record>
+        
+        
+       	<record model="ir.actions.act_window" id="setitria_fitxer_retornat_line_open">
+			<field name="name">Rebuts Retornats</field>
+			<field name="res_model">setitria.fitxerretornat.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+        
+        
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_view">
+        	<field name="name">setitria.fitxerretornat.form</field>
+        	<field name="model">setitria.fitxerretornat</field>
+        	<field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Fitxers de Rebuts Retornats">
+           			<field name="banc_id" />
+           			<field name="date"  />
+           			<field name="name" />
+           			<field name="date_imp"  />
+           			<notebook colspan="4">
+           				<page string="Rebuts">
+           					<field colspan="4" name="lines_id" nolabel="1"/>
+           				</page>
+           				<page string="Notes">
+           					<field colspan="4" name="notes" nolabel="1"/>
+           				</page>
+           			</notebook>
+            	</form>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_view_tree">
+        	<field name="name">setitria.fitxerretornat.tree</field>
+        	<field name="model">setitria.fitxerretornat</field>
+        	<field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Fitxers de Rebuts Retornats" colors="red:state=='incomplete'">
+            		<field name="banc_id" />
+           			<field name="date"  />
+           			<field name="name"  />
+           			<field name="date_imp" />
+           			<field name="state" />
+            	</tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="setitria_fitxer_retornat_open">
+			<field name="name">Fitxers Rebuts Retornats</field>
+			<field name="res_model">setitria.fitxerretornat</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record id="view_purchase_order_filter" model="ir.ui.view">
+            <field name="name">setitria.fitxerretornat.select</field>
+            <field name="model">setitria.fitxerretornat</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+            	<search string="Buscar Fitxer de rebuts retornats">
+            	 	<filter icon="terp-document-new" name="incomplete" string="Incomplertas" domain="[('state','=','incomplete')]" separator="1" />
+                    <filter icon="terp-check" name="valid" string="Valides" domain="[('state','=','valid')]" separator="1" />
+                    <separator orientation="vertical"/>
+                    <field name="banc_id" select="1" />
+                    <field name="name" select="1" />
+                    <separator orientation="vertical"/>
+                    <field name="date" select="1" />
+                    <field name="date_imp" select="1" />
+            	</search>
+            </field>
+        </record>
+		
+		
+		<menuitem id="setitria_fitxer_retornat_menu" name="Fitxers Rebuts Retornats" parent="account.menu_finance_bank_and_cash" action="setitria_fitxer_retornat_open" sequence="20"/>
+		
+        <menuitem id="setitria_fitxer_retornat_menu_import" name="Importar Fitxers Rebuts Retornats" parent="account.menu_finance_bank_and_cash" action="action_c19_dev_file_import_wizard" sequence="25"/>
+        
+<!--
+	Fem que el wizard es pugui executar desde on volem 
+
+        <act_window id="action_c19_dev_file_import_wizard"
+    		key2="client_action_multi" name="Import Arxiu Retornats Banc"
+    		res_model="setitria.mods.import.dev.c19.wizard" src_model="account.bank.statement"
+    		view_mode="form" target="new" view_type="form" groups="account.group_account_manager"/>
+-->  
+    </data>
+</openerp>

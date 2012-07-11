@@ -99,8 +99,8 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
    
    
     def _process_record_56(self, cr, uid, st_data, line, context=None):
-        super   = st_data['groups'][-1]
-        super2  = super['groups'][-1]
+        super = st_data['groups'][-1]
+        super2 = super['groups'][-1]
         
         
         #
@@ -122,29 +122,29 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
             'oficina'       : line[72:76],
             'dc'            : line[76:78],
             'ncc'           : line[78:88],
-            'importe'       : float(line[88:96])+(float(line[96:98])/100),
+            'importe'       : float(line[88:96]) + (float(line[96:98]) / 100),
             'codi_dev'      : line[98:104].strip(),
             'codi_ref_int'  : line[104:114].strip(),
             'concepto'      : line[114:154].strip(),
             'motivo_dev'    : line[154:155].strip()
         })
 
-        super2['_num_records']  += 1
-        super2['_num_dev']      += 1
-        super2['import']        += st_line['importe']
+        super2['_num_records'] += 1
+        super2['_num_dev'] += 1
+        super2['import'] += st_line['importe']
         
         return st_line
     
     def _process_record_58(self, cr, uid, st_data, line, context=None):
-        super   = st_data['groups'][-1]
-        super2  = super['groups'][-1]
+        super = st_data['groups'][-1]
+        super2 = super['groups'][-1]
         
         super2['_num_records'] += 1
         
         print line[104:114]
         devolucions = float(line[104:114])
-        registres   = float(line[114:124])
-        importe     = float(line[88:96])+(float(line[96:98])/100)
+        registres = float(line[114:124])
+        importe = float(line[88:96]) + (float(line[96:98]) / 100)
         
         
         
@@ -155,30 +155,30 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
             raise osv.except_osv('Error in C19 file', 'El numero de devolucions no coincideix amb el definit al grup. (linea: %s)' % (super['_num_records'] + super2['_num_records']))
         if registres != super2['_num_records']:
             raise osv.except_osv('Error in C19 file', 'El numero de registres no coincideix amb el definit al grup. (linea: %s)' % (super['_num_records'] + super2['_num_records']))
-        if abs(importe - super2['import'] ) > 0.005:
+        if abs(importe - super2['import']) > 0.005:
             raise osv.except_osv('Error in C19 file', "L'import dels registres no coincideix amb el definit al grup. (linea: %s)" % (super['_num_records'] + super2['_num_records']))
         
         
         
-        super2['num_dev']       = devolucions
-        super2['import']        = importe
-        super2['num_records']   = registres
+        super2['num_dev'] = devolucions
+        super2['import'] = importe
+        super2['num_records'] = registres
         
-        super['_num_records']   += super2['num_records']
-        super['import']         += importe
-        super['_num_dev']       += devolucions
+        super['_num_records'] += super2['num_records']
+        super['import'] += importe
+        super['_num_dev'] += devolucions
         
         return super2
     
     
     def _process_record_59(self, cr, uid, st_data, line, context):
-        super   = st_data['groups'][-1]
+        super = st_data['groups'][-1]
         
         super['_num_records'] += 1
         
         devolucions = float(line[104:114])
-        registres   = float(line[114:124])
-        importe     = float(line[88:96])+(float(line[96:98])/100)
+        registres = float(line[114:124])
+        importe = float(line[88:96]) + (float(line[96:98]) / 100)
         
         
         ################################################
@@ -188,13 +188,13 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
             raise osv.except_osv('Error in C19 file', 'El numero de devolucions no coincideix amb el definit al total. (linea: %s)' % (super['_num_records']))
         if registres != super['_num_records']:
             raise osv.except_osv('Error in C19 file', 'El numero de registres no coincideix amb el definit al total. (linea: %s)' % (super['_num_records']))
-        if abs(importe - super['import'] ) > 0.005:
+        if abs(importe - super['import']) > 0.005:
             raise osv.except_osv('Error in C19 file', "L'import dels registres no coincideix amb el deffecha_fichinit al total. (linea: %s)" % (super['_num_records']))
         
         
-        super['num_dev']       = devolucions
-        super['import']        = importe
-        super['num_records']   = registres
+        super['num_dev'] = devolucions
+        super['import'] = importe
+        super['num_records'] = registres
         
         
         return super
@@ -293,30 +293,30 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
         if context is None:
             context = {}
         
-        pool    = pooler.get_pool(cr.dbname)
+        pool = pooler.get_pool(cr.dbname)
         factura = pool.get('account.invoice')
-        banc    = pool.get('res.bank')
-        apunt   = pool.get('account.move.line')
-        reconc  = pool.get('account.move.reconcile')
-        fitxer  = pool.get('setitria.fitxerretornat')
-        lineafit= pool.get('setitria.fitxerretornat.line')
-        pay_line= pool.get('payment.line')      
+        banc = pool.get('res.bank')
+        apunt = pool.get('account.move.line')
+        reconc = pool.get('account.move.reconcile')
+        fitxer = pool.get('setitria.fitxerretornat')
+        lineafit = pool.get('setitria.fitxerretornat.line')
+        pay_line = pool.get('payment.line')      
         account_obj = pool.get('account.account')
         partner_obj = pool.get('res.partner')
         
-        for c19_wizard in self.browse(cr,uid,ids,context):
+        for c19_wizard in self.browse(cr, uid, ids, context):
             # Load the file data into the st_data dictionary
             st_data = self._load_c19_file(cr, uid, c19_wizard.file, context=context)
             journal = c19_wizard.journal_id.id
             for grupoTotal in st_data['groups']:    # per cada grup gran (en principi un per fitxer, pero aixó no es pot control-lar)
                 
                 banc_id = False
-                banc_id = banc.search(cr, uid,[('code', '=', grupoTotal['entidad'])])
+                banc_id = banc.search(cr, uid, [('code', '=', grupoTotal['entidad'])])
                 
                 if not banc_id:
                     raise osv.except_osv('Error tractant el fitxer', "El codi del banc indicat al fitxer no existeix")
                 else:
-                    banc_id=banc_id[0]
+                    banc_id = banc_id[0]
                     
                 values = {
                             'date'      : grupoTotal['fecha_fich'],
@@ -325,67 +325,66 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                             'banc_id'   : banc_id
                           }
                 
-                fitxer_id = fitxer.create(cr, uid, values,context=context)
+                fitxer_id = fitxer.create(cr, uid, values, context=context)
                 
                 for grupo in grupoTotal['groups']:  # per cada grup (agrupacio de rebuts per dia)
                     for linea in grupo['lineas']:   # per cada rebut
-			created=False                        
-			ids = factura.search(cr,uid,[('number','=',linea['codi_ref'])])
+                        created = False                        
+                        ids = factura.search(cr, uid, [('number', '=', linea['codi_ref'])])
                         if not ids:
-                            ids = factura.search(cr,uid,[('internal_number','=',linea['codi_ref'])])
+                            ids = factura.search(cr, uid, [('internal_number', '=', linea['codi_ref'])])
                             if not ids:
-                                ids = factura.search(cr,uid,[('name','=',linea['codi_ref'])])
+                                ids = factura.search(cr, uid, [('name', '=', linea['codi_ref'])])
                                 if not ids:
-                                    ids = factura.search(cr,uid,[('reference','=',linea['codi_ref'])])
+                                    ids = factura.search(cr, uid, [('reference', '=', linea['codi_ref'])])
                         
-                        print 'Sufijo: '+ str(linea['sufijo'])
-                        print 'codi_ref: '+ str(linea['codi_ref']).lstrip('0')
-                        print 'nombre_titular: '+ str(linea['nombre_titular'])
-                        print 'entidad: '+ str(linea['entidad'])
-                        print 'oficina: '+ str(linea['oficina'])
-                        print 'dc: '+ str(linea['dc'])
-                        print 'ncc: '+ str(linea['ncc'])
-                        print 'importe: '+ str(linea['importe'])
-                        print 'codi_dev: '+ str(linea['codi_dev'])
-                        print 'codi_ref_int: '+ str(linea['codi_ref_int'])
-                        print 'concepto: '+ str(linea['concepto'])
-                        print 'motivo_dev: '+ str(linea['motivo_dev'])
+                        print 'Sufijo: ' + str(linea['sufijo'])
+                        print 'codi_ref: ' + str(linea['codi_ref']).lstrip('0')
+                        print 'nombre_titular: ' + str(linea['nombre_titular'])
+                        print 'entidad: ' + str(linea['entidad'])
+                        print 'oficina: ' + str(linea['oficina'])
+                        print 'dc: ' + str(linea['dc'])
+                        print 'ncc: ' + str(linea['ncc'])
+                        print 'importe: ' + str(linea['importe'])
+                        print 'codi_dev: ' + str(linea['codi_dev'])
+                        print 'codi_ref_int: ' + str(linea['codi_ref_int'])
+                        print 'concepto: ' + str(linea['concepto'])
+                        print 'motivo_dev: ' + str(linea['motivo_dev'])
                         codi_dev = linea['codi_dev']
                         importe = linea['importe']
                         fecha_dev = grupoTotal['fecha_fich']
                         partner = False
                         if linea['codi_ref'].isdigit():
                             partner = partner_obj.search(cr, uid, [('id', '=', linea['codi_ref']), ('name', 'like', linea['nombre_titular'])])
-                        
-                        if partner:
-                            part = partner_obj.browse(cr, uid, partner[0])
-                            id_compte_430 = part.property_account_receivable.id
-                        else:
-			    partner = partner_obj.search(cr, uid, [('id', '=', linea['codi_ref'])])
                             if partner:
-                                 part = partner_obj.browse(cr, uid, partner[0])
-                                 id_compte_430 = part.property_account_receivable.id
+                                part = partner_obj.browse(cr, uid, partner[0])
+                                id_compte_430 = part.property_account_receivable.id
                             else:
-		                    partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
-		                    if partner:
-		                         part = partner_obj.browse(cr, uid, partner[0])
-		                         id_compte_430 = part.property_account_receivable.id
-		                    else:
-		                        if partner:
-		                            part = partner_obj.browse(cr, uid, partner[0])
-		                            id_compte_430 = part.property_account_receivable.id
-		                        else:
-		                            partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'][3:])])
-		                            if partner:
-		                                part = partner_obj.browse(cr, uid, partner[0])
-		                                id_compte_430 = part.property_account_receivable.id
-		                            else:
-		                                partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'].lstrip('0'))])
-		                                if partner:
-		                                    part = partner_obj.browse(cr, uid, partner[0])
-		                                    id_compte_430 = part.property_account_receivable.id
-		                                else:
-		                                    raise osv.except_osv('Error', 'Partner not found containing %s Reference number.' % linea['codi_ref'].lstrip('0'))
+                                partner = partner_obj.search(cr, uid, [('id', '=', linea['codi_ref'])])
+                        if partner:
+                             part = partner_obj.browse(cr, uid, partner[0])
+                             id_compte_430 = part.property_account_receivable.id
+                        else:
+	                    partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'])])
+	                    if partner:
+	                         part = partner_obj.browse(cr, uid, partner[0])
+	                         id_compte_430 = part.property_account_receivable.id
+	                    else:
+	                        if partner:
+	                            part = partner_obj.browse(cr, uid, partner[0])
+	                            id_compte_430 = part.property_account_receivable.id
+	                        else:
+	                            partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'][3:])])
+	                            if partner:
+	                                part = partner_obj.browse(cr, uid, partner[0])
+	                                id_compte_430 = part.property_account_receivable.id
+	                            else:
+	                                partner = partner_obj.search(cr, uid, [('ref', '=', linea['codi_ref'].lstrip('0'))])
+	                                if partner:
+	                                    part = partner_obj.browse(cr, uid, partner[0])
+	                                    id_compte_430 = part.property_account_receivable.id
+	                                else:
+	                                    raise osv.except_osv('Error', 'Partner not found containing %s Reference number.' % linea['codi_ref'].lstrip('0'))
                         partner = partner[0]
                         ids = False
                         pline = False
@@ -393,7 +392,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                         if codi_dev:  
                             pline_ids = pay_line.search(cr, uid, [('ml_inv_ref', '=', int(codi_dev))])
                             for line in pline_ids:
-                                pline = pay_line.browse(cr,uid,line)
+                                pline = pay_line.browse(cr, uid, line)
                                 if pline.id == int(linea['codi_ref_int']):
                                     break
                                 else:
@@ -403,11 +402,11 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                             if pline.ml_inv_ref.id == int(codi_dev):
                                 ids = pline.ml_inv_ref.id
                         
-                        if ids==False:
-                          inv_list = factura.search(cr,uid,[('partner_id','=',part.id), ('state', '=', 'paid'), ('amount_total', '=', importe)])  
+                        if ids == False:
+                          inv_list = factura.search(cr, uid, [('partner_id', '=', part.id), ('state', '=', 'paid'), ('amount_total', '=', importe)])  
                           if inv_list:
                               ids = inv_list[0] 
-                              inv = factura.browse(cr,uid,ids)
+                              inv = factura.browse(cr, uid, ids)
                               pline_ids = inv.payment_ids
                               if pline_ids:
                                   pay_line_id = pline_ids[0] 
@@ -421,15 +420,15 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                       'partner_id'  : partner,
                                     }
                             
-                            fact_obj = factura.browse(cr,uid,ids)
-                            id_linea = apunt.search(cr, uid,[
-                                                             ('account_id','=',id_compte_430),
-                                                             ('debit','=',fact_obj.amount_total),
+                            fact_obj = factura.browse(cr, uid, ids)
+                            id_linea = apunt.search(cr, uid, [
+                                                             ('account_id', '=', id_compte_430),
+                                                             ('debit', '=', fact_obj.amount_total),
                                                         ])
                             if id_linea:
                                 for linea in id_linea:
-                                    apunt_lines=[]
-                                    line_obj = apunt.browse(cr,uid,linea)
+                                    apunt_lines = []
+                                    line_obj = apunt.browse(cr, uid, linea)
                                     invoice_id = line_obj.invoice.id
                                     if invoice_id == ids:
                                         recon_id = False
@@ -440,49 +439,49 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                                 cp_move = pline.payment_move_id.id
                                             else:
                                                 values['notes'] = "The payment is not complete."
-                                                lineafit.create(cr,uid,values,context=context) 
-						created=True                                                
-						break
+                                                lineafit.create(cr, uid, values, context=context) 
+                                                created = True                                                
+                                                break
                                         else:
                                             cp_move = pay_line_id.move_id.id 
-                                        period = self.pool.get('account.period').find(cr,uid,fecha_dev,context)[0]
+                                        period = self.pool.get('account.period').find(cr, uid, fecha_dev, context)[0]
                                         account_move = self.pool.get('account.move').copy(cr, uid, cp_move, {'ref':reference, 'date':fecha_dev, 'period_id':period, 'journal_id':journal})
                                         account_move_o = self.pool.get('account.move').browse(cr, uid, account_move)
                                         lines = account_move_o.line_id
-                                        kont=0
+                                        kont = 0
             
                                         for move_line in lines:
-                                            recon =False
+                                            recon = False
                                             amount = 0.0
                                             move_line_o = apunt.browse(cr, uid, move_line.id)
                                             for inv_move_line in inv_o.move_id.line_id:
-                                                inv_line_o = apunt.browse(cr,uid,inv_move_line)
+                                                inv_line_o = apunt.browse(cr, uid, inv_move_line)
                                                 if inv_line_o.reconcile_id:
                                                     recon = inv_line_o.reconcile_id.id
                                                     break
     
                                             if(recon != move_line_o.reconcile_id.id):
                                                 continue                           
-                                            if move_line_o.debit==0.0:
+                                            if move_line_o.debit == 0.0:
                                                 amount = move_line_o.credit
                                             else:
                                                 amount = move_line_o.debit
-                                            if ((lines.__len__()<3) or (kont < 2 and move_line_o.partner_id.id == part.id and amount == inv_o.amount_total and not pline) or ((kont < 2) and move_line_o.partner_id.id == part.id and amount == inv_o.amount_total and pline and inv_o.name == move_line_o.name)):
+                                            if ((lines.__len__() < 3) or (kont < 2 and move_line_o.partner_id.id == part.id and amount == inv_o.amount_total and not pline) or ((kont < 2) and move_line_o.partner_id.id == part.id and amount == inv_o.amount_total and pline and inv_o.name == move_line_o.name)):
                                                 debit = 0.0
                                                 credit = 0.0
                                                 if move_line_o.debit > 0.0:
                                                     credit = importe
-                                                if move_line_o.credit >0.0:
+                                                if move_line_o.credit > 0.0:
                                                     debit = importe
                                                     apunt_lines.append(move_line_o.id)
-                                                res ={'move_id':int(account_move),'credit':credit, 'debit':debit, 'state':'draft','reconcile_id':False, 'date':fecha_dev, 'journal_id':journal, 'period_id':period}
+                                                res = {'move_id':int(account_move), 'credit':credit, 'debit':debit, 'state':'draft', 'reconcile_id':False, 'date':fecha_dev, 'journal_id':journal, 'period_id':period}
                                                 apunt.write(cr, uid, [move_line_o.id], res)
                                                 if line_obj.reconcile_id:
                                                     recon_id = line_obj.reconcile_id.id
                                                     apunt_lines.append(line_obj.id)
                                                 kont = kont + 1
                                             else:
-                                                apunt.unlink(cr,uid, [move_line_o.id])
+                                                apunt.unlink(cr, uid, [move_line_o.id])
                                         for payline in fact_obj.payment_ids:
                                             if payline.reconcile_id and payline.reconcile_id.id == recon_id:
                                                 apunt_lines.append(payline.id)
@@ -496,7 +495,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                             else:                              
                                 values['notes'] = "No s'ha trobat el apunt de contraprestació de la factura"
                         else:
-                            values ={
+                            values = {
                                       'fitxer_id'   : fitxer_id,
                                       'date'        : fecha_dev,
                                       'motiu_dev'   : linea['motivo_dev'],
@@ -504,7 +503,7 @@ class setitria_mods_import_dev_c19_wizard(osv.osv_memory):
                                       'notes'       : "Invoice not found."
                                     }
                         if not created:
-                        	lineafit.create(cr,uid,values,context=context)  
+                        	lineafit.create(cr, uid, values, context=context)  
                 self._attach_file_to_fitxer(cr, uid, c19_wizard.file, c19_wizard.file_name, fitxer_id)          
                 
         return {}
@@ -547,32 +546,32 @@ class setitria_fitxerretornat(osv.osv):
                 a.id IN %s 
             GROUP BY 
                 a.id
-            ''',(tuple(ids),))
+            ''', (tuple(ids),))
         
-        for oid,state in cr.fetchall():
+        for oid, state in cr.fetchall():
             res[oid] = state
                         
         return res
         
     _columns = {
         'date'      : fields.date('Data del fitxer'),
-        'banc_id'   : fields.many2one('res.bank','Banc origen'),
+        'banc_id'   : fields.many2one('res.bank', 'Banc origen'),
         'name'      : fields.char("Nom de l'arxiu", size=64, required=True),
         'date_imp'  : fields.date("Data d'importació del fitxer"),
-        'lines_id'  : fields.one2many('setitria.fitxerretornat.line','fitxer_id'),
+        'lines_id'  : fields.one2many('setitria.fitxerretornat.line', 'fitxer_id'),
         'notes'     : fields.text('Notes'),
         'state'     : fields.function(_calcul_state, method=True, string='Estat', type='selection', selection=[
                                             ('incomplete', 'Incomplert'),
                                             ('valid', 'Complert')
                                         ],
-                                        store = {
+                                        store={
                                                  'setitria.fitxerretornat.line': (_get_rebuts, ['state'], 10),
                                                  }
         ),
     }
     
     _sql_constraints = [
-        ('no repetit', 'UNIQUE (date, banc_id, name)',  'Error, introduint dades previament cargades'),
+        ('no repetit', 'UNIQUE (date, banc_id, name)', 'Error, introduint dades previament cargades'),
     ]
         
     def unlink(self, cr, uid, ids, context=None):
@@ -594,7 +593,7 @@ class setitria_fitxerretornat(osv.osv):
             if id_at:
                 attachment_facade.unlink(cr, uid, id_at, context)
         
-        ret = super(setitria_fitxerretornat,self).unlink(cr,uid,ids,context=context)
+        ret = super(setitria_fitxerretornat, self).unlink(cr, uid, ids, context=context)
         return ret;
     
 setitria_fitxerretornat()
@@ -604,27 +603,27 @@ class setitria_fitxerretornat_line(osv.osv):
     _description = 'Lineas Fitxers Rebuts Retornats'
     
     _columns = {
-        'fitxer_id' : fields.many2one('setitria.fitxerretornat','Fitxer Retornat',required=True, ondelete='cascade'),
+        'fitxer_id' : fields.many2one('setitria.fitxerretornat', 'Fitxer Retornat', required=True, ondelete='cascade'),
         'motiu_dev' : fields.selection([
-                                            ('0',"Import a cero"),
-                                            ('1',"Incorriente"),
-                                            ('2',"No domiciliat o compte cancel-lat"),
-                                            ('3',"Oficina domiciliataria inexistent"),
-                                            ('4',"Aplicació R.D. 338/90, sobre el NIF"),
-                                            ('5',"Per ordre del client: error o baixa en la domiciliació"),
-                                            ('6',"Per ordre del client: disconformitat amb l'import"),
-                                            ('7',"Dec duplicat, indegut, erroni o falten dades "),
-                                            ('8',"Sense utilitzar")
+                                            ('0', "Import a cero"),
+                                            ('1', "Incorriente"),
+                                            ('2', "No domiciliat o compte cancel-lat"),
+                                            ('3', "Oficina domiciliataria inexistent"),
+                                            ('4', "Aplicació R.D. 338/90, sobre el NIF"),
+                                            ('5', "Per ordre del client: error o baixa en la domiciliació"),
+                                            ('6', "Per ordre del client: disconformitat amb l'import"),
+                                            ('7', "Dec duplicat, indegut, erroni o falten dades "),
+                                            ('8', "Sense utilitzar")
                                         ], 'Motiu de devolució'),
-        'invoice_id': fields.many2one('account.invoice','Factura associada', domain="[('type','=','in_invoice')]"),
+        'invoice_id': fields.many2one('account.invoice', 'Factura associada', domain="[('type','=','in_invoice')]"),
         'date'      : fields.date('Data de retorn'),
         'state'     : fields.selection([
                                             ('incomplete', 'Incomplert'),
                                             ('valid', 'Complert')
-                                        ],'Estat'),
+                                        ], 'Estat'),
         'notes'     : fields.text('Notes'),
         'partner_id': fields.many2one('res.partner', 'Customer'),
-        'dev_amount': fields.float('Amount', digits=(13,2)),
+        'dev_amount': fields.float('Amount', digits=(13, 2)),
     }
     
     _defaults = {
