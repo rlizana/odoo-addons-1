@@ -51,6 +51,14 @@ class fleet_vehicles(osv.osv):
             res[data.id] = data.places + data.places2 + data.places3 + data.places4
         return res
     
+    def calc_years(self,cr,uid,ids,field,unknown,context={}):
+        res={}
+        date = time.strftime('%Y')
+        for data in self.browse(cr,uid,ids):
+            enrol= data.enrolldate.split('-')
+            res[data.id] = result= int(date)-int(enrol[0])
+        return res
+    
     def _check_product(self, cr, uid, ids): 
     #TODO : check condition and return boolean accordingly
         user = self.pool.get('res.users').browse (cr,uid, uid)
@@ -90,7 +98,8 @@ class fleet_vehicles(osv.osv):
                 ('discretionary','Discretionary'),],'Service',required=True),  
         'viat':fields.char('VIA-T',size=24),
         #'itv':fields.date('ITV revision'),
-        'serv_time': fields.integer('Years in Service', size=8),
+        #'serv_time': fields.integer('Years in Service', size=8),
+        'serv_time': fields.function(calc_years, method=True, type='integer', string='Years in Service',digits=(4,0),store=True),
         'lowboy':fields.boolean('Lowboy'),
         'pmr':fields.integer('Number of PMR doors',size=10),
         'ramp':fields.boolean('Ramp'),
@@ -99,7 +108,7 @@ class fleet_vehicles(osv.osv):
         'wifi': fields.char('Wifi number',size=24),
         'insurance':fields.char('Insurance Name',size=10),
         'policy':fields.char('Vehicle policy',size=20),
-        'schedname':fields.many2one('fleet.service.templ','PM Schedule',help="Preventive maintainance schedule for this vehicle"),
+        'schedname':fields.many2one('fleet.service.templ','PM Schedule',help="Preventive maintenance schedule for this vehicle"),
         'startodometer':fields.integer('Start Odometer'),
         'actodometer':fields.integer('Actual Odometer'),
         'assetacc':fields.many2one('account.account',string='Asset Account',required=True),

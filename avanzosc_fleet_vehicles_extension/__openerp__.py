@@ -33,8 +33,6 @@
     Adds a preventive management repair creator for the vehicles using defined frecuency or milleage created alarms """,
     "init_xml": [],
     "update_xml": [
-                   "security/avanzosc_vehicle_manager_security.xml",
-                   "security/ir.model.access.csv",
                    "avanzosc_fleet_vehicles_extension_view.xml",
                    "wizard/import_refuellog_view.xml"
                    

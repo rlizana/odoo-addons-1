@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_driver_crm_case","crm.case","crm_case.model_crm_case","group_driver",1,1,1,0
+"access_driver_fleet_vehicles_vehicle","fleet_vehicles","fleet_manager.model_fleet_vehicles","group_driver",1,0,0,0
+"access_chief_crm_case","crm.case","crm_case.model_crm_case","group_chief",1,1,1,1
+"access_chief_fleet_vehicles_vehicle","fleet_vehicles","fleet_manager.model_fleet_vehicles","group_chief",1,1,1,1

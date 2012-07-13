@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!-- WIZARD LINE -->
+    <record model="ir.ui.view" id="stock_input_wizard_line_form">
+	  <field name="name">stock.input.wizard.line.form</field>
+	  <field name="model">stock.input.wizard.line</field>
+	  <field name="type">form</field>
+	  <field name="arch" type="xml">
+          <form string="Input Picking Line" >
+              <field name="product_id" />
+              <field name="quantity" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'quantity',context)" />
+              <field name="product_uom" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'product_uom',context)" />
+              <field name="purchase_price"/>
+              <field name="price" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'price',context)" />
+              <field name="list_price"/>
+              <field name="last_purchase_price"/>
+              <field name="currency_id" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'currency_id',context)" />
+              <field name="discount" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'discount',context)" />
+              <field name="untaxed_amount"/>
+              <field name="total_amount"/>
+              <field name="purchase_order_line" invisible="1" />
+              <field name="purchase_order" invisible="1" />
+              <field name="stock_picking" invisible="1" />
+          </form>
+	  </field>
+    </record>
+
+    <record model="ir.ui.view" id="stock_input_wizard_line_tree">
+	  <field name="name">stock.input.wizard.line.tree</field>
+	  <field name="model">stock.input.wizard.line</field>
+	  <field name="type">tree</field>
+	  <field name="arch" type="xml">
+          <tree editable="top" string="Input Picking Line" >
+              <field name="product_id" />
+              <field name="quantity" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'quantity',context)" />
+              <field name="product_uom" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'product_uom',context)" />
+              <field name="purchase_price"/>
+              <field name="price" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'price',context)" />
+              <field name="list_price"/>
+              <field name="last_purchase_price"/>
+              <field name="currency_id" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'currency_id',context)" />
+              <field name="discount" on_change="on_change_fields(product_id,quantity,product_uom,purchase_price,price,list_price,last_purchase_price,currency_id,discount,untaxed_amount,total_amount,purchase_order,purchase_order_line,stock_move_id,'discount',context)" />
+              <field name="untaxed_amount"/>
+              <field name="total_amount"/>
+              <field name="purchase_order_line" invisible="1" />
+              <field name="purchase_order" invisible="1" />
+              <field name="stock_picking" invisible="1" />
+          </tree>
+	  </field>
+    </record>
+
+<!--     WIZARD -->
+    <record model="ir.ui.view" id="stock_input_wizard_form">
+	  <field name="name">stock.input.wizard.form</field>
+	  <field name="model">stock.input.wizard</field>
+	  <field name="type">form</field>
+	  <field name="arch" type="xml">
+          <form string="Input Picking" col="2">
+              <label string="Picking"/>
+              <field name="picking_id" nolabel="1" readonly="1"/>
+              <field name="line_ids" string="Order lines" nolabel="1" colspan="2" context="{'pickind_id':picking_id}"  width="700" height="250" />
+           <group col="2" colspan="2">   
+              <button name="accept_and_write" icon="gtk-save" string="Accept" type="object" />
+              <button name="on_cancel" icon="gtk-cancel" special="cancel" string="Cancel" type="object" />
+           </group>
+          </form>
+	  </field>
+    </record>
+
+    <record id="input_packing_list" model="ir.actions.act_window">
+        <field name="name">input.packing.list</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.input.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    
+<!--     Modifing view_picking_in_form for call the new wizard -->
+    <record id="view_picking_in_form_purchase" model="ir.ui.view">
+        <field name="name">stock.picking.in.form.purchase</field>
+        <field name="model">stock.picking</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_picking_in_form" />
+        <field name="arch" type="xml">
+            <button name="action_process" position="replace" >
+                <button name="%(input_packing_list)d" string="Products Received" type="action" states="assigned" />
+            </button>
+        </field>
+    </record>
+    
+</data>
+</openerp>
+

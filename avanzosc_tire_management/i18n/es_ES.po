@@ -1,0 +1,514 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_tire_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.15\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-06-06 14:59:46+0000\n"
+"PO-Revision-Date: 2012-06-06 17:14+0100\n"
+"Last-Translator: Daniel <danielcampos@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Configuration Menu"
+msgstr "Menu de Configuración"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.mount,dest_vehic:0
+#: wizard_view:tire.mount,ori_vehic:0
+msgid "Tire mount"
+msgstr "Montaje de neumático"
+
+#. module: avanzosc_tire_management
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "The Object name must start with x_ and not contain any special character !"
+
+#. module: avanzosc_tire_management
+#: model:ir.ui.menu,name:avanzosc_tire_management.mng_module_menu
+msgid "Tire control Management"
+msgstr "Gestión del control de neumáticos"
+
+#. module: avanzosc_tire_management
+#: wizard_field:flatire,init,tire:0
+#: wizard_field:tire.interchange,init,tire:0
+#: wizard_field:tire.mount,init,tire:0
+#: wizard_field:tire.retread,init,tire:0
+#: wizard_field:tire.scratch,init,tire:0
+#: field:tire.stock.lot,lot_id:0
+#: wizard_field:tire.waste,init,tire:0
+#: field:wizard.tirenolog,tire:0
+msgid "Tire"
+msgstr "Neumático"
+
+#. module: avanzosc_tire_management
+#: view:stock.production.lot:0
+msgid "Odometros"
+msgstr "Odometros"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Create"
+msgstr "Crear"
+
+#. module: avanzosc_tire_management
+#: wizard_field:flatire,init,destination:0
+#: wizard_field:tire.interchange,init,destination:0
+#: wizard_field:tire.mount,init,destination:0
+#: wizard_field:tire.retread,init,destination:0
+#: wizard_field:tire.scratch,init,destination:0
+#: field:tire.stock.lot,destination:0
+#: wizard_field:tire.waste,init,destination:0
+msgid "Destination"
+msgstr "Destino"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.interchange,full:0
+#: wizard_view:tire.mount,full:0
+msgid "Location occupied! The chosen location already has a tire assigned, move it before assigning new one."
+msgstr "¡Ubicación ocupada! La ubicación elegida ya tiene una rueda asignada, reubiquela para asignar una nueva."
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Create Locations for all vehicle list?"
+msgstr "¿Crear localizaciones para todos los vehículos de la lista?"
+
+#. module: avanzosc_tire_management
+#: wizard_view:flatire,moved:0
+#: wizard_view:tire.interchange,dest_vehi:0
+#: wizard_view:tire.interchange,error:0
+#: wizard_view:tire.interchange,full:0
+#: wizard_view:tire.interchange,moved:0
+#: wizard_view:tire.interchange,ori_vehi:0
+#: wizard_view:tire.mount,full:0
+#: wizard_view:tire.mount,moved:0
+#: wizard_view:tire.retread,moved:0
+#: wizard_view:tire.scratch,moved:0
+#: wizard_view:tire.waste,moved:0
+msgid "Tire move"
+msgstr "Mover Neumático"
+
+#. module: avanzosc_tire_management
+#: wizard_field:flatire,init,odometer:0
+#: wizard_field:tire.interchange,init,odometer:0
+#: wizard_field:tire.mount,init,odometer:0
+#: wizard_field:tire.retread,init,odometer:0
+#: wizard_field:tire.scratch,init,odometer:0
+#: wizard_field:tire.waste,init,odometer:0
+msgid "Odometer"
+msgstr "Odometro"
+
+#. module: avanzosc_tire_management
+#: field:tire.stock.lot,tire_km_total:0
+msgid "Tire Total Km."
+msgstr "Km. Total"
+
+#. module: avanzosc_tire_management
+#: view:fleet.vehicles:0
+msgid "Tire Update"
+msgstr "Actualizar Neumático"
+
+#. module: avanzosc_tire_management
+#: wizard_view:flatire,init:0
+#: wizard_view:tire.interchange,init:0
+#: wizard_view:tire.mount,init:0
+#: wizard_view:tire.retread,init:0
+#: wizard_view:tire.scratch,init:0
+#: wizard_view:tire.waste,init:0
+msgid "Tire Change"
+msgstr "Cambio de Neumático"
+
+#. module: avanzosc_tire_management
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Invalid model name in the action definition."
+
+#. module: avanzosc_tire_management
+#: field:tire.stock.lot,odomnew:0
+msgid "New Odometer km."
+msgstr "Km. nuevo Odom."
+
+#. module: avanzosc_tire_management
+#: model:ir.model,name:avanzosc_tire_management.model_wizard_tirenolog
+msgid "Tire mount no log"
+msgstr "Montaje Neumático sin log"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Save"
+msgstr "Guardar"
+
+#. module: avanzosc_tire_management
+#: view:fleet.vehicles:0
+msgid "Middle Axle"
+msgstr "Eje central"
+
+#. module: avanzosc_tire_management
+#: field:res.company,waste:0
+#: field:wizard.create.locations,waste:0
+msgid "Waste"
+msgstr "Desechar"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.interchange,ori_vehi:0
+msgid "Tire movement must be from a Vehicle!"
+msgstr "¡El movimiento debe ser desde un vehículo!"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Location configuration"
+msgstr "Configuración de Ubicaciones"
+
+#. module: avanzosc_tire_management
+#: model:ir.ui.menu,name:avanzosc_tire_management.wizard_vehicle_locations
+msgid "Create Locations for all vehicles"
+msgstr "Crear localizaciones para todos los vehículos"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Tire configuration for defined company"
+msgstr "Configuración de neumáticos para la compañia especificada."
+
+#. module: avanzosc_tire_management
+#: field:wizard.tirenolog,bus:0
+#: field:wizard.tirenolog,bus_locat:0
+msgid "Bus"
+msgstr "Bus"
+
+#. module: avanzosc_tire_management
+#: field:wizard.create.locations,company:0
+msgid "Company"
+msgstr "Compañia"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.wizard,name:avanzosc_tire_management.wizard_tire_retread
+msgid "Tire Retread"
+msgstr "Recauchutado de Neumático"
+
+#. module: avanzosc_tire_management
+#: view:fleet.vehicles:0
+msgid "Tire Information"
+msgstr "Información del Neumático"
+
+#. module: avanzosc_tire_management
+#: field:res.company,retread:0
+#: field:wizard.create.locations,retread:0
+msgid "Retread"
+msgstr "Recauchutado"
+
+#. module: avanzosc_tire_management
+#: field:stock.production.lot,odometers:0
+msgid "Odometers"
+msgstr "Odometros"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.wizard,name:avanzosc_tire_management.wizard_flatire
+#: field:res.company,flatire:0
+#: field:wizard.create.locations,flatire:0
+msgid "Flat Tire"
+msgstr "Pinchazo"
+
+#. module: avanzosc_tire_management
+#: view:fleet.vehicles:0
+msgid "Tires Management Information"
+msgstr "Información de neumáticos"
+
+#. module: avanzosc_tire_management
+#: field:stock.production.lot,tire_km:0
+#: field:tire.stock.lot,tire_km:0
+msgid "Tire Km."
+msgstr "Km. Neumático"
+
+#. module: avanzosc_tire_management
+#: wizard_view:flatire,moved:0
+#: wizard_view:tire.interchange,moved:0
+#: wizard_view:tire.mount,moved:0
+#: wizard_view:tire.retread,moved:0
+#: wizard_view:tire.scratch,moved:0
+#: wizard_view:tire.waste,moved:0
+msgid "Tire correctly moved! "
+msgstr "Neumático movido!"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Create Locations"
+msgstr "Crear localizaciones"
+
+#. module: avanzosc_tire_management
+#: view:wizard.tirenolog:0
+msgid "This move will not save the log in the system!"
+msgstr "¡Atencion! Este movimiento no se guardará en el log de movimientos."
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.act_window,name:avanzosc_tire_management.action_button_view
+msgid "acc.button.view"
+msgstr "acc.button.view"
+
+#. module: avanzosc_tire_management
+#: view:wizard.tirenolog:0
+msgid "Tire Mount"
+msgstr "Montaje de Neumático"
+
+#. module: avanzosc_tire_management
+#: model:ir.module.module,description:avanzosc_tire_management.module_meta_information
+msgid ""
+"This module allows to manage tires traceability from a vehicle.\n"
+"                        - Defines a location for each vehicle\n"
+"                        - Defines Numeric locations for each tire\n"
+"                        "
+msgstr ""
+"Este módulo permite gestionar la trazabilidad de los neumáticos de un vehículo.\n"
+"- Define ubicaciones para cada vehículo\n"
+"- Definie ubicaciones numéricas para cada neumático\n"
+"                        "
+
+#. module: avanzosc_tire_management
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: avanzosc_tire_management
+#: view:wizard.create.locations:0
+msgid "Schema configuration"
+msgstr "Configuración de esquemas"
+
+#. module: avanzosc_tire_management
+#: view:wizard.tirenolog:0
+msgid "Mount anyway"
+msgstr "Forzar Montado"
+
+#. module: avanzosc_tire_management
+#: model:ir.model,name:avanzosc_tire_management.model_tire_stock_lot
+msgid "Tire Stock Lot"
+msgstr "Tire Stock Lot"
+
+#. module: avanzosc_tire_management
+#: model:ir.module.module,shortdesc:avanzosc_tire_management.module_meta_information
+msgid "Tire Management"
+msgstr "Gestión de Neumáticos"
+
+#. module: avanzosc_tire_management
+#: view:stock.production.lot:0
+msgid "Revisions"
+msgstr "Revisiones"
+
+#. module: avanzosc_tire_management
+#: field:tire.stock.lot,data:0
+msgid "Created Date"
+msgstr "Fecha de Creación"
+
+#. module: avanzosc_tire_management
+#: model:ir.ui.menu,name:avanzosc_tire_management.mng_tires_form
+msgid "Tires Management"
+msgstr "Gestión de neumáticos"
+
+#. module: avanzosc_tire_management
+#: model:ir.ui.menu,name:avanzosc_tire_management.wizard_tire_config
+msgid "Tire Configuration"
+msgstr "Configuración de Neumáticos"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.interchange,dest_vehi:0
+msgid "Tire movement must be to a Vehicle!"
+msgstr "¡El movimiento debe ser a un vehículo!"
+
+#. module: avanzosc_tire_management
+#: field:tire.stock.lot,odomold:0
+msgid "Old Odometer km."
+msgstr "Km. Odom. anterior"
+
+#. module: avanzosc_tire_management
+#: view:fleet.vehicles:0
+msgid "Rear Axle"
+msgstr "Eje Trasero"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.mount,dest_vehic:0
+msgid "Destination location must be a Vehicle!"
+msgstr "La ubicación de destino debe ser un vehículo!"
+
+#. module: avanzosc_tire_management
+#: view:wizard.tirenolog:0
+msgid "Alert!"
+msgstr "¡Alerta!"
+
+#. module: avanzosc_tire_management
+#: field:res.company,schema8:0
+#: field:wizard.create.locations,schema8:0
+msgid "8 Tire Schema"
+msgstr "Esquema de 8 Ruedas"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.interchange,error:0
+msgid "Tire must in a Vehicle!"
+msgstr "¡El neumático debe estar en un vehículo!"
+
+#. module: avanzosc_tire_management
+#: field:res.company,schema4:0
+#: field:wizard.create.locations,schema4:0
+msgid "4 Tire Schema"
+msgstr "Esquema de 4 Ruedas"
+
+#. module: avanzosc_tire_management
+#: view:stock.production.lot:0
+#: field:stock.production.lot,tire_lot_data:0
+#: view:tire.stock.lot:0
+msgid "Tire Data"
+msgstr "Datos Neumático"
+
+#. module: avanzosc_tire_management
+#: wizard_field:flatire,init,origin:0
+#: wizard_field:tire.interchange,init,origin:0
+#: wizard_field:tire.mount,init,origin:0
+#: wizard_field:tire.retread,init,origin:0
+#: wizard_field:tire.scratch,init,origin:0
+#: field:tire.stock.lot,origin:0
+#: wizard_field:tire.waste,init,origin:0
+msgid "Origin"
+msgstr "Origen"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.wizard,name:avanzosc_tire_management.wizard_interchange
+msgid "Tire Interchange"
+msgstr "Intercambiar Neumático"
+
+#. module: avanzosc_tire_management
+#: view:stock.production.lot:0
+msgid "Moves"
+msgstr "Movimientos"
+
+#. module: avanzosc_tire_management
+#: wizard_field:tire.interchange,init,locat:0
+#: wizard_field:tire.mount,init,locat:0
+#: field:wizard.tirenolog,tire_locat:0
+msgid "Tire Location"
+msgstr "Ubicación Nemático"
+
+#. module: avanzosc_tire_management
+#: wizard_view:tire.mount,ori_vehic:0
+msgid "Origin location cannot be a Vehicle!"
+msgstr "La ubicación origen no puede ser un vehículo!"
+
+#. module: avanzosc_tire_management
+#: field:res.company,scratch:0
+#: field:wizard.create.locations,scratch:0
+msgid "Scratch"
+msgstr "Rayado"
+
+#. module: avanzosc_tire_management
+#: field:tire.stock.lot,name:0
+msgid "Move"
+msgstr "Movimiento"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.wizard,name:avanzosc_tire_management.wizard_tire_waste
+msgid "Tire Waste"
+msgstr "Desechar Neumático"
+
+#. module: avanzosc_tire_management
+#: wizard_button:flatire,init,tireflat:0
+#: wizard_button:flatire,moved,end:0
+#: wizard_button:tire.interchange,dest_vehi,end:0
+#: wizard_button:tire.interchange,error,end:0
+#: wizard_button:tire.interchange,full,end:0
+#: wizard_button:tire.interchange,init,mount:0
+#: wizard_button:tire.interchange,moved,end:0
+#: wizard_button:tire.interchange,ori_vehi,end:0
+#: wizard_button:tire.mount,dest_vehic,end:0
+#: wizard_button:tire.mount,full,end:0
+#: wizard_button:tire.mount,init,mount:0
+#: wizard_button:tire.mount,moved,end:0
+#: wizard_button:tire.mount,ori_vehic,end:0
+#: wizard_button:tire.retread,init,retread:0
+#: wizard_button:tire.retread,moved,end:0
+#: wizard_button:tire.scratch,init,waste:0
+#: wizard_button:tire.scratch,moved,end:0
+#: wizard_button:tire.waste,init,waste:0
+#: wizard_button:tire.waste,moved,end:0
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.wizard,name:avanzosc_tire_management.wizard_scratch
+msgid "Tire Scratch"
+msgstr "Rayado de Neumático"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.act_window,name:avanzosc_tire_management.action_mng_tires
+msgid "Tires"
+msgstr "Neumáticos"
+
+#. module: avanzosc_tire_management
+#: field:stock.move,odometer:0
+msgid "Odometer km."
+msgstr "Km. Odometro"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.wizard,name:avanzosc_tire_management.wizard_tire_mount
+msgid "Tire Move/Mount"
+msgstr "Mover/Montar Neumático"
+
+#. module: avanzosc_tire_management
+#: view:wizard.tirenolog:0
+msgid "Choose tire and location"
+msgstr "Elije un neumático y ubicación"
+
+#. module: avanzosc_tire_management
+#: field:res.company,tire_stock:0
+#: field:wizard.create.locations,tire_stock:0
+msgid "Tire Stock"
+msgstr "Almacen de ruedas"
+
+#. module: avanzosc_tire_management
+#: wizard_button:flatire,init,end:0
+#: wizard_button:tire.interchange,init,end:0
+#: wizard_button:tire.mount,init,end:0
+#: wizard_button:tire.retread,init,end:0
+#: wizard_button:tire.scratch,init,end:0
+#: wizard_button:tire.waste,init,end:0
+#: view:wizard.create.locations:0
+#: view:wizard.tirenolog:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: avanzosc_tire_management
+#: model:ir.actions.act_window,name:avanzosc_tire_management.action_create_locations
+#: model:ir.actions.act_window,name:avanzosc_tire_management.action_tire_config
+msgid "Create Locations for all vehicle list"
+msgstr "Crear localizaciones para todos los vehículos de la lista"
+
+#. module: avanzosc_tire_management
+#: field:fleet.vehicles,buslocat:0
+#: wizard_view:tire.interchange,init:0
+#: wizard_view:tire.mount,init:0
+msgid "Bus Location"
+msgstr "Ubicación Bus"
+
+#. module: avanzosc_tire_management
+#: field:res.company,schema6:0
+#: field:wizard.create.locations,schema6:0
+msgid "6 Tire Schema"
+msgstr "Esquema de 6 Ruedas"
+
+#. module: avanzosc_tire_management
+#: wizard_view:flatire,init:0
+#: wizard_view:tire.interchange,init:0
+#: wizard_view:tire.mount,init:0
+#: wizard_view:tire.retread,init:0
+#: wizard_view:tire.scratch,init:0
+#: wizard_view:tire.waste,init:0
+msgid "Move Tire"
+msgstr "Mover Neumático"
+
+#. module: avanzosc_tire_management
+#: view:fleet.vehicles:0
+msgid "Front Axle"
+msgstr "Eje Delantero"
+

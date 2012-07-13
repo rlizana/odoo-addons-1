@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		
+		<record id="fleet_vehicle_inherit" model="ir.ui.view">
+			<field name="name">fleet.vehicle.service.inherit2</field>
+			<field name="type">form</field>
+			<field name="model">fleet.vehicles</field> 
+			<field name="inherit_id" ref="avanzosc_mrp_preventive_master_data.fleet_vehicle_service_inherit"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="/form/notebook/page[@string='Alerts']" position="after">
+					<page string="Preventive orders">
+						<field domain="[('preventive','=',1)]" name="order_list" nolabel="1" colspan="4"/>
+					</page>
+				</xpath>
+			</data>
+			</field>
+		</record>
+		
+		<record id="preventive_proceed_inherit" model="ir.ui.view">
+			<field name="name">preventive.proceed.inherit</field>
+			<field name="type">form</field>
+			<field name="model">preventive.proceed</field> 
+			<field name="inherit_id" ref="avanzosc_mrp_preventive_master_data.preventive_proceed_form"/>
+			<field name="arch" type="xml">
+			<data>
+			<xpath expr="/form/field[@name='prevname']" position="after">
+				<field name="active" select="1"/>
+			</xpath>
+			<xpath expr="/form/field[@name='date2']" position="after">
+				<field name="dateorder"/>
+				<field name="order"/>
+			</xpath>
+			</data>
+			</field>
+		</record>-->
+		
+		<record id="preventive_proceed_tree_inherit" model="ir.ui.view">
+			<field name="name">preventive.proceed.tree.inherit</field>
+			<field name="type">tree</field>
+			<field name="model">preventive.proceed</field> 
+			<field name="inherit_id" ref="avanzosc_mrp_preventive_master_data.preventive_proceed_tree"/>
+			<field name="arch" type="xml">
+			<data>
+			<xpath expr="/tree/field[@name='opdescription']" position="after">
+				<field name="dateorder" select="1"/>
+				<field name="active" select="2" />
+				<field name="order" select="1"/>
+			</xpath>
+			</data>
+			</field>
+		</record>
+		
+		<record id="preventive_proceed_cal" model="ir.ui.view">
+			<field name="name">preventive.proceed.cal</field>
+			<field name="model">preventive.proceed</field>
+			<field name="type">calendar</field>
+			<field name="arch" type="xml">
+              <calendar string="Preventive order" color = "opr" date_start="dateorder"> 
+                    <field name="ivehicle"/>
+                </calendar>
+            </field>
+		</record>
+		
+		<record id="act_preventive_proceed_1" model="ir.actions.act_window">
+			<field name="name">Preventive to done</field>
+			<field name="res_model">preventive.proceed</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,calendar</field>
+		</record>
+		
+		<delete id="avanzosc_mrp_preventive_master_data.preventive_proceed" model="ir.ui.menu"/>
+		<menuitem id="preventive_proceed_1" name="Preventive to done"
+		parent="avanzosc_mrp_preventive_master_data.preventive_operations_menu" action="act_preventive_proceed_1"/>
+		
+	<!-- ======================================= Inherit repair view  ============================================ -->
+	
+		<record id="view_repair_order_form_preventive" model="ir.ui.view">
+			<field name="name">mrp.repair.form.preventive</field>
+			<field name="model">mrp.repair</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="pesa_mrp_repair.view_repair_order_form_pesa"/>
+			<field name="arch" type="xml">
+			<data>			    
+				<xpath expr="/form/notebook/page[@string='Extra Info']" position="after">
+				 <page string="Preventive Proceed">
+				 	<field name="prevproc" nolabel="1"/>
+				 </page>
+				</xpath>				
+			</data>
+			</field>
+		</record>
+		
+	</data>
+</openerp>

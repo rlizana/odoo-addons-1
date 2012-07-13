@@ -1,0 +1,6 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_preventive_manager_vehiclemodel","vehiclemodel","model_vehiclemodel","preventive_manager",1,1,1,1
+"access_preventive_manager_optypel","optype","model_optype","preventive_manager",1,1,1,1
+"access_preventive_manager_master","preventive.master","model_preventive_master","preventive_manager",1,1,1,1
+"access_preventive_manager_ovm","operation.vehicle.materials","model_operation_vehicle_materials","preventive_manager",1,1,1,1
+"access_preventive_manager_operation_material","operation.material","model_operation_material","preventive_manager",1,1,1,1

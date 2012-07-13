@@ -34,8 +34,7 @@ class hr_employee(osv.osv):
 #                                         ]),
                 'licenseno':fields.char('License #',size=20),
                 'licexpiry':fields.date('License Expiry on'),
-                'licensetyp':fields.char('License Type',size=25),
-                'photo':fields.binary('Photograph')               
+                'licensetyp':fields.char('License Type',size=25),         
                 }
 hr_employee()
     

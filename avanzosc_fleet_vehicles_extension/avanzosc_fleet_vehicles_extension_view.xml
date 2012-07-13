@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
-		<delete id="menu_fleet_manager" model="ir.ui.menu"/>
-		<menuitem name="Fleet Manager" id="menu_fleet_manager_1" groups ="group_fleet_vehicle_manager"/>
 		
 		<record id="fleet_vehicle_services" model="ir.ui.view">
 			<field name="name">fleet.vehicle.services</field>

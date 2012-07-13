@@ -132,6 +132,7 @@ class account_account(osv.osv):
             ('other','Others'),
             ('closed','Closed'),
             ('vehicle','Vehicle'),
+            ('liquidity','Liquidity'),
         ], 'Internal Type', required=True,),
 }
 account_account()

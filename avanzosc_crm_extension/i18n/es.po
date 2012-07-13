@@ -1,0 +1,263 @@
+# Spanish translation for avanzosc
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the avanzosc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avanzosc\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-06-20 15:34+0000\n"
+"PO-Revision-Date: 2011-09-20 10:18+0000\n"
+"Last-Translator: Ainara <Unknown>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-01 05:12+0000\n"
+"X-Generator: Launchpad (build 14874)\n"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Case Canceled!"
+msgstr "¡Incidencia cancelada!"
+
+#. module: avanzosc_crm_extension
+#: model:ir.actions.act_window,name:avanzosc_crm_extension.action_driver_crm_case
+msgid "Driver Case"
+msgstr "Incidencia de conductor"
+
+#. module: avanzosc_crm_extension
+#: view:crm.case:0
+msgid "Historize"
+msgstr "Añadir al historial"
+
+#. module: avanzosc_crm_extension
+#: field:crm.case,idvehicle:0
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Working Started"
+msgstr "Trabajando"
+
+#. module: avanzosc_crm_extension
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Nombre de modelo inválido en la definición de la acción"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Close Error!"
+msgstr "¡Error en el cierre!"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "The case needs a reason to cancel it."
+msgstr "Es necesario especificar una razón para cancelar la incidencia."
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "open"
+msgstr "Abrir"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: avanzosc_crm_extension
+#: model:ir.ui.menu,name:avanzosc_crm_extension.vehicle_case
+msgid "Vehicle Cases"
+msgstr "Incidencias de vehículo"
+
+#. module: avanzosc_crm_extension
+#: model:ir.actions.act_window,name:avanzosc_crm_extension.action_crm_case
+msgid "Vehicle Case"
+msgstr "Incidencia de vehículo"
+
+#. module: avanzosc_crm_extension
+#: model:ir.actions.wizard,name:avanzosc_crm_extension.wizard_mrp_repair
+msgid "Repair case"
+msgstr "Incidencia de reparación"
+
+#. module: avanzosc_crm_extension
+#: field:crm.case,crm_user_id:0
+msgid "Driver"
+msgstr "Conductor"
+
+#. module: avanzosc_crm_extension
+#: wizard_view:wizard.crmext,display2:0
+msgid ""
+"Vehicle has no product defined! The repair needs a product defined for it. "
+msgstr ""
+"¡El vehículo no tiene un producto especificado! La reparación requiere que "
+"tenga un producto definido. "
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "draft"
+msgstr "Borrador"
+
+#. module: avanzosc_crm_extension
+#: wizard_view:wizard.crmext,init:0
+msgid "Create repair case with the defined vehicle?"
+msgstr "¿Quieres crear una reparación para el vehículo especificado?"
+
+#. module: avanzosc_crm_extension
+#: view:crm.case:0
+msgid "Cases"
+msgstr "Incidencias"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/wizard/wizard_crmext.py:0
+#, python-format
+msgid "pending"
+msgstr "pendiente"
+
+#. module: avanzosc_crm_extension
+#: field:mrp.repair,case:0
+msgid "Case"
+msgstr "Incidencia"
+
+#. module: avanzosc_crm_extension
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "¡XML no válido para la definición de la vista!"
+
+#. module: avanzosc_crm_extension
+#: wizard_view:wizard.crmext,display:0
+#: wizard_view:wizard.crmext,display2:0
+#: wizard_view:wizard.crmext,init:0
+#: wizard_view:wizard.crmext,next:0
+msgid "Repair Case"
+msgstr "Incidencia de reparación"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Vehicle Arrived"
+msgstr "Vehiculo en taller"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "The case needs a reason to close it."
+msgstr ""
+"La incidencia requiere que se especifique una razón antes de cerrarla."
+
+#. module: avanzosc_crm_extension
+#: wizard_view:wizard.crmext,display:0
+msgid "Not vehicle defined!"
+msgstr "¡Vehículo no definido!"
+
+#. module: avanzosc_crm_extension
+#: model:ir.ui.menu,name:avanzosc_crm_extension.menu_driver_crm_case
+msgid "Driver CRM Cases"
+msgstr "Incidencias CRM de conductor"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Work Done"
+msgstr "Trabajo realizado"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Repair Accepted"
+msgstr "Incidencia aceptada"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/wizard/wizard_crmext.py:0
+#, python-format
+msgid "Accepted: Waiting for Vehicle"
+msgstr "Aceptado: esperando a vehículo"
+
+#. module: avanzosc_crm_extension
+#: wizard_view:wizard.crmext,next:0
+msgid "Repair Order Created!"
+msgstr "¡Orden de reparación creada!"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Cancel Error!"
+msgstr "¡Error al cancelar!"
+
+#. module: avanzosc_crm_extension
+#: model:ir.module.module,shortdesc:avanzosc_crm_extension.module_meta_information
+msgid "CRM Extension"
+msgstr "Extensión CRM"
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#, python-format
+msgid "Case Closed!"
+msgstr "¡Incidencia cerrada!"
+
+#. module: avanzosc_crm_extension
+#: model:ir.ui.menu,name:avanzosc_crm_extension.menu_crm_case
+msgid "CRM Cases"
+msgstr "Casos CRM"
+
+#. module: avanzosc_crm_extension
+#: model:ir.module.module,description:avanzosc_crm_extension.module_meta_information
+msgid "This module ables a wizard to launch repair orders from a case"
+msgstr ""
+"Éste módulo, consta de una acción para lanzar órdenes de reparación desde "
+"una incidencia."
+
+#. module: avanzosc_crm_extension
+#: wizard_button:wizard.crmext,display,end:0
+#: wizard_button:wizard.crmext,display2,end:0
+#: wizard_button:wizard.crmext,init,create:0
+#: wizard_button:wizard.crmext,next,open:0
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: avanzosc_crm_extension
+#: view:crm.case:0
+msgid "General"
+msgstr "General"
+
+#. module: avanzosc_crm_extension
+#: view:crm.case:0
+msgid "Case Description Extended"
+msgstr "Descripción extendida de incidencia."
+
+#. module: avanzosc_crm_extension
+#: view:crm.case:0
+msgid "Communication history"
+msgstr "Historial de comunicación"
+
+#. module: avanzosc_crm_extension
+#: wizard_button:wizard.crmext,init,end:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: avanzosc_crm_extension
+#: model:ir.ui.menu,name:avanzosc_crm_extension.driver_case
+msgid "Driver Cases"
+msgstr "Incidencias de conductor."
+
+#. module: avanzosc_crm_extension
+#: code:addons/avanzosc_crm_extension/repair_case.py:0
+#: code:addons/avanzosc_crm_extension/wizard/wizard_crmext.py:0
+#, python-format
+msgid "Open"
+msgstr "Abierto"

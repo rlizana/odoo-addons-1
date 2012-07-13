@@ -1,0 +1,229 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* pesa_mrp_repair
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.14\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-02-16 16:27:42+0000\n"
+"PO-Revision-Date: 2011-02-16 16:27:42+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pesa_mrp_repair
+#: model:ir.ui.menu,name:pesa_mrp_repair.menu_mrp_repair_wizard
+msgid "Repairs"
+msgstr "Repairs"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "History"
+msgstr "History"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Recreate Invoice"
+msgstr "Recreate Invoice"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Repairs order"
+msgstr "Repairs order"
+
+#. module: pesa_mrp_repair
+#: model:ir.module.module,description:pesa_mrp_repair.module_meta_information
+msgid "Modifies the original mrp_repair module to simplify repair form."
+msgstr "Modifies the original mrp_repair module to simplify repair form."
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Comments"
+msgstr "Comments"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Set to Draft"
+msgstr "Set to Draft"
+
+#. module: pesa_mrp_repair
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Invalid model name in the action definition."
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Untaxed amount"
+msgstr "Untaxed amount"
+
+#. module: pesa_mrp_repair
+#: code:addons/pesa_mrp_repair/mrp_repair.py:0
+#, python-format
+msgid "No valid pricelist line found !"
+msgstr "No valid pricelist line found !"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Description"
+msgstr "Description"
+
+#. module: pesa_mrp_repair
+#: model:ir.module.module,shortdesc:pesa_mrp_repair.module_meta_information
+msgid "Pesa MRP Repair"
+msgstr "Pesa MRP Repair"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Material"
+msgstr "Material"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Internal Notes"
+msgstr "Internal Notes"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Hours"
+msgstr "Hours"
+
+#. module: pesa_mrp_repair
+#: field:mrp.repair.line,user_id:0
+msgid "User"
+msgstr "User"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Confirm Repair"
+msgstr "Confirm Repair"
+
+#. module: pesa_mrp_repair
+#: model:ir.actions.act_window,name:pesa_mrp_repair.action_repair_wizard
+msgid "action.repair.wizard"
+msgstr "action.repair.wizard"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Make Invoice"
+msgstr "Make Invoice"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Quotation Notes"
+msgstr "Quotation Notes"
+
+#. module: pesa_mrp_repair
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Compute"
+msgstr "Compute"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Invoice Corrected"
+msgstr "Invoice Corrected"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Total amount"
+msgstr "Total amount"
+
+#. module: pesa_mrp_repair
+#: code:addons/pesa_mrp_repair/mrp_repair.py:0
+#, python-format
+msgid "Couldn't find a pricelist line matching this product and quantity.\nYou have to change either the product, the quantity or the pricelist."
+msgstr "Couldn't find a pricelist line matching this product and quantity.\nYou have to change either the product, the quantity or the pricelist."
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Open Repair"
+msgstr "Open Repair"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "End Repair"
+msgstr "End Repair"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Invoicing"
+msgstr "Invoicing"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Operations"
+msgstr "Operations"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Repair Line"
+msgstr "Repair Line"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "User Operations"
+msgstr "User Operations"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Start Repair"
+msgstr "Start Repair"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Cancel Repair"
+msgstr "Cancel Repair"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Qty"
+msgstr "Qty"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "States"
+msgstr "States"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Re-Open"
+msgstr "Re-Open"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Extra Info"
+msgstr "Extra Info"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "UoM"
+msgstr "UoM"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Fees"
+msgstr "Fees"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Close"
+msgstr "Close"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Validate Repair"
+msgstr "Validate Repair"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Quality"
+msgstr "Quality"
+

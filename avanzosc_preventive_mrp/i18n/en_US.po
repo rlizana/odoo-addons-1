@@ -1,0 +1,85 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_vehicle_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.16\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-09-20 14:16:45+0000\n"
+"PO-Revision-Date: 2011-09-20 14:16:45+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_vehicle_crm
+#: constraint:ir.cron:0
+msgid "Invalid arguments"
+msgstr "Invalid arguments"
+
+#. module: avanzosc_vehicle_crm
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: avanzosc_vehicle_crm
+#: model:ir.module.module,description:avanzosc_vehicle_crm.module_meta_information
+msgid "    \n"
+"    "
+msgstr "    \n"
+"    "
+
+#. module: avanzosc_vehicle_crm
+#: code:addons/avanzosc_vehicle_crm/wizard/create_order_wizard.py:0
+#, python-format
+msgid "There is already an order created for this operation."
+msgstr "There is already an order created for this operation."
+
+#. module: avanzosc_vehicle_crm
+#: code:addons/avanzosc_vehicle_crm/vehicle_crm.py:0
+#, python-format
+msgid "No product asigned for %s.\n Can't create an order."
+msgstr "No product asigned for %s.\n Can't create an order."
+
+#. module: avanzosc_vehicle_crm
+#: code:addons/avanzosc_vehicle_crm/wizard/create_order_wizard.py:0
+#, python-format
+msgid "Create Order"
+msgstr "Create Order"
+
+#. module: avanzosc_vehicle_crm
+#: code:addons/avanzosc_vehicle_crm/vehicle_crm.py:0
+#: code:addons/avanzosc_vehicle_crm/wizard/create_order_wizard.py:0
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: avanzosc_vehicle_crm
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Invalid model name in the action definition."
+
+#. module: avanzosc_vehicle_crm
+#: view:preventive.proceed:0
+msgid "Preventive order"
+msgstr "Preventive order"
+
+#. module: avanzosc_vehicle_crm
+#: model:ir.module.module,shortdesc:avanzosc_vehicle_crm.module_meta_information
+msgid "CRM & Fleet Manager Extension"
+msgstr "CRM & Fleet Manager Extension"
+
+#. module: avanzosc_vehicle_crm
+#: view:fleet.vehicles:0
+msgid "Preventive orders"
+msgstr "Preventive orders"
+
+#. module: avanzosc_vehicle_crm
+#: model:ir.actions.act_window,name:avanzosc_vehicle_crm.act_preventive_proceed_1
+#: model:ir.ui.menu,name:avanzosc_vehicle_crm.Preventive_proceed_1
+msgid "Preventive to done"
+msgstr "Preventive to done"
+

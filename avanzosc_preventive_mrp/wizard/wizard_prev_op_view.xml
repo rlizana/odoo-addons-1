@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<openerp>
+	<!--  Alert calculate wizard view vehicle.prev.op  -->	   
+	<data>
+		<wizard id="wizard_alert_calc" 
+            string="Calculate Alerts" model="vehicle.prev.op" name="calc.alert.wizard" multi="False" />
+	
+	    <!-- Alert Evaluation Wizard form -->
+
+          <record id="view_vehic_alert_eval" model="ir.ui.view">
+            <field name="name">vehic.alert.eval.form</field>
+            <field name="model">alert.eval</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Vehicle Alert">
+            		<group colspan="4" >
+    					<separator string="Choose vehicle and its real milleage" colspan="4"/>
+    					<field name="vehicle" width="150"/>
+    					<field name="kmreal" width="150"/>
+    				</group>
+                   <separator string="" colspan="4"/>
+                   <group colspan="4" col="6">
+                   		<button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                   		<button  icon="gtk-ok" name="_alert_evaluate" string="Evaluate" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+		    
+		    <!--  Action of Alert Evaluation wizard -->	    
+
+    <record id="action_alert_eval" model="ir.actions.act_window">
+        <field name="name">Entry vehicle for preventive maintenance</field>
+        <field name="res_model">alert.eval</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="view_vehic_alert_eval"/>
+       <field name="target">new</field>
+    </record> 
+		<menuitem id="menu_alert_calc" name="Entry vehicle for preventive maintenance" action="action_alert_eval" parent="avanzosc_mrp_preventive_master_data.preventive_operations_menu"/>
+	</data>
+	
+	<data>
+		<!--  Vehicle Alert evaluate wizard view alert.evaluate.wizard  -->
+		<wizard id="wizard_alert_evaluate" 
+            string="Evaluate vehicle alerts" model="preventive.proceed" name="alert.evaluate.wizard" multi="False" />
+         
+        <!--  Vehi repair create wizard  view repair.create.wizard  -->
+		<wizard id="wizard_repair_create" 
+            string="Repair Create" model="preventive.proceed" name="repair.create.wizard" multi="False" />
+	</data>
+	
+</openerp>

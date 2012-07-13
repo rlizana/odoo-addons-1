@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+    <!--  ===================== Vehicle preventive operations ============================= -->
+    
+		<menuitem id="preventive_operations_menu" name="Preventive Maintenance" parent="fleet_manager.menu_fleet_manager"/>
+		
+		<record id="fleet_vehicle_service_inherit" model="ir.ui.view">
+			<field name="name">fleet.vehicle.service.inherit</field>
+			<field name="type">form</field>
+			<field name="model">fleet.vehicles</field> 
+			<field name="inherit_id" ref="avanzosc_fleet_vehicles_extension.fleet_vehicle_services"/>
+			<field name="arch" type="xml">
+			<data>
+				<xpath expr="/form/notebook/page[@string='Extra Information']" position="after">
+					<page string="Next Revision">
+						<field name="preop" nolabel="1" colspan="4" default_get="{'name':name}"/>
+					</page>
+					<page string="Alerts">
+						<field name="alert_list" nolabel="1" colspan="4"/>
+					</page>
+				</xpath>
+			</data>
+			</field>
+		</record>
+		
+		<record id="vehicle_pre_op_tree" model="ir.ui.view">
+			<field name="name">vehicle.pre.op.tree</field>
+			<field name="model">vehicle.prev.op</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Preventive Operations">					
+						<field name="name"/>
+						<field name="vehicle"/>
+						<field name="mileage" />	
+						<field name="alert"/>	
+						<field name="extra_alert"/>	
+						<field name="nextdate" string="Next revision date" />
+						<field name="nextkm" string="Next revision km" />			
+				</tree>
+			</field>
+		</record>
+		
+		<record id="vehicle_pre_op_form" model="ir.ui.view">
+			<field name="name">vehicle.pre.op.form</field>
+			<field name="model">vehicle.prev.op</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Preventive Operations">
+					<group col="6" colspan="6">
+						<group col="4" colspan="4">
+						<field name="name" colspan="4"/>
+						</group>
+						<group col="4" colspan="1">
+							<field name="alert"/>	
+							<field name="extra_alert"/>	
+						</group>
+					</group>
+					<group col="6" colspan="6">	
+							<newline/>	
+							<field name="vehicle" />
+							<field name="acdometer"/>
+					</group>	
+					<notebook colspan="4">
+						<page string="Information">
+							<group>							
+							<separator string="Occurance" colspan="4"/>
+							<group colspan="2" col="4">
+								<field name="frequency" />
+								<field name="measUnit"/>
+							</group>
+							<field name="mileage" />
+							<separator string="Last Revision" colspan="4"/>
+							</group>
+							<group col="6" colspan="6">
+								<field name="lastdate"/>	
+								<field name="lastkm"/>
+								<field name="lasttime"/>	
+							</group>
+							<separator string = "Next Revision" colspan="4"/>
+							<group col="6" colspan="6">
+								<field name="nextdate"/>	
+								<field name="nextkm"/>
+								<field name="nexttime"/>
+							</group>	
+							<separator string="1st Alert" colspan="4"/>
+							<group>
+								<field name="check_al1" colspan="5"/>
+								<field name="margin_km1"/>
+								<newline/>
+								<group colspan="2" col="4">
+									<field name="margin_fre1"/>
+									<field name="measUnit1"/>
+								</group>
+							<separator string="2nd Alert" colspan="4"/>
+								<field name="check_al2" colspan="5"/>
+								<field name="margin_km2" colspan="3"/>
+								<newline/>
+								<group colspan="2" col="4">
+									<field name="margin_fre2"/>
+									<field name="measUnit2"/>
+								</group>	
+							</group>
+						</page>
+						<page string="Description">
+							<separator string="Description" colspan="4"/>
+							<field name="opdescription" nolabel="1"/>
+						</page>
+					</notebook>
+										
+				</form>
+			</field>
+		</record>
+		
+		<record id="action_vehicle_operations" model="ir.actions.act_window">
+			<field name="name">Vehicle operations</field>
+			<field name="res_model">vehicle.prev.op</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem id="Vehicle_op_tree_view" name="Vehicle Operations"
+		parent="preventive_operations_menu" action="action_vehicle_operations"/>
+    
+     <!-- ======================================= Operation Master data  ============================================ -->
+    
+     <record model="ir.ui.view" id="ope_master_tree_view">
+                <field name="name">preventive.master.tree</field>
+                <field name="model">preventive.master</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="tree_string">
+                        <field name="name"/>
+                        <field name="type"/>
+                        <field name="vehiclemodel"/>
+                        <field name="vehicles_ids" nolabel="1"/>
+                        <field name="opdescription" />
+                     </tree>
+                </field>
+            </record>
+
+	<record model="ir.ui.view" id="ope_master_form_view">
+		<field name="name">preventive.master.form</field>
+		<field name="model">preventive.master</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Preventive Master Data">
+				<group colspan="4" col ="8">
+					<field name="name" />
+					<field name="type" />
+					<field name="vehiclemodel" />
+				</group>
+				<notebook>
+					<page string="Preventive Info" >
+						<field name="ope_material" nolabel="1" />
+						<separator string="Vehicle list for the preventive operations" colspan="4" />
+						<field name="vehicles_ids" nolabel="1" />
+					</page>
+					<page string="Preventive Description">
+						<separator string="Description" colspan="4" />
+						<field name="opdescription" nolabel="1" />
+					</page>
+				</notebook>
+			</form>
+		</field>
+	</record>
+
+            <record model="ir.actions.act_window" id="action_ope_master_view">
+                <field name="name">Preventive Master</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">preventive.master</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="ope_master_tree_view"/>
+            </record>
+            
+    <menuitem id="preventive_master_menu" name="Preventive master data" parent="preventive_operations_menu" action="action_ope_master_view"/>
+    
+          
+      <!-- ======================================= Operations type  ============================================ -->
+	
+            <record model="ir.ui.view" id="optype_tree_view">
+                <field name="name">optype.tree</field>
+                <field name="model">optype</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="tree_string" editable="bottom">
+                        <field name="name" />
+                        <field name="km" />
+                        <field name="basedonkm"/>
+                     </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="optype_form_view">
+                <field name="name">optype.form</field>
+                <field name="model">optype</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="form_string">
+                        <field name="name"/>
+                        <field name="basedonkm"/>
+                        <field name="nexttime"/>
+                        <separator string="Operation Kilometers frequency" colspan="4"/>
+                        <field name="km"/>
+                        <newline/>
+                        <field name= "margin_km1"/>
+                        <field name= "margin_km2"/>
+                        <separator string="Operation time frequency" colspan="4"/>
+						<group colspan="2" col="4">
+								<field name="frequency"/>
+								<field name="measUnit" on_change="onchange_measUnit(measUnit)"/>	
+						</group>	
+						<newline/>
+						<group colspan="2" col="4">
+								<field name="margin_fre1"/>
+								<field name="measUnit1"/>
+						</group>
+						<newline/>
+						<group colspan="2" col="4">
+								<field name="margin_fre2"/>
+								<field name="measUnit2"/>
+						</group>
+								<separator string="Description" colspan="4"/>
+								<field name="description" colspan="4" nolabel="1"/>	
+                    </form>
+                </field>
+            </record>
+
+               <record model="ir.actions.act_window" id="action_optype_view">
+                <field name="name">Operation Type</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">optype</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="optype_tree_view"/>
+            </record>
+
+		<menuitem id="optype_menu" name="Operations type" parent="preventive_operations_menu" action="action_optype_view" />
+
+	<!-- ======================================= Vehicle Model  ============================================ -->
+           
+            <record model="ir.ui.view" id="vehiclemodel_tree_view">
+                <field name="name">vehiclemodel.tree</field>
+                <field name="model">vehiclemodel</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="tree_string" editable="bottom">
+                        <field name="name" />
+                     </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="vehiclemodel_form_view">
+                <field name="name">vehiclemodel.form</field>
+                <field name="model">vehiclemodel</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="form_string">
+                        <field name="name"/>
+                    </form>
+                </field>
+            </record>
+
+               <record model="ir.actions.act_window" id="action_vehiclemodel_view">
+                <field name="name">Vehicle Model</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">vehiclemodel</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="view_id" ref="vehiclemodel_tree_view"/>
+            </record>
+            
+            <menuitem id="vehiclemodel_menu" name="Vehicle Model" parent="preventive_operations_menu" action="action_vehiclemodel_view" />
+            
+            <!-- =======================================  Operations - Materials  Relation ================================== -->
+           
+            <record model="ir.ui.view" id="operation_vehicle_materials_tree_view">
+                <field name="name">operation.vehicle.materials.tree</field>
+                <field name="model">operation.vehicle.materials</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Operations" editable="bottom">
+                    	<field name="optype_id" on_change="onchange_optype_id(optype_id)"/>
+                    	<field name="kms"/>
+                        <field name="material" />
+                        <field name="op_nexttime" invisible="1"/>
+                        <field name="op_margin_km1" invisible="1"/>
+                        <field name="op_margin_km2" invisible="1"/>
+                        <field name="op_frequency" invisible="1"/>
+                        <field name="op_measUnit" invisible="1"/>
+                        <field name="op_margin_fre1" invisible="1"/>
+						<field name="op_measUnit1" invisible="1"/>
+						<field name="op_margin_fre2" invisible="1"/>
+						<field name="op_measUnit2" invisible="1"/>
+						<field name="op_description" invisible="1"/>
+                     </tree>
+                </field>
+            </record>
+
+            <record model="ir.ui.view" id="operation_vehicle_materials_form_view">
+                <field name="name">operation.vehicle.materials.form</field>
+                <field name="model">operation.vehicle.materials</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="form_string">
+                        <field name="optype_id" colspan="4" on_change="onchange_optype_id(optype_id)"/>
+                        <field name="name" colspan="4"/>
+                        <field name="op_nexttime" colspan="4"/>
+                        <notebook>
+                        	<page string="Materials">
+                        		<field name="material" colspan="4" default_get="{'name':name}" nolabel = "1"/>
+                        	</page>
+                        	<page string="Op. Frecuency">
+                        		<field name= "kms"/>
+                        		<newline/>
+                        		<field name= "op_margin_km1"/>
+                        		<field name= "op_margin_km2"/>
+                        		<separator string="Operation time frequency" colspan="4"/>
+								<group colspan="2" col="4">
+									<field name="op_frequency"/>
+									<field name="op_measUnit" on_change="onchange_opmeasUnit(op_measUnit,context)"/>	
+								</group>	
+								<newline/>
+								<group colspan="2" col="4">
+									<field name="op_margin_fre1"/>
+									<field name="op_measUnit1"/>
+								</group>
+								<newline/>
+								<group colspan="2" col="4">
+									<field name="op_margin_fre2"/>
+									<field name="op_measUnit2"/>
+								</group>
+							</page>
+							<page string="Op. Description">
+								<field name="op_description" colspan="4" nolabel="1"/>	                       
+                        	</page>
+                        </notebook>
+                    </form>
+                </field>
+            </record>
+		
+		<!-- ======================================= Operation Material view  ============================================ -->
+		
+		<record id="operation_material_tree" model="ir.ui.view">
+			<field name="name">operation.material.tree</field>
+			<field name="model">operation.material</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Material">
+						<field name="op_vehi_mat" invisible="1"/>			
+						<field name="product_id" on_change="onchange_product(product_id)"/>
+						<field name="product_uom_qty"/>
+						<field name="product_uom"/>											
+				</tree>
+			</field>
+		</record>	
+		
+		<record id="operation_material_form" model="ir.ui.view">
+			<field name="name">operation.material.form</field>
+			<field name="model">operation.material</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Material">					
+						<field name="op_vehi_mat" invisible="1"/>
+						<newline/>
+						<field name="product_id" on_change="onchange_product(product_id)"/>
+						<newline/>
+						<field name="product_uom_qty"/>
+						<field name="product_uom"/>											
+				</form>
+			</field>
+		</record>	
+		
+		<record id="act_operation_mat" model="ir.actions.act_window">
+			<field name="name">Operation Material</field>
+			<field name="res_model">operation.material</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- ======================================= Preventive Proceed  ============================================ -->
+		
+		
+		<record id="preventive_proceed_tree" model="ir.ui.view">
+			<field name="name">preventive.proceed.tree</field>
+			<field name="model">preventive.proceed</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Preventive to done">				
+						<field name="prevname" />
+						<field name="ivehicle" select="1"/>
+<!--						<field name="opr" select="1"/>-->
+						<field name="opdescription"/>									
+				</tree>
+			</field>
+		</record>
+
+	<record id="preventive_proceed_form" model="ir.ui.view">
+		<field name="name">preventive.proceed.form</field>
+		<field name="model">preventive.proceed</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Preventive to done">
+				<field name="prevname" /> <!-- on_change="onchange_op(prevname)" -->
+				<newline />
+				<separator string="Operation Information" colspan="4" />
+				<newline />
+				<field name="ivehicle" />
+				<field name="opr" /> <!--on_change="onchange_opera(opr)" -->
+				<newline />
+				<separator string="Description" colspan="4" />
+				<field name="opdescription" nolabel="1" colspan="4" />
+				<newline />
+				<separator string="Alert Information" colspan="4" />
+				<newline />
+				<field name="date1" />
+				<field name="date2" />
+			</form>
+		</field>
+	</record>	
+
+		<record id="act_preventive_proceed" model="ir.actions.act_window">
+			<field name="name">Preventive to done</field>
+			<field name="res_model">preventive.proceed</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="preventive_proceed" name="Preventive to done"
+		parent="preventive_operations_menu" action="act_preventive_proceed"/>
+           
+    </data>
+</openerp>

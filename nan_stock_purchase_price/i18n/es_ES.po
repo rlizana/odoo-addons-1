@@ -1,0 +1,192 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* nan_purchase_price_on_input
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.14\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2010-11-08 10:55:25+0000\n"
+"PO-Revision-Date: 2010-11-08 10:55:25+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,purchase_order_line:0
+msgid "Purchase Order Line"
+msgstr "Purchase Order Line"
+
+#. module: nan_purchase_price_on_input
+#: view:stock.input.wizard:0
+msgid "Input Picking"
+msgstr "Input Picking"
+
+#. module: nan_purchase_price_on_input
+#: code:addons/nan_purchase_price_on_input/stock.py:0
+#, python-format
+msgid "You are trying to create a new line on wrong place. You should create it on Stock picking."
+msgstr "Se está intentando crear una nueva línea en el lugar equivocado. Se debe crear en el Albarán."
+
+#. module: nan_purchase_price_on_input
+#: model:ir.model,name:nan_purchase_price_on_input.model_stock_input_wizard
+msgid "stock.input.wizard"
+msgstr "stock.input.wizard"
+
+#. module: nan_purchase_price_on_input
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Invalid model name in the action definition."
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,wizard_id:0
+msgid "Wizard id"
+msgstr "Wizard id"
+
+#. module: nan_purchase_price_on_input
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "The Object name must start with x_ and not contain any special character !"
+
+#. module: nan_purchase_price_on_input
+#: model:ir.module.module,description:nan_purchase_price_on_input.module_meta_information
+msgid "Include facilities to enter purchase price on Input Pickings."
+msgstr "Include facilities to enter purchase price on Input Pickings."
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: nan_purchase_price_on_input
+#: model:ir.actions.act_window,name:nan_purchase_price_on_input.input_packing_list
+msgid "input.packing.list"
+msgstr "input.packing.list"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,purchase_order:0
+#: field:stock.input.wizard.line,stock_picking:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,price:0
+msgid "Price"
+msgstr "Precio"
+
+#. module: nan_purchase_price_on_input
+#: view:stock.input.wizard.line:0
+msgid "Input Picking Line"
+msgstr "Input Picking Line"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,list_price:0
+msgid "List Price"
+msgstr "Precio de lista"
+
+#. module: nan_purchase_price_on_input
+#: model:ir.model,name:nan_purchase_price_on_input.model_stock_input_wizard_line
+msgid "stock.input.wizard.line"
+msgstr "stock.input.wizard.line"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,discount:0
+msgid "Discount"
+msgstr "Descuento"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,product_uom:0
+msgid "Uom "
+msgstr "Uom "
+
+#. module: nan_purchase_price_on_input
+#: view:stock.input.wizard:0
+#: field:stock.input.wizard,picking_id:0
+msgid "Picking"
+msgstr "Albarán"
+
+#. module: nan_purchase_price_on_input
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "XML inválido para la arquitectura de vistas!"
+
+#. module: nan_purchase_price_on_input
+#: model:ir.model,name:nan_purchase_price_on_input.model_stock_inpit_wizard_line
+msgid "stock.inpit.wizard.line"
+msgstr "stock.inpit.wizard.line"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard,lines_ids:0
+msgid "Lines"
+msgstr "Líneas"
+
+#. module: nan_purchase_price_on_input
+#: field:product.product,last_purchase_price:0
+#: field:stock.input.wizard.line,last_purchase_price:0
+msgid "Last Purchase Price"
+msgstr "Último Precio de Compra"
+
+#. module: nan_purchase_price_on_input
+#: view:stock.picking:0
+msgid "Products Received"
+msgstr "Productos recibidos"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,quantity:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,purchase_price:0
+msgid "Purchase Price"
+msgstr "Precio de Compra"
+
+#. module: nan_purchase_price_on_input
+#: view:stock.input.wizard:0
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: nan_purchase_price_on_input
+#: model:ir.module.module,shortdesc:nan_purchase_price_on_input.module_meta_information
+msgid "Purchase Price on Input Material"
+msgstr "Precio de compra en Material de entrada"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,currency_id:0
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: nan_purchase_price_on_input
+#: code:addons/nan_purchase_price_on_input/stock.py:0
+#, python-format
+msgid "Warning"
+msgstr "Aviso"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,stock_move:0
+msgid "Stock picking lines"
+msgstr "Líneas de albarán"
+
+#. module: nan_purchase_price_on_input
+#: view:stock.input.wizard:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: nan_purchase_price_on_input
+#: view:stock.input.wizard:0
+msgid "Order lines"
+msgstr "Lineas de Pedido"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,total_amount:0
+msgid "Total Amount"
+msgstr "Total"
+
+#. module: nan_purchase_price_on_input
+#: field:stock.input.wizard.line,untaxed_amount:0
+msgid "Untaxed Amount"
+msgstr "Sin impuestos"
+

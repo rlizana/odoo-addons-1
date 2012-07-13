@@ -1,0 +1,442 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_mrp_preventive_master_data
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.15\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-01 10:19:00+0000\n"
+"PO-Revision-Date: 2012-02-01 10:19:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.ui.menu,name:avanzosc_mrp_preventive_master_data.preventive_master_menu
+msgid "Preventive master data"
+msgstr "Preventive master data"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:preventive.master:0
+msgid "Preventive Master Data"
+msgstr "Preventive Master Data"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:optype,basedonkm:0
+msgid "Based on Km"
+msgstr "Based on Km"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "The Object name must start with x_ and not contain any special character !"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.actions.wizard,name:avanzosc_mrp_preventive_master_data.wizard_create_preventive
+msgid "Create Preventives"
+msgstr "Create Preventives"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:preventive.master:0
+msgid "Preventive Description"
+msgstr "Preventive Description"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.model,name:avanzosc_mrp_preventive_master_data.model_optype
+msgid "optype"
+msgstr "optype"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:preventive.proceed:0
+msgid "Operation Information"
+msgstr "Operation Information"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_nexttime:0
+#: field:optype,nexttime:0
+msgid "Operation Time"
+msgstr "Operation Time"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.actions.act_window,name:avanzosc_mrp_preventive_master_data.action_ope_master_view
+msgid "Preventive Master"
+msgstr "Preventive Master"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,kms:0
+msgid "Kms"
+msgstr "Kms"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.model,name:avanzosc_mrp_preventive_master_data.model_vehiclemodel
+msgid "vehiclemodel"
+msgstr "vehiclemodel"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Invalid model name in the action definition."
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.model,name:avanzosc_mrp_preventive_master_data.model_product_operations_ext
+msgid "product fleet enhancements"
+msgstr "product fleet enhancements"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.actions.act_window,name:avanzosc_mrp_preventive_master_data.act_operation_mat
+msgid "Operation Material"
+msgstr "Operation Material"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:operation.vehicle.materials,op_measUnit:0
+#: selection:operation.vehicle.materials,op_measUnit1:0
+#: selection:operation.vehicle.materials,op_measUnit2:0
+#: selection:optype,measUnit:0
+#: selection:optype,measUnit1:0
+#: selection:optype,measUnit2:0
+msgid "Weeks"
+msgstr "Weeks"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:operation.vehicle.materials,op_measUnit:0
+#: selection:operation.vehicle.materials,op_measUnit1:0
+#: selection:operation.vehicle.materials,op_measUnit2:0
+#: selection:optype,measUnit:0
+#: selection:optype,measUnit1:0
+#: selection:optype,measUnit2:0
+msgid "Years"
+msgstr "Years"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.module.module,description:avanzosc_mrp_preventive_master_data.module_meta_information
+msgid "\n"
+"    This module allows generating vehicle preventive orders automatically\n"
+"    "
+msgstr "\n"
+"    This module allows generating vehicle preventive orders automatically\n"
+"    "
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.material,product_uom:0
+msgid "Unit of Measure"
+msgstr "Unit of Measure"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "D"
+msgstr "D"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.vehicle.materials:0
+msgid "Op. Frecuency"
+msgstr "Op. Frecuency"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.vehicle.materials:0
+#: view:optype:0
+msgid "Operation time frequency"
+msgstr "Operation time frequency"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_margin_fre2:0
+#: field:optype,margin_fre2:0
+msgid "Frequency Margin 2"
+msgstr "Frequency Margin 2"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_description:0
+#: view:optype:0
+#: field:optype,description:0
+#: view:preventive.master:0
+#: field:preventive.master,opdescription:0
+#: view:preventive.proceed:0
+msgid "Description"
+msgstr "Description"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.model,name:avanzosc_mrp_preventive_master_data.model_operation_material
+msgid "New material line."
+msgstr "New material line."
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_margin_fre1:0
+#: field:optype,margin_fre1:0
+msgid "Frequency Margin 1"
+msgstr "Frequency Margin 1"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:fleet.vehicles,vehicles_ids:0
+#: field:preventive.master,vehicles_ids:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.material:0
+#: field:operation.vehicle.materials,material:0
+#: field:preventive.master,ope_material:0
+msgid "Material"
+msgstr "Material"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: code:addons/avanzosc_mrp_preventive_master_data/wizard/create_preventive_wizard.py:0
+#, python-format
+msgid "There is already an order created for this operation."
+msgstr "There is already an order created for this operation."
+
+#. module: avanzosc_mrp_preventive_master_data
+#: wizard_view:create.preventive.wizard,init:0
+msgid "Create preventive operations for defined parameters?"
+msgstr "Create preventive operations for defined parameters?"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:preventive.master,name:0
+msgid "Operation Ref. Name"
+msgstr "Operation Ref. Name"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.actions.act_window,name:avanzosc_mrp_preventive_master_data.action_optype_view
+msgid "Operation Type"
+msgstr "Operation Type"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.model,name:avanzosc_mrp_preventive_master_data.model_operation_vehicle_materials
+msgid "Operation - Material Relation"
+msgstr "Operation - Material Relation"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.vehicle.materials:0
+#: view:optype:0
+#: view:vehiclemodel:0
+msgid "form_string"
+msgstr "form_string"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:preventive.master,type:0
+msgid "Maintenance type"
+msgstr "Maintenance type"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "A"
+msgstr "A"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "C"
+msgstr "C"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "B"
+msgstr "B"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "E"
+msgstr "E"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:preventive.proceed:0
+msgid "Alert Information"
+msgstr "Alert Information"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "G"
+msgstr "G"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:preventive.master,type:0
+msgid "F"
+msgstr "F"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.vehicle.materials:0
+msgid "Op. Description"
+msgstr "Op. Description"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: help:optype,nexttime:0
+msgid "Expected time for the execution of the operation. hh:mm:ss"
+msgstr "Expected time for the execution of the operation. hh:mm:ss"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:operation.vehicle.materials,op_measUnit:0
+#: selection:operation.vehicle.materials,op_measUnit1:0
+#: selection:operation.vehicle.materials,op_measUnit2:0
+#: selection:optype,measUnit:0
+#: selection:optype,measUnit1:0
+#: selection:optype,measUnit2:0
+msgid "Months"
+msgstr "Months"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: selection:operation.vehicle.materials,op_measUnit:0
+#: selection:operation.vehicle.materials,op_measUnit1:0
+#: selection:operation.vehicle.materials,op_measUnit2:0
+#: selection:optype,measUnit:0
+#: selection:optype,measUnit1:0
+#: selection:optype,measUnit2:0
+msgid "Days"
+msgstr "Days"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:optype,km:0
+msgid "Km"
+msgstr "Km"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: code:addons/avanzosc_mrp_preventive_master_data/wizard/create_preventive_wizard.py:0
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.vehicle.materials:0
+msgid "Materials"
+msgstr "Materials"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:preventive.master:0
+msgid "Vehicle list for the preventive operations"
+msgstr "Vehicle list for the preventive operations"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_measUnit:0
+#: field:operation.vehicle.materials,op_measUnit1:0
+#: field:operation.vehicle.materials,op_measUnit2:0
+#: field:optype,measUnit:0
+#: field:optype,measUnit1:0
+#: field:optype,measUnit2:0
+msgid "Meas."
+msgstr "Meas."
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:optype:0
+msgid "Operation Kilometers frequency"
+msgstr "Operation Kilometers frequency"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:preventive.master:0
+msgid "Preventive Info"
+msgstr "Preventive Info"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: wizard_view:create.preventive.wizard,init:0
+msgid "Create Preventive"
+msgstr "Create Preventive"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.material,product_uom_qty:0
+msgid "Quantity"
+msgstr "Quantity"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:operation.vehicle.materials:0
+#: field:operation.vehicle.materials,opmaster:0
+#: field:operation.vehicle.materials,optype_id:0
+msgid "Operations"
+msgstr "Operations"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.module.module,shortdesc:avanzosc_mrp_preventive_master_data.module_meta_information
+msgid "Avanzosc Mrp preventive master data"
+msgstr "Avanzosc Mrp preventive master data"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: view:optype:0
+#: view:preventive.master:0
+#: view:vehiclemodel:0
+msgid "tree_string"
+msgstr "tree_string"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.ui.menu,name:avanzosc_mrp_preventive_master_data.optype_menu
+msgid "Operations type"
+msgstr "Operations type"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_margin_km1:0
+#: field:optype,margin_km1:0
+msgid "Km. Margin 1"
+msgstr "Km. Margin 1"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_margin_km2:0
+#: field:optype,margin_km2:0
+msgid "Km. Margin 2"
+msgstr "Km. Margin 2"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.actions.act_window,name:avanzosc_mrp_preventive_master_data.action_vehiclemodel_view
+#: model:ir.ui.menu,name:avanzosc_mrp_preventive_master_data.vehiclemodel_menu
+#: field:preventive.master,vehiclemodel:0
+msgid "Vehicle Model"
+msgstr "Vehicle Model"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: wizard_button:create.preventive.wizard,init,create:0
+msgid "Accept"
+msgstr "Accept"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.material,product_id:0
+msgid "Product"
+msgstr "Product"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: code:addons/avanzosc_mrp_preventive_master_data/wizard/create_preventive_wizard.py:0
+#, python-format
+msgid "Create Order"
+msgstr "Create Order"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,op_frequency:0
+#: field:optype,frequency:0
+msgid "Frequency"
+msgstr "Frequency"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.model,name:avanzosc_mrp_preventive_master_data.model_preventive_master
+msgid "preventive.master"
+msgstr "preventive.master"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: wizard_button:create.preventive.wizard,init,end:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: help:operation.vehicle.materials,op_frequency:0
+#: help:optype,frequency:0
+msgid "Estimated time for the next operation."
+msgstr "Estimated time for the next operation."
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.vehicle.materials,name:0
+#: field:optype,name:0
+#: field:vehiclemodel,name:0
+msgid "Name"
+msgstr "Name"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: model:ir.actions.act_window,name:avanzosc_mrp_preventive_master_data.act_preventive_proceed
+#: model:ir.ui.menu,name:avanzosc_mrp_preventive_master_data.Preventive_proceed
+#: view:preventive.proceed:0
+msgid "Preventive to done"
+msgstr "Preventive to done"
+
+#. module: avanzosc_mrp_preventive_master_data
+#: field:operation.material,op_vehi_mat:0
+msgid "Operation"
+msgstr "Operation"
+

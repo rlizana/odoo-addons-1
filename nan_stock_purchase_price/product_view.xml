@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<!-- Product view modification -->
+	<record model="ir.ui.view" id="product_last_purchase_price_form">
+		<field name="name">product.product.last.purchase.price.form</field>
+		<field name="model">product.product</field>
+		<field name="type">form</field>
+		<field name="inherit_id" ref="product.product_normal_form_view" />
+		<field name="arch" type="xml">
+			<field name="standard_price" position="after">
+				<field name="last_purchase_price" />
+			</field>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="product_last_purchase_price_tree">
+		<field name="name">product.product.last.purchase.price.tree3</field>
+		<field name="model">product.product</field>
+		<field name="type">tree</field>
+		<field name="inherit_id" ref="product.product_product_tree_view" />
+		<field name="arch" type="xml">
+			<field name="standard_price" position="after">
+				<field name="last_purchase_price" />
+			</field>
+		</field>
+	</record>
+</data>
+</openerp>
+

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	
+		<!-- =============================================== Vehicle Tire View =========================================== -->
+		
+		
+		<!-- Vehicle form view tire mng tap add -->
+		<record id="fleet_vehicle_tire_form_inherit" model="ir.ui.view">
+			<field name="name">fleet.vehicle.inherit</field>
+			<field name="type">form</field>
+			<field name="model">fleet.vehicles</field>
+			<field name="inherit_id"
+				ref="avanzosc_fleet_vehicles_extension.fleet_vehicle_services" />
+			<field name="arch" type="xml">
+				<data>
+					<xpath
+						expr="//form/notebook/page[@string='Additional Details']/group/field[@name='tires']"
+						position="replace">
+					</xpath>
+					<!-- avanzosc_fleet_vehicles_extension.fleet_vehicle_services -->
+					<xpath expr="//notebook/page[@string='Extra Information']"
+						position="after">
+						<page string="Tires Management Information">
+						<group col="8"  string="Tire Information" >
+							<field name="buslocat" domain="[('name','=',name)]"/>
+							<field name="tires"  />
+							<field name="axles" />
+							<button name="%(action_button_view)d" string="Tire Update" type="action" icon="gtk-ok"/>
+						</group>
+						<newline></newline>
+						<group col="6" string="Front Axle" >
+							<field name="f_l_tire" />
+							<field name="f_r_tire" />
+						</group>
+						<newline></newline>
+						<group col="10" string="Middle Axle" attrs="{'invisible':[('axles','=','2axle')]}">							
+							<field name="m_l_tire1" />
+							<field name="m_r_tire1" />
+							<field name="m_l_tire2" />
+							<field name="m_r_tire2" />
+						</group>
+						<newline></newline>
+						<group col="6" string="Rear Axle">
+							<field name="r_l_tire1" />
+							<field name="r_r_tire1" />
+							<group attrs="{'invisible':[('axles','=','3axle')]}">
+								<group  attrs="{'invisible':[('tires','=',4)]}">
+									<field name="r_l_tire2" />
+									<field name="r_r_tire2" />
+								</group>
+							</group>
+						</group>
+						<newline></newline>
+						<field name="schema" widget = "image" img_width = "400" img_height = "200" width = "400" height="200" nolabel = "1"/>
+						</page>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+	<!-- =============================================== TIRE MANAGEMENT MODULE VIEW =========================================== -->
+	
+	
+	<record id="view_production_lot_tree_inherit" model="ir.ui.view">
+		<field name="name">stock.production.lot.tree.inherit</field>
+		<field name="model">stock.production.lot</field>
+		<field name="inherit_id" ref="stock.view_production_lot_tree" />
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="/tree/field[@name='product_id']" position="after">
+					<field name="tire_km" select="1"/>
+				</xpath>
+			</data>
+		</field>
+	</record>	
+	
+	<record id="view_production_lot_form_inherit" model="ir.ui.view">
+		<field name="name">stock.production.lot.form.inherit</field>
+		<field name="model">stock.production.lot</field>
+		<field name="inherit_id" ref="stock.view_production_lot_form" />
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="/form/group/field[@name='date']" position="after">
+					<field name="company_id" required ="1"/>
+					<field name="tire_km" select="1"/>
+				</xpath>
+				<xpath expr="/form/notebook"
+					position="replace"> 
+					<group colspan="4">
+						<notebook>
+							<page string="Moves">
+								<field name="prod_move" nolabel="1" height="450" />
+							</page>
+							<page string="Revisions">
+								<field colspan="4" name="revisions" nolabel="1" height="250" />
+							</page>
+							<page string="Tire Data">
+								<field name="tire_lot_data" nolabel ="1"/>
+							</page>
+							<page string="Odometros">
+								<field name="odometers" nolabel ="1"/>
+							</page>
+						</notebook>
+					</group>
+				</xpath>
+			</data>
+		</field>
+	</record>
+
+	<record id="action_mng_tires" model="ir.actions.act_window">
+		<field name="name">Tires</field>
+		<field name="res_model">stock.production.lot</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem id="mng_tires_form" name="Tires Management" parent="mng_module_menu"
+		action="action_mng_tires" />
+		
+	<!-- =============================================== TIRE STOCK LOT VIEW =========================================== -->
+
+
+	<record id="view_tire_stock_lot_tree" model="ir.ui.view">
+		<field name="name">tire.stock.lot.tree</field>
+		<field name="model">tire.stock.lot</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Tire Data">
+				<field name="name" />
+				<field name="origin" />
+				<field name="destination" />
+				<field name="data" />
+				<field name="odomold" />
+				<field name="odomnew" />
+				<field name="tire_km" />
+				<field name="tire_km_total" />
+			</tree>
+		</field>
+	</record>
+	
+	</data>
+</openerp>

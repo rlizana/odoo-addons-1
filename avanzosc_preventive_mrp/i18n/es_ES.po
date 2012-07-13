@@ -1,0 +1,234 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_preventive_mrp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.15\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-29 10:04:45+0000\n"
+"PO-Revision-Date: 2012-02-29 11:16+0100\n"
+"Last-Translator: Daniel <danielcampos@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.actions.wizard,name:avanzosc_preventive_mrp.wizard_repair_create
+#: wizard_view:repair.create.wizard,init:0
+#: wizard_view:repair.create.wizard,next:0
+msgid "Repair Create"
+msgstr "Crear Reparación"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:repair.create.wizard,error:0
+msgid "The preventive repair must be on same vehicle! "
+msgstr "¡La reparación preventiva debe ser sobre un mismo vehiculo!"
+
+#. module: avanzosc_preventive_mrp
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "The Object name must start with x_ and not contain any special character !"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.actions.wizard,name:avanzosc_preventive_mrp.wizard_alert_calc
+msgid "Calculate Alerts"
+msgstr "Calcular Alertas"
+
+#. module: avanzosc_preventive_mrp
+#: view:alert.eval:0
+msgid "Vehicle Alert"
+msgstr "Alertas por Vehiculo"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:repair.create.wizard,error:0
+msgid "Error at repair creation"
+msgstr "Error al crear reparación"
+
+#. module: avanzosc_preventive_mrp
+#: help:alert.eval,kmreal:0
+#: help:alert.evaluate.wizard,init,kmreal:0
+msgid "If the value is 0, the current mileage will be used."
+msgstr "Si el valor es 0 se usará el kilometraje actual."
+
+#. module: avanzosc_preventive_mrp
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Nombre del modelo inválido en la definición de acción."
+
+#. module: avanzosc_preventive_mrp
+#: field:alert.eval,vehicle:0
+#: wizard_field:alert.evaluate.wizard,init,vehicles:0
+msgid "Vehicle"
+msgstr "Vehiculo"
+
+#. module: avanzosc_preventive_mrp
+#: view:fleet.vehicles:0
+msgid "Preventive orders"
+msgstr "Ordenes Preventivas"
+
+#. module: avanzosc_preventive_mrp
+#: view:alert.eval:0
+#: wizard_view:alert.evaluate.wizard,init:0
+msgid "Choose vehicle and its real milleage"
+msgstr "Elige el vehículo y su Kilometraje real"
+
+#. module: avanzosc_preventive_mrp
+#: view:mrp.repair:0
+msgid "Preventive Proceed"
+msgstr "Proceso Preventivo"
+
+#. module: avanzosc_preventive_mrp
+#: code:addons/avanzosc_preventive_mrp/wizard/wizard_prev_op.py:0
+#, python-format
+msgid "Orden Preventiva "
+msgstr "Orden Preventiva "
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:repair.create.wizard,next:0
+msgid "Preventive repair created!"
+msgstr "¡Reparación preventiva creada!"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:repair.create.wizard,init:0
+msgid "Create repair for the selected alerts?"
+msgstr "¿Crear reparación para las alertas seleccionadas?"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:calc.alert.wizard,init:0
+msgid "Calculate Alerts?"
+msgstr "¿Calcular Alertas?"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:calc.alert.wizard,calculate:0
+msgid "Alerts evaluated and created!"
+msgstr "¡Alertas evaluadas y creadas!"
+
+#. module: avanzosc_preventive_mrp
+#: view:alert.eval:0
+#: wizard_button:calc.alert.wizard,init,calculate:0
+msgid "Evaluate"
+msgstr "Evaluar"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.actions.act_window,name:avanzosc_preventive_mrp.action_alert_eval
+#: model:ir.ui.menu,name:avanzosc_preventive_mrp.menu_alert_calc
+msgid "Entry vehicle for preventive maintenance"
+msgstr "Entrada de vehículo para mantenimiento preventivo"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:calc.alert.wizard,calculate:0
+#: wizard_view:calc.alert.wizard,init:0
+msgid "Alert evaluation wizard"
+msgstr "Wizard de evaluación de alertas"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_view:alert.evaluate.wizard,init:0
+#: model:ir.model,name:avanzosc_preventive_mrp.model_alert_eval
+msgid "Vehicle Alerts"
+msgstr "Alertas por Vehiculo"
+
+#. module: avanzosc_preventive_mrp
+#: field:preventive.proceed,active:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: avanzosc_preventive_mrp
+#: field:mrp.repair,prevproc:0
+msgid "Preventive Orders"
+msgstr "Ordenes Preventivas"
+
+#. module: avanzosc_preventive_mrp
+#: wizard_field:alert.evaluate.wizard,init,kmreal:0
+msgid "Km Real"
+msgstr "Km Real"
+
+#. module: avanzosc_preventive_mrp
+#: constraint:ir.cron:0
+msgid "Invalid arguments"
+msgstr "Argumentos Invalidos"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.actions.wizard,name:avanzosc_preventive_mrp.wizard_alert_evaluate
+msgid "Evaluate vehicle alerts"
+msgstr "Evaluar alertas por vehículo"
+
+#. module: avanzosc_preventive_mrp
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "Invalid XML for View Architecture!"
+
+#. module: avanzosc_preventive_mrp
+#: code:addons/avanzosc_preventive_mrp/wizard/create_order_wizard.py:0
+#: code:addons/avanzosc_preventive_mrp/wizard/vehicle_orders_wizard.py:0
+#, python-format
+msgid "There is already an order created for this operation."
+msgstr "Ya existe actualmente una orden creada para esta operación."
+
+#. module: avanzosc_preventive_mrp
+#: code:addons/avanzosc_preventive_mrp/wizard/create_order_wizard.py:0
+#: code:addons/avanzosc_preventive_mrp/wizard/vehicle_orders_wizard.py:0
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.module.module,shortdesc:avanzosc_preventive_mrp.module_meta_information
+msgid "Preventive MRP & Fleet Manager Extension"
+msgstr "Preventive MRP & Fleet Manager Extension"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.module.module,description:avanzosc_preventive_mrp.module_meta_information
+msgid ""
+" \n"
+"        This module ables to create repair orders using alarms.\n"
+"        Create new repair orders for the vehicles, using the preventive alarms defined in the module avanzosc_mrp_preventive_master_data.\n"
+"    "
+msgstr ""
+" \n"
+"        Este módulo permite crear ordenes de reparación usando alarmas.\n"
+"        Crea nuevas ordenes de reparación para vehiculos, usando las alarmas preventivas definidas en el módulo avanzosc_mrp_preventive_master_data.\n"
+"    "
+
+#. module: avanzosc_preventive_mrp
+#: wizard_button:alert.evaluate.wizard,init,next:0
+#: wizard_button:calc.alert.wizard,calculate,end:0
+#: wizard_button:repair.create.wizard,error,end:0
+#: wizard_button:repair.create.wizard,init,create:0
+#: wizard_button:repair.create.wizard,next,final:0
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: avanzosc_preventive_mrp
+#: code:addons/avanzosc_preventive_mrp/wizard/create_order_wizard.py:0
+#: code:addons/avanzosc_preventive_mrp/wizard/vehicle_orders_wizard.py:0
+#, python-format
+msgid "Create Order"
+msgstr "Crear Orden"
+
+#. module: avanzosc_preventive_mrp
+#: view:preventive.proceed:0
+msgid "Preventive order"
+msgstr "Orden Preventiva"
+
+#. module: avanzosc_preventive_mrp
+#: field:alert.eval,kmreal:0
+msgid "Real Milleage"
+msgstr "Km Real"
+
+#. module: avanzosc_preventive_mrp
+#: view:alert.eval:0
+#: wizard_button:alert.evaluate.wizard,init,end:0
+#: wizard_button:calc.alert.wizard,init,end:0
+#: wizard_button:repair.create.wizard,init,end:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: avanzosc_preventive_mrp
+#: model:ir.actions.act_window,name:avanzosc_preventive_mrp.act_preventive_proceed_1
+#: model:ir.ui.menu,name:avanzosc_preventive_mrp.Preventive_proceed_1
+msgid "Preventive to done"
+msgstr "Preventivas por realizar"
+

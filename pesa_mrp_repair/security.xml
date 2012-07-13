@@ -1,0 +1,216 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data noupdate="1">
+
+        <record id="res_roles_repair" model="res.roles"> 
+            <field eval="&quot;&quot;&quot;Repair&quot;&quot;&quot;" name="name"/>                
+        </record>
+        
+        <record id="mrp_repair.trans_repair_repair_end" model="workflow.transition"> 
+            <field name="role_id" ref="res_roles_repair"/>
+        </record>
+        
+        <record model="workflow.transition" id="mrp_repair.trans_repair_repair_end">
+        <field name="act_from" ref="act_validate1" />
+        <field name="act_to" ref="act_refuse" />
+        <field name="signal">refuse</field>
+        <field name="group_id" ref="base.group_hr_user"/>
+    </record>
+    
+           <record id="trans_repair_repair_end" model="workflow.transition">
+            <field name="act_from" ref="act_repair_start"/>
+            <field name="act_to" ref="act_repair_end"/>
+            <field name="signal">action_repair_end</field>
+        </record>
+                                                    
+        <record id="mrp_repair.trans_reapir_end_invoice" model="workflow.transition"> 
+            <field name="role_id" ref="res_roles_repair"/>
+        </record>
+        
+<!--		Avanzosc code(Dani)        -->
+        
+        <record id="mrp_repair.trans_repair_repair_end" model="workflow.transition"> 
+            <field name="role_id" ref="res_roles_repair"/>
+        </record>
+        
+        <record id="mrp_repair.act_repair_end" model="workflow.activity"> 
+            <field name="role_id" ref="res_roles_repair"/>
+        </record>
+        
+<!--        end Avanzosc code(Dani)	 -->
+        
+		<record id="res_groups_mrprepairpesa0" model="res.groups">
+			<field eval="[(6,0,[ref('menu_mrp_repair_wizard'),ref('mrp.menu_mrp_root')])]" name="menu_access"/>
+			<field eval="[(6,0,[])]" name="rule_groups"/>
+			<field eval="[(6,0,[])]" name="users"/>
+			<field eval="&quot;&quot;&quot;Repair User&quot;&quot;&quot;" name="name"/>
+		</record>
+
+		<record id="res_groups_mrprepairpesa1" model="res.groups">
+			<field eval="[(6,0,[ref('menu_mrp_repair_wizard'),ref('mrp.menu_mrp_root')])]" name="menu_access"/>
+			<field eval="[(6,0,[])]" name="rule_groups"/>
+			<field eval="[(6,0,[])]" name="users"/>
+			<field eval="&quot;&quot;&quot;Repair Manager&quot;&quot;&quot;" name="name"/>
+		</record>
+
+		<record id="ir_model_access_manager1" model="ir.model.access">
+			<field name="model_id" ref="base.model_res_users"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;User&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+		<record id="ir_model_access_manager2" model="ir.model.access">
+			<field name="model_id" ref="mrp_repair.model_mrp_repair"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Repair&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+		<record id="ir_model_access_manager3" model="ir.model.access">
+			<field name="model_id" ref="mrp_repair.model_mrp_repair_line"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Repair Operation lines&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+		<record id="ir_model_access_manager4" model="ir.model.access">
+			<field name="model_id" ref="mrp_repair.model_mrp_repair_fee"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Repair Fee lines &quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+		<record id="ir_model_access_manager0" model="ir.model.access">
+			<field name="model_id" ref="product.model_product_product"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Productos&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+		<record id="ir_model_access_manager5" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_move"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Stock Move&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+
+		<record id="ir_model_access_manager6" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_picking"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Picking&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+	
+	<!--		Avanzosc code(Dani)        -->	
+		
+		<record id="ir_model_access_manager7" model="ir.model.access">
+			<field name="model_id" ref="hr.model_hr_employee"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;hr.employee&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa1"/>
+		</record>
+		
+	<!--        end Avanzosc code(Dani)		-->
+        
+		<record id="ir_model_access_user1" model="ir.model.access">
+			<field name="model_id" ref="base.model_res_users"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;User&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		<record id="ir_model_access_user2" model="ir.model.access">
+			<field name="model_id" ref="mrp_repair.model_mrp_repair"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Repair&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		<record id="ir_model_access_user3" model="ir.model.access">
+			<field name="model_id" ref="mrp_repair.model_mrp_repair_line"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Repair Operation lines&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		<record id="ir_model_access_user4" model="ir.model.access">
+			<field name="model_id" ref="mrp_repair.model_mrp_repair_fee"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Repair Fee lines &quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		<record id="ir_model_access_user0" model="ir.model.access">
+			<field name="model_id" ref="product.model_product_product"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Productos&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		<record id="ir_model_access_user5" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_move"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Stock Move&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+
+		<record id="ir_model_access_user6" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_picking"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;Picking&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		
+			<!--		Avanzosc code(Dani)        -->	
+		
+		<record id="ir_model_access_user7" model="ir.model.access">
+			<field name="model_id" ref="hr.model_hr_employee"/>
+			<field eval="1" name="perm_read"/>
+			<field eval="&quot;&quot;&quot;hr.employee&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field name="group_id" ref="res_groups_mrprepairpesa0"/>
+		</record>
+		
+	<!--        end Avanzosc code(Dani)		-->
+		
+		
+	</data>
+</openerp>

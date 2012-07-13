@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+<!-- 		<wizard id="wizard_create_preventive" -->
+<!--             string="Create Preventives" model="preventive.master" name="action_vehicle_operation" multi="False" /> -->
+            
+         	<!-- Result Window -->
+         	 
+     	<record id="wizard_vehicle_operation_form" model="ir.ui.view">
+			<field name="name">wizard.vehicle.operation.form</field>
+			<field name="model">wizard.create.preventive</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">	
+    			<form string="Create Preventive">
+    				<separator string="Create preventive operations for defined parameters?" colspan="4"/>
+    				<button  icon="gtk-ok" name="create_preventive" string="Accept" type="object"/>
+    				<button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+            	</form>
+        	</field>
+        </record>   		
+ 
+			<!--  Action of vehicle operation wizard-->
+	        
+    	<record id="action_vehicle_operation" model="ir.actions.act_window">
+        	<field name="name">create preventives</field>
+        	<field name="res_model">wizard.create.preventive</field>
+        	<field name="view_type">form</field>
+        	<field name="view_mode">form</field>
+       		<field name="view_id" ref="wizard_vehicle_operation_form"/>
+       		<field name="target">new</field>
+    	</record> 		
+    
+    
+    	<act_window 
+			name= "Create Preventives" 
+			res_model= "wizard.create.preventive"
+			src_model= "preventive.master" 
+			view_mode= "form" 
+			target= "new" 
+			key2= "client_action_multi"
+			id="act_vehicle_operation" />
+	
+            
+      <!-- =======================================  Inherit view vehicle_pre_op_form ============================================ -->
+      
+      <record id="vehicle_pre_op_form_inherit" model="ir.ui.view">
+		<field name="name">vehicle.pre.op.form.inherit</field>
+		<field name="model">vehicle.prev.op</field>
+		<field name="inherit_id" ref="vehicle_pre_op_form"/>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<data>
+				<xpath  expr="/form/group/field[@name='vehicle']" position="before">
+					<field name="opname"/>
+				</xpath>				
+			</data>
+		</field>
+		</record>
+		
+	</data>
+</openerp>

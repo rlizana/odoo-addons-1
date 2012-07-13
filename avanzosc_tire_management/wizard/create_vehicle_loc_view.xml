@@ -1,0 +1,164 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+	
+	<!-- =======================================  Wizard Tire configuration ============================================ -->
+
+	<menuitem id="mng_module_menu" name="Tire control Management"
+		parent="fleet_manager.menu_fleet_manager" />
+		
+	<record id="view_company_config" model="ir.ui.view">
+		<field name="name">view.comp.conf.form</field>
+		<field name="model">wizard.create.locations</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Tire configuration for defined company">
+				<separator string="Configuration Menu" colspan="4" />
+				<field name = "company" on_change="onchange_company(company)"/>
+				<group colspan="4" col="6">
+					<group col="4"  string="Location configuration">
+						<field name = "tire_stock"/>
+						<field name = "retread"/>
+						<field name = "scratch"/>
+						<field name = "waste"/>
+						<field name = "flatire"/>
+					</group>
+					<newline/>
+					<group col="3"  string="Schema configuration">
+						<field name = "schema4"/>
+						<field name = "schema6"/>
+						<field name = "schema8"/>
+					</group>
+					<newline/>
+					<group>
+						<button icon="gtk-cancel" special="cancel" string="Cancel" />
+						<button icon="gtk-ok" name="save_config" string="Save"
+						type="object" />
+					</group>
+				</group>
+			</form>
+		</field>
+	</record>
+	
+	<record id="action_tire_config" model="ir.actions.act_window">
+		<field name="name">Create Locations for all vehicle list</field>
+		<field name="res_model">wizard.create.locations</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="view_company_config" />
+		<field name="target">new</field>
+	</record>
+	
+			<!-- Create Vehicle location menu -->	
+	<menuitem id="wizard_tire_config" name="Tire Configuration"
+		action="action_tire_config" parent="mng_module_menu" />
+	
+	<!-- =======================================  Wizard view create locations ============================================ -->
+
+	
+	<record id="view_vehic_loc_view" model="ir.ui.view">
+		<field name="name">view.vehic.loc.form</field>
+		<field name="model">wizard.create.locations</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Create Locations">
+				<separator string="Create Locations for all vehicle list?" colspan="4" />
+				<group colspan="4" col="6">
+					<field name = "company" on_change="onchange_company(company)"/>
+<!-- 					<group> -->
+<!-- 						<field name = "tire_stock" readonly="1"/> -->
+<!-- 						<field name = "retread" readonly="1"/> -->
+<!-- 						<field name = "scratch" readonly="1"/> -->
+<!-- 						<field name = "waste" readonly="1"/> -->
+<!-- 						<field name = "flatire" readonly="1"/> -->
+<!-- 					</group> -->
+					<newline/>
+					<button icon="gtk-cancel" special="cancel" string="Cancel" />
+					<button icon="gtk-ok" name="create_locations" string="Create"
+						type="object" />
+				</group>
+			</form>
+		</field>
+	</record>
+	
+	<record id="action_create_locations" model="ir.actions.act_window">
+		<field name="name">Create Locations for all vehicle list</field>
+		<field name="res_model">wizard.create.locations</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="view_vehic_loc_view" />
+		<field name="target">new</field>
+	</record>
+	
+			<!-- Create Vehicle location menu -->	
+	<menuitem id="wizard_vehicle_locations" name="Create Locations for all vehicles"
+		action="action_create_locations" parent="mng_module_menu" />
+				
+			<!-- Tire mount menu -->
+			
+	<wizard id="wizard_tire_mount" 
+            string="Tire Move/Mount" model="stock.production.lot" name="tire.mount" multi="False" />
+            
+            <!-- Tire interchange menu -->
+			
+	<wizard id="wizard_interchange" 
+            string="Tire Interchange" model="stock.production.lot" name="tire.interchange" multi="False" />
+			
+		 <!-- Tire retread menu -->
+		 
+	<wizard id="wizard_tire_retread" 
+            string="Tire Retread" model="stock.production.lot" name="tire.retread" multi="False" />	
+          
+        <!-- Scratch menu -->
+		 
+	<wizard id="wizard_scratch" 
+            string="Tire Scratch" model="stock.production.lot" name="tire.scratch" multi="False" />
+         
+         <!-- Flat Tire menu -->
+		 
+	<wizard id="wizard_flatire" 
+            string="Flat Tire" model="stock.production.lot" name="flatire" multi="False" />
+			
+		 <!-- Tire waste menu -->
+		 
+	<wizard id="wizard_tire_waste" 
+            string="Tire Waste" model="stock.production.lot" name="tire.waste" multi="False" />
+			
+
+            
+	<!-- =========================================== WIZARD TIRE MOUNT BUTTON VIEW =========================================== -->	
+	
+	        <record id="mount_button_view" model="ir.ui.view">
+            <field name="name">mount.button.view</field>
+            <field name="model">wizard.tirenolog</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Tire Mount">
+            	<separator string="Choose tire and location" colspan="4"/>
+            		<group colspan="4" col="6">
+            			<field name = "bus"/>
+            			<field name = "bus_locat" invisible = "1"/>
+            			<field name = "tire_locat" domain="[('location_id','=',bus_locat)]"/>
+            			<field name = "tire" />
+            			
+            		</group>
+    				<separator string="Alert!" colspan="4"/>
+    				<label string="This move will not save the log in the system!" />
+                   <group colspan="4" col="6">
+                   		<button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                   		<button  icon="gtk-ok" name="tire_mount" string="Mount anyway" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+     <record id="action_button_view" model="ir.actions.act_window">
+			<field name="name">acc.button.view</field>
+			<field name="res_model">wizard.tirenolog</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+	</record>
+            
+	</data>
+</openerp>

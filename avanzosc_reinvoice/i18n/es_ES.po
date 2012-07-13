@@ -1,0 +1,118 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_reinvoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.15\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-03-12 14:59:10+0000\n"
+"PO-Revision-Date: 2012-03-12 16:48+0100\n"
+"Last-Translator: Daniel <danielcampos@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_reinvoice
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#, python-format
+msgid "UserError"
+msgstr "UserError"
+
+#. module: avanzosc_reinvoice
+#: selection:reinvoice.wizard,init,type:0
+msgid "Customer Refund"
+msgstr "Factura rectificativa (abono) de cliente"
+
+#. module: avanzosc_reinvoice
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#, python-format
+msgid "Invoice is not created"
+msgstr "No se ha creado factura"
+
+#. module: avanzosc_reinvoice
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#, python-format
+msgid "Invoice cannot be created from Packing."
+msgstr "No se puede crear factura desde albaranes."
+
+#. module: avanzosc_reinvoice
+#: model:ir.module.module,description:avanzosc_reinvoice.module_meta_information
+msgid ""
+" \n"
+"        This module allows to make an invoice from an already invoiced stock-picking.\n"
+"    "
+msgstr ""
+" \n"
+"     Este módulo permite crear facturas desde albaranes ya facturados.\n"
+"    "
+
+#. module: avanzosc_reinvoice
+#: selection:reinvoice.wizard,init,type:0
+msgid "Customer Invoice"
+msgstr "Facturas de clientes"
+
+#. module: avanzosc_reinvoice
+#: wizard_view:reinvoice.wizard,init:0
+msgid "Create invoices"
+msgstr "Crear facturas"
+
+#. module: avanzosc_reinvoice
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#, python-format
+msgid "Invoice is already created."
+msgstr "La factura ya está creada"
+
+#. module: avanzosc_reinvoice
+#: selection:reinvoice.wizard,init,type:0
+msgid "Supplier Invoice"
+msgstr "Factura de proveedor"
+
+#. module: avanzosc_reinvoice
+#: wizard_button:reinvoice.wizard,init,create_invoice:0
+msgid "Create invoice"
+msgstr "Crear factura"
+
+#. module: avanzosc_reinvoice
+#: model:ir.module.module,shortdesc:avanzosc_reinvoice.module_meta_information
+msgid "AvanzOSC Reinvoice"
+msgstr "AvanzOSC Reinvoice"
+
+#. module: avanzosc_reinvoice
+#: wizard_field:reinvoice.wizard,init,group:0
+msgid "Group by partner"
+msgstr "Agrupar por empresa"
+
+#. module: avanzosc_reinvoice
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#, python-format
+msgid "Error"
+msgstr "Error"
+
+#. module: avanzosc_reinvoice
+#: wizard_button:reinvoice.wizard,init,end:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: avanzosc_reinvoice
+#: selection:reinvoice.wizard,init,type:0
+msgid "Supplier Refund"
+msgstr "Reembolso a Proveedor"
+
+#. module: avanzosc_reinvoice
+#: model:ir.actions.wizard,name:avanzosc_reinvoice.wizard_reinvoice
+msgid "Reinvoice stock-pickings"
+msgstr "Refacturar albaranes"
+
+#. module: avanzosc_reinvoice
+#: wizard_field:reinvoice.wizard,init,type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: avanzosc_reinvoice
+#: wizard_field:reinvoice.wizard,init,journal_id:0
+msgid "Destination Journal"
+msgstr "Diario de destino"
+

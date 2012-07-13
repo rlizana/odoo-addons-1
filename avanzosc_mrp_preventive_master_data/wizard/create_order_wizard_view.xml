@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<wizard id="wizard_vehicle_prev_op"
+            string="Repair case" model="vehicle.prev.op" name="create.order.wizard" multi="False" />
+	</data>
+</openerp>

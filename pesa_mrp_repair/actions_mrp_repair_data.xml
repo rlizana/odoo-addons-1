@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+        <record id="ir_actions_act_window_view_1" model="ir.actions.act_window.view">
+            <field name="act_window_id" ref="action_repair_wizard"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="mrp_repair_wizard_select_tree"/>
+            <field eval="18" name="sequence"/>
+        </record>
+	</data>
+	<data>
+        <record id="ir_actions_act_window_view_2" model="ir.actions.act_window.view">
+            <field name="act_window_id" ref="action_repair_wizard"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mrp_repair_wizard_form"/>
+            <field eval="19" name="sequence"/>
+        </record>
+	</data>
+</openerp>

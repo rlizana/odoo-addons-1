@@ -1,0 +1,2 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_fleet_vehicle_manager_tire","tire.stock.lot","avanzosc_tire_management.model_tire_stock_lot","group_tire_manager",1,1,1,1

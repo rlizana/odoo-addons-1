@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<wizard id="wizard_mrp_repair" groups = "group_chief"
+            string="Repair case" model="crm.case" name="wizard.crmext" multi="False" />
+	</data>
+</openerp>

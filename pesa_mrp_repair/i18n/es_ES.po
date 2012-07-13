@@ -1,0 +1,234 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* pesa_mrp_repair
+#
+# Jordi Pasquina <jordi@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.14\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-02-16 16:28:26+0000\n"
+"PO-Revision-Date: 2011-02-16 17:29+0100\n"
+"Last-Translator: Jordi Pasquina <jordi@nan-tic.com>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+"X-Generator: Lokalize 1.0\n"
+
+#. module: pesa_mrp_repair
+#: model:ir.ui.menu,name:pesa_mrp_repair.menu_mrp_repair_wizard
+msgid "Repairs"
+msgstr "Reparaciones"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "History"
+msgstr "Historial"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Recreate Invoice"
+msgstr "Recrear factura"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Repairs order"
+msgstr "Órdenes de reparación"
+
+#. module: pesa_mrp_repair
+#: model:ir.module.module,description:pesa_mrp_repair.module_meta_information
+msgid "Modifies the original mrp_repair module to simplify repair form."
+msgstr "Modifica el modulo original mrp_repair para simplificar el formulario de reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Comments"
+msgstr "Descripción"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Set to Draft"
+msgstr "Cambiar a borrador"
+
+#. module: pesa_mrp_repair
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Nombre de modelo no válido en la definición de acción."
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Untaxed amount"
+msgstr "Base imponible"
+
+#. module: pesa_mrp_repair
+#: code:addons/pesa_mrp_repair/mrp_repair.py:0
+#, python-format
+msgid "No valid pricelist line found !"
+msgstr "Ninguna línea de lista de precios encontrada !"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: pesa_mrp_repair
+#: model:ir.module.module,shortdesc:pesa_mrp_repair.module_meta_information
+msgid "Pesa MRP Repair"
+msgstr "MRP Reparaciones Pesa"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Material"
+msgstr "Material"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Internal Notes"
+msgstr "Notas internas"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Hours"
+msgstr "Horas"
+
+#. module: pesa_mrp_repair
+#: field:mrp.repair.line,user_id:0
+msgid "User"
+msgstr "Usuario"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Confirm Repair"
+msgstr "Confirmar reparación"
+
+#. module: pesa_mrp_repair
+#: model:ir.actions.act_window,name:pesa_mrp_repair.action_repair_wizard
+msgid "action.repair.wizard"
+msgstr "action.repair.wizard"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Make Invoice"
+msgstr "Crear factura"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Quotation Notes"
+msgstr "Notas del presupuesto"
+
+#. module: pesa_mrp_repair
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "¡XML inválido para la definición de la vista!"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Compute"
+msgstr "Calcular"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Invoice Corrected"
+msgstr "Factura corregida"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Total amount"
+msgstr "Importe total"
+
+#. module: pesa_mrp_repair
+#: code:addons/pesa_mrp_repair/mrp_repair.py:0
+#, python-format
+msgid "Couldn't find a pricelist line matching this product and quantity.\nYou have to change either the product, the quantity or the pricelist."
+msgstr ""
+"No se puede encontrar una linea de lista de precios que coincida con este producto y cantidad.\nSe debe cambiar el producto, la cantidad o la "
+"lista de precios."
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Open Repair"
+msgstr "Abrir Reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "End Repair"
+msgstr "Fin reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Invoicing"
+msgstr "Facturación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Operations"
+msgstr "Operaciones"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Repair Line"
+msgstr "Línea reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "User Operations"
+msgstr "Operaciones de usuario"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Start Repair"
+msgstr "Iniciar reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Cancel Repair"
+msgstr "Cancelar reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Qty"
+msgstr "Cant."
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "States"
+msgstr "Estados"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Re-Open"
+msgstr "Re-Abrir"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Extra Info"
+msgstr "Información adicional"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "UoM"
+msgstr "UdM"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Fees"
+msgstr "Cargos"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Validate Repair"
+msgstr "Validar Reparación"
+
+#. module: pesa_mrp_repair
+#: view:mrp.repair:0
+msgid "Quality"
+msgstr "Calidad"
+
+

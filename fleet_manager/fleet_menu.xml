@@ -2,7 +2,7 @@
 <openerp>
 	<data>
 		<!-- Parent Menu on Right Panes -->
-		<menuitem id="menu_fleet_manager" name="Fleet Manager" />
+		<menuitem id="menu_fleet_manager" name="Fleet Manager" groups ="group_fleet_vehicle_manager" />
 
 		<!-- Master menus (tree parent) -->
 		<menuitem id="menu_fleet_manager_config" name="Configuration"

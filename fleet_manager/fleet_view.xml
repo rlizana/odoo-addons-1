@@ -442,8 +442,6 @@
 			<field name="arch" type="xml">
 				<field name="otherid" position="replace">
 					<field name="licensetyp" />
-					<field name="photo" widget="image" nolabel="1"
-						colspan="2" />
 				</field>
 			</field>
 		</record>

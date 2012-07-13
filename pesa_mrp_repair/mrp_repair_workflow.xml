@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wkf_repair" model="workflow">
+            <field name="name">mrp.repair.pesa</field>
+            <field name="osv">mrp.repair</field>
+            <field name="on_create">True</field>
+        </record>
+        
+        <!-- Activity -->
+        <record id="act_draft" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_repair"/>
+            <field name="flow_start">True</field>
+            <field name="name">draft</field>
+        </record>
+        <record id="act_open" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_repair"/>
+            <field name="name">open</field>
+            <field name="kind">function</field>
+            <field name="action">action_open()</field>
+            <field name="join_mode">XOR</field>
+        </record>
+        <record id="act_cancel" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_repair"/>
+            <field name="name">cancel</field>
+            <field name="kind">stopall</field>
+            <field name="action">action_cancel()</field>
+        </record>
+        <record id="act_preclose" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_repair"/>
+            <field name="name">preclose</field>
+            <field name="kind">function</field>
+            <field name="action">action_preclose()</field>
+        </record>
+        <record id="act_close" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_repair"/>
+            <field name="name">close</field>
+            <field name="kind">function</field>
+            <field name="action">repair_close()</field>
+        </record>
+
+
+        <!-- Transistion -->        
+        <record id="trans_draft_open" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_open"/>
+            <field name="signal">open</field>
+        </record>
+        <record id="trans_draft_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record id="trans_cancel_open" model="workflow.transition">
+            <field name="act_from" ref="act_cancel"/>
+            <field name="act_to" ref="act_open"/>
+            <field name="signal">reopen</field>
+        </record>
+        <record id="trans_open_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_open"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record id="trans_open_preclose" model="workflow.transition">
+            <field name="act_from" ref="act_open"/>
+            <field name="act_to" ref="act_preclose"/>
+            <field name="role_id" ref="res_roles_repair" />
+            <field name="signal">validate</field>
+        </record>
+        <record id="trans_preclose_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_preclose"/>
+            <field name="role_id" ref="res_roles_repair" />
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record id="trans_preclose_close" model="workflow.transition">
+            <field name="act_from" ref="act_preclose"/>
+            <field name="act_to" ref="act_close"/>
+            <field name="role_id" ref="res_roles_repair" />
+            <field name="signal">close</field>
+        </record>
+        <record id="trans_close_open" model="workflow.transition">
+            <field name="act_from" ref="act_close"/>
+            <field name="act_to" ref="act_open"/>
+            <field name="role_id" ref="res_roles_repair" />
+            <field name="signal">reopen</field>
+        </record>
+
+    </data>
+</openerp>
+

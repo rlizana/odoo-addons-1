@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record  model="ir.sequence.type" id="seq_type_preventive_operation">
+            <field name="name">Vehicle preventive operation</field>
+            <field name="code">vehicle.prev.op</field>
+        </record>
+        
+        <record model="ir.sequence" id="seq_preventive_operation">
+            <field name="name">Preventive Operation</field>
+            <field name="code">vehicle.prev.op</field>
+            <field name="prefix">VehPreOp-</field>
+            <field name="padding" eval="5" />
+        </record>
+    </data>
+</openerp>

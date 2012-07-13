@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+	 <record id="group_tire_manager" model="res.groups">
+        <field name="name">Tire Manager / Manager</field>
+    </record>
+    
+    <record model='ir.ui.menu' id='wizard_tire_config'>
+    	<field name="groups_id"
+    	eval="[(6,0,[ref('group_tire_manager')])]" />
+    </record>
+    
+    <record model='ir.ui.menu' id='wizard_vehicle_locations'>
+    	<field name="groups_id"
+    	eval="[(6,0,[ref('group_tire_manager')])]" />
+    </record>
+    
+</data>
+</openerp>
