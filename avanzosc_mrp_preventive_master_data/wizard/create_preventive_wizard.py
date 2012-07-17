@@ -33,10 +33,10 @@ class wizard_create_preventive (osv.osv_memory):
     """Create Vehicle Preventive operations """
     _name = 'wizard.create.preventive'
     _description = 'Create Vehicle Preventive operations'
-    _columns = {
-        'vehi_prevs': fields.one2many ('vehicle.prev.op','vehicle','Vehicle Preventive Operations',readonly=True),
-        'op_count': fields.integer('Counter',readonly=True)
-    }
+#    _columns = {
+#        'vehi_prevs': fields.one2many ('vehicle.prev.op','vehicle','Vehicle Preventive Operations',readonly=True),
+#        'op_count': fields.integer('Counter',readonly=True)
+#    }
     
     
     def create_preventive(self, cr, uid, data, context):
@@ -118,10 +118,33 @@ class wizard_create_preventive (osv.osv_memory):
                     prevent_oper = vehicle_operations.create(cr,uid, res) # Create preventive order
                     count_op = count_op+1
                     preventive_list.append(prevent_oper)
-        return {'vehi_prevs': preventive_list, 'op_count': count_op}
+        context = {'op_count':count_op,'vehi_prevs':preventive_list}       
+        values = {'context': context}
+        wizard = {
+            'type': 'ir.actions.act_window',
+            'name' : 'View Preventives',
+            'res_model': 'wizard.preventive.list',
+            'view_mode': 'form',
+            'target': 'new',
+            'context' : context,
+            #'domain': "[('vehi_prevs', 'in', %s)]" % preventive_list,
+            }
+        return wizard
+    
+wizard_create_preventive()
+
+class wizard_preventive_list (osv.osv_memory):
+    """Create Vehicle Preventive operations """
+    _name = 'wizard.preventive.list'
+    _description = 'Preventive list'
+    _columns = {
+        'vehi_prevs': fields.one2many ('vehicle.prev.op','vehicle','Vehicle Preventive Operations',readonly=True),
+        'op_count': fields.integer('Counter',readonly=True)
+    }
     
     
-wizard_create_preventive()  
+wizard_preventive_list()
+
      
      
 #class wizard_create_preventive (wizard.interface):    
