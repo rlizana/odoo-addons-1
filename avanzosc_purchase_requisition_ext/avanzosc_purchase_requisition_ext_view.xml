@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="view_purchase_requisition_form_ext">
+			<field name="name">view.purchase.requisition.form.ext</field>
+			<field name="model">purchase.requisition</field>
+			<field name="type">form</field>
+			<field name="priority" eval="17"/>
+			<field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//form//notebook//page[@string='Quotations']//label" position="replace">
+					<label colspan="4"  string=""/>
+					<button name="make_purchase_order_avanzosc" string="Create Purchase Order" type="object" icon="gtk-execute"
+                           attrs="{'readonly': [('state', '=', 'done')]}" />
+				</xpath>						
+			</field>
+		</record>
+		
+	</data>
+</openerp>
