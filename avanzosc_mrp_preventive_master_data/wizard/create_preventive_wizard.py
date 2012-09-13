@@ -33,11 +33,6 @@ class wizard_create_preventive (osv.osv_memory):
     """Create Vehicle Preventive operations """
     _name = 'wizard.create.preventive'
     _description = 'Create Vehicle Preventive operations'
-#    _columns = {
-#        'vehi_prevs': fields.one2many ('vehicle.prev.op','vehicle','Vehicle Preventive Operations',readonly=True),
-#        'op_count': fields.integer('Counter',readonly=True)
-#    }
-    
     
     def create_preventive(self, cr, uid, data, context):
         if context is None:
@@ -118,13 +113,15 @@ class wizard_create_preventive (osv.osv_memory):
                     prevent_oper = vehicle_operations.create(cr,uid, res) # Create preventive order
                     count_op = count_op+1
                     preventive_list.append(prevent_oper)
-        context = {'op_count':count_op,'vehi_prevs':preventive_list}       
+        context = {'op_count':count_op,'vehi_prevs':preventive_list}
+             
         values = {'context': context}
         wizard = {
             'type': 'ir.actions.act_window',
             'name' : 'View Preventives',
             'res_model': 'wizard.preventive.list',
             'view_mode': 'form',
+#            'res_id': context['vehi_prevs'],
             'target': 'new',
             'context' : context,
             #'domain': "[('vehi_prevs', 'in', %s)]" % preventive_list,
@@ -134,6 +131,45 @@ class wizard_create_preventive (osv.osv_memory):
 wizard_create_preventive()
 
 class wizard_preventive_list (osv.osv_memory):
+    
+
+    def _prev_list(self, cr, uid, context=None):
+        
+        """This function checks for precondition before wizard executes
+        @param self: The object pointer
+        @param cr: the current row, from the database cursor,
+        @param uid: the current user’s ID for security checks,
+        @param fields: List of fields for default value
+        @param context: A standard dictionary for contextual values
+        """
+        data = []
+        pool = pooler.get_pool(cr.dbname)
+        vehicle_operations = pool.get('vehicle.prev.op')
+        for prev_id in context['vehi_prevs'] :
+            vehi_pre = vehicle_operations.browse(cr,uid,prev_id)
+            res = {'name': vehi_pre.name,
+                #'opname': vehi_pre.opname,
+                'opdescription':vehi_pre.opdescription,
+                'vehicle': vehi_pre.vehicle.id,
+                'margin_km1':vehi_pre.margin_km1,
+                'margin_km2': vehi_pre.margin_km2,
+                'frequency': vehi_pre.frequency,
+                'measUnit': vehi_pre.measUnit,
+                'margin_fre1':vehi_pre.margin_fre1,
+                'measUnit1':vehi_pre.measUnit1,
+                'margin_fre2':vehi_pre.margin_fre2,
+                'measUnit2':vehi_pre.measUnit2,
+                'nexttime': vehi_pre.nexttime,
+                'lasttime': vehi_pre.lasttime,
+                         }
+            data.append(res)
+        return  data
+    
+    def _op_count (self, cr, uid, context=None):
+        
+        cont= len(context['vehi_prevs'])
+        return cont
+    
     """Create Vehicle Preventive operations """
     _name = 'wizard.preventive.list'
     _description = 'Preventive list'
@@ -142,50 +178,9 @@ class wizard_preventive_list (osv.osv_memory):
         'op_count': fields.integer('Counter',readonly=True)
     }
     
-    
+    _defaults = {
+                 'vehi_prevs': _prev_list,
+                 'op_count': _op_count 
+    }
+     
 wizard_preventive_list()
-
-     
-     
-#class wizard_create_preventive (wizard.interface):    
-#   
-##    
-#   
-#    
-#    form1 = '''<?xml version="1.0"?>
-#    <form string="Create Preventive">
-#    <separator string="Create preventive operations for defined parameters?" colspan="4"/>
-#    </form>'''
-#    form1_fields = {}
-#    
-#    form2 = '''<?xml version="1.0"?>
-#    <form string="Created Preventive List">
-#        <separator string="Number of operations created: " />
-#        <field name="op_count" nolabel="1" />
-#        <field name="vehi_prevs" nolabel="1" colspan="4" width="800" height="400"/>
-#     </form > '''
-#    form2_fields = {
-#    'vehi_prevs': {
-#        'string': 'Vehicle Preventive Operations',
-#        'type': 'one2many',
-#        'relation': 'vehicle.prev.op',
-#        'readonly': True,
-#    },
-#    'op_count': {'string': 'Counter',
-#                 'type': 'integer',
-#                 'readonly': True,},
-#    }
-#
-#    states = {
-#            'init': {
-#                     'actions': [],
-#                     'result': {'type': 'form', 'arch':form1, 'fields':form1_fields, 'state': [('end', 'Cancel','gtk-cancel'),('create', 'Accept','gtk-ok')]}
-#                    },
-#            'create' : {
-#                        'actions' : [_create_preventive],
-#                        'result': {'type': 'form', 'arch':form2, 'fields':form2_fields, 'state': [('end', 'Accept','gtk-ok')]}
-#                        
-#                        }
-#              }
-#    
-#wizard_create_preventive('create.preventive.wizard')

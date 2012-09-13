@@ -54,23 +54,6 @@
 			</form>
 		</field>
 	</record>
-	
-<!-- 	<act_window  -->
-<!-- 			name= "View Preventives"  -->
-<!-- 			res_model= "wizard.preventive.list" -->
-<!-- 			view_mode= "form"  -->
-<!-- 			target= "new"  -->
-<!-- 			id="act_vehicle_operation" /> -->
-	
-<!-- 	<record id="action_view_preventive_list" model="ir.actions.act_window"> -->
-<!-- 		<field name="name">action.preventive.list</field> -->
-<!-- 		<field name="res_model">wizard.create.preventive</field> -->
-<!-- 		<field name="view_type">form</field> -->
-<!-- 		<field name="view_mode">tree,form</field> -->
-<!-- 		<field name="view_id" ref="view_preventive_list" /> -->
-<!-- 		<field name="target">new</field> -->
-<!-- 	</record> -->
-         	 
 
             
       <!-- =======================================  Inherit view vehicle_pre_op_form ============================================ -->
