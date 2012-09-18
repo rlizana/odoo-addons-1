@@ -30,6 +30,15 @@ from osv import osv, fields
 from tools.translate import _
 
 
+class fleet_vehicles(osv.osv):
+    _inherit = 'fleet.vehicles'
+    
+    _columns = {
+                'order_list':fields.one2many('mrp.repair','idvehicle','Preventive Orders'),
+              
+                }
+fleet_vehicles()
+
 class vehicle_prev_op(osv.osv):
     _inherit = "vehicle.prev.op"
      
@@ -218,6 +227,7 @@ class mrp_repair (osv.osv):
     _inherit= 'mrp.repair'
     _columns = {
         'prevproc':fields.one2many('preventive.proceed', 'order', 'Preventive Orders'),
+        'idvehicle':fields.many2one('fleet.vehicles', 'Vehicle'),
         }
     
     def action_repair_done(self, cr, uid, ids, context=None):
@@ -260,13 +270,4 @@ class mrp_repair (osv.osv):
         return True      
         
 mrp_repair()
-
-class fleet_vehicles(osv.osv):
-    _inherit = 'fleet.vehicles'
-    
-    _columns = {
-                'order_list':fields.one2many('mrp.repair','idvehicle','Preventive Orders'),
-              
-                }
-fleet_vehicles()
    
