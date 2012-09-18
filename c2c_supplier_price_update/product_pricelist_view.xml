@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data>
+ 
+        <record model="ir.actions.act_window" id="action_pricelist">
+			<field name="name">Pricelist</field>
+			<field name="res_model">pricelist.partnerinfo</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+        <menuitem id="product_pricelist_menuitem" name="Product Pricelist"
+            action="action_pricelist" parent="base.menu_product" />
+        
+        <record model="ir.ui.view" id="pricelist_partnerinfo_tree_view">
+                <field name="name">pricelist.partnerinfo.tree.view</field>
+                <field name="model">pricelist.partnerinfo</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Pricelist" editable="bottom">
+                    	<field name="product" />
+                    	<field name="supplier" />
+                        <field name="min_quantity" />
+                        <field name="price" />
+                    </tree>
+                </field>
+            </record>
+            
+		<!-- Search view -->
+		<record model="ir.ui.view" id="pricelist_partnerinfo_search_view">
+			<field name="name">pricelist.partnerinfo.search.view</field>
+			<field name="model">pricelist.partnerinfo</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<search string="Search">
+					<group col="15" colspan="4">
+						<field name="supplier" />
+						<field name="product" />
+					</group>
+					<newline />
+					<group expand="0" string="Group by">
+						<filter string="Supplier" icon="terp-personal"
+							domain="[]" context="{'group_by':'supplier'}" />
+						<filter string="Product" icon="terp-accessories-archiver"
+							domain="[]" context="{'group_by':'product'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+
+
+    </data>
+
+</openerp>
