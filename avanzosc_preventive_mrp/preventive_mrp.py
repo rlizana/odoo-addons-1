@@ -261,12 +261,12 @@ class mrp_repair (osv.osv):
         
 mrp_repair()
 
-class fleet_vehicles(osv.osv):
-    _inherit = 'fleet.vehicles'
-    
-    _columns = {
-                'order_list':fields.one2many('mrp.repair','idvehicle','Preventive Orders'),
-              
-                }
-fleet_vehicles()
+#class fleet_vehicles(osv.osv):
+#    _inherit = 'fleet.vehicles'
+#    
+#    _columns = {
+#                'order_list':fields.one2many('mrp.repair','idvehicle','Preventive Orders'),
+#              
+#                }
+#fleet_vehicles()
    
