@@ -87,7 +87,11 @@
 				 <page string="Preventive Proceed">
 				 	<field name="prevproc" nolabel="1"/>
 				 </page>
-				</xpath>				
+				</xpath>
+				<xpath expr="/form/group[1]/field[@name='invoiced']" position="after">
+						<newline/>
+						<field name="preventive" colspan="4"/>
+				</xpath>			
 			</data>
 			</field>
 		</record>

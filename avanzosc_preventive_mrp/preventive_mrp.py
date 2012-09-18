@@ -123,7 +123,7 @@ class vehicle_prev_op(osv.osv):
                 if not exists:
                     res = {'nextkm':nextmileage}
                     if ((odometer >= kmmarg1) or (date >= freq1) and ope.check_al1 == True):
-                        value = {'prevname': ope.id, 'ivehicle':vh.id, 'opr':operavm.opmaster.id}
+                        value = {'prevname': ope.id, 'ivehicle':vh.id, 'opr':operavm.opmaster.id, 'active':True}
                         alert = self.pool.get('preventive.proceed').create(cr, uid, value)
                         if ((odometer >= kmmarg2) or (date >= freq2) and ope.check_al2 == True):
                             self.pool.get('preventive.proceed').write(cr,uid,[alert], {'date2':time.strftime('%Y-%m-%d')})
@@ -228,6 +228,7 @@ class mrp_repair (osv.osv):
     _columns = {
         'prevproc':fields.one2many('preventive.proceed', 'order', 'Preventive Orders'),
         'idvehicle':fields.many2one('fleet.vehicles', 'Vehicle'),
+        'preventive':fields.boolean('Is preventive'),
         }
     
     def action_repair_done(self, cr, uid, ids, context=None):
