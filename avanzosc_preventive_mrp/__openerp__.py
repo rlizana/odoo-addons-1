@@ -23,7 +23,7 @@
 
 {
     "name" : "Preventive MRP & Fleet Manager Extension",
-    "version" : "2.04",
+    "version" : "2.05",
     "description" : """ 
         This module ables to create repair orders using alarms.
         Create new repair orders for the vehicles, using the preventive alarms defined in the module avanzosc_mrp_preventive_master_data.
