@@ -1,0 +1,39 @@
+<openerp>
+	<data>
+
+	<!-- CRM Claim tree view inherit-->
+	<record id="crm_case_claims_tree_view_inherit" model="ir.ui.view">
+		<field name="name">CRM - Claims Tree.inherit</field>
+		<field name="model">crm.claim</field>
+		<field name="inherit_id" ref="crm_claim.crm_case_claims_tree_view" />
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="/tree/field[@name='user_id']" position="after">
+					<field name="section_id" select="1"/>
+				</xpath>
+			</data>
+		</field>
+	</record>
+
+
+	<!-- CRM Claim Search view inherit-->
+	<record id="crm_case_claims_search_view_inherit" model="ir.ui.view">
+		<field name="name">CRM - Claims Search.inherit</field>
+		<field name="model">crm.claim</field>
+		<field name="inherit_id" ref="crm_claim.view_crm_case_claims_filter" />
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="/search/field[@name='partner_id']" position="after">
+					<field name="section_id" widget="selection"/>
+				</xpath>
+				<xpath expr="/search/group/filter[@string='Partner']" position="after">
+					<filter string="Sales Team" icon="terp-partner"
+                            domain="[]" help="Sales Team"
+                            context="{'group_by':'section_id'}" />
+				</xpath>
+			</data>
+		</field>
+	</record>
+	
+	</data>
+</openerp>
