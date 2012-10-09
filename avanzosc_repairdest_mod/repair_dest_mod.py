@@ -30,7 +30,7 @@ class mrp_repair(osv.osv):
     
     def onchange_move_id(self, cr, uid, ids, prod_id=False, move_id=False, context=False):
         data = super(mrp_repair, self).onchange_move_id(cr, uid, ids, prod_id, move_id)
-        if data ['value']['location_dest_id'] :
+        if 'location_dest_id' in data ['value']:
             move = self.pool.get('stock.move').browse(cr, uid, move_id)
             data ['value']['location_dest_id'] = move.location_id.id
         return data
