@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+       <record id="view_loting_rel_tree" model="ir.ui.view">
+		<field name="name">view.loting.rel.tree</field>
+		<field name="model">product.loting.rel</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+        <tree string="Lot Control" editable="bottom">
+                    <field name="product"/>
+                    <field name="product_lot"/>
+<!--                     <field name="mrp_lot"/> -->
+                </tree>
+		</field>
+	</record>	
+	
+	<record id="view_loting_rel_form" model="ir.ui.view">
+		<field name="name">view.loting.rel.form</field>
+		<field name="model">product.loting.rel</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+        <form string="Lot Control">
+                    <field name="product"/>
+                    <field name="product_lot"/>
+<!--                     <field name="mrp_lot"/> -->
+                </form>
+		</field>
+	</record>	
+
+   <!--		========================= stock_production_lot_inherit ============================-->
+   
+		<record id="view_prodlot_form_inherit" model="ir.ui.view">
+			<field name="name">view.prodlot.form.inherit</field>
+			<field name="model">stock.production.lot</field>
+			<field name="inherit_id" ref="stock.view_production_lot_form" />
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="/form/notebook/page[@string='Stock Moves']" position="after">
+						<page string="Production Lots">
+							<field name="product_lots" colspan="4" nolabel="1" />
+						</page>
+					</xpath>
+				</data>
+			</field>
+		</record>
+   
+        
+        <!--  Assing lot -->
+        
+		<record id="wizard_asign_lot_view" model="ir.ui.view">
+            <field name="name">wizard.asign.lot.view</field>
+            <field name="model">mrp.lot.assign</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Assign">
+                	<separator string="Product Lot Assignament"/>
+                	<group colspan="4" width = "450" >
+                	<field name="product" nolabel = "1"/>
+                	<field name="lot_serial"/>
+                	</group>
+                	<separator />
+                	<newline/> 
+                	<field name="product_lots" colspan="4" nolabel = "1">
+                	</field>	
+                	<separator string="" colspan="4" />
+                	<newline/>
+                	<label string="" colspan="2" />
+                	<group col="2" colspan="1">
+                		<button icon='gtk-stop' special="cancel"
+                			string="Cancel" />
+                		<button name="assign_lot" string="Confirm"
+                			colspan="1" type="object" icon="gtk-ok"/>
+                	</group>
+                </form>
+            </field>
+        </record>
+
+        <record id="act_asign_lot" model="ir.actions.act_window">
+            <field name="name">Lot Assign</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.lot.assign</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>    
+        
+        <!--		========================= mrp_product_produce_wizard ============================-->
+        
+<!--         <record id="view_mrp_product_produce_wizard_inh" model="ir.ui.view"> -->
+<!-- 			<field name="name">mrp.product.produce.inherit</field> -->
+<!-- 			<field name="model">mrp.product.produce</field> -->
+<!-- 			<field name="type">form</field> -->
+<!-- 			<field name="inherit_id" ref="mrp.view_mrp_product_produce_wizard" /> -->
+<!-- 			<field name="arch" type="xml"> -->
+<!-- 			<data>			     -->
+<!-- 				<xpath expr="/form/group/button[@string='Confirm']" position="replace"> -->
+<!--                 	<button name="action_open_window" string="Confirm" colspan="1" type="object" icon="gtk-ok" /> -->
+<!-- 				</xpath>				 -->
+<!-- 			</data> -->
+<!-- 			</field> -->
+<!-- 		</record> -->
+		
+		<!--		========================= mrp ============================-->
+		
+		<record id="mrp_production_form_view_inh" model="ir.ui.view">
+			<field name="name">mrp.production.form.view.inh</field>
+			<field name="model">mrp.production</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view" />
+			<field name="arch" type="xml">
+			<data>			    
+				<xpath expr="/form/notebook/page/group/button[@string='Produce']" position="replace">
+                	<button name="%(act_asign_lot)d" states="in_production" string="Produce" icon="gtk-ok" type="action"/>
+				</xpath>			
+			</data>
+			</field>
+		</record>
+        
+	</data>
+</openerp>	
