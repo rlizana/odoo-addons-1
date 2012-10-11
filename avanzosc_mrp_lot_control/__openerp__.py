@@ -24,7 +24,7 @@
 
 {
     "name" : "Avanzosc mrp lot control",
-    "version" : "1.1",
+    "version" : "1.15",
     "description": """ 
                 This module adds: 
                  - Lot assignament for tracking products before production is done.

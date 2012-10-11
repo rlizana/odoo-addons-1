@@ -24,10 +24,11 @@
 
 {
     "name" : "Avanzosc Repair Destination Mod",
-    "version" : "1.1",
+    "version" : "1.2",
     "description": """ 
                 This module modify:
                  - Product repaired destination is where it came from.
+                 - Product lot repaired destination is where it came from.
                     """,
     "author": "AvanzOSC",
     "website" : "http://www.avanzosc.com",

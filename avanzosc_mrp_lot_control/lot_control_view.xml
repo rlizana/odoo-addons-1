@@ -9,7 +9,7 @@
 		<field name="arch" type="xml">
         <tree string="Lot Control" editable="bottom">
                     <field name="product"/>
-                    <field name="product_lot"/>
+                    <field name="product_lot" domain = "[('product_id','=',product),('stock_available','>',0)]" />
 <!--                     <field name="mrp_lot"/> -->
                 </tree>
 		</field>
