@@ -24,10 +24,13 @@ from osv import fields, osv
 class account_invoice(osv.osv):
     _inherit = 'account.invoice'
         
-    def copy(self, cr, uid, id, default={}, context=None):
+    def copy(self, cr, uid, id, default=None, context=None):
+        
+        default['invoice_number'] = False
         res = super(account_invoice, self).copy(cr, uid, id, default, context)
         self.pool.get('account.invoice').write(cr,uid,res,{'invoice_number':False})
         name =False
         self.pool.get('account.invoice')._number(cr, uid, [res], name, context)
         return res
+    
 account_invoice()
