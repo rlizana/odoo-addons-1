@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: openobject-addons\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-11-24 12:54+0000\n"
-"PO-Revision-Date: 2012-02-22 12:04+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-11-18 09:35+0000\n"
+"Last-Translator: Daniel Winzen <d@winzen4.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-26 04:59+0000\n"
-"X-Generator: Launchpad (build 15679)\n"
+"X-Launchpad-Export-Date: 2012-11-19 04:53+0000\n"
+"X-Generator: Launchpad (build 16278)\n"
 
 #. module: account_asset
 #: model:ir.actions.act_window,name:account_asset.action_account_asset_asset_list_normal
@@ -50,7 +50,7 @@ msgstr ""
 #. module: account_asset
 #: constraint:ir.actions.act_window:0
 msgid "Invalid model name in the action definition."
-msgstr ""
+msgstr "Ungültiger Modellname in der Aktionsdefinition."
 
 #. module: account_asset
 #: selection:account.asset.property,method:0
@@ -70,19 +70,19 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.board,value_asset:0
 msgid "Asset Value"
-msgstr ""
+msgstr "Anlagenwert"
 
 #. module: account_asset
 #: wizard_field:account.asset.modify,init,name:0
 msgid "Reason"
-msgstr ""
+msgstr "Grund"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 #: field:account.asset.asset,entry_ids:0
 #: wizard_field:account.asset.compute,asset_compute,move_ids:0
 msgid "Entries"
-msgstr ""
+msgstr "Einträge"
 
 #. module: account_asset
 #: wizard_view:account.asset.compute,asset_compute:0
@@ -131,7 +131,7 @@ msgstr ""
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Change history"
-msgstr ""
+msgstr "Bearbeitungshistorie"
 
 #. module: account_asset
 #: view:account.asset.asset:0
@@ -141,7 +141,7 @@ msgstr ""
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Methods"
-msgstr ""
+msgstr "Methoden"
 
 #. module: account_asset
 #: wizard_view:account.asset.modify,init:0
@@ -151,7 +151,7 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.asset,partner_id:0
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: account_asset
 #: wizard_field:account.asset.modify,init,method_period:0
@@ -163,7 +163,7 @@ msgstr ""
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Depreciation duration"
-msgstr ""
+msgstr "Abschreibungsdauer"
 
 #. module: account_asset
 #: field:account.asset.property,account_analytic_id:0
@@ -178,12 +178,12 @@ msgstr ""
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Depreciation methods"
-msgstr ""
+msgstr "Abschreibungsmethode"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Other information"
-msgstr ""
+msgstr "Weitere Informationen"
 
 #. module: account_asset
 #: field:account.asset.board,value_asset_cumul:0
@@ -193,7 +193,7 @@ msgstr ""
 #. module: account_asset
 #: view:account.asset.property:0
 msgid "Assets methods"
-msgstr ""
+msgstr "Anlagen Methoden"
 
 #. module: account_asset
 #: constraint:ir.ui.view:0
@@ -274,13 +274,13 @@ msgstr ""
 #: field:account.asset.category,note:0
 #: field:account.asset.property.history,note:0
 msgid "Note"
-msgstr ""
+msgstr "Bemerkung"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
 #: selection:account.asset.property,state:0
 msgid "Draft"
-msgstr ""
+msgstr "Entwurf"
 
 #. module: account_asset
 #: field:account.asset.property,type:0
@@ -290,12 +290,12 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.property,account_asset_id:0
 msgid "Asset account"
-msgstr ""
+msgstr "Anlagenkonto"
 
 #. module: account_asset
 #: field:account.asset.property.history,asset_property_id:0
 msgid "Method"
-msgstr ""
+msgstr "Methode"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
@@ -315,22 +315,22 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.property,method:0
 msgid "Computation method"
-msgstr ""
+msgstr "Berechnungsmethode"
 
 #. module: account_asset
 #: field:account.asset.property,method_time:0
 msgid "Time method"
-msgstr ""
+msgstr "Zeitmethode"
 
 #. module: account_asset
 #: field:account.asset.asset,active:0
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #. module: account_asset
 #: field:account.asset.property.history,user_id:0
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: account_asset
 #: field:account.asset.asset,property_ids:0
@@ -341,12 +341,12 @@ msgstr ""
 #: field:account.asset.asset,date:0
 #: field:account.asset.property.history,date:0
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #. module: account_asset
 #: field:account.asset.board,value_net:0
 msgid "Net value"
-msgstr ""
+msgstr "Netto Wert"
 
 #. module: account_asset
 #: wizard_view:account.asset.close,init:0
@@ -381,19 +381,19 @@ msgstr ""
 #: wizard_button:account.asset.compute,init,end:0
 #: wizard_button:account.asset.modify,init,end:0
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
 #: wizard_button:account.asset.compute,asset_compute,end:0
 #: selection:account.asset.property,state:0
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #. module: account_asset
 #: selection:account.asset.property,state:0
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #. module: account_asset
 #: constraint:ir.model:0
@@ -404,7 +404,7 @@ msgstr ""
 #. module: account_asset
 #: model:ir.module.module,shortdesc:account_asset.module_meta_information
 msgid "Asset management"
-msgstr ""
+msgstr "Anlagenbuchhaltung"
 
 #. module: account_asset
 #: view:account.asset.board:0
@@ -416,17 +416,17 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.asset,state:0
 msgid "Global state"
-msgstr ""
+msgstr "Globaler Status"
 
 #. module: account_asset
 #: selection:account.asset.property,method_time:0
 msgid "Delay"
-msgstr ""
+msgstr "Verzögerung"
 
 #. module: account_asset
 #: wizard_view:account.asset.close,init:0
 msgid "General information"
-msgstr ""
+msgstr "Allgemeine Informationen"
 
 #. module: account_asset
 #: field:account.asset.property,journal_analytic_id:0
@@ -436,7 +436,7 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.property,name:0
 msgid "Method name"
-msgstr ""
+msgstr "Methodenname"
 
 #. module: account_asset
 #: field:account.asset.property,journal_id:0
@@ -464,12 +464,12 @@ msgstr ""
 #: field:account.asset.category,name:0
 #: model:ir.model,name:account_asset.model_account_asset_category
 msgid "Asset category"
-msgstr ""
+msgstr "Analgenkategorie"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Depreciation"
-msgstr ""
+msgstr "Abschreibung"
 
 #. module: account_asset
 #: field:account.asset.asset,code:0
@@ -480,17 +480,17 @@ msgstr ""
 #. module: account_asset
 #: field:account.asset.asset,value_total:0
 msgid "Total value"
-msgstr ""
+msgstr "Gesamtwert"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
 msgid "View"
-msgstr ""
+msgstr "Ansicht"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "General info"
-msgstr ""
+msgstr "Allgemeine Informationen"
 
 #. module: account_asset
 #: field:account.asset.asset,sequence:0
@@ -510,12 +510,12 @@ msgstr ""
 #. module: account_asset
 #: selection:account.asset.property,type:0
 msgid "Direct"
-msgstr ""
+msgstr "Direkt"
 
 #. module: account_asset
 #: selection:account.asset.property,type:0
 msgid "Indirect"
-msgstr ""
+msgstr "Indirekt"
 
 #. module: account_asset
 #: field:account.asset.asset,parent_id:0
