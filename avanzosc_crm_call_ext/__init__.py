@@ -24,5 +24,4 @@ import crm_helpdesk
 import crm_claim
 import crm_opportunity
 import crm_meeting
-import partner
 import wizard

@@ -22,8 +22,12 @@
 from crm import crm
 from osv import fields, osv
 
+from datetime import datetime
+import time
+
 class crm_phonecall(crm.crm_case, osv.osv):
     _inherit = 'crm.phonecall'
+    _name = "crm.phonecall"
         
     _columns = {
         'credit': fields.float('Total Receivable'),
@@ -33,6 +37,9 @@ class crm_phonecall(crm.crm_case, osv.osv):
         'lead_id' : fields.many2one('crm.lead', 'Lead'),
         'helpdesk_id' : fields.many2one('crm.helpdesk', 'Help Desk'),
         'claim_id' : fields.many2one('crm.claim', 'Claim'),
+        'canal_id': fields.many2one('crm.case.channel','Canal'),
+        'message_ids': fields.one2many('mail.message', 'res_id', 'Messages', domain=[('model','=',_name)]),
+
     }
     
     def onchange_partner_id(self, cr, uid, ids, part, email=False):
@@ -71,6 +78,22 @@ class crm_phonecall(crm.crm_case, osv.osv):
             res['value'].update({
                 'credit': partner.credit,
             })
+        return res
+    
+    def case_close(self, cr, uid, ids, *args):
+        """Overrides close for crm_case for setting close date
+        """
+        res = True
+        for phone in self.browse(cr, uid, ids):
+            phone_id = phone.id
+            data = {'date_closed': time.strftime('%Y-%m-%d %H:%M:%S'),
+                    'state':'done'}
+            self.write(cr, uid, ids, {'duration': 0.0, 'state':'open'})
+            if phone.duration <=0:
+                duration = datetime.now() - datetime.strptime(phone.date, '%Y-%m-%d %H:%M:%S')
+                data.update({'duration': duration.seconds/float(60)})
+            #res = super(crm_phonecall, self).case_close(cr, uid, [phone_id], args)
+            self.write(cr, uid, [phone_id], data)
         return res
     
 crm_phonecall()
