@@ -29,7 +29,7 @@
 		                </group>
 		                <group col="1" colspan="2">
 							<button string="Schedule a Meeting"
-	                        	name="crm.action_make_meeting"
+	                        	name="action_make_meeting"
 	                        	icon="gtk-redo"
 	                        	type="object" />
 							<button string="Convert to Lead" name="%(phonecall_to_lead_act)d"
