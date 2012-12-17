@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		==========================================================
+		Methodology
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_method_tree">
+			<field name="name">inv.method.tree</field>
+			<field name="model">inv.method</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Methodology">
+					<field name="name" />
+					<field name="model_id" />
+					<field name="partner_field" />
+					<field name="rec_filter_ids" />
+					<field name="calc_ids" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_method_form">
+			<field name="name">inv.method.form</field>
+			<field name="model">inv.method</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Methodology">
+					<notebook>
+						<page string="General">
+							<field name="name" select="1" />
+							<field name="model_id" select="1" on_change="on_model_change(model_id)" />
+							<field name="ref" select="2" on_change="on_model_change(model_id)" />
+							<field name="partner_field" select="1" nolabel="1" colspan="2" />
+							<field name="calc_base" select="1" />
+							<field name="rec_filter_ids" select="2" nolabel="1"
+								colspan="4" />
+							<field name="calc_ids" select="2" nolabel="1" colspan="4"
+								context="{'calc_base':calc_base,'model_id':model_id}" />
+							<field name="state" select="2" />
+							<button name="action_create_meth" string="Create" states="open"
+								type="object" colspan="2" />
+						</page>
+						<page string="Advanced">
+							<field name="manual" select="2" />
+							<field name="source" colspan="4" nolabel="1" select="2"
+								attrs="{'readonly': [('manual','=', False)]}" />
+							<separator string="Available global variables:"
+								colspan="4" />
+							<label string="self - objects pointer" align="0.0" colspan="2" />
+							<label string="mas_aft - list for the ID of the filtered records"
+								align="0.0" colspan="2" />
+							<label string="uid - current user ID" align="0.0" colspan="2" />
+							<label string="partner_id - current partner ID in Methodology"
+								align="0.0" colspan="2" />
+							<label string="cr - database cursor" align="0.0" colspan="2" />
+							<label
+								string="contact_ids - contacts IDs of current partner in Methodology"
+								align="0.0" colspan="2" />
+							<label string="pdate1 - period date from" align="0.0"
+								colspan="2" />
+							<label string="pdate2 - period date to" align="0.0"
+								colspan="2" />
+							<label string="invoice_date - next invoice date" align="0.0"
+								colspan="2" />
+							<label string="agre - current Agreement objects record"
+								align="0.0" colspan="2" />
+							<newline />
+							<button name="action_test_source" string="Test source"
+								states="close" type="object" colspan="2" />
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Service
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_service_tree">
+			<field name="name">inv.service.tree</field>
+			<field name="model">inv.service</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Service">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_service_form">
+			<field name="name">inv.service.form</field>
+			<field name="model">inv.service</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Service">
+					<field name="name" select="1" />
+					<field name="analytic_account_branch" select="1" />
+					<field name="journal_id" select="1" />
+					<field name="pricelist_id" select="1" />
+					<field name="purch_pricelist_id" select="2" />
+					<field name="invoicing" select="2" />
+					<field name="interval_unit" select="2" />
+					<field name="int_unit_number" select="2" />
+					<field name="cron_offset" select="2" />
+					<separator string="Methodologies" colspan="4" />
+					<field name="method_ids" nolabel="1" colspan="4" widget="many2many"
+						select="2" />
+					<separator string="Work Team" colspan="4" />
+					<field name="req_users" nolabel="1" colspan="4" select="2" />
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Record filter
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_rec_filter_tree">
+			<field name="name">inv.rec_filter.tree</field>
+			<field name="model">inv.rec_filter</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Record filter">
+					<field name="filters" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_rec_filter_form">
+			<field name="name">inv.rec_filter.form</field>
+			<field name="model">inv.rec_filter</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Record filter">
+					<field name="method_id" invisible="1" />
+					<field name="filters" invisible="1" />
+					<field name="field_id" select="1"
+						on_change="change_field_type(field_id, var)" />
+					<field name="field_type" select="1" />
+					<field name="var" select="2" on_change="change_var(var)" />
+					<separator colspan="4" />
+					<field name="temp_field_id" invisible="1" />
+					<field name="temp_var" invisible="1" />
+					<field name="condition_id" select="1" nolabel="1" colspan="4"
+						on_change="change_condition(condition_id, field_id, var, method_id)"
+						context="{'type':field_type}" />
+					<field name="state" colspan="2" />
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Calc filter
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_calc_filter_tree">
+			<field name="name">inv.calc_filter.tree</field>
+			<field name="model">inv.calc_filter</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Calc filter">
+					<field name="filters" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_calc_filter_form">
+			<field name="name">inv.calc_filter.form</field>
+			<field name="model">inv.calc_filter</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Calc filter">
+					<field name="calc_id" invisible="1" />
+					<field name="filters" invisible="1" />
+					<field name="field_id" select="1"
+						on_change="change_field_type(field_id, var)" />
+					<field name="field_type" select="1" />
+					<field name="var" select="2" on_change="change_var(var)" />
+					<separator colspan="4" />
+					<field name="temp_field_id" invisible="1" />
+					<field name="temp_var" invisible="1" />
+					<field name="condition_id" select="1" nolabel="1" colspan="4"
+						on_change="change_condition(condition_id, field_id, var, calc_id)" />
+					<field name="state" colspan="2" />
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Record types
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_rec_types_tree">
+			<field name="name">inv.rec_type.tree</field>
+			<field name="model">inv.rec_type</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Record types">
+					<field name="type" />
+					<field name="value" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_rec_types_form">
+			<field name="name">inv.rec_type.form</field>
+			<field name="model">inv.rec_type</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Record types">
+					<field name="type" select="1" />
+					<field name="value" select="1" />
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Record filter condition
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_rec_filter_cond_tree">
+			<field name="name">inv.rec_filter_cond.tree</field>
+			<field name="model">inv.rec_filter_cond</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Record filter condition">
+					<!--<field name="rec_filter_id"/> -->
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_rec_filter_cond_form">
+			<field name="name">inv.rec_filter_cond.form</field>
+			<field name="model">inv.rec_filter_cond</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Record filter condition">
+					<field name="rec_filter_id" invisible="1" />
+					<field name="name" invisible="1" />
+					<field name="state" invisible="1" />
+					<group colspan="4">
+						<field name="cond_type" select="1"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<separator string="Condition value" colspan="4" />
+					<group states="[char],[selection]" colspan="2">
+						<field name="value1_char" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[boolean]" colspan="4">
+						<field name="value1_bool" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[integer]|1|,[integer]|2|" colspan="2">
+						<field name="value1_int" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[integer]|2|" colspan="2">
+						<field name="value2_int" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[float]|1|,[float]|2|" colspan="2">
+						<field name="value1_float" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[float]|2|" colspan="2">
+						<field name="value2_float" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[date]|1|,[date]|2|" colspan="2">
+						<field name="value1_date" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[date]|2|" colspan="2">
+						<field name="value2_date" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[datetime]|1|,[datetime]|2|" colspan="2">
+						<field name="value1_datetime" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[datetime]|2|" colspan="2">
+						<field name="value2_datetime" select="2"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+					<group states="[many2many],[many2one],[one2many]" colspan="2">
+						<field name="cond_value" select="1" colspan="4"
+							on_change="on_change_state(cond_type, parent.field_type, parent.field_id, value1_char, value1_bool,
+						value1_int, value2_int, value1_float, value2_float, value1_date, value2_date, value1_datetime, value2_datetime, cond_value)" />
+					</group>
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Condition value
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_cond_value_tree">
+			<field name="name">inv.cond_value.tree</field>
+			<field name="model">inv.cond_value</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Condition value">
+					<!--<field name="rec_filter_cond_id"/> -->
+					<field name="object" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_cond_value_form">
+			<field name="name">inv.cond_value.form</field>
+			<field name="model">inv.cond_value</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Condition value">
+					<!--<field name="rec_filter_cond_id"/> -->
+					<field name="object" select="1" />
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Calculation
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_calc_tree">
+			<field name="name">inv.calc.tree</field>
+			<field name="model">inv.calc</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Calculation">
+					<field name="sequence" />
+					<field name="product_id" />
+					<field name="calculations" />
+					<field name="manual" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_calc_form">
+			<field name="name">inv.calc.form</field>
+			<field name="model">inv.calc</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Calculation">
+					<notebook>
+						<page string="General">
+							<field name="product_type" select="2" />
+							<field name="product_id" select="1" />
+							<field name="invoicing_id" select="1" />
+							<field name="model_id" select="2" invisible="1" />
+							<field name="method_id" invisible="1" />
+							<separator string="Constructor:" colspan="4" />
+							<field name="sequence" select="1" colspan="2" />
+							<field name="calculations" select="2" colspan="4" nolabel="1"
+								context="{'calc_base':context.get('calc_base', False)}" />
+						</page>
+						<page string="Advanced">
+							<field name="manual" select="2" />
+							<separator string="Expression" colspan="4" />
+							<field name="code" select="2" nolabel="1" colspan="4"
+								attrs="{'readonly': [('manual','=', False)]}" />
+							<separator string="Available global variables:"
+								colspan="4" />
+							<label string="self - objects pointer" align="0.0" colspan="4" />
+							<label string="cr - database cursor" align="0.0" colspan="4" />
+							<label string="uid - current user ID" align="0.0" colspan="4" />
+							<label
+								string="re - object for regural expressions (have attribute match)"
+								align="0.0" colspan="4" />
+							<label string="obj_ids - list of the filtred records (identifiers)"
+								align="0.0" colspan="4" />
+							<label string="count - number of filtred records" align="0.0"
+								colspan="4" />
+							<label string="pdate1 - period date from" align="0.0"
+								colspan="4" />
+							<label string="pdate2 - period date to" align="0.0"
+								colspan="4" />
+							<label string="calc_date - calculation date" align="0.0"
+								colspan="4" />
+							<label string="agre - current Agreement objects record"
+								align="0.0" colspan="4" />
+							<label string="res_list - List of calculation results"
+								align="0.0" colspan="4" />
+						</page>
+						<page string="Description">
+							<field name="description" select="2"
+								on_change="change_descr(description, descr_field, parent.id)" />
+							<field name="descr_field" select="1"
+								on_change="change_descr(description, descr_field, parent.id)"
+								attrs="{'readonly': [('description','!=', 'field')],
+							'required': [('description','=', 'field')]}" />
+							<separator string="Expression" colspan="4" />
+							<field name="descr_express" select="1" nolabel="1" colspan="4"
+								attrs="{'readonly': [('description','!=', 'expression')]}" />
+							<separator string="Available global variables:"
+								colspan="4" />
+							<label string="self - objects pointer" align="0.0" colspan="4" />
+							<label string="cr - database cursor" align="0.0" colspan="4" />
+							<label string="uid - current user ID" align="0.0" colspan="4" />
+							<label string="model - current model name in Methodology"
+								align="0.0" colspan="4" />
+							<label string="agr_id - current Agreement ID field value"
+								align="0.0" colspan="4" />
+							<label string="meth_id - current Methodology ID field value"
+								align="0.0" colspan="4" />
+							<label string="calc_id - current Calculation ID field value"
+								align="0.0" colspan="4" />
+							<label string="pdate1 - period date from" align="0.0"
+								colspan="4" />
+							<label string="pdate2 - period date to" align="0.0"
+								colspan="4" />
+							<label string="calc_date - calculation date" align="0.0"
+								colspan="4" />
+							<label string="agre - current Agreement objects record"
+								align="0.0" colspan="4" />
+							<label string="d_list - Invoice Log object" align="0.0"
+								colspan="4" />
+							<label string="rec_id - Id of current record after filtration"
+								align="0.0" colspan="4" />
+							<label
+								string="desc - variable which will be used as a expression result"
+								align="0.0" colspan="4" />
+						</page>
+						<page string="Quantity">
+							<field name="quantity" select="2"
+								on_change="change_quant(quantity, quantity_field, parent.id)" />
+							<field name="quantity_field" select="1"
+								on_change="change_quant(quantity, quantity_field, parent.id)"
+								attrs="{'readonly': [('quantity','!=', 'field')],
+							'required': [('quantity','=', 'field')]}" />
+							<separator string="Expression" colspan="4" />
+							<field name="quantity_express" select="1" nolabel="1"
+								colspan="4" attrs="{'readonly': [('quantity','!=', 'expression')]}" />
+							<separator string="Available global variables:"
+								colspan="4" />
+							<label string="self - objects pointer" align="0.0" colspan="4" />
+							<label string="cr - database cursor" align="0.0" colspan="4" />
+							<label string="uid - current user ID" align="0.0" colspan="4" />
+							<label string="model - current model name in Methodology"
+								align="0.0" colspan="4" />
+							<label string="agr_id - current Agreement ID field value"
+								align="0.0" colspan="4" />
+							<label string="meth_id - current Methodology ID field value"
+								align="0.0" colspan="4" />
+							<label string="calc_id - current Calculation ID field value"
+								align="0.0" colspan="4" />
+							<label string="pdate1 - period date from" align="0.0"
+								colspan="4" />
+							<label string="pdate2 - period date to" align="0.0"
+								colspan="4" />
+							<label string="calc_date - calculation date" align="0.0"
+								colspan="4" />
+							<label string="mas_after - List of id's of record after filtration"
+								align="0.0" colspan="4" />
+							<label string="rec_id - Id of current record after filtration"
+								align="0.0" colspan="4" />
+							<label string="agre - current Agreement objects record"
+								align="0.0" colspan="4" />
+							<label
+								string="quant - variable which will be used as a expression result"
+								align="0.0" colspan="4" />
+						</page>
+
+					</notebook>
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Invoice Log
+		==========================================================
+		<record model="ir.ui.view" id="view_date_list_tree">
+			<field name="name">inv.date_list.tree</field>
+			<field name="model">inv.date_list</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Invoice Log">
+					<field name="date" width="250" />
+					<field name="period" width="250" />
+					<field name="status" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_date_list_form">
+			<field name="name">inv.date_list.form</field>
+			<field name="model">inv.date_list</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Invoice Log">
+					<field name="date" select="1" />
+					<field name="status" select="1"
+						on_change="_change_state(analytic_entries, status)" />
+					<label string="From:" align="0.0" />
+					<field name="pdate1" select="1" nolabel="1" />
+					<label string="-" />
+					<field name="pdate2" select="1" nolabel="1" />
+					<field name="period" select="1" />
+					<newline />
+					<button name="_renew" states="empty,filled" string="Renew"
+						type="object" colspan="2" />
+					<field name="analytic_entries" select="2" colspan="4"
+						nolabel="1" />
+					<field name="state" invisible="1" />
+				</form>
+			</field>
+		</record>
+		==========================================================
+		Agreement
+		==========================================================
+		<record model="ir.ui.view" id="view_inv_agreement_tree">
+			<field name="name">inv.agreement.tree</field>
+			<field name="model">inv.agreement</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Agreement">
+					<field name="number" />
+					<field name="partner_id" />
+					<field name="service" />
+					<field name="state" />
+					<field name="uninv_entries_count" />
+					<field name="signed_date" />
+					<field name="cur_effect_date" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inv_agreemente_form">
+			<field name="name">inv.agreement.form</field>
+			<field name="model">inv.agreement</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Agreement">
+					<field name="partner_id" select="1" required="1" />
+					<!--<group states="running" attrs="{'invisible': [('name','=', False)]}"> -->
+					<field name="service" select="1" />
+					<!--</group> -->
+					<!--<group attrs="{'invisible': [('name','!=', False)]}"> -->
+					<field name="number" select="1" />
+					<!--</group> -->
+					<button name="get_number" states="draft" string="Get number"
+						type="object" colspan="2" />
+					<field name="name" select="1" />
+					<field name="active" select="2" />
+					<notebook colspan="4">
+						<page string="General">
+							<field name="payment" select="2"
+								on_change="onchange_payment(signed_date, cur_effect_date, service, payment)" />
+							<field name="analytic_account" select="2" />
+							<field name="repeat" select="2" />
+							<separator string="Technical info:" colspan="4" />
+							<field name="cron_id" colspan="2" readonly="1" />
+							<field name="calls" select="2" />
+						</page>
+						<page string="Validity">
+							<field name="signed_date" select="1"
+								on_change="onchange_payment(signed_date, cur_effect_date, service, payment)"
+								required="1" />
+							<field name="init_effect_date" select="2"
+								on_change="onchange_payment(signed_date, init_effect_date, service, payment)"
+								invisible="1"/>
+							<field name="cur_effect_date" select="2" />
+							<field name="partner_signed_date" />
+							<separator string="Manage Prolongation:" colspan="4" />
+							<field name="prolong" select="2" />
+							<newline />
+							<group attrs="{'invisible': [('prolong','!=', 'recurrs')]}"
+								colspan="4" col="4">
+								<field name="recurr_unit_number" select="2" />
+								<field name="recurr_unit" select="2" />
+								<field name="period_unit_number" />
+								<field name="period_unit" />
+							</group>
+						</page>
+						<page string="Analytic Entries">
+							<field name="analytic_entries" select="2" widget="one2many_list"
+								colspan="4" nolabel="1" />
+							<field name="uninv_entries_count" invisible="1" select="2" />
+						</page>
+						<page string="Invoice Log">
+							<field name="date_list" select="2" colspan="4" nolabel="1" />
+						</page>
+					</notebook>
+					<separator string="Manage State:" colspan="4" />
+					<newline />
+					<field name="state" select="1" readonly="1" />
+					<group col="3" colspan="2">
+						<button name="set_process" states="draft" string="Process"
+							type="object" />
+						<button name="set_done" states="running,error" string="Stop"
+							type="object" />
+						<button name="set_draft" states="done" string="Set to Draft"
+							type="object" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<act_window name="Agreements" domain="[('service', '=', active_id)]"
+			res_model="inv.agreement" src_model="inv.service" id="act_agreements" />
+
+		<act_window name="Invoices" domain="[('partner_id', '=', partner_id)]"
+			res_model="account.invoice" src_model="inv.agreement" id="act_all_invoices" />
+
+		<act_window name="All Analytic Entries" domain="[('agr_id', '=', active_id)]"
+			res_model="account.analytic.line" src_model="inv.agreement" id="act_all_analytics" />
+
+		<act_window name="Uninvoiced Analytic Entries"
+			domain="[('agr_id', '=', active_id),('invoice_id','=',False)]"
+			res_model="account.analytic.line" src_model="inv.agreement"
+			id="act_uninvoiced_analytics" />
+	</data>
+</openerp>

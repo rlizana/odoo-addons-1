@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<wizard
+			string="Run agreement"
+			id="inv_agr_run"
+			model="inv.agreement"
+			name="inv.agreement.wizard"
+			menu="False"/>
+	</data>
+</openerp>
