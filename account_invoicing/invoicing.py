@@ -1752,7 +1752,7 @@ class agreement(osv.osv):
                     del res['nextcall']
                 res['active'] = True
                 res['doall'] = row.repeat
-                self.pool.get('ir.cron').write(cr, uid, row.cron_id.id, res)
+                self.pool.get('ir.cron').write(cr, uid, [row.cron_id.id], res)
                 id = row.cron_id.id
             self.write(cr, uid, [row.id], {'cron_id':id})
 
@@ -1792,7 +1792,7 @@ class agreement(osv.osv):
     def set_done(self, cr, uid, ids, context={}):
         for r in self.browse(cr, uid, ids, {}):
 	    if r.cron_id:
-	      self.pool.get('ir.cron').write(cr, uid, r.cron_id.id, {'active':False})
+	      self.pool.get('ir.cron').write(cr, uid, [r.cron_id.id], {'active':False})
         self.write(cr, uid, ids, {'state':'done'})
         return True
 
