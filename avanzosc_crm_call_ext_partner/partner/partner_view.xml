@@ -50,6 +50,7 @@
 								<field name="name" string="Subject" />
 								<field name="date" string="Start Date" />
 								<field name="date_deadline" string="End Date" />
+								<field name="state" invisible="1" />
 							</tree>
 						</field>
 					</page>
