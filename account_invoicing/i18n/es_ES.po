@@ -1,0 +1,1169 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* account_invoicing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.3\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2010-05-07 11:36:24+0000\n"
+"PO-Revision-Date: 2010-05-07 18:45+0100\n"
+"Last-Translator: Jordi Esteve (Zikzakmedia) <jesteve@zikzakmedia.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: account_invoicing
+#: model:ir.actions.act_window,name:account_invoicing.act_uninvoiced_analytics
+msgid "Uninvoiced Analytic Entries"
+msgstr "Entradas analíticas sin facturar"
+
+#. module: account_invoicing
+#: field:inv.agreement,service:0
+#: selection:inv.calc,product_type:0
+#: view:inv.service:0
+#: model:ir.actions.act_window,name:account_invoicing.inv_config_service_form
+#: model:ir.ui.menu,name:account_invoicing.service
+msgid "Service"
+msgstr "Servicio"
+
+#. module: account_invoicing
+#: field:inv.agreement,number:0
+msgid "Agreement Number"
+msgstr "Número de contrato"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Stop"
+msgstr "Detener"
+
+#. module: account_invoicing
+#: selection:inv.agreement,prolong:0
+msgid "Prolong"
+msgstr "Prolongación"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value1_int:0
+msgid "Integer1"
+msgstr "Entero1"
+
+#. module: account_invoicing
+#: constraint:ir.actions.act_window:0
+msgid "Invalid model name in the action definition."
+msgstr "Nombre de modelo no válido en la definición de la acción."
+
+#. module: account_invoicing
+#: help:inv.agreement,recurr_unit_number:0
+msgid "Time before current validity expires to prolong the agreement for the next term."
+msgstr "Tiempo antes de que expire la validez actual para prolongar el contrato para el próximo período."
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "This Agreement is not operable, some \"Invoice Log\" entries are in \"Error\" state. Please check \"Invoice Log\" tab."
+msgstr "Este contrato no está operativo, algunas entradas del \"Registro de facturas\" están en estado \"Error\". Por favor compruebe la pestaña \"Registro de facturas\"."
+
+#. module: account_invoicing
+#: field:inv.agreement,recurr_unit_number:0
+msgid "Number of Units"
+msgstr "Número de unidades"
+
+#. module: account_invoicing
+#: field:inv.service,cron_offset:0
+msgid "Cron offset(hours)"
+msgstr "Desfase planificador o cron (horas)"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "res_list - List of calculation results"
+msgstr "res_list - Lista de los resultados del cálculo"
+
+#. module: account_invoicing
+#: field:inv.service,journal_id:0
+msgid "Analytic Journal"
+msgstr "Diario analítico"
+
+#. module: account_invoicing
+#: model:ir.module.module,shortdesc:account_invoicing.module_meta_information
+msgid "Invoicing / Billing"
+msgstr "Facturación / Emisión de facturas automáticas"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Set to Draft"
+msgstr "Cambiar a borrador"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "obj_ids - list of the filtred records (identifiers)"
+msgstr "obj_ids - Lista de los registros filtrados (identificadores)"
+
+#. module: account_invoicing
+#: selection:inv.calc,description:0
+msgid "Calculation Date"
+msgstr "Cálculo de fecha"
+
+#. module: account_invoicing
+#: field:inv.agreement,cron_id:0
+msgid "Scheduler"
+msgstr "Planificador"
+
+#. module: account_invoicing
+#: field:inv.agreement,analytic_entries:0
+#: field:inv.date_list,analytic_entries:0
+msgid "Entries"
+msgstr "Entradas"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "count - number of filtred records"
+msgstr "count - Número de registros filtrados"
+
+#. module: account_invoicing
+#: view:inv.calc_filter:0
+msgid "Calc filter"
+msgstr "Filtro del cálculo"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "agr_id - current Agreement ID field value"
+msgstr "agr_id - Valor del campo ID del contrato actual"
+
+#. module: account_invoicing
+#: selection:inv.calc,quantity:0
+msgid "Total Count"
+msgstr "Total conteo"
+
+#. module: account_invoicing
+#: field:inv.agreement,repeat:0
+msgid "Repeat missed"
+msgstr "Repetir omitidos"
+
+#. module: account_invoicing
+#: field:inv.service,analytic_account_branch:0
+msgid "Analytic account branch"
+msgstr "Rama de cuenta analítica"
+
+#. module: account_invoicing
+#: view:inv.method:0
+msgid "contact_ids - contacts IDs of current partner in Methodology"
+msgstr "contact_ids - IDs de los contactos de la empresa actual en la metodología"
+
+#. module: account_invoicing
+#: field:inv.rec_type,value:0
+msgid "Value"
+msgstr "Valor"
+
+#. module: account_invoicing
+#: field:inv.calc_filter,var:0
+#: field:inv.rec_filter,var:0
+msgid "Variable"
+msgstr "Variable"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Error!"
+msgstr "¡Error!"
+
+#. module: account_invoicing
+#: selection:inv.agreement,prolong:0
+msgid "Fixed Term"
+msgstr "Período de tiempo fijo"
+
+#. module: account_invoicing
+#: view:inv.rec_filter_cond:0
+msgid "Record filter condition"
+msgstr "Condición filtro de registros"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "re - object for regural expressions (have attribute match)"
+msgstr "re - Objeto para expresiones regulares (tiene concordancia atributos)"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_service
+msgid "inv.service"
+msgstr "inv.service"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "desc - variable which will be used as a expression result"
+msgstr "desc - Variable que se utilizará como una expresión del resultado"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_calc_filter
+msgid "inv.calc_filter"
+msgstr "inv.calc_filter"
+
+#. module: account_invoicing
+#: view:inv.method:0
+msgid "Test source"
+msgstr "Probar"
+
+#. module: account_invoicing
+#: model:ir.ui.menu,name:account_invoicing.inv_config
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_rec_type
+msgid "inv.rec_type"
+msgstr "inv.rec_type"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: field:inv.calc_filter,calc_id:0
+#: field:inv.method,calc_ids:0
+msgid "Calculation"
+msgstr "Cálculo"
+
+#. module: account_invoicing
+#: wizard_view:inv.agreement.wizard,init:0
+msgid "Run agreement(s)"
+msgstr "Procesar contrato(s)"
+
+#. module: account_invoicing
+#: selection:inv.date_list,status:0
+msgid "Partially Invoiced"
+msgstr "Parcialmente facturado"
+
+#. module: account_invoicing
+#: field:inv.agreement,analytic_account:0
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: account_invoicing
+#: selection:inv.calc_filter,state:0
+#: selection:inv.rec_filter,state:0
+msgid "Defined"
+msgstr "Definido"
+
+#. module: account_invoicing
+#: selection:inv.agreement,recurr_unit:0
+#: selection:inv.service,interval_unit:0
+msgid "Month(s)"
+msgstr "Mes(es)"
+
+#. module: account_invoicing
+#: selection:inv.service,invoicing:0
+msgid "Trigger"
+msgstr "Disparador"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Technical info:"
+msgstr "Información técnica:"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Warning!"
+msgstr "¡Aviso!"
+
+#. module: account_invoicing
+#: field:inv.agreement,partner_id:0
+#: selection:inv.method,ref:0
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value1_date:0
+msgid "Date1"
+msgstr "Fecha1"
+
+#. module: account_invoicing
+#: help:inv.agreement,signed_date:0
+msgid "Date when agreement was signed."
+msgstr "Fecha en que se firmó el contrato"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value2_date:0
+msgid "Date2"
+msgstr "Fecha2"
+
+#. module: account_invoicing
+#: field:inv.service,int_unit_number:0
+msgid "Invoice Every"
+msgstr "Facturar cada"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_method
+msgid "inv.method"
+msgstr "inv.method"
+
+#. module: account_invoicing
+#: model:ir.actions.act_window,name:account_invoicing.act_all_analytics
+msgid "All Analytic Entries"
+msgstr "Todas las entradas analíticas"
+
+#. module: account_invoicing
+#: field:inv.calc_filter,temp_var:0
+#: field:inv.rec_filter,temp_var:0
+msgid "Temp Variable"
+msgstr "Variable temporal"
+
+#. module: account_invoicing
+#: field:inv.method,source:0
+msgid "Source"
+msgstr "Origen"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,name:0
+msgid "Filter coditions"
+msgstr "Condiciones del filtro"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,cond_type:0
+msgid "Condition type"
+msgstr "Tipo de condición"
+
+#. module: account_invoicing
+#: model:ir.actions.act_window,name:account_invoicing.act_agreements
+#: model:ir.actions.act_window,name:account_invoicing.act_all_agreements
+msgid "Agreements"
+msgstr "Contratos"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "self - objects pointer"
+msgstr "self - Puntero de los objetos"
+
+#. module: account_invoicing
+#: field:inv.calc_filter,field_type:0
+#: field:inv.rec_filter,field_type:0
+msgid "Ttype"
+msgstr "Tipo"
+
+#. module: account_invoicing
+#: field:inv.service,pricelist_id:0
+msgid "Sale Pricelist"
+msgstr "Tarifa de venta"
+
+#. module: account_invoicing
+#: field:inv.rec_type,type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: account_invoicing
+#: selection:inv.agreement,payment:0
+msgid "In advance"
+msgstr "Por adelantado"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "\"Number of Units\" field cannot be less than 1 !"
+msgstr "¡El campo \"Número de unidades\" no puede ser menor a 1!"
+
+#. module: account_invoicing
+#: field:inv.service,purch_pricelist_id:0
+msgid "Purchase Pricelist"
+msgstr "Tarifa de compra"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Code it is impossible tested, because there is not an agreement!"
+msgstr "¡Es imposible testear el código porqué no hay ningún contrato!"
+
+#. module: account_invoicing
+#: field:inv.calc_filter,temp_field_id:0
+#: field:inv.rec_filter,temp_field_id:0
+msgid "Temp Field"
+msgstr "Campo temporal"
+
+#. module: account_invoicing
+#: field:account.analytic.line,agr_id:0
+#: view:inv.agreement:0
+#: field:inv.date_list,agreement_id:0
+#: model:ir.actions.act_window,name:account_invoicing.inv_agreement_form
+#: model:ir.ui.menu,name:account_invoicing.agreement
+msgid "Agreement"
+msgstr "Contrato"
+
+#. module: account_invoicing
+#: field:inv.method,calc_base:0
+msgid "Calculation base"
+msgstr "Cálculo base"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Field \"Value of\" not defined !"
+msgstr "¡El campo \"Valor de\" no está definido!"
+
+#. module: account_invoicing
+#: field:inv.agreement,recurr_unit:0
+#: field:inv.service,interval_unit:0
+msgid "Interval Unit"
+msgstr "Unidad de intervalo"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "d_list - Invoice Log object"
+msgstr "d_list - Objeto registro facturas"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Invalid action !"
+msgstr "¡Acción no válida!"
+
+#. module: account_invoicing
+#: selection:inv.agreement,state:0
+msgid "Done"
+msgstr "Finalizado"
+
+#. module: account_invoicing
+#: selection:inv.calc,product_type:0
+msgid "Consumable"
+msgstr "Consumible"
+
+#. module: account_invoicing
+#: wizard_view:inv.agreement.wizard,init:0
+msgid "Do you want set to process selected agreement(s) ?"
+msgstr "¿Desea procesar los contrato(s) seleccionado(s)?"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "Advanced"
+msgstr "Avanzado"
+
+#. module: account_invoicing
+#: constraint:ir.cron:0
+msgid "Invalid arguments"
+msgstr "Argumentos no válidos"
+
+#. module: account_invoicing
+#: constraint:ir.ui.view:0
+msgid "Invalid XML for View Architecture!"
+msgstr "¡XML no válido para la estructura de la vista!"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "quant - variable which will be used as a expression result"
+msgstr "quant - Variable que se utilizará como una expresión del resultado"
+
+#. module: account_invoicing
+#: selection:inv.calc_filter,state:0
+#: selection:inv.rec_filter,state:0
+msgid "Undefined"
+msgstr "Indefinido"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "model - current model name in Methodology"
+msgstr "model - Nombre del modelo actual en metodología"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Manage Prolongation:"
+msgstr "Gestionar prolongación:"
+
+#. module: account_invoicing
+#: field:inv.calc,manual:0
+#: field:inv.method,manual:0
+msgid "Manual"
+msgstr "Manual"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_agreement
+msgid "inv.agreement"
+msgstr "inv.agreement"
+
+#. module: account_invoicing
+#: selection:inv.method,ref:0
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: account_invoicing
+#: view:inv.service:0
+#: field:inv.service,req_users:0
+msgid "Work Team"
+msgstr "Equipo de trabajo"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Cannot delete agreement(s) which are already running !"
+msgstr "¡No se pueden eliminar contrato(s) que ya están en proceso!"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "pdate1 - period date from"
+msgstr "pdate1 - Fecha período inicial"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_date_list
+msgid "inv.date_list"
+msgstr "nv.date_list"
+
+#. module: account_invoicing
+#: field:inv.agreement,state:0
+#: field:inv.calc_filter,state:0
+#: field:inv.date_list,state:0
+#: field:inv.date_list,status:0
+#: field:inv.method,state:0
+#: field:inv.rec_filter,state:0
+#: field:inv.rec_filter_cond,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: account_invoicing
+#: model:ir.actions.act_window,name:account_invoicing.act_all_invoices
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: account_invoicing
+#: help:inv.agreement,init_effect_date:0
+msgid "Date of initial validity of the agreement."
+msgstr "Fecha de validez inicial del contrato."
+
+#. module: account_invoicing
+#: field:inv.agreement,cron_prolong:0
+msgid "Cron prolong"
+msgstr "Planificador de prolongación"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value1_char:0
+msgid "Char"
+msgstr "Carácter"
+
+#. module: account_invoicing
+#: selection:inv.agreement,recurr_unit:0
+#: selection:inv.service,interval_unit:0
+msgid "Week(s)"
+msgstr "Semana(s)"
+
+#. module: account_invoicing
+#: selection:inv.date_list,status:0
+msgid "Ready to be invoiced"
+msgstr "Listo para ser facturado"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "mas_after - List of id's of record after filtration"
+msgstr "mas_after - Lista de IDs de registros después del filtrado"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Input data error!"
+msgstr "¡Error entrada de datos!"
+
+#. module: account_invoicing
+#: selection:inv.date_list,status:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value2_int:0
+msgid "Integer2"
+msgstr "Entero2"
+
+#. module: account_invoicing
+#: view:inv.method:0
+msgid "mas_aft - list for the ID of the filtered records"
+msgstr "mas_aft - Lista de IDs de los registros filtrados"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_calc
+msgid "inv.calc"
+msgstr "inv.calc"
+
+#. module: account_invoicing
+#: view:inv.cond_value:0
+#: view:inv.rec_filter_cond:0
+#: field:inv.rec_filter_cond,cond_value:0
+msgid "Condition value"
+msgstr "Valor condición"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "agre - current Agreement objects record"
+msgstr "agre - Registro del objeto contrato actual"
+
+#. module: account_invoicing
+#: wizard_button:inv.agreement.wizard,init,end:0
+msgid "No"
+msgstr "No"
+
+#. module: account_invoicing
+#: view:inv.rec_type:0
+msgid "Record types"
+msgstr "Tipos de registro"
+
+#. module: account_invoicing
+#: selection:inv.agreement,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: account_invoicing
+#: help:inv.agreement,prolong:0
+msgid "Sets whether to prolong the agreement for the next term or not."
+msgstr "Indica si el contrato debe ser renovado o no al finalizar el período inicial de validez."
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Cannot set Waiting while field \"Analitic Entries\" not empty !"
+msgstr "¡No se puede poner En espera mientras el campo \"Entradas analíticas\" no está vacío!"
+
+#. module: account_invoicing
+#: field:inv.calc,model_id:0
+#: field:inv.method,model_id:0
+msgid "Model"
+msgstr "Modelo"
+
+#. module: account_invoicing
+#: selection:inv.calc,description:0
+#: selection:inv.date_list,state:0
+msgid "Empty"
+msgstr "Vacío"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "rec_id - Id of current record after filtration"
+msgstr "rec_id - ID del registro actual después del filtrado"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_rec_filter_cond
+msgid "inv.rec_filter_cond"
+msgstr "nv.rec_filter_cond"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "Available global variables:"
+msgstr "Variables globales disponibles:"
+
+#. module: account_invoicing
+#: selection:inv.date_list,state:0
+#: selection:inv.date_list,status:0
+msgid "Processing"
+msgstr "En proceso"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "No field value!"
+msgstr "¡Falta campo Valor!"
+
+#. module: account_invoicing
+#: field:inv.agreement,active:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: account_invoicing
+#: view:inv.method:0
+msgid "Create"
+msgstr "Crear"
+
+#. module: account_invoicing
+#: field:inv.calc_filter,condition_id:0
+#: field:inv.rec_filter,condition_id:0
+msgid "Condition"
+msgstr "Condición"
+
+#. module: account_invoicing
+#: selection:inv.calc_filter,temp_var:0
+#: selection:inv.calc_filter,var:0
+#: selection:inv.method,calc_base:0
+#: selection:inv.rec_filter,temp_var:0
+#: selection:inv.rec_filter,var:0
+msgid "Count"
+msgstr "Contar"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "calc_id - current Calculation ID field value"
+msgstr "calc_id - Valor del campo ID del cálculo actual"
+
+#. module: account_invoicing
+#: field:inv.agreement,prolong:0
+msgid "Prolongation"
+msgstr "Prolongación"
+
+#. module: account_invoicing
+#: model:ir.model,name:account_invoicing.model_inv_rec_filter
+msgid "inv.rec_filter"
+msgstr "inv.rec_filter"
+
+#. module: account_invoicing
+#: field:inv.date_list,pdate2:0
+msgid "Period Date2"
+msgstr "Fecha período2"
+
+#. module: account_invoicing
+#: field:inv.date_list,pdate1:0
+msgid "Period Date1"
+msgstr "Fecha período1"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,calc_filter_id:0
+#: field:inv.rec_filter_cond,rec_filter_id:0
+msgid "Filter"
+msgstr "Filtro"
+
+#. module: account_invoicing
+#: field:inv.date_list,date:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: account_invoicing
+#: model:ir.module.module,description:account_invoicing.module_meta_information
+msgid ""
+"Complete universal addon for issuing bills on any type of TinyERP/OpenERP data objects (models). Setup agreements for automatic customer billing on scheduld intervals.\n"
+"    Features:\n"
+"    * user frienly yet powerfull;\n"
+"    * fully automatic creation of analytic journal entries for further invoicing;\n"
+"    * definition of various methodologies - business logic;\n"
+"    * choose code constructor (Python) for fast deployment or manual expressions for advanced business logic or combine both of them;\n"
+"    * unlimited count of methodologies per virtual service;\n"
+"    \n"
+"    Suitable for billing (non exaustive list):\n"
+"    * Hosting (e-mail, web-hosting etc.);\n"
+"    * Utilities;\n"
+"    * Telecom;\n"
+"    * Service;\n"
+"    "
+msgstr ""
+"Módulo completo universal para la generación de facturas a partir de cualquier tipo de objetos de datos (modelos) de OpenERP. Permite definir contratos para la facturación automática de clientes en intervalos planificados.\n"
+"    Características:\n"
+"    * Fácil de usar aunque potente\n"
+"    * Creación automática completa de entradas analíticas para posterior facturación\n"
+"    * Definición de distintas metodologías - la lógica de negocio\n"
+"    * Permite usar un constructor de código (Python) para la puesta a punto rápida o bien expresiones manuales para lógicas de negocio avanzadas o combinar ambos sistemas\n"
+"    * Ilimitado número de metodologías por cada servicio virtual\n"
+"   \n"
+"    Este módulo es indicado para la facturación (lista no exhaustiva) de:\n"
+"    * Alojamiento (correo electrónico, alojamiento web, ...)\n"
+"    * Soporte\n"
+"    * Telecomunicaciones\n"
+"    * Servicios\n"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Manage State:"
+msgstr "Gestionar estado:"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "pdate2 - period date to"
+msgstr "pdate2 - Fecha período final"
+
+#. module: account_invoicing
+#: selection:inv.agreement,state:0
+#: selection:inv.date_list,status:0
+msgid "Error"
+msgstr "Error"
+
+#. module: account_invoicing
+#: view:inv.method:0
+msgid "partner_id - current partner ID in Methodology"
+msgstr "partner_id - ID empresa actual en metodología"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: field:inv.calc,descr_express:0
+#: selection:inv.calc,description:0
+#: selection:inv.calc,quantity:0
+#: field:inv.calc,quantity_express:0
+msgid "Expression"
+msgstr "Expresión"
+
+#. module: account_invoicing
+#: selection:inv.calc,product_type:0
+msgid "Stockable Product"
+msgstr "Producto almacenable"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: account_invoicing
+#: field:inv.agreement,uninv_entries_count:0
+msgid "Uninvoiced analytic entries"
+msgstr "Entradas analíticas sin facturar"
+
+#. module: account_invoicing
+#: field:inv.calc,code:0
+#: field:inv.rec_filter_cond,code:0
+msgid "Code"
+msgstr "Código"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Process"
+msgstr "Procesar"
+
+#. module: account_invoicing
+#: field:inv.calc,descr_field:0
+#: field:inv.calc,quantity_field:0
+msgid "Value of"
+msgstr "Valor de"
+
+#. module: account_invoicing
+#: field:inv.date_list,period:0
+#: selection:inv.service,invoicing:0
+msgid "Period"
+msgstr "Período"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "General"
+msgstr "General"
+
+#. module: account_invoicing
+#: selection:inv.date_list,state:0
+msgid "Filled"
+msgstr "Relleno"
+
+#. module: account_invoicing
+#: selection:inv.agreement,prolong:0
+msgid "Unlimited Term"
+msgstr "Período de tiempo indeterminado"
+
+#. module: account_invoicing
+#: field:inv.agreement,cur_effect_date:0
+msgid "Current Validity Date"
+msgstr "Fecha actual de validez"
+
+#. module: account_invoicing
+#: field:inv.calc,product_type:0
+msgid "Product Type"
+msgstr "Tipo de producto"
+
+#. module: account_invoicing
+#: help:inv.agreement,cur_effect_date:0
+msgid "Resembles the current validity period."
+msgstr "Parecido al período actual de validez"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "calc_date - calculation date"
+msgstr "calc_date - Fecha del cálculo"
+
+#. module: account_invoicing
+#: selection:inv.method,state:0
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: account_invoicing
+#: field:inv.calc,quantity:0
+msgid "Set quantity"
+msgstr "Establecer cantidad"
+
+#. module: account_invoicing
+#: selection:inv.method,state:0
+msgid "Open"
+msgstr "Abrir"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value1_float:0
+msgid "Float1"
+msgstr "Real1"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value2_float:0
+msgid "Float2"
+msgstr "Real2"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Information"
+msgstr "Información"
+
+#. module: account_invoicing
+#: constraint:ir.model:0
+msgid "The Object name must start with x_ and not contain any special character !"
+msgstr "¡El nombre del objeto debe comenzar con x_ y no debe contener caracteres especiales!"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "cr - database cursor"
+msgstr "cr - Cursor de la base de datos"
+
+#. module: account_invoicing
+#: field:inv.agreement,init_effect_date:0
+msgid "Initial Validity Date"
+msgstr "Fecha inicial de validez"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Agreement not possible running !"
+msgstr "¡El contrato no se puede poner En proceso!"
+
+#. module: account_invoicing
+#: selection:inv.calc,description:0
+#: selection:inv.calc,quantity:0
+#: field:inv.calc_filter,field_id:0
+#: selection:inv.calc_filter,temp_var:0
+#: selection:inv.calc_filter,var:0
+#: selection:inv.method,calc_base:0
+#: field:inv.method,partner_field:0
+#: field:inv.method,ref:0
+#: field:inv.rec_filter,field_id:0
+#: selection:inv.rec_filter,temp_var:0
+#: selection:inv.rec_filter,var:0
+msgid "Field"
+msgstr "Campo"
+
+#. module: account_invoicing
+#: field:inv.calc,method_id:0
+#: field:inv.calc_filter,method_id:0
+#: view:inv.method:0
+#: field:inv.rec_filter,method_id:0
+#: model:ir.actions.act_window,name:account_invoicing.inv_config_method_form
+#: model:ir.ui.menu,name:account_invoicing.methodology
+msgid "Methodology"
+msgstr "Metodología"
+
+#. module: account_invoicing
+#: model:ir.actions.wizard,name:account_invoicing.inv_agr_run
+msgid "Run agreement"
+msgstr "Procesar contrato"
+
+#. module: account_invoicing
+#: field:inv.agreement,signed_date:0
+msgid "Signed on"
+msgstr "Firmado el"
+
+#. module: account_invoicing
+#: help:inv.agreement,uninv_entries_count:0
+msgid "Number of uninvoiced analytic entries."
+msgstr "Numero de entradas analíticas sin facturar."
+
+#. module: account_invoicing
+#: selection:inv.agreement,recurr_unit:0
+#: selection:inv.service,interval_unit:0
+msgid "Day(s)"
+msgstr "Día(s)"
+
+#. module: account_invoicing
+#: field:inv.agreement,calls:0
+msgid "Number of invoices"
+msgstr "Número de facturas"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "Constructor:"
+msgstr "Constructor:"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+msgid "meth_id - current Methodology ID field value"
+msgstr "meth_id - Valor del campo ID de la metodología actual"
+
+#. module: account_invoicing
+#: field:inv.agreement,name:0
+#: view:inv.calc:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: account_invoicing
+#: selection:inv.agreement,payment:0
+msgid "After"
+msgstr "Período vencido"
+
+#. module: account_invoicing
+#: view:inv.date_list:0
+msgid "-"
+msgstr "-"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Validity"
+msgstr "Validez"
+
+#. module: account_invoicing
+#: selection:inv.agreement,state:0
+msgid "Running"
+msgstr "En proceso"
+
+#. module: account_invoicing
+#: help:inv.agreement,number:0
+msgid "Leave empty to get the number assigned by a sequence."
+msgstr "Dejarlo vacío para obtener un número asignado por una secuencia."
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "\"Invoice Every\" field cannot be less than 1!"
+msgstr "¡El campo \"Facturar cada\" no puede ser menor a 1!"
+
+#. module: account_invoicing
+#: selection:inv.date_list,status:0
+msgid "Waiting"
+msgstr "En espera"
+
+#. module: account_invoicing
+#: field:inv.agreement,payment:0
+msgid "Payment"
+msgstr "Pago"
+
+#. module: account_invoicing
+#: view:inv.date_list:0
+msgid "From:"
+msgstr "Desde:"
+
+#. module: account_invoicing
+#: help:inv.agreement,calls:0
+msgid "Number of invoices to be written."
+msgstr "Número de facturas a crear."
+
+#. module: account_invoicing
+#: field:inv.calc,description:0
+msgid "Set description"
+msgstr "Establecer descripción"
+
+#. module: account_invoicing
+#: view:inv.rec_filter:0
+msgid "Record filter"
+msgstr "Filtrado de registros"
+
+#. module: account_invoicing
+#: view:inv.service:0
+#: field:inv.service,method_ids:0
+msgid "Methodologies"
+msgstr "Metodologías"
+
+#. module: account_invoicing
+#: field:inv.method,name:0
+#: field:inv.service,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: account_invoicing
+#: field:inv.calc,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: account_invoicing
+#: view:inv.method:0
+msgid "invoice_date - next invoice date"
+msgstr "invoice_date - Próxima fecha de facturación"
+
+#. module: account_invoicing
+#: view:inv.date_list:0
+msgid "Renew"
+msgstr "Renovar"
+
+#. module: account_invoicing
+#: field:inv.calc,calculations:0
+msgid "Calculation lines"
+msgstr "Líneas de cálculo"
+
+#. module: account_invoicing
+#: selection:inv.agreement,recurr_unit:0
+#: selection:inv.service,interval_unit:0
+msgid "Year(s)"
+msgstr "Año(s)"
+
+#. module: account_invoicing
+#: field:inv.calc,sequence:0
+msgid "Calculation Sequence"
+msgstr "Secuencia de cálculo"
+
+#. module: account_invoicing
+#: field:account.analytic.line,invlog_id:0
+#: view:inv.agreement:0
+#: field:inv.agreement,date_list:0
+#: view:inv.date_list:0
+msgid "Invoice Log"
+msgstr "Registro de facturas"
+
+#. module: account_invoicing
+#: wizard_button:inv.agreement.wizard,init,start:0
+msgid "Yes"
+msgstr "Sí"
+
+#. module: account_invoicing
+#: field:inv.calc,invoicing_id:0
+#: model:ir.ui.menu,name:account_invoicing.inv_main_menu
+msgid "Invoicing"
+msgstr "Facturación"
+
+#. module: account_invoicing
+#: field:inv.agreement,cron_nextdate:0
+msgid "Set next date"
+msgstr "Establecer próxima fecha"
+
+#. module: account_invoicing
+#: field:inv.service,invoicing:0
+msgid "Invoicing based on"
+msgstr "Facturación basada en"
+
+#. module: account_invoicing
+#: help:inv.agreement,analytic_account:0
+msgid "Leave empty to let the system create an account in a branch defined by the Service."
+msgstr "Dejarlo vacío para que el sistema genere automáticamente una cuenta en la rama definida por el servicio."
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value1_datetime:0
+msgid "DateTime1"
+msgstr "FechaHora1"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value2_datetime:0
+msgid "DateTime2"
+msgstr "FechaHora2"
+
+#. module: account_invoicing
+#: selection:inv.calc,quantity:0
+msgid "One"
+msgstr "Uno"
+
+#. module: account_invoicing
+#: code:addons/account_invoicing/invoicing.py:0
+#, python-format
+msgid "Cannot renew while Agreement not in Draft !"
+msgstr "¡No se puede renovar mientras el contrato no esté en Borrador!"
+
+#. module: account_invoicing
+#: field:inv.rec_filter_cond,value1_bool:0
+msgid "Boolean"
+msgstr "Booleano"
+
+#. module: account_invoicing
+#: selection:inv.calc,description:0
+msgid "Calculation Period"
+msgstr "Cálculo de período"
+
+#. module: account_invoicing
+#: view:inv.calc:0
+#: view:inv.method:0
+msgid "uid - current user ID"
+msgstr "uid - ID usuario actual"
+
+#. module: account_invoicing
+#: field:inv.calc_filter,filters:0
+#: field:inv.method,rec_filter_ids:0
+#: field:inv.rec_filter,filters:0
+msgid "Filters"
+msgstr "Filtros"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Analytic Entries"
+msgstr "Entradas analíticas"
+
+#. module: account_invoicing
+#: view:inv.agreement:0
+msgid "Get number"
+msgstr "Obtener número"
+

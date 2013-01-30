@@ -50,13 +50,13 @@
 								<field name="name" string="Subject" />
 								<field name="date" string="Start Date" />
 								<field name="date_deadline" string="End Date" />
+								<field name="state" invisible="1" />
 							</tree>
 						</field>
 					</page>
 				</page>
 			</field>
 		</record>
-		
 		
 		<record model="ir.ui.view" id="res_partner_count_fields_inherit_view">
 			<field name="name">res.partner.count.tree.inherit</field>
@@ -72,5 +72,6 @@
 				</xpath>
 			</field>
 		</record>
+		
 	</data>
 </openerp>
