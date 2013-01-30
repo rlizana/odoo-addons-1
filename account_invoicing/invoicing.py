@@ -1612,7 +1612,7 @@ class agreement(osv.osv):
             if not agr_period_data:
                 raise osv.except_osv(_('Invalid action !'), _('System could not calculate period range !'))
             else:
-                self.write(cr, uid, [row.id], {'init_effect_date': agr_period_data})
+                self.write(cr, uid, [row.id], {'init_effect_date': agr_period_data.strftime('%Y-%m-%d')})                
             d_list = self.pool.get('inv.date_list')
             date_list = map(int, row.date_list)
             date_error_ids = d_list.search(cr, uid, [('id','in',date_list),('status','=','error')])
@@ -1752,7 +1752,7 @@ class agreement(osv.osv):
                     del res['nextcall']
                 res['active'] = True
                 res['doall'] = row.repeat
-                self.pool.get('ir.cron').write(cr, uid, [row.cron_id.id], res)
+                self.pool.get('ir.cron').write(cr, uid, row.cron_id.id, res)
                 id = row.cron_id.id
             self.write(cr, uid, [row.id], {'cron_id':id})
 
@@ -1792,7 +1792,7 @@ class agreement(osv.osv):
     def set_done(self, cr, uid, ids, context={}):
         for r in self.browse(cr, uid, ids, {}):
 	    if r.cron_id:
-	      self.pool.get('ir.cron').write(cr, uid, [r.cron_id.id], {'active':False})
+	      self.pool.get('ir.cron').write(cr, uid, r.cron_id.id, {'active':False})
         self.write(cr, uid, ids, {'state':'done'})
         return True
 
