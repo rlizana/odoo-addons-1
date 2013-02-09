@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 6.0dev\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2011-05-09 10:18+0000\n"
-"PO-Revision-Date: 2012-07-25 10:54+0000\n"
-"Last-Translator: Urtzi Odriozola <Unknown>\n"
+"PO-Revision-Date: 2013-02-09 00:25+0000\n"
+"Last-Translator: Eliovir <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-26 05:06+0000\n"
-"X-Generator: Launchpad (build 15679)\n"
+"X-Launchpad-Export-Date: 2013-02-09 05:14+0000\n"
+"X-Generator: Launchpad (build 16482)\n"
 
 #. module: account_voucher
 #: view:account.voucher.unreconcile:0
@@ -941,7 +941,7 @@ msgstr "Montant original"
 #. module: account_voucher
 #: report:voucher.print:0
 msgid "State:"
-msgstr "État:"
+msgstr "État :"
 
 #. module: account_voucher
 #: field:account.bank.statement.line,voucher_id:0
