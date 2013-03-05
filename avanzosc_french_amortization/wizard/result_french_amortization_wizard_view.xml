@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+    	
+        <record model="ir.ui.view" id="result_french_amortization">
+            <field name="name">result.french.amortization</field>
+            <field name="model">result.french.amortization.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="French Amortization">
+					<field name="requested_capital" />
+					<field name="interest" />
+					<field name="years" />
+					<field name="quota" />
+					<button string="Cancel" special="cancel" icon="gtk-cancel"/>
+					<button string="Ok" name="result_french_amortization_wizard" type="object" icon="gtk-ok"  />
+                </form>
+            </field>
+        </record>
+   
+			
+		<!-- ACCION -->
+		<record id="result_action_french_amortization" model="ir.actions.act_window">
+         	<field name="name">Result French Amortization</field>
+         	<field name="type">ir.actions.act_window</field>
+         	<field name="res_model">result.french.amortization.wizard</field>
+         	<field name="view_type">form</field>
+         	<field name="view_mode">form</field>
+         	<field name="target">new</field>
+		</record>
+			
+	 
+    </data>
+</openerp>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- ********** DISEÑO SUBMENUS (DERECHA) **********  -->
+
+		<menuitem id="custom_french_amortization_group_view" name="French Amortization"
+			parent="base.menu_administration" />
+		<menuitem id="custom_french_amortization_view" name="French Amortization"
+			parent="custom_french_amortization_group_view" action="action_french_amortization" />		
+
+	</data>
+</openerp>

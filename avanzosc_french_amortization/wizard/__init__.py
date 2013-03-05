@@ -1,0 +1,2 @@
+import french_amortization_wizard
+import result_french_amortization_wizard

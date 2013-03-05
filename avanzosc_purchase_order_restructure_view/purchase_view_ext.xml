@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="purchase_order_form_restructure_view" model="ir.ui.view">
+            <field name="name">purchase.order.form.restructure.view</field>
+            <field name="model">purchase.order</field>
+            <field name="type">form</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+            	<xpath expr="//form[@string='Purchase Order']" position="replace">
+	                <form string="Purchase Order">
+	                    <group name="head" col="6" colspan="4">
+	                        <field name="name" colspan="2"/>
+	                        <field name="date_order" colspan="2"/>
+	                        <field name="invoiced" colspan="2"/>
+	                    </group>
+	                    <group col="6" colspan="4">
+	                        <field name="warehouse_id" colspan="2" on_change="onchange_warehouse_id(warehouse_id)" widget="selection"/>
+	                        <field name="partner_ref" colspan="2"/>
+	                        <field name="shipped" colspan="2"/>
+	                        <field name="company_id" colspan="2" groups="base.group_multi_company" widget="selection"/>
+	                    </group>
+						
+	                    <notebook colspan="4">
+	                    
+	                        <page string="Purchase Order">
+	                        	<group colspan="4">
+	                        		<group colspan="4" col="4">
+		                            	<field name="partner_id" colspan="2" on_change="onchange_partner_id(partner_id)" context="{'search_default_supplier':1,'default_supplier':1,'default_customer':0}"  options='{"quick_create": false}'/>
+		                            	<field name="partner_address_id" colspan="2" options='{"quick_create": false}'/>
+		                            	<field domain="[('type','=','purchase')]" colspan="2" name="pricelist_id" groups="base.group_extended"/>
+		                            	<field name="origin" colspan="2" groups="base.group_extended"/>
+		                            </group>
+		                            
+		                            <field colspan="4" name="order_line" height="210" nolabel="1" mode="tree,form">
+		                                <tree string="Purchase Order Lines">
+		                                    <field name="date_planned"/>
+		                                    <field name="name"/>
+		                                    <field name="product_qty"/>
+		                                    <field name="product_uom"/>
+		                                    <field name="price_unit"/>
+		                                    <field name="price_subtotal"/>
+		                                </tree>
+		                      
+		                            </field>
+		                            
+		                            <group colspan="4" col="8">
+		                                <field name="amount_untaxed" colspan="2" sum="Untaxed amount"/>
+		                                <field name="amount_tax" colspan="2" />
+		                                <field name="amount_total" colspan="2" sum="Total amount"/>
+		                                <button name="button_dummy" colspan="2" states="draft" string="Compute" type="object" icon="gtk-execute"/>
+		                            </group>
+		                            
+		                            <group name="bottons" colspan="4" col="6">
+		                                <field name="state" widget="statusbar" statusbar_visible="draft,approved,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirmed":"blue","wait":"blue"}' readonly="1"/>
+		                                <button name="purchase_cancel" states="draft,confirmed,wait_auth" string="Cancel" icon="gtk-cancel"/>
+										<button name="purchase_confirm" states="draft" string="Convert to Purchase Order" icon="gtk-go-forward"/>
+										<button name="purchase_approve" states="confirmed" string="Approved" icon="gtk-go-forward"/>
+										<button name="action_cancel" states="approved,except_picking,except_invoice,wait" string="Cancel Purchase Order" type="object" icon="gtk-cancel"/>	
+										<button name="%(purchase.report_purchase_order)d" string="Print" states="approved" type="action" icon="gtk-print"/>
+		                                <button name="picking_ok" states="except_picking" string="Manually Corrected" icon="gtk-convert"/>
+		                                <button name="invoice_ok" states="except_invoice" string="Manually Corrected" icon="gtk-convert"/>	                                
+		                                <button name="purchase_appbuyer" states="wait_auth" string="Approve Purchase" icon="gtk-ok"/>
+		                                <button name="action_cancel_draft" states="cancel" string="Set to Draft" type="object" icon="gtk-convert"/>
+		                            </group>
+		                            
+	                            </group>
+	                        </page>
+	                        
+	                        <page string="Delivery &amp; Invoicing" groups="base.group_extended">
+	                        	<group colspan="4">
+	                            	<group colspan="2" col="2">
+	                                	<separator string="Delivery" colspan="2"/>
+	                                	<field name="dest_address_id" on_change="onchange_dest_address_id(dest_address_id)"/>
+	                                	<field name="minimum_planned_date"/>
+	                                	<field name="location_id"/>
+	                            	</group>
+	                            	<group colspan="2" col="2">
+	                                	<separator string="Invoice Control" colspan="2"/>
+	                                	<field name="invoice_method"/>
+	                                	<field name="fiscal_position" widget="selection"/>
+	                            	</group>
+		                            <group colspan="4">
+			                            <separator string="Purchase Control" colspan="4"/>
+			                            <field name="validator" colspan="2" />
+			                            <field name="date_approve" colspan="2"/>
+		                            </group>
+		                            
+		                            <group colspan="4">
+		                            	<separator string="Invoices" colspan="4"/>
+		                            	<field name="invoice_ids" height="160" groups="base.group_extended" nolabel="1" context="{'type':'in_invoice', 'journal_type':'purchase'}"/>
+	                        		</group>
+	                        		
+	                        	</group>
+	                        </page>
+	                        
+	                        <page string="Notes">
+	                        	<group colspan="4">
+	                            	<field name="notes" nolabel="1"/>
+	                            </group>
+	                        </page>
+	                           
+	                    </notebook>		
+	                </form>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

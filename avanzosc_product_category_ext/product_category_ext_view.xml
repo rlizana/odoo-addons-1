@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		
+		<record model="ir.ui.view" id="product_category_form_view_ext">
+			<field name="name">product.category.form.view.ext</field>
+			<field name="model">product.category</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_category_form_view" />
+			<field name="arch" type="xml">
+				<field name="type" position="after"> 
+					<group colspan="4">
+                    	<separator string="Provision" />
+                    	<newline/>
+                    	<group colspan="4" col="6">
+                    		<field name="provision_type" colspan="2" />
+                    		<field name="procure_method" colspan="2" />
+                    		<field name="supply_method" colspan="2" />
+                    	</group>
+                    </group>
+				</field>				
+			</field>
+		</record>
+		
+	</data>
+</openerp>
