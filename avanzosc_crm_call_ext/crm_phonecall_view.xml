@@ -91,6 +91,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="/tree/button[@string='Convert to Opportunity']"
 					position="after">
+					<field name="helpdesk_id" invisible="1"/>
 					<button string="Register technical issue" name="%(phonecall_to_technicalcase_act)d"
 						icon="terp-tools" type="action" attrs="{'invisible':[('helpdesk_id','!=',False)]}"/>
 					<label colspan="6" string="" />
