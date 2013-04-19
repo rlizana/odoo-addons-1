@@ -1,0 +1,864 @@
+<?xml version="1.0" ?>
+<openerp>
+
+	<data>
+	 <!--Multicompany configure sequences -->
+		<record id="ir_sequence_faccountbankstatement3" model="ir.sequence">
+			<field name="code">account.bank.statement</field>
+			<field name="name">demo2 Account Bank Statement</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/St. %(month)s/%(day)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_faccountcashstatement3" model="ir.sequence">
+			<field name="code">account.cash.statement</field>
+			<field name="name">demo2Account Cash Statement</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/Cr. %(month)s/%(day)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_account_invoice_in_code3" model="ir.sequence.type">
+			<field name="code">account.invoice.in_invoice2</field>
+			<field name="name">Account Invoice In</field>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_faccountinvoicein3" model="ir.sequence">
+			<field name="code">account.invoice.in_invoice2</field>
+			<field name="name">demo2Account Invoice In</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_account_invoice_out_code3" model="ir.sequence.type">
+			<field name="code">account.invoice.out_invoice2</field>
+			<field name="name">Account Invoice Out</field>
+		</record>
+	</data>		
+	<data>
+		<record id="ir_sequence_faccountinvoiceout3" model="ir.sequence">
+			<field name="code">account.invoice.out_invoice2</field>
+			<field name="name">demo2Account Invoice Out</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_accountjournal_code3" model="ir.sequence.type">
+			<field name="code">account.journal2</field>
+			<field name="name">Account Journal</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_faccountjournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Account Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="1" name="number_increment"/>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_faccountreconcilesequence3" model="ir.sequence">
+			<field name="code">account.reconcile</field>
+			<field name="name">demo2Account reconcile sequence</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/AR</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_account_invoice_in_refund_code3" model="ir.sequence.type">
+			<field name="code">account.invoice.in_refund2</field>
+			<field name="name">Account Refund In</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_faccountrefundin3" model="ir.sequence">
+			<field name="code">account.invoice.in_refund2</field>
+			<field name="name">demo2Account Refund In</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/AIR%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_account_invoice_out_refund_code3" model="ir.sequence.type">
+			<field name="code">account.invoice.out_refund2</field>
+			<field name="name">Account Refund Out</field>
+		</record>
+	</data>		
+	<data>
+		<record id="ir_sequence_faccountrefundout3" model="ir.sequence">
+			<field name="code">account.invoice.out_refund2</field>
+			<field name="name">demo2Account Refund Out</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/OR%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fanalyticaccountsequence3" model="ir.sequence">
+			<field name="code">account.analytic.account</field>
+			<field name="name">demo2Analytic account sequence</field>
+			<field eval="2708" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+
+	<data>
+		<record id="ir_sequence_fbankjournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Bank Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/BNK/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fbankpayment3" model="ir.sequence">
+			<field name="code">bank_pay_voucher</field>
+			<field name="name">demo2Bank Payment</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fbankreceipt3" model="ir.sequence">
+			<field name="code">bank_rec_voucher</field>
+			<field name="name">demo2Bank Receipt</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fcashjournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Cash Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/CSH/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fcashpayment3" model="ir.sequence">
+			<field name="code">pay_voucher</field>
+			<field name="name">demo2Cash Payment</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fcashreceipt3" model="ir.sequence">
+			<field name="code">rec_voucher</field>
+			<field name="name">demo2Cash Receipt</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fchecksjournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Checks Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/CHK/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fcontraentry3" model="ir.sequence">
+			<field name="code">cont_voucher</field>
+			<field name="name">demo2contra Entry</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fexpensescreditnotesjournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Expenses Credit Notes Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/ECNJ/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpacks3" model="ir.sequence">
+			<field name="code">stock.lot.tracking</field>
+			<field name="name">demo2Packs</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="7" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/PCK/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpaymentline3" model="ir.sequence">
+			<field name="code">payment.line</field>
+			<field name="name">demo2Payment Line</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpaymentorder3" model="ir.sequence">
+			<field name="code">payment.order</field>
+			<field name="name">demo2Payment order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpickingin3" model="ir.sequence">
+			<field name="code">stock.picking.in</field>
+			<field name="name">demo2Picking IN</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/IN/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpickingint3" model="ir.sequence">
+			<field name="code">stock.picking.internal</field>
+			<field name="name">demo2Picking INT</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/INT/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpickingout3" model="ir.sequence">
+			<field name="code">stock.picking.out</field>
+			<field name="name">demo2Picking OUT</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/OUT/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fproductionlots3" model="ir.sequence">
+			<field name="code">stock.lot.serial</field>
+			<field name="name">demo2Production Lots</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="7" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpurchaseentry3" model="ir.sequence">
+			<field name="code">journal_pur_vou</field>
+			<field name="name">demo2Purchase Entry</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpurchaseentry3" model="ir.sequence">
+			<field name="code">journal_pur_vou</field>
+			<field name="name">demo2Purchase Entry Refund</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field name="suffix">/REFUND</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpurchasejournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Purchase Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/EXJ/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fpurchaseorder3" model="ir.sequence">
+			<field name="code">purchase.order</field>
+			<field name="name">demo2Purchase Order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/PO</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_freceivablepaymentorder3" model="ir.sequence">
+			<field name="code">rec.payment.order</field>
+			<field name="name">demo2Receivable payment order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fsalejournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Sale Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/SAJ/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fsalescreditnotejournal3" model="ir.sequence">
+			<field name="code">account.journal2</field>
+			<field name="name">demo2Sales Credit Note Journal</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/SCNJ/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fsalesentry3" model="ir.sequence">
+			<field name="code">journal_sale_vou</field>
+			<field name="name">demo2Sales Entry</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fsalesentry3" model="ir.sequence">
+			<field name="code">journal_sale_vou</field>
+			<field name="name">demo2Sales Entry Refund</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/%(year)s/</field>
+			<field name="suffix">/REFUND</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fsalesorder3" model="ir.sequence">
+			<field name="code">sale.order</field>
+			<field name="name">demo2Sales Order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/SO</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_fstockorderpoint3" model="ir.sequence">
+			<field name="code">stock.orderpoint</field>
+			<field name="name">demo2Stock orderpoint</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/OP/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+
+ <!--Specific Sequences needed for client configuration -->
+	<data>
+		<record id="ir_sequence_serial_cost_code3" model="ir.sequence.type">
+			<field name="code">cost.serial2</field>
+			<field name="name">Cost Serial</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_serialcost3" model="ir.sequence">
+			<field name="code">cost.serial2</field>
+			<field name="name">demo2Cost Serial</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="6" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/COST/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_claim_order_code3" model="ir.sequence.type">
+			<field name="code">crm.claim.order2</field>
+			<field name="name">Crm Claim Order</field>
+		</record>
+	</data>		
+	<data>
+		<record id="ir_sequence_crmclaimorder3" model="ir.sequence">
+			<field name="code">crm.claim.order2</field>
+			<field name="name">demo2Crm Claim Order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="4" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/CLM/</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_expense_invoice_code3" model="ir.sequence.type">
+			<field name="code">hr.expense.invoice2</field>
+			<field name="name">Expense Invoice</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_expenseinvoice3" model="ir.sequence">
+			<field name="code">hr.expense.invoice2</field>
+			<field name="name">demo2Expense Invoice</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="3" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/EXP</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_investment_code3" model="ir.sequence.type">
+			<field name="code">investment2</field>
+			<field name="name">Investment</field>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_investment3" model="ir.sequence">
+			<field name="code">investment2</field>
+			<field name="name">demo2Investment</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/POI-</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_mod3403" model="ir.sequence">
+			<field name="code">mod340</field>
+			<field name="name">demo2Model340</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="1" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_mrp_production_code3" model="ir.sequence.type">
+			<field name="code">mrp.production2</field>
+			<field name="name">Production Order</field>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_productionorder3" model="ir.sequence">
+			<field name="code">mrp.production2</field>
+			<field name="name">demo2Production Order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/MO</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_mrp_repair_code3" model="ir.sequence.type">
+			<field name="code">mrp.repair2</field>
+			<field name="name">Repair Order</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_repairorder3" model="ir.sequence">
+			<field name="code">mrp.repair2</field>
+			<field name="name">demo2Repair Order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/RMA</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_others_code3" model="ir.sequence.type">
+			<field name="code">others2</field>
+			<field name="name">Others</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_sequence_others3" model="ir.sequence">
+			<field name="code">others2</field>
+			<field name="name">demo2Others</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/POO-</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_purchase_code3" model="ir.sequence.type">
+			<field name="code">purchase2</field>
+			<field name="name">Purchase</field>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_purchase3" model="ir.sequence">
+			<field name="code">purchase2</field>
+			<field name="name">demo2Purchase</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/POP-</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_purchase_order_requisition_code3" model="ir.sequence.type">
+			<field name="code">purchase.order.requisition2</field>
+			<field name="name">Purchase Requisition Order</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_purchaserequisition3" model="ir.sequence">
+			<field name="code">purchase.order.requisition2</field>
+			<field name="name">demo2Purchase Requisition Order</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/TE</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data>
+		<record id="ir_partnercode3" model="ir.sequence">
+			<field name="code">res.partner</field>
+			<field name="name">demo2Partner Code</field>
+			<field eval="101" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/NP</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>	
+	<data>
+		<record id="ir_sequence_subcontracting_code3" model="ir.sequence.type">
+			<field name="code">subcontracting2</field>
+			<field name="name">Subcontracting</field>
+		</record>
+	</data>
+	<data>
+		<record id="ir_subcontracting3" model="ir.sequence">
+			<field name="code">subcontracting2</field>
+			<field name="name">demo2 Subcontracting</field>
+			<field eval="1" name="number_next"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="5" name="padding"/>
+			<field eval="1" name="number_increment"/>
+			<field name="prefix">demo2/POS-</field>
+			<field eval="1" name="active"/>
+		</record>
+	</data>
+	<data noupdate="1">
+	<!-- Multicompany configure Basic locations view, stock, output -->
+	<!-- Internal -->
+		<record id="stock_location_demo20" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">view</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="24" name="parent_right"/>
+			<field name="name">demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="17" name="parent_left"/>
+		</record>
+		<record id="stock_location_output3" model="stock.location">
+			<field model="stock.location" name="location_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">internal</field>
+			<field name="chained_location_type">customer</field>
+			<field eval="1" name="active"/>
+			<field eval="21" name="parent_right"/>
+			<field name="name">demo2Output</field>
+			<field name="chained_picking_type">out</field>
+			<field name="chained_auto_packing">transparent</field>
+			<field eval="30" name="parent_left"/>
+		</record>
+		<record id="stock_location_stock3" model="stock.location">
+			<field model="stock.location" name="location_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">internal</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="23" name="parent_right"/>
+			<field name="name">demo2Stock</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="22" name="parent_left"/>
+		</record>
+	</data>
+	<!-- Partner Locations -->
+
+	<data>
+		<record id="stock_location_customers3" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations_partner"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">customer</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="12" name="parent_right"/>
+			<field name="name">Clientes demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="11" name="parent_left"/>
+		</record>
+	</data>
+	<data>
+		<record id="stock_location_suppliers3" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations_partner"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">supplier</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="18" name="parent_right"/>
+			<field name="name">Proveedores demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="17" name="parent_left"/>
+		</record>
+	</data>
+	
+	<!-- Virtual Locations -->	
+
+	<data>
+		<record id="stock_location_inventoryloss3" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations_virtual"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">inventory</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="24" name="parent_right"/>
+			<field name="name">Inventario demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="23" name="parent_left"/>
+		</record>
+	</data>
+	<data>
+		<record id="stock_location_procurements3" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations_virtual"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">procurement</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="28" name="parent_right"/>
+			<field name="name">Abastecimientos demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="27" name="parent_left"/>
+		</record>
+	</data>
+	<data>
+		<record id="stock_location_production5" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations_virtual"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">production</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="30" name="parent_right"/>
+			<field name="name">Producción demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="29" name="parent_left"/>
+		</record>
+	</data>
+	<data>
+		<record id="stock_location_production6" model="stock.location">
+			<field name="location_id" ref="stock.stock_location_locations_virtual"/>
+			<field eval="0" name="scrap_location"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="usage">production</field>
+			<field name="chained_location_type">none</field>
+			<field eval="1" name="active"/>
+			<field eval="32" name="parent_right"/>
+			<field name="name">Desechado demo2</field>
+			<field name="chained_auto_packing">manual</field>
+			<field eval="31" name="parent_left"/>
+		</record>
+	</data>
+	
+	<!-- Multicompany configure Basic Warehouse -->
+	<data>
+		<record id="stock_warehouse_demo2" model="stock.warehouse">
+			<field name="lot_output_id" ref="stock_location_output3"/>
+			<field name="name">demo2</field>
+			<field name="lot_stock_id" ref="stock_location_stock3"/>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="lot_input_id" ref="stock_location_stock3"/>
+		</record>
+	</data>
+
+	<!-- Multicompany configure Basic Sale and Purchase PriceLists-->
+	<data>
+		<record id="product_pricelist_publicpricelist3" model="product.pricelist">
+			<field name="name">demo2 Public Pricelist</field>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="currency_id" ref="base.EUR"/>
+			<field eval="1" name="active"/>
+			<field name="type">sale</field>
+		</record>
+		<record id="product_pricelist_version_defaultpublicpricelistversion3" model="product.pricelist.version">
+			<field name="name">demo2 Default Public Pricelist Version</field>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2 Public Pricelist')]"/>
+			<field eval="1" name="active"/>
+			<field model="product.pricelist" name="pricelist_id" search="[('name', '=', u'demo2 Public Pricelist')]"/>
+		</record>
+		<record id="product_pricelist_item_defaultpublicpricelistline3" model="product.pricelist.item">
+			<field eval="5" name="sequence"/>
+			<field eval="1" name="base"/>
+			<field model="product.pricelist.version" name="price_version_id" search="[('name', '=', u'demo2 Default Public Pricelist Version')]"/>
+			<field name="name">demo2 Default Public Pricelist Line</field>
+		</record>
+	</data>
+	<data noupdate="1">
+		<record id="product_pricelist_defaultpurchasepricelist3" model="product.pricelist">
+			<field name="name">demo2 Default Purchase Pricelist</field>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="currency_id" ref="base.EUR"/>
+			<field eval="1" name="active"/>
+			<field name="type">purchase</field>
+		</record>
+		<record id="product_pricelist_version_defaultpurchasepricelistversion3" model="product.pricelist.version">
+			<field name="name">demo2 Default Purchase Pricelist Version</field>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field eval="1" name="active"/>
+			<field model="product.pricelist" name="pricelist_id" search="[('name', '=', u'demo2 Default Purchase Pricelist')]"/>
+		</record>
+		<record id="product_pricelist_item_defaultpurchasepricelistline3" model="product.pricelist.item">
+			<field eval="5" name="sequence"/>
+			<field eval="2" name="base"/>
+			<field model="product.pricelist.version" name="price_version_id" search="[('name', '=', u'demo2 Default Purchase Pricelist Version')]"/>
+			<field name="name">demo2 Default Purchase Pricelist Line</field>
+		</record>
+	</data>
+	<data noupdate="1"> 
+
+		<!-- Multicompany configure Basic Sale shop -->
+		<record id="sale_shop_demo2" model="sale.shop">
+			<field name="name">demo2</field>
+			<field model="res.company" name="company_id" search="[('name', '=', u'demo2')]"/>
+			<field name="warehouse_id" ref="stock_warehouse_demo2"/>
+			<field model="product.pricelist" name="pricelist_id" search="[('name', '=', u'demo2')]"/>
+			<field name="payment_default_id" ref="account.account_payment_term"/>
+		</record>
+	</data>
+
+</openerp>
