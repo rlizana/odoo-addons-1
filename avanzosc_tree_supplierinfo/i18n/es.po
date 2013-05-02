@@ -1,0 +1,27 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_tree_supplierinfo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-30 11:36+0000\n"
+"PO-Revision-Date: 2013-04-30 13:37+0100\n"
+"Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_tree_supplierinfo
+#: model:ir.actions.act_window,name:avanzosc_tree_supplierinfo.product_supplierinfo_source_form
+msgid "Product Supplier Info"
+msgstr "Info Proveedores de Productos"
+
+#. module: avanzosc_tree_supplierinfo
+#: model:ir.ui.menu,name:avanzosc_tree_supplierinfo.product_supplierinfo_menu_view
+msgid "Product with Suppliers"
+msgstr "Productos con Proveedores"
+

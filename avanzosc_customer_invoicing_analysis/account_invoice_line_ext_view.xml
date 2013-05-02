@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+        
+		<!-- *********************** VISTA TREE ****************** -->
+
+		<record model="ir.ui.view" id="invoicing_analysis_tree_view">
+			<field name="name">invoicing_analysis_tree_view</field>
+			<field name="model">account.invoice.line</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Invoicing Analysis" >
+					<field name="year" />
+					<field name="month" />
+					<field name="date_invoice" />
+					<field name="salesman_id" />
+					<field name="partner_id" />
+					<field name="area_id" />
+					<field name="sector_id" />
+					<field name="product_id" />
+					<field name="categ_id" />
+					<field name="quantity" />
+					<field name="price_unit" />
+					<field name="discount" />
+					<field name="price_subtotal" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- *********************** VISTA SEARCH ****************** -->
+	
+		<record model="ir.ui.view" id="invoicing_analysis_search_view">
+			<field name="name">invoicing.analysis.search.view</field>
+			<field name="model">account.invoice.line</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+	             <search string="Search Invoicing Analysis">
+	                 <group col='10' colspan='4'>
+	                 	<field name="year" />
+	                 	<field name="month" />
+						<field name="date_invoice" />
+						<field name="salesman_id" />
+						<field name="partner_id" />
+						<field name="area_id" />
+						<field name="sector_id" />
+						<newline/>
+						<field name="product_id" />
+						<field name="categ_id" />
+					</group>
+		            <newline/>
+	                <group expand="0" string="Group By...">
+	                	<filter string="Year" icon="terp-personal" domain="[]" context="{'group_by':'year'}"/>
+	                	<filter string="Month" icon="terp-personal" domain="[]" context="{'group_by':'month'}"/>
+	                    <filter string="Invoice Date" icon="terp-personal" domain="[]" context="{'group_by':'date_invoice'}"/>
+	                    <filter string="Salesman" icon="terp-personal" domain="[]" context="{'group_by':'salesman_id'}"/>
+	                    <filter string="Customer" icon="terp-personal" domain="[]" context="{'group_by':'partner_id'}"/>
+	                    <filter string="Area" icon="terp-personal" domain="[]" context="{'group_by':'area_id'}"/>
+	                    <filter string="Sector" icon="terp-personal" domain="[]" context="{'group_by':'sector_id'}"/>
+	                    <filter string="Product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
+	                    <filter string="Category" icon="terp-personal" domain="[]" context="{'group_by':'categ_id'}"/>
+	                </group>	               
+	              </search>		
+
+			</field>
+		</record>
+		
+		<!-- ***** ACCIÓN PARA LA VENTANA DE LAS VISTAS ***** -->
+
+        <record id="invoicing_analysis_source_form" model="ir.actions.act_window">
+            <field name="name">Invoicing Analysis</field>
+            <field name="res_model">account.invoice.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field eval="invoicing_analysis_tree_view" name="view_id"/>
+            <field name="domain">[('type','=','out_invoice')]</field>
+            <field name="search_view_id" ref="invoicing_analysis_search_view"/>
+        </record>	
+		
+		
+		<!-- *** DEFINO LA OPCION DE MENU *** -->
+		<menuitem id="invoicing_analysis_menu_view" name="Invoicing Analysis" parent="account.menu_finance_receivables" action="invoicing_analysis_source_form" sequence="20"/>		
+
+	</data>
+</openerp>

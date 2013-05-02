@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+        
+		<record model="ir.ui.view" id="view_partner_tree_inh_areasector">
+			<field name="name">view.partner.tree.inh.areasector</field>
+			<field name="model">res.partner</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="base.view_partner_tree" />
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="area_id" />
+					<field name="sector_id" />
+				</field>	
+				<field name="phone" position="after">
+					<field name="mobile" />
+				</field>					
+			</field>
+		</record>	
+		
+		<record model="ir.ui.view" id="view_partner_form_inh_areasector">
+			<field name="name">view.partner.form.inh.areasector</field>
+			<field name="model">res.partner</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<field name="lang" position ="after">
+					<field name="area_id" colspan="3" attrs="{'invisible': [('customer', '=', False)]}"/>
+					<field name="sector_id" colspan="3" attrs="{'invisible': [('customer', '=', False)]}"/>
+				</field>						
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_res_partner_filter_inh_areasector">
+			<field name="name">view.res.partner.filter.inh.areasector</field>
+			<field name="model">res.partner</field>
+			<field name="type">search</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter" />
+			<field name="arch" type="xml">
+				<field name="name" position ="after">
+					<field name="mobile" />
+					<field name="area_id" />
+					<field name="sector_id" />
+				</field>	
+				<xpath expr="//filter[@string='Salesman']" position="after">
+                	<filter string="Area" icon="terp-personal" domain="[]" context="{'group_by' : 'area_id'}" />
+                	<filter string="Sector" icon="terp-personal" domain="[]" context="{'group_by' : 'sector_id'}" />
+				</xpath>						
+			</field>
+		</record>
+
+	</data>
+</openerp>

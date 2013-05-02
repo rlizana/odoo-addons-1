@@ -1,0 +1,73 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_sector_area_incustumers
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-30 11:32+0000\n"
+"PO-Revision-Date: 2013-04-30 11:32+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_sector_area_incustumers
+#: model:ir.actions.act_window,name:avanzosc_sector_area_incustumers.res_partner_sector_source_form
+#: model:ir.model,name:avanzosc_sector_area_incustumers.model_res_partner_sector
+#: view:res.partner:0
+#: field:res.partner,sector_id:0
+#: view:res.partner.sector:0
+msgid "Sector"
+msgstr "Sector"
+
+#. module: avanzosc_sector_area_incustumers
+#: model:ir.ui.menu,name:avanzosc_sector_area_incustumers.menu_areas_sectors_main
+msgid "Areas And Sectors"
+msgstr "Areas And Sectors"
+
+#. module: avanzosc_sector_area_incustumers
+#: field:res.partner.area,name:0
+#: field:res.partner.sector,name:0
+msgid "Name"
+msgstr "Name"
+
+#. module: avanzosc_sector_area_incustumers
+#: model:ir.ui.menu,name:avanzosc_sector_area_incustumers.res_partner_sector_menu_view
+#: view:res.partner.sector:0
+msgid "Sectors"
+msgstr "Sectors"
+
+#. module: avanzosc_sector_area_incustumers
+#: model:ir.actions.act_window,name:avanzosc_sector_area_incustumers.res_partner_area_source_form
+#: model:ir.model,name:avanzosc_sector_area_incustumers.model_res_partner_area
+#: view:res.partner:0
+#: field:res.partner,area_id:0
+#: view:res.partner.area:0
+msgid "Area"
+msgstr "Area"
+
+#. module: avanzosc_sector_area_incustumers
+#: view:res.partner.sector:0
+msgid "Search Sector"
+msgstr "Search Sector"
+
+#. module: avanzosc_sector_area_incustumers
+#: model:ir.model,name:avanzosc_sector_area_incustumers.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: avanzosc_sector_area_incustumers
+#: view:res.partner.area:0
+msgid "Search Area"
+msgstr "Search Area"
+
+#. module: avanzosc_sector_area_incustumers
+#: model:ir.ui.menu,name:avanzosc_sector_area_incustumers.res_partner_area_menu_view
+#: view:res.partner.area:0
+msgid "Areas"
+msgstr "Areas"
+

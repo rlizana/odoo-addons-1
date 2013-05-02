@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+        
+		<record model="ir.ui.view" id="product_supplierinfo_tree_view_inh_treesupplier">
+			<field name="name">product.supplierinfo.tree.view.inh.treesupplier</field>
+			<field name="model">product.supplierinfo</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="product.product_supplierinfo_tree_view" />
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="product_id" />
+					<field name="product_name" />
+					<field name="product_code" />
+				</field>					
+			</field>
+		</record>	
+		
+        <record id="product_supplierinfo_form_view_inh_treesupplier" model="ir.ui.view">
+            <field name="name">product.supplierinfo.form.view.inh.treesupplier</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
+            <field name="arch" type="xml">
+            	<field name="delay" position="after">
+            		<field name="product_id" />
+            	</field>
+            </field>
+        </record>
+		
+		<!-- ***** ACCIÓN PARA LA VENTANA DE LAS VISTAS ***** -->
+
+		<record model="ir.actions.act_window" id="product_supplierinfo_source_form">
+			<field name="name">Product Supplier Info</field>
+			<field name="res_model">product.supplierinfo</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>		
+		
+		
+		<!-- *** DEFINO LA OPCION DE MENU *** -->
+		<menuitem id="product_supplierinfo_menu_view" name="Product with Suppliers" parent="purchase.menu_procurement_management_product" action="product_supplierinfo_source_form" sequence="50"/>		
+
+	</data>
+</openerp>

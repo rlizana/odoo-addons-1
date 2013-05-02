@@ -1,0 +1,194 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_customer_invoicing_analysis
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-02 11:04+0000\n"
+"PO-Revision-Date: 2013-05-02 11:04+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+#: field:account.invoice.line,categ_id:0
+msgid "Category"
+msgstr "Category"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,type:0
+msgid "Customer Refund"
+msgstr "Customer Refund"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+#: field:account.invoice.line,area_id:0
+msgid "Area"
+msgstr "Area"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+#: model:ir.actions.act_window,name:avanzosc_customer_invoicing_analysis.invoicing_analysis_source_form
+#: model:ir.ui.menu,name:avanzosc_customer_invoicing_analysis.invoicing_analysis_menu_view
+msgid "Invoicing Analysis"
+msgstr "Invoicing Analysis"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,type:0
+msgid "Customer Invoice"
+msgstr "Customer Invoice"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: avanzosc_customer_invoicing_analysis
+#: field:account.invoice.line,year:0
+msgid "year"
+msgstr "year"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: field:account.invoice.line,type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: field:account.invoice.line,date_invoice:0
+msgid "Date Invoice"
+msgstr "Date Invoice"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+msgid "Product"
+msgstr "Product"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "March"
+msgstr "March"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "August"
+msgstr "August"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "May"
+msgstr "May"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+msgid "Invoice Date"
+msgstr "Invoice Date"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "June"
+msgstr "June"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "July"
+msgstr "July"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+msgid "Customer"
+msgstr "Customer"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "February"
+msgstr "February"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "October"
+msgstr "October"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+msgid "Search Invoicing Analysis"
+msgstr "Search Invoicing Analysis"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "January"
+msgstr "January"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "April"
+msgstr "April"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "November"
+msgstr "November"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+#: field:account.invoice.line,sector_id:0
+msgid "Sector"
+msgstr "Sector"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: sql_constraint:account.invoice:0
+msgid "Invoice Number must be unique per Company!"
+msgstr "Invoice Number must be unique per Company!"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,type:0
+msgid "Supplier Invoice"
+msgstr "Supplier Invoice"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "September"
+msgstr "September"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,month:0
+msgid "December"
+msgstr "December"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: model:ir.model,name:avanzosc_customer_invoicing_analysis.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Invoice Line"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+#: field:account.invoice.line,month:0
+msgid "Month"
+msgstr "Month"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: model:ir.model,name:avanzosc_customer_invoicing_analysis.model_account_invoice
+msgid "Invoice"
+msgstr "Invoice"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+msgid "Year"
+msgstr "Year"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: selection:account.invoice.line,type:0
+msgid "Supplier Refund"
+msgstr "Supplier Refund"
+
+#. module: avanzosc_customer_invoicing_analysis
+#: view:account.invoice.line:0
+#: field:account.invoice.line,salesman_id:0
+msgid "Salesman"
+msgstr "Salesman"
+

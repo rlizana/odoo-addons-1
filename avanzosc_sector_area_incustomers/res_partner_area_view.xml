@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- *********************** VISTA TREE ****************** -->
+
+		<record model="ir.ui.view" id="res_partner_area_tree_view">
+			<field name="name">res.partner.area.tree.view</field>
+			<field name="model">res.partner.area</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Areas" >
+					<field name="name" />			
+				</tree>
+			</field>
+		</record>
+		
+		<!-- *********************** VISTA SEARCH ****************** -->
+
+		<record model="ir.ui.view" id="res_partner_area_search_view">
+			<field name="name">res.partner.area.search.view</field>
+			<field name="model">res.partner.area</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+                <search string="Search Area">
+                    <group>
+						<field name="name" />	
+                    </group>                
+                 </search>				
+			</field>
+		</record>
+
+		<!-- ******************* VISTA FORM ******************** -->
+
+		<record model="ir.ui.view" id="res_partner_area_form_view">
+			<field name="name">res.partner.area.form.view</field>
+			<field name="model">res.partner.area</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Area" >
+					<field name="name" />						
+				</form>
+			</field>
+		</record>
+		
+		<!-- ***** ACCIÓN PARA LA VENTANA DE LAS VISTAS ***** -->
+
+		<record model="ir.actions.act_window" id="res_partner_area_source_form">
+			<field name="name">Area</field>
+			<field name="res_model">res.partner.area</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>		
+		
+		
+		<!-- *** DEFINO LA OPCION DE MENU *** -->
+		<menuitem groups="base.group_extended" id="menu_areas_sectors_main" name="Areas And Sectors" parent="base.menu_base_config" sequence="60"/>
+		
+		
+		<menuitem id="res_partner_area_menu_view" name="Areas" parent="menu_areas_sectors_main" action="res_partner_area_source_form" sequence="10"/>		
+
+
+	</data>
+</openerp>
