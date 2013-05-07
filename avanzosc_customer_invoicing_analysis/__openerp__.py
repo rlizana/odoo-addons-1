@@ -23,7 +23,7 @@
 {
     "name": "Avanzosc Customer Invoicing Analysis",
     "version": "1.0",
-    "depends": ["account","avanzosc_sector_area_incustumers"],
+    "depends": ["account","avanzosc_sector_area_incustomers"],
     "author": "Avanzosc",
     "category": "Custom Modules",
     "description": """

@@ -28,22 +28,17 @@ class account_invoice_line(osv.osv):
     _inherit = 'account.invoice.line'
     
     def _get_year(self, cr, uid, ids, name, arg, context=None):
-        print '*** estoy en GET_YEAR'
         res = {}
         for line in self.browse(cr, uid, ids, context=context):
-            print '*** date_invoice: ' + str(line.invoice_id.date_invoice)
             if line.invoice_id.date_invoice:
                 my_date = datetime.strptime(str(line.invoice_id.date_invoice),'%Y-%m-%d')
                 my_year = my_date.year
-                print '*** year: ' + str(my_year)
                 res[line.id] = my_year
         return res
     
     def _get_month(self, cr, uid, ids, name, args, context=None):
-        print '*** estoy en GET_MONTH'
         res = {}
         for line in self.browse(cr, uid, ids, context=context):
-            print '*** date_invoice: ' + str(line.invoice_id.date_invoice)
             if line.invoice_id.date_invoice:
                 my_date = datetime.strptime(str(line.invoice_id.date_invoice),'%Y-%m-%d')
                 my_month = my_date.month
