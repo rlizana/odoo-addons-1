@@ -33,7 +33,7 @@ class account_invoice_line(osv.osv):
             if line.invoice_id.date_invoice:
                 my_date = datetime.strptime(str(line.invoice_id.date_invoice),'%Y-%m-%d')
                 my_year = my_date.year
-                res[line.id] = my_year
+                res[line.id] = str(my_year)
         return res
     
     def _get_month(self, cr, uid, ids, name, args, context=None):
@@ -83,7 +83,7 @@ class account_invoice_line(osv.osv):
                 # Categoria del producto
                 'categ_id':fields.related('product_id','categ_id', type="many2one" ,relation='product.category', string='Category', store=True, readonly=True),      
                 # Año
-                'year': fields.function(_get_year, string='year', store=True, type='integer'),
+                'year': fields.function(_get_year, string='year', store=True, type='char', size=4),
                 # Mes
                 'month': fields.function(_get_month, type='selection', selection=[('january','January'),('february','February'),('march','March'),('april','April'),('may','May'),('june','June'),('july','July'),('august','August'),('september','September'),('october','October'),('november','November'),('december','December')], string='Month',store=True),
                 }
