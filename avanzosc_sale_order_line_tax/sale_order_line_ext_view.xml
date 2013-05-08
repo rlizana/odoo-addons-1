@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	
+		<record id="view_order_form_inh_tax" model="ir.ui.view">
+    	    <field name="name">view.order.form.inh.tax</field>
+			<field name="model">sale.order</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+			    <data>
+				    <xpath expr="//form//notebook//page/field[@name='order_line']/form/notebook/page/group/field[@name='tax_id']" position="replace">
+				        <field colspan="5" name="tax_id" height="120" nolabel="1" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"/>
+				    </xpath>
+			    </data>
+			</field>
+    	</record>
+    
+    </data>
+</openerp>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<openerp>
+<data noupdate="1">
+
+	<!-- AEROO PARA CONTRATOS -->
+    
+    <record id="avanzosc_reportcontract_ext_aeroo_report1" model="ir.actions.report.xml">
+        <field name="name">Contract Report</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">hr.contract</field>
+        <field name="report_name">reportcontract_report1</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="parser_loc">avanzosc_report_contract_ext/report/parser.py</field>
+        <field name="report_rml">avanzosc_report_contract_ext/report/hrcontract.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['hr.contract']" name="models"/>
+        <field name="name">Contract Report</field>
+        <field eval="'ir.actions.report.xml,'+str(avanzosc_reportcontract_ext_aeroo_report1)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+    
+    <!-- AEROO PARA PEDIDOS DE COMPRA -->
+    
+    <record id="avanzosc_purchaseorder_ext_aeroo_report1" model="ir.actions.report.xml">
+        <field name="name">Purchase Order Report</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">purchase.order</field>
+        <field name="report_name">purchaseorder_report1</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="parser_loc">avanzosc_report_contract_ext/report/parser.py</field>
+        <field name="report_rml">avanzosc_report_contract_ext/report/purchase_order.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['purchase.order']" name="models"/>
+        <field name="name">Purchase Order Report</field>
+        <field eval="'ir.actions.report.xml,'+str(avanzosc_purchaseorder_ext_aeroo_report1)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+    
+    <!-- AEROO PARA PEDIDOS DE VENTA -->
+    
+    <record id="avanzosc_saleorder_ext_aeroo_report1" model="ir.actions.report.xml">
+        <field name="name">Sale Order Report</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">sale.order</field>
+        <field name="report_name">saleorder_report1</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="parser_loc">avanzosc_report_contract_ext/report/parser.py</field>
+        <field name="report_rml">avanzosc_report_contract_ext/report/sale_order.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['sale.order']" name="models"/>
+        <field name="name">Sale Order Report</field>
+        <field eval="'ir.actions.report.xml,'+str(avanzosc_saleorder_ext_aeroo_report1)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+
+</data>
+</openerp>
+

@@ -24,7 +24,7 @@
 {
     "name": "Avanzosc Report Contract Extension",
     "version": "1.0",
-    "depends": ["report_contract","avanzosc_purchase_order_restructure_view","purchase", "sale","hr_contract"],
+    "depends": ["report_aeroo","report_aeroo_ooo","report_aeroo_printscreen","report_contract","avanzosc_purchase_order_restructure_view","purchase", "sale","hr_contract"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
@@ -44,7 +44,8 @@
                    'contract_conditions_ext_view.xml',
                    'purchase_order_ext_view.xml',
                    'sale_order_ext_view.xml',
-                   'hr_contract_ext_view.xml'
+                   'hr_contract_ext_view.xml',
+                   'report/report.xml'
                    ],
     'demo_xml': [],
     'installable': True,
