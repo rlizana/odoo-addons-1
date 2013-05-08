@@ -10,8 +10,8 @@
 			<field name="type">tree</field>
 			<field name="arch" type="xml">
 				<tree string="Estimated Calendar Resources" >
-					<field name="hr_employee_calendar_id" invisible="1"/>
-					<field name="employee_id" invisible="1"/>
+					<field name="hr_employee_calendar_id" />
+					<field name="employee_id" />
 					<field name="date" />
 					<field name="name" />
 					<field name="hours" />
@@ -55,7 +55,7 @@
 			<field name="type">form</field>
 			<field name="arch" type="xml">
 				<form string="Estimated Calendar Resource">
-					<field name="employee_id" invisible="1"/>
+					<field name="employee_id" />
 					<group colspan="4">
             			<field name="hr_employee_calendar_id" colspan="2"/>
             			<field name="date" colspan="2"/>
@@ -76,7 +76,7 @@
             <field name="model">estimated.calendar.resources</field>
             <field name="type">calendar</field>
             <field name="arch" type="xml">
-                <calendar string="Hours" color="hours" date_start="date">
+            	<calendar string="Hours" color="background_color" date_start="date">
                     <field name="name"/>
                     <field name="hours"/>
                 </calendar>

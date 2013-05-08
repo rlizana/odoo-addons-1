@@ -33,7 +33,7 @@ class estimated_calendar_resources(osv.osv):
     _columns = {# Calendario del empleado
                 'hr_employee_calendar_id':fields.many2one('hr.employee.calendar', 'Employee Calendar', ondelete='cascade'),
                 # Empleado
-                'employee_id': fields.related('hr_employee_calendar_id', 'employee_id', type='many2one', relation='hr.employee', string='Employee'),
+                'employee_id': fields.related('hr_employee_calendar_id', 'employee_id', type='many2one', relation='hr.employee', string='Employee', store=True),
                 # Fecha
                 'date':fields.date('Date', required=True),
                 # Motivo Festivo

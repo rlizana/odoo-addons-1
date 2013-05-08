@@ -28,6 +28,7 @@ import datetime
 import os
 from subprocess import call
 import base64
+import codecs
 #import unicode
 
 class hr_employee_calendar(osv.osv):
@@ -203,7 +204,7 @@ class hr_employee_calendar(osv.osv):
         except:
             a=1
         # Guardo html
-        f=open("myCalendar.html","w")
+        f = codecs.open('myCalendar.html', "w", encoding='utf-8')
         f.write(myCalendar)
         f.close()
         # Realizo la conversion de HTML  a PDF
@@ -231,7 +232,8 @@ class hr_employee_calendar(osv.osv):
         myCalendar =  myCal.formatyear(year, 3)
         
         # Meto el meta
-        myCalendar = myCalendar.replace('<table border="0" cellpadding="0" cellspacing="0" class="year">', '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><table border="0" cellpadding="0" cellspacing="0" class="year">')
+        myCalendar2 = '<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">' + myCalendar
+        myCalendar = myCalendar2
         myCalendar = myCalendar.replace(str(year), name + ' - CALENDAR: ' + str(year))
         # Cambio cosas del calendario
         myCalendar = myCalendar.replace('January', 'ENERO')
