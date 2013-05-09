@@ -5,7 +5,7 @@
 	<!-- AEROO PARA CONTRATOS -->
     
     <record id="avanzosc_reportcontract_ext_aeroo_report1" model="ir.actions.report.xml">
-        <field name="name">Contract Report</field>
+        <field name="name">Contract with conditions</field>
         <field name="type">ir.actions.report.xml</field>
         <field name="model">hr.contract</field>
         <field name="report_name">reportcontract_report1</field>
@@ -20,7 +20,7 @@
         <field eval="'action'" name="key"/>
         <field eval="'client_print_multi'" name="key2"/>
         <field eval="['hr.contract']" name="models"/>
-        <field name="name">Contract Report</field>
+        <field name="name">Contract with conditions</field>
         <field eval="'ir.actions.report.xml,'+str(avanzosc_reportcontract_ext_aeroo_report1)" name="value"/>
         <field eval="True" name="isobject"/>
         <field eval="True" name="replace"/>
@@ -29,7 +29,7 @@
     <!-- AEROO PARA PEDIDOS DE COMPRA -->
     
     <record id="avanzosc_purchaseorder_ext_aeroo_report1" model="ir.actions.report.xml">
-        <field name="name">Purchase Order Report</field>
+        <field name="name">Purchase Order with conditions</field>
         <field name="type">ir.actions.report.xml</field>
         <field name="model">purchase.order</field>
         <field name="report_name">purchaseorder_report1</field>
@@ -44,7 +44,7 @@
         <field eval="'action'" name="key"/>
         <field eval="'client_print_multi'" name="key2"/>
         <field eval="['purchase.order']" name="models"/>
-        <field name="name">Purchase Order Report</field>
+        <field name="name">Purchase Order with conditions</field>
         <field eval="'ir.actions.report.xml,'+str(avanzosc_purchaseorder_ext_aeroo_report1)" name="value"/>
         <field eval="True" name="isobject"/>
         <field eval="True" name="replace"/>
@@ -53,7 +53,7 @@
     <!-- AEROO PARA PEDIDOS DE VENTA -->
     
     <record id="avanzosc_saleorder_ext_aeroo_report1" model="ir.actions.report.xml">
-        <field name="name">Sale Order Report</field>
+        <field name="name">Sale Order with conditions</field>
         <field name="type">ir.actions.report.xml</field>
         <field name="model">sale.order</field>
         <field name="report_name">saleorder_report1</field>
@@ -68,7 +68,7 @@
         <field eval="'action'" name="key"/>
         <field eval="'client_print_multi'" name="key2"/>
         <field eval="['sale.order']" name="models"/>
-        <field name="name">Sale Order Report</field>
+        <field name="name">Sale Order with conditions</field>
         <field eval="'ir.actions.report.xml,'+str(avanzosc_saleorder_ext_aeroo_report1)" name="value"/>
         <field eval="True" name="isobject"/>
         <field eval="True" name="replace"/>

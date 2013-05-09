@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-08 10:22+0000\n"
-"PO-Revision-Date: 2013-05-08 10:22+0000\n"
+"POT-Creation-Date: 2013-05-09 13:43+0000\n"
+"PO-Revision-Date: 2013-05-09 13:43+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgid "Order Reference must be unique per Company!"
 msgstr "Order Reference must be unique per Company!"
 
 #. module: avanzosc_report_contract_ext
-#: field:hr.contract,general_contract_conditions_ids:0
-#: field:purchase.order,general_contract_conditions_ids:0
-#: field:sale.order,general_contract_conditions_ids:0
-msgid "General Contract Conditions"
-msgstr "General Contract Conditions"
+#: view:contract.conditions:0
+#: view:hr.contract:0
+#: view:sale.order:0
+msgid "Contract Conditions"
+msgstr "Contract Conditions"
 
 #. module: avanzosc_report_contract_ext
 #: model:ir.model,name:avanzosc_report_contract_ext.model_contract_select_template_purchase
@@ -36,6 +36,11 @@ msgid "Wizard Select Template"
 msgstr "Wizard Select Template"
 
 #. module: avanzosc_report_contract_ext
+#: constraint:res.company:0
+msgid "Error! You can not create recursive companies."
+msgstr "Error! You can not create recursive companies."
+
+#. module: avanzosc_report_contract_ext
 #: view:report.contract.template:0
 #: view:report.contract.template.line:0
 #: view:report.contract.template.master.line:0
@@ -43,11 +48,11 @@ msgid "Group By..."
 msgstr "Group By..."
 
 #. module: avanzosc_report_contract_ext
-#: view:contract.conditions:0
-#: view:hr.contract:0
-#: view:sale.order:0
-msgid "Contract Conditions"
-msgstr "Contract Conditions"
+#: field:hr.contract,general_contract_conditions_ids:0
+#: field:purchase.order,general_contract_conditions_ids:0
+#: field:sale.order,general_contract_conditions_ids:0
+msgid "General Contract Conditions"
+msgstr "General Contract Conditions"
 
 #. module: avanzosc_report_contract_ext
 #: view:report.contract.template:0
@@ -58,6 +63,18 @@ msgstr "Report Contract Templates"
 #: view:purchase.order:0
 msgid "Contract Conditions Clauses"
 msgstr "Contract Conditions Clauses"
+
+#. module: avanzosc_report_contract_ext
+#: field:contract.conditions,particular_conditions:0
+#: view:hr.contract:0
+#: view:purchase.order:0
+#: view:report.contract.template:0
+#: field:report.contract.template,particular_conditions_lines_ids:0
+#: view:report.contract.template.line:0
+#: field:report.contract.template.line,particular_conditions:0
+#: view:sale.order:0
+msgid "Particular Conditions"
+msgstr "Particular Conditions"
 
 #. module: avanzosc_report_contract_ext
 #: view:report.contract.template.master.line:0
@@ -75,6 +92,11 @@ msgstr "Report Contract Template Master lines"
 #: view:sale.order:0
 msgid "General Conditions"
 msgstr "General Conditions"
+
+#. module: avanzosc_report_contract_ext
+#: sql_constraint:res.company:0
+msgid "The company name must be unique !"
+msgstr "The company name must be unique !"
 
 #. module: avanzosc_report_contract_ext
 #: field:report.contract.template.line,report_contract_template_master_line_id:0
@@ -120,11 +142,14 @@ msgid "Contracts"
 msgstr "Contracts"
 
 #. module: avanzosc_report_contract_ext
-#: field:contract.conditions,contract_type:0
-#: view:report.contract.template:0
-#: field:report.contract.template,contract_type:0
-msgid "Type"
-msgstr "Type"
+#: model:ir.actions.report.xml,name:avanzosc_report_contract_ext.avanzosc_saleorder_ext_aeroo_report1
+msgid "Sale Order with conditions"
+msgstr "Sale Order with conditions"
+
+#. module: avanzosc_report_contract_ext
+#: model:ir.actions.report.xml,name:avanzosc_report_contract_ext.avanzosc_purchaseorder_ext_aeroo_report1
+msgid "Purchase Order with conditions"
+msgstr "Purchase Order with conditions"
 
 #. module: avanzosc_report_contract_ext
 #: model:ir.actions.act_window,name:avanzosc_report_contract_ext.action_custom_report_contract_template_form
@@ -183,6 +208,11 @@ msgid "Search Report Contract Template Master Lines"
 msgstr "Search Report Contract Template Master Lines"
 
 #. module: avanzosc_report_contract_ext
+#: model:ir.model,name:avanzosc_report_contract_ext.model_res_company
+msgid "Companies"
+msgstr "Companies"
+
+#. module: avanzosc_report_contract_ext
 #: selection:contract.conditions,contract_type:0
 #: selection:report.contract.template,contract_type:0
 msgid "Sale"
@@ -213,11 +243,6 @@ msgid "Insert Contract Conditions From Template"
 msgstr "Insert Contract Conditions From Template"
 
 #. module: avanzosc_report_contract_ext
-#: model:ir.actions.report.xml,name:avanzosc_report_contract_ext.avanzosc_purchaseorder_ext_aeroo_report1
-msgid "Purchase Order Report"
-msgstr "Purchase Order Report"
-
-#. module: avanzosc_report_contract_ext
 #: field:contract.select.template.purchase,contract_template_id:0
 #: field:contract.select.template.rrhh,contract_template_id:0
 #: field:contract.select.template.sale,contract_template_id:0
@@ -225,14 +250,16 @@ msgid "Contract Template"
 msgstr "Contract Template"
 
 #. module: avanzosc_report_contract_ext
-#: model:ir.actions.report.xml,name:avanzosc_report_contract_ext.avanzosc_saleorder_ext_aeroo_report1
-msgid "Sale Order Report"
-msgstr "Sale Order Report"
-
-#. module: avanzosc_report_contract_ext
 #: constraint:hr.contract:0
 msgid "Error! contract start-date must be lower then contract end-date."
 msgstr "Error! contract start-date must be lower then contract end-date."
+
+#. module: avanzosc_report_contract_ext
+#: field:contract.conditions,contract_type:0
+#: view:report.contract.template:0
+#: field:report.contract.template,contract_type:0
+msgid "Type"
+msgstr "Type"
 
 #. module: avanzosc_report_contract_ext
 #: field:contract.conditions,code:0
@@ -265,26 +292,14 @@ msgid "Search Report Contract Template Line"
 msgstr "Search Report Contract Template Line"
 
 #. module: avanzosc_report_contract_ext
-#: model:ir.actions.report.xml,name:avanzosc_report_contract_ext.avanzosc_reportcontract_ext_aeroo_report1
-msgid "Contract Report"
-msgstr "Contract Report"
-
-#. module: avanzosc_report_contract_ext
 #: view:report.contract.template.line:0
 msgid "Report Contract Template Line"
 msgstr "Report Contract Template Line"
 
 #. module: avanzosc_report_contract_ext
-#: field:contract.conditions,particular_conditions:0
-#: view:hr.contract:0
-#: view:purchase.order:0
-#: view:report.contract.template:0
-#: field:report.contract.template,particular_conditions_lines_ids:0
-#: view:report.contract.template.line:0
-#: field:report.contract.template.line,particular_conditions:0
-#: view:sale.order:0
-msgid "Particular Conditions"
-msgstr "Particular Conditions"
+#: model:ir.actions.report.xml,name:avanzosc_report_contract_ext.avanzosc_reportcontract_ext_aeroo_report1
+msgid "Contract with conditions"
+msgstr "Contract with conditions"
 
 #. module: avanzosc_report_contract_ext
 #: model:ir.model,name:avanzosc_report_contract_ext.model_contract_conditions
