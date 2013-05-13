@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	
+		<record id="stock_move_tree_inh_location" model="ir.ui.view">
+    	    <field name="name">stock.move.tree.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="stock.stock_move_tree" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="location_dest_id" position="before">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="stock_move_tree2_inh_location" model="ir.ui.view">
+    	    <field name="name">stock.move.tree2.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="stock.stock_move_tree2" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="location_dest_id" position="before">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_move_tree_inh_location" model="ir.ui.view">
+    	    <field name="name">view.move.tree.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="stock.view_move_tree" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="location_dest_id" position="before">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_move_form_inh_location" model="ir.ui.view">
+    	    <field name="name">view_move_form.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_move_form" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="location_dest_id" position="before">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_move_tree_reception_picking_inh_location" model="ir.ui.view">
+    	    <field name="name">view.move.tree.reception.picking.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="stock.view_move_tree_reception_picking" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="tracking_id" position="after">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_move_tree_reception_picking_board_inh_location" model="ir.ui.view">
+    	    <field name="name">view.move.tree.reception.picking.board.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="stock.view_move_tree_reception_picking_board" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="product_uom" position="after">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_move_form_reception_picking_inh_location" model="ir.ui.view">
+    	    <field name="name">view.move.form.reception.picking.inh.location</field>
+			<field name="model">stock.move</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_move_form_reception_picking" />
+			<field name="arch" type="xml">
+			    <data>
+			    	<field name="location_dest_id" position="after">
+			    		<field name="location" />
+			    	</field>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_picking_form_inh_location" model="ir.ui.view">
+    	    <field name="name">view.picking.form.inh.location</field>
+			<field name="model">stock.picking</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_picking_form" />
+			<field name="arch" type="xml">
+			    <data>
+				    <xpath expr="//form//notebook//page/field[@name='move_lines']/tree/field[@name='location_dest_id']" position="before">
+				    	<field name="location" />
+				    </xpath>
+				    <xpath expr="//form//notebook//page/field[@name='move_lines']/form/group/field[@name='location_dest_id']" position="before">
+				    	<field name="location" />
+				    </xpath>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_picking_out_form_inh_location" model="ir.ui.view">
+    	    <field name="name">view.picking.out.form.inh.location</field>
+			<field name="model">stock.picking</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_picking_out_form" />
+			<field name="arch" type="xml">
+			    <data>
+				    <xpath expr="//form//notebook//page/field[@name='move_lines']/tree/field[@name='location_id']" position="after">
+				    	<field name="location" />
+				    </xpath>
+				    <xpath expr="//form//notebook//page/field[@name='move_lines']/form/group/field[@name='location_dest_id']" position="before">
+				    	<field name="location" />
+				    </xpath>
+			    </data>
+			</field>
+    	</record>
+    	
+		<record id="view_picking_in_form_inh_location" model="ir.ui.view">
+    	    <field name="name">view.picking.in.form.inh.location</field>
+			<field name="model">stock.picking</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_picking_in_form" />
+			<field name="arch" type="xml">
+			    <data>
+				    <xpath expr="//form//notebook//page/field[@name='move_lines']/tree/field[@name='location_dest_id']" position="before">
+				    	<field name="location" />
+				    </xpath>
+				    <xpath expr="//form//notebook//page/field[@name='move_lines']/form/group/field[@name='location_dest_id']" position="before">
+				    	<field name="location" />
+				    </xpath>
+			    </data>
+			</field>
+    	</record>
+
+
+    </data>
+</openerp>
