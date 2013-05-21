@@ -10,6 +10,7 @@
         <tree string="Lot Control" editable="bottom">
                     <field name="product"/>
                     <field name="product_lot" domain = "[('product_id','=',product),('stock_available','>',0)]" />
+                    <field name="required_amount" />
 <!--                     <field name="mrp_lot"/> -->
                 </tree>
 		</field>
@@ -23,6 +24,7 @@
         <form string="Lot Control">
                     <field name="product"/>
                     <field name="product_lot"/>
+                    <field name="required_amount" />
 <!--                     <field name="mrp_lot"/> -->
                 </form>
 		</field>
@@ -54,18 +56,21 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Assign">
+                
                 	<separator string="Product Lot Assignament"/>
-                	<group colspan="4" width = "450" >
-                	<field name="product" nolabel = "1"/>
-                	<field name="lot_serial"/>
+                	<field name="production_id" invisible="1"/>
+                	<group colspan="4" col="6" width = "650" >
+                		<field name="product" nolabel = "1" colspan="2"/>
+                		<field name="quantity_produced" colspan="2" on_change="onchange_quantity_produced(production_id, quantity_produced, product_lots)"/>
+                		<field name="lot_serial" colspan="2"/>
                 	</group>
-                	<separator />
+                	<separator colspan="6" />
                 	<newline/> 
-                	<field name="product_lots" colspan="4" nolabel = "1">
+                	<field name="product_lots" colspan="6" nolabel = "1">
                 	</field>	
-                	<separator string="" colspan="4" />
+                	<separator string="" colspan="6" />
                 	<newline/>
-                	<label string="" colspan="2" />
+                	<label string="" colspan="6" />
                 	<group col="2" colspan="1">
                 		<button icon='gtk-stop' special="cancel"
                 			string="Cancel" />

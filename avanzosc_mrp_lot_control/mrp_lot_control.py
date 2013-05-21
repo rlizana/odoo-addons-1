@@ -40,14 +40,15 @@ class product_loting_rel(osv.osv_memory):
     
     _name = 'product.loting.rel'
     _description = 'Production loting relation'
-    
+       
     _columns = {
                 'product' : fields.many2one('product.product', 'Product',size=64, required=True),
                 #'serial': fields.char('Production Lot', size=64, required=True),
                 'product_lot' : fields.many2one('stock.production.lot', 'Production Lots',required=True),
                 'mrp_lot' : fields.many2one('mrp.lot.assign', 'Master product',size=64),
+                'required_amount': fields.integer('Required Amount'),
                 
-        }
+                }
 
 product_loting_rel()
 
@@ -81,14 +82,15 @@ class mrp_lot_assign (osv.osv):
         context['st_move_prod'] = stmove_reg.id # ID Movimiento de producto a producir
         context['prod_lot_dic'] = prod_lot_dic 
         context['ids'] = context['active_ids']
+
         prod_lst = []
         for prod in prod_lot_dic: # Crear lista de productos a enlotar
-            produce_val = {'product': prod['product_id'][0],
-                           }
+            produce_val = {'product': prod['product_id'][0]}
             prod_lst.append(produce_val)
             values = {'product': context['prod_produ'],
                       'product_lots': prod_lst,
-                      'context' : context
+                      'context' : context,
+                      'production_id': production_id
                       }
         return values
     
@@ -98,8 +100,35 @@ class mrp_lot_assign (osv.osv):
     _columns = {
         'product': fields.many2one('product.product', 'Product1', size=128, required=True),
         'lot_serial': fields.char('Prod. Serial', size=128, required=True),
+        'quantity_produced': fields.integer('Quantity', required=True),
         'product_lots': fields.one2many('product.loting.rel','mrp_lot','Lots'),
+        'production_id': fields.many2one('mrp.production', 'Production ID'),
         }
+    
+    def onchange_quantity_produced(self, cr, uid, ids, production_id, quantity_produced, product_lots, context=None):
+        mrp_production_obj = self.pool.get('mrp.production')
+        mrp_bom_obj = self.pool.get('mrp.bom')
+        res={} 
+        if production_id and quantity_produced:
+            mrp_production = mrp_production_obj.browse(cr,uid,production_id)
+            prod_lst = []
+            for product_lot in product_lots:
+                my_dic = product_lot[2]
+                my_product_id = my_dic.get('product')
+                if mrp_production.bom_id:
+                    mrp_bom = mrp_bom_obj.browse(cr,uid,mrp_production.bom_id.id)
+                    if mrp_bom.bom_lines:
+                        for bon_lines in mrp_bom.bom_lines:
+                            if bon_lines.product_id.id == my_product_id:
+                                produce_val = {'product': my_product_id,
+                                               'required_amount': quantity_produced * bon_lines.product_qty,
+                                               'product_lot': my_dic.get('product_lot')}
+                                prod_lst.append(produce_val)
+                            
+            res = {'quantity_produced': quantity_produced,
+                   'product_lots': prod_lst}
+            
+        return {'value': res} 
     
     def assign_lot (self, cr, uid, ids, context=None):
         
@@ -109,7 +138,7 @@ class mrp_lot_assign (osv.osv):
         mrp_production_obj= self.pool.get('mrp.production')
         
         production_id = context.get('active_id', False)
-        product_qty = 1
+        product_qty = data_lotasing.quantity_produced
         mode = 'consume_produce'
         
         #crear lote de producto a producir
