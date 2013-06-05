@@ -19,6 +19,7 @@
 #
 ##############################################################################
 import stock_production_lot_ext
+import stock_picking_ext
 import stock_move_ext
 import purchase_order_ext
 import stock_move_split_ext
