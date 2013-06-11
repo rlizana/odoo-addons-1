@@ -1,0 +1,56 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_partner_address_zone
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-10 14:51+0000\n"
+"PO-Revision-Date: 2013-06-10 14:51+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_partner_address_zone
+#: view:res.partner.address:0
+#: view:res.partner.address.zone:0
+#: view:stock.picking:0
+msgid "Zone"
+msgstr "Zone"
+
+#. module: avanzosc_partner_address_zone
+#: model:ir.model,name:avanzosc_partner_address_zone.model_res_partner_address_zone
+msgid "Parner Address Zone"
+msgstr "Parner Address Zone"
+
+#. module: avanzosc_partner_address_zone
+#: model:ir.actions.act_window,name:avanzosc_partner_address_zone.action_res_partner_address_zone
+#: model:ir.ui.menu,name:avanzosc_partner_address_zone.res_partner_address_zone_menu_view
+#: view:res.partner.address.zone:0
+msgid "Zones"
+msgstr "Zones"
+
+#. module: avanzosc_partner_address_zone
+#: sql_constraint:stock.picking:0
+msgid "Reference must be unique per Company!"
+msgstr "Reference must be unique per Company!"
+
+#. module: avanzosc_partner_address_zone
+#: model:ir.model,name:avanzosc_partner_address_zone.model_stock_picking
+msgid "Picking List"
+msgstr "Picking List"
+
+#. module: avanzosc_partner_address_zone
+#: model:ir.model,name:avanzosc_partner_address_zone.model_res_partner_address
+msgid "Partner Addresses"
+msgstr "Partner Addresses"
+
+#. module: avanzosc_partner_address_zone
+#: view:res.partner.address.zone:0
+msgid "Search Zone"
+msgstr "Search Zone"
+

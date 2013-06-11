@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	
+		<record id="view_picking_out_tree_inh_zones" model="ir.ui.view">
+			<field name="name">view.picking.out.tree.inh.zones</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_out_tree" />
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<field name="partner_id" position="before">
+					<field name="zone_id"/>
+				</field>
+			</field>
+		</record>
+		
+		<record id="view_picking_out_search_inh_zones" model="ir.ui.view">
+			<field name="name">view.picking.out.search.inh.zones</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_out_search" />
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<xpath expr="//search//group//field[@name='partner_id']" position="before">
+					<field name="zone_id" />
+				</xpath>
+				<xpath expr="//search//group//filter[@string='Partner']" position="before">
+					<filter string="Zone" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'zone_id'}" />
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</openerp>

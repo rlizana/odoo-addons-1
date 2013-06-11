@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- *********************** VISTA TREE ****************** -->
+
+		<record model="ir.ui.view" id="res_partner_address_zone_tree_view">
+			<field name="name">res.partner.address.zone.tree.view</field>
+			<field name="model">res.partner.address.zone</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Zones">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- *********************** VISTA SEARCH ****************** -->
+
+		<record model="ir.ui.view" id="res_partner_address_zone_search_view">
+			<field name="name">res.partner.address.zone.search.view</field>
+			<field name="model">res.partner.address.zone</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+                <search string="Search Zone">
+                    <group>
+						<field name="name" />
+                    </group>
+                 </search>				
+			</field>
+		</record>
+
+		<!-- ******************* VISTA FORM ******************** -->
+
+		<record model="ir.ui.view" id="res_partner_address_zone_form_view">
+			<field name="name">res.partner.address.zone.form.view</field>
+			<field name="model">res.partner.address.zone</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Zone">
+					<group colspan="4">
+						<field name="name" colspan="4" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<!-- ***** ACCIÓN PARA LA VENTANA DE LAS VISTAS ***** -->
+
+		<record model="ir.actions.act_window" id="action_res_partner_address_zone">
+			<field name="name">Zones</field>
+			<field name="res_model">res.partner.address.zone</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- ********** DISEÑO OPCION DE MENU **********  -->
+
+		<menuitem id="res_partner_address_zone_menu_view" name="Zones"
+			parent="base.menu_address_book" action="action_res_partner_address_zone" />
+		
+	</data>
+</openerp>
