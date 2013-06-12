@@ -27,7 +27,7 @@ class stock_picking(osv.osv):
     _inherit = 'stock.picking'
      
     _columns = {# Zona
-                'zone_id': fields.related('address_id', 'zone_id', type='many2one', relation='res.partner.address.zone', string='Zone', store=True),
+                'zone_id': fields.related('address_id', 'zone_id', type='many2one', relation='res.partner.address.zone', string='Zone', readonly=True, store=True),
                 }
 
 stock_picking()
