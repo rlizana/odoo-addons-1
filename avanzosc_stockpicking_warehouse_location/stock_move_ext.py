@@ -27,7 +27,7 @@ class stock_move(osv.osv):
     
     _name = 'stock.move'
     _inherit = 'stock.move'
-    _order = 'date_expected desc, loc_row, loc_rack, loc_case, id'
+    _order = 'loc_row, loc_rack, loc_case, id'
     
     def _get_location(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
@@ -59,7 +59,7 @@ class stock_move(osv.osv):
                 # Caja
                 'loc_case':fields.related('product_id', 'loc_case', type='char', string='Case', store=True),
                 # Localizacion
-                'location':fields.function(_get_location, method=True, string='Product Location', type="char", size=50),
+                'location':fields.function(_get_location, method=True, string='Product Location', type="char", size=50,store=True),
                 }
       
 stock_move()
