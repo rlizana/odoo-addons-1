@@ -30,7 +30,9 @@
 
     """,
     "init_xml": [],
-    'update_xml': ['res_partner_address_zone_view.xml',
+    'update_xml': ['security/avanzosc_partner_address_zone.xml',
+                   'security/ir.model.access.csv',
+                   'res_partner_address_zone_view.xml',
                    'res_partner_address_ext_view.xml',
                    'stock_picking_ext_view.xml',
                    ],

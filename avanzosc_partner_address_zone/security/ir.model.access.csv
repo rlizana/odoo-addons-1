@@ -1,2 +1,2 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_partner_address_zone","partner_address_zone","avanzosc_partner_address_zone.model_partner_address_zone","group_partner_address_zone",1,1,1,1
+"access_res_partner_address_zone","res_partner_address_zone","avanzosc_partner_address_zone.model_res_partner_address_zone","group_partner_address_zone",1,1,1,1
