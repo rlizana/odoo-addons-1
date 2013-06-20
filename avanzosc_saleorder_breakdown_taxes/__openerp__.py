@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Avanzosc - Avanced Open Source Consulting
-#    Copyright (C) 2011 - 2012 Avanzosc <http://www.avanzosc.com>
+#    Copyright (C) 2011 - 2013 Avanzosc <http://www.avanzosc.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,19 +18,23 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
-
 {
-    "name": "Avanzosc invoice duplicate",
-    "version": "1.1",
-    "depends": ["nan_account_invoice_sequence"],
+    "name": "Avanzosc Saleorder Breakdown Taxes", 
+    "version": "1.0",
+    "depends": ["sale","stock"],
     "author": "AvanzOSC",
-    "category": "Custom Module",
-    "website" : "www.avanzosc.com",
+    "category": "Custom Modules",
     "description": """
+        This module breakdown taxes in sale order, and in stock picking.
     """,
     "init_xml": [],
-    'update_xml': [],
+    'update_xml': ['security/avanzosc_saleorder_breakdown_taxes.xml',
+                   'sale_order_tax_breakdown_view.xml',
+                   'sale_order_ext_view.xml',
+                   'stock_picking_ext_view.xml',
+                   ],
     'demo_xml': [],
     'installable': True,
     'active': False,
+#    'certificate': 'certificate',
 }
