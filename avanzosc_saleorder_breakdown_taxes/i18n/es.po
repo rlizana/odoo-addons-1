@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-20 15:34+0000\n"
-"PO-Revision-Date: 2013-06-20 17:37+0100\n"
+"POT-Creation-Date: 2013-06-21 07:20+0000\n"
+"PO-Revision-Date: 2013-06-21 09:21+0100\n"
 "Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,6 @@ msgstr "Desglose de Tasas"
 
 #. module: avanzosc_saleorder_breakdown_taxes
 #: view:sale.order:0
-#: view:stock.picking:0
 msgid "Taxes Breakdown"
 msgstr "Desglose de Tasas"
 
@@ -54,7 +53,6 @@ msgstr "Impuesto"
 
 #. module: avanzosc_saleorder_breakdown_taxes
 #: view:sale.order:0
-#: view:stock.picking:0
 msgid "Taxes"
 msgstr "Impuestos"
 
@@ -72,6 +70,11 @@ msgstr "¡La referencia debe ser única por compañía!"
 #: model:ir.model,name:avanzosc_saleorder_breakdown_taxes.model_stock_picking
 msgid "Picking List"
 msgstr "Albarán"
+
+#. module: avanzosc_saleorder_breakdown_taxes
+#: model:res.groups,name:avanzosc_saleorder_breakdown_taxes.group_so_breakdown_taxes
+msgid "Sale order Breakdown Taxes"
+msgstr "Desglose de Tasas"
 
 #. module: avanzosc_saleorder_breakdown_taxes
 #: field:sale.order,sale_order_tax_breakdown_ids:0
