@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+		<record id="wiz_product_default_location_line_tree" model="ir.ui.view">
+			<field name="name">wiz.product.default.location.line.tree</field>
+			<field name="model">wiz.product.default.location.line</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+                <tree editable="top" string="Product without default location">
+                    <field name="product_id" />
+                    <field name="default_location_id" />
+                </tree>
+			</field>
+		</record>
+		
+		<record id="wiz_product_default_location_line_form" model="ir.ui.view">
+			<field name="name">wiz.product.default.location.line.form</field>
+			<field name="model">wiz.product.default.location.line</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form>
+					<group colspan="4" >
+						<field name="product_id" />
+						<field name="default_location_id" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+    </data>
+</openerp>

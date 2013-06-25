@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+		<record id="wiz_product_default_location_form" model="ir.ui.view">
+			<field name="name">wiz.product.default.location.form</field>
+			<field name="model">wiz.product.default.location</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Products without default location">
+					<field name="name" invisible="1" />
+					<group colspan="4" >
+						<field name="data_ids" nolabel="1" colspan="4" />
+					</group>
+					<separator string="" colspan="4" />
+					<group colspan="4">
+						<button icon='gtk-cancel' special="cancel" string="Cancel" />
+						<button name="do_assign_default_location" string="Assign Default Location"
+							type="object" icon="gtk-ok" />
+					</group>
+				</form>
+			</field>
+		</record>
+		
+
+		<!-- ***** ACCIÓN PARA LA VENTANA DE LAS VISTAS ***** -->
+
+		<record model="ir.actions.act_window" id="action_wiz_product_default_location">
+			<field name="name">Wizard Product Without Default Location</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">wiz.product.default.location</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+            <field name="view_id" ref="wiz_product_default_location_form"/>
+            <field name="target">new</field>
+		</record>
+		
+		<!-- ********** DISEÑO OPCION DE MENU **********  -->
+
+		<menuitem id="wiz_product_default_location_view" name="Products Without Default Location"
+			parent="base.menu_product" action="action_wiz_product_default_location" />
+
+    </data>
+</openerp>

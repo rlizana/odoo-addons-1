@@ -1,0 +1,96 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_product_default_location
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-25 09:41+0000\n"
+"PO-Revision-Date: 2013-06-25 11:44+0100\n"
+"Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_product_default_location
+#: field:wiz.product.default.location.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: avanzosc_product_default_location
+#: field:wiz.product.default.location.line,wiz_product_default_location_id:0
+msgid "wizard"
+msgstr "wizard"
+
+#. module: avanzosc_product_default_location
+#: field:wiz.product.default.location,name:0
+msgid "Name"
+msgstr "Descripción"
+
+#. module: avanzosc_product_default_location
+#: model:ir.actions.act_window,name:avanzosc_product_default_location.action_wiz_product_default_location
+msgid "Wizard Product Without Default Location"
+msgstr "Wizard Productos sin localización por defecto"
+
+#. module: avanzosc_product_default_location
+#: model:ir.model,name:avanzosc_product_default_location.model_wiz_product_default_location_line
+msgid "Wiz Product Default Location line"
+msgstr "Wiz Product Default Location line"
+
+#. module: avanzosc_product_default_location
+#: model:ir.model,name:avanzosc_product_default_location.model_wiz_product_default_location
+msgid "Wiz Product Default Location"
+msgstr "Wiz Product Default Location"
+
+#. module: avanzosc_product_default_location
+#: field:wiz.product.default.location.line,default_location_id:0
+msgid "Default Location"
+msgstr "Localización por defecto"
+
+#. module: avanzosc_product_default_location
+#: field:wiz.product.default.location,data_ids:0
+msgid "Products"
+msgstr "Productos"
+
+#. module: avanzosc_product_default_location
+#: code:addons/avanzosc_product_default_location/wizard/wiz_product_default_location.py:43
+#: code:addons/openerp/addons/avanzosc_product_default_location/wizard/wiz_product_default_location.py:43
+#, python-format
+msgid "No products found without default location"
+msgstr "No encontrados productos sin localización por defeto"
+
+#. module: avanzosc_product_default_location
+#: view:wiz.product.default.location:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: avanzosc_product_default_location
+#: model:ir.ui.menu,name:avanzosc_product_default_location.wiz_product_default_location_view
+msgid "Products Without Default Location"
+msgstr "Productos sin localización por defecto"
+
+#. module: avanzosc_product_default_location
+#: code:addons/avanzosc_product_default_location/wizard/wiz_product_default_location.py:43
+#: code:addons/openerp/addons/avanzosc_product_default_location/wizard/wiz_product_default_location.py:43
+#, python-format
+msgid "Wizard Warning"
+msgstr "Wizard Warning"
+
+#. module: avanzosc_product_default_location
+#: view:wiz.product.default.location:0
+msgid "Products without default location"
+msgstr "Productos sin localización por defecto"
+
+#. module: avanzosc_product_default_location
+#: view:wiz.product.default.location:0
+msgid "Assign Default Location"
+msgstr "Asignar localización por Defecto"
+
+#. module: avanzosc_product_default_location
+#: view:wiz.product.default.location.line:0
+msgid "Product without default location"
+msgstr "Producto sin localización por defecto"
+

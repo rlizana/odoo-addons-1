@@ -1,0 +1,2 @@
+import wiz_product_default_location
+import wiz_product_default_location_line

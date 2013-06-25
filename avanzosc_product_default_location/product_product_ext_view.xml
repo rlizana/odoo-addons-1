@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="product_product_tree_view_inh_defaultlocation">
+			<field name="name">product.product.tree.view.inh.defaultlocation</field>
+			<field name="model">product.product</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="product.product_product_tree_view" />
+			<field name="arch" type="xml">
+				<field name="type" position="before">
+					<field name="default_location" />
+				</field>						
+			</field>
+		</record>
+
+	</data>
+</openerp>
