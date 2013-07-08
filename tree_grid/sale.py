@@ -58,10 +58,6 @@ class sale_order_line(osv.osv):
         prod_uom_po = prod.uom_po_id.id
         if uom <> prod_uom_po:
             uom = prod_uom_po
-            
-        prod_uos = prod.uos_id.id
-        if not uos:
-            uos = prod_uos
         if not date_order:
             date_order = time.strftime('%Y-%m-%d')
         qty = qty or 1.0
@@ -91,8 +87,7 @@ class sale_order_line(osv.osv):
             'tax_id':map(lambda x: x.id, prod.supplier_taxes_id),
              # 'date_planned': date_planned or dt,'notes': notes or prod.description_purchase,
             'product_uom_qty': qty,
-            'product_uom': uom,
-            'product_uos': uos}})
+            'product_uom': uom}})
         
         
         domain = {}
@@ -122,68 +117,9 @@ class sale_order_line(osv.osv):
         for obj in self.browse(cr, uid, ids):
             res[obj.id] = obj.product_id.qty_available            
         return res
-
-#    def uom_change(self, cr, uid, ids, product_uom, product_uom_qty=0, product_id=None):
-#        product_obj = self.pool.get('product.product')
-#        if not product_id:
-#            return {'value': {'product_uos': product_uom,
-#                'product_uos_qty': product_uom_qty}, 'domain': {}}
-#
-#        product = product_obj.browse(cr, uid, product_id)
-#        value = {
-#            'product_uos': product.uos_id.id,
-#        }
-#        
-#        try:
-#            value.update({
-#                'product_uos_qty': product_uom_qty * product.uos_coeff,
-#            })
-#        except ZeroDivisionError:
-#            pass
-#        return {'value': value}
-
-    def uos_change(self, cr, uid, ids, product_uos, product_uos_qty=0, product_id=None):
-        product_obj = self.pool.get('product.product')
-        if not product_id:
-            return {'value': {'product_uom': product_uos,
-                'product_uom_qty': product_uos_qty}, 'domain': {}}
-
-        product = product_obj.browse(cr, uid, product_id)
-        
-        value = super(sale_order_line, self).uos_change(cr, uid, ids, product_uos, product_uos_qty, product_id)['value']
-        
-        value.update({
-                'product_uos': product.uos_id.id
-            })
-        
-        return {'value': value}
-
-    def calculate_secondary_price(self, cr, uid, ids, field_name, arg, context=None):
-        res = {}
-        for so_line in self.browse(cr, uid, ids, context=context):
-            price = 0
-            prod = self.pool.get('product.product').browse(cr, uid, so_line.product_id.id, context=context)
-            try:
-                price = prod.list_price / prod.uos_coeff
-            except ZeroDivisionError:
-                pass
-
-            res[so_line.id] = price
-        return res
         
     _columns = {
         'virtual_avl': fields.function(_get_virtual_stock, method=True, string='Virtual Stock'),
         'qty_avl': fields.function(_get_real_stock, method=True, string='Real Stock'),
-        'secondary_price': fields.function(calculate_secondary_price,
-                                        method=True,
-                                        string='Price',
-                                        type="float",
-                                        store=False),
     }
-    
-    _defaults = {
-        'product_uom_qty': 0,
-        'product_uos_qty': 0,
-    }
-    
 sale_order_line()

@@ -26,7 +26,7 @@
     "version" : "1.1",
     "author" : "Ting!, Avanzosc",
     "category" : "Generic",
-    "depends" : ["base","sale","stock"],
+    "depends" : ["base","sale","purchase"],
     "init_xml" : [],
     "description": """
         Editable tree view with virtual and real stocks for sales orders.
