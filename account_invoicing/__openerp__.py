@@ -1,6 +1,6 @@
 {
     "name" : "Invoicing / Billing",
-    "version" : "1.0",
+    "version" : "1.1",
     "author" : "KN dati, SIA, Avanzosc",
     "description" : """Complete universal addon for issuing bills on any type of TinyERP/OpenERP data objects (models). Setup agreements for automatic customer billing on scheduld intervals.
     Features:

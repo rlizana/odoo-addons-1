@@ -7,5 +7,43 @@
 			model="inv.agreement"
 			name="inv.agreement.wizard"
 			menu="False"/>
+		
+		<!-- 	=================== Wizard Proccess Methodologies =============	 -->
+			
+		<record id="view_meth_mess_form" model="ir.ui.view">
+			<field name="name">view.meth.mess.form</field>
+			<field name="model">inv.method.wizard</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Process Methodologies">
+					<separator string="Process Methodologies?" colspan="4" />
+					<group colspan="4">
+						<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						<button icon="gtk-ok" name="action_create_meth" string="Process"
+							type="object" colspan="2" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_meth_procs" model="ir.actions.act_window">
+			<field name="name">Proccess Methodologies</field>
+			<field name="res_model">inv.method.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_meth_mess_form" />
+			<field name="target">new</field>
+		</record>
+	
+		<record id="action_idea_post_vote_values" model="ir.values">
+			<field name="model_id" ref="model_inv_method" />
+			<field name="name">Proccess Methodologies</field>
+			<field name="key2">client_action_multi</field>
+			<field name="value"
+				eval="'ir.actions.act_window,' + str(ref('action_meth_procs'))" />
+			<field name="key">action</field>
+			<field name="model">inv.method</field>
+		</record>
+									
 	</data>
 </openerp>
