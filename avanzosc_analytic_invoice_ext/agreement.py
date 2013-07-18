@@ -34,8 +34,9 @@ class agreement(osv.osv):
     _inherit = "inv.agreement"
     
     def set_done(self, cr, uid, ids, context={}):
-        for r in self.browse(cr, uid, ids, {}):
-            self.pool.get('ir.cron').write(cr, uid, [r.cron_id.id], {'active':False})
+        for r in self.browse(cr, uid, ids):
+	    if r.cron_id:
+            	self.pool.get('ir.cron').write(cr, uid, [r.cron_id.id], {'active':False})
             
             inv_type = self.pool.get('hr_timesheet_invoice.factor').search(cr,uid,[('canceled','=',True)])[0]
             for line in r.analytic_entries:
