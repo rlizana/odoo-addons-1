@@ -21,7 +21,7 @@
 
 {
     "name": "Avanzosc CRM Call Extension",
-    "version": "1.0",
+    "version": "1.2",
     "depends": ["base",
                 "crm",
                 "crm_helpdesk",

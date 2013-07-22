@@ -114,8 +114,6 @@ class crm_make_sale(osv.osv_memory):
                 
                 def_address = address_obj.browse(cr, uid, partner_addr['default'])
                 
-                if not def_address.analytic:
-                    raise osv.except_osv(_('Data Insufficient!'), _('Customer has no analytic account defined!'))
                 vals = {
                     'origin': _('Opportunity: %s') % str(case.id),
                     'section_id': case.section_id and case.section_id.id or False,
@@ -125,7 +123,6 @@ class crm_make_sale(osv.osv_memory):
                     'partner_invoice_id': partner_addr['invoice'],
                     'partner_order_id': partner_addr['contact'],
                     'partner_shipping_id': partner_addr['delivery'],
-                    'project_id': def_address.analytic and def_address.analytic.id or False,
                     'date_order': time.strftime('%Y-%m-%d'),
                     'fiscal_position': fpos,
                 }
