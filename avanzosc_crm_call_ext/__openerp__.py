@@ -52,6 +52,7 @@
                    "crm_helpdesk_view.xml",
                    "crm_claim_view.xml",
                    "crm_meeting_view.xml",
+                   "partner_view.xml",
                    ],
     'demo_xml': [],
     'installable': True,
