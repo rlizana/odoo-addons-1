@@ -10,118 +10,154 @@
 			<field name="inherit_id" ref="sale.view_order_form" />
 			<field name="priority" eval="8" />
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='order_line']/tree" position="replace">
-					<tree string="Sales order lines" editable="bottom" colors="red:virtual_avl&lt;=0">
-						<field name="product_id"
-							on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, 'lang' in context and context['lang'], True, parent.date_order, product_packaging, parent.fiscal_position)"
-						context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'shop':parent.shop_id, 'uom':product_uom}" />
-						<field name="name" readonly="True" />
-						<field name="product_uom_qty" string="Qty" readonly="0"/>
-						<field name="product_uom" string="UoM" readonly="0"
-							on_change="product_uom_change(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, 'lang' in context and context['lang'], False, parent.date_order)" />
-						<field name="discount" readonly="0" />
-						<field name="price_unit" />
-						<field name="price_subtotal" />
-						<field name="virtual_avl" />
-						<field name="qty_avl" />
-						<field name="product_uos_qty"
-							on_change="uos_change(product_uos, product_uos_qty, product_id)"
-							invisible="True" />
-						<field name="product_uos" invisible="True" />
-						<!--field name="name" invisible="True"/-->
-						<field name="state" invisible="True" />
-						<field name="type" invisible="True" />
-						<field name="product_packaging"
-							context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"
-							on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, 'lang' in context and context['lang'], False, parent.date_order, product_packaging, parent.fiscal_position)"
-							domain="[('product_id','=',product_id)]" invisible="True" />
-						<field name="tax_id"
-							domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"
-							invisible="True" />
-					</tree>
+			    <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="replace" >
+			        <field name="pricelist_id" invisible="1"/>
+			        <field name="partner_id" invisible="1"/>
+			        <field name="date_order" invisible="1"/>
+			        <field name="fiscal_position" invisible="1"/>
+			        <field name="shop_id" invisible="1"/>
+			    	<field name="th_weight" invisible="1"/>
+			    	<field name="product_packaging" invisible="1"/>
+			    	<field name="notes" invisible="1"/>
+			    	<field name="delay" invisible="1"/>
+			    	<field name="tax_id" invisible="1"/>
+			    	<field name="type" invisible="1"/>
+			        <field context="{'partner_id':partner_id, 'quantity':product_uom_qty, 'pricelist':pricelist_id, 'shop':shop_id, 'uom':product_uom}"
+                           name="product_id"
+                           on_change="product_id_change(pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,partner_id, False, True, date_order, product_packaging, fiscal_position, False, context)"/>
+			    	<field name="name" invisible="1"/>
+
+			    </xpath>
+				<xpath expr="//field[@name='order_line']/tree" position="attributes">
+					<attribute name="editable">bottom</attribute>
+					<attribute name="colors">red:virtual_avl&lt;=0</attribute>
+				</xpath>
+				<xpath expr="//field[@name='order_line']" position="attributes">
+					<attribute name="context">{'pricelist_id':pricelist_id,'partner_id':partner_id,'date_order':date_order,'fiscal_position':fiscal_position,'shop_id':shop_id}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/form/notebook//page/group/field[@name='product_id']" position="replace" >
+					<field name="pricelist_id" invisible="1"/>
+			        <field name="partner_id" invisible="1"/>
+			        <field name="date_order" invisible="1"/>
+			        <field name="fiscal_position" invisible="1"/>
+			        <field name="shop_id" invisible="1"/>
+					<field colspan="3"
+                           context="{'partner_id':partner_id, 'quantity':product_uom_qty, 'pricelist':pricelist_id, 'shop':shop_id, 'uom':product_uom}"
+                           name="product_id"
+                           on_change="product_id_change(pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,partner_id, False, True, date_order, product_packaging, fiscal_position, False, context)"/>
 				</xpath>
 			</field>
 		</record>
 
-
 		<!-- PURCHASE ORDER TREE EDITABLE -->
 
 		<record model="ir.ui.view" id="purchase_order_inherit_editable_form">
-			<field name="name">purchase.order.editable.form</field>
+			<field name="name">purchase.order.inherit.editable.form</field>
 			<field name="model">purchase.order</field>
 			<field name="type">form</field>
 			<field name="inherit_id" ref="purchase.purchase_order_form" />
 			<field name="priority" eval="8" />
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='order_line']/tree" position="replace">
-					<tree string="Purchase Order Lines" editable="bottom">
-						<field name="product_id"
-							on_change="product_id_change(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,notes)" />
-						<field name="date_planned" />
-						<field name="name" />
-						<field name="product_qty"
-							on_change="product_id_change(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,price_unit,notes)" />
-						<field name="product_uom"
-							on_change="product_uom_change(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,notes)" />
-						<field name="price_unit" />
-						<field name="price_subtotal" />
-					</tree>
+				<xpath expr="//field[@name='order_line']" position="attributes">
+					<attribute name="context">{'pricelist_id':pricelist_id,'partner_id':partner_id,'date_order':date_order,'fiscal_position':fiscal_position}</attribute>
 				</xpath>
+				<xpath expr="//field[@name='order_line']/tree" position="attributes">
+					<attribute name="editable">bottom</attribute>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="replace" >
+					<field name="pricelist_id" invisible="1"/>
+			        <field name="partner_id" invisible="1"/>
+			        <field name="date_order" invisible="1"/>
+			        <field name="fiscal_position" invisible="1"/>
+			        <field name="notes" invisible="1"/>
+			        <field name="taxes_id" invisible="1"/>
+					<field name="product_id" colspan="4" on_change="onchange_product_id(pricelist_id,product_id,product_qty,product_uom,partner_id, date_order,fiscal_position,date_planned,name,price_unit,notes,context)" required="1"/>
+					<field name="name" />
+				</xpath>	
+				<xpath expr="//field[@name='order_line']/tree//field[@name='product_qty']" position="replace" >	
+					<field name="product_qty" on_change="onchange_product_id(pricelist_id,product_id,product_qty,product_uom,partner_id,date_order,fiscal_position,date_planned,name,price_unit,notes,context)"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="replace" >
+					<field name="product_uom" on_change="onchange_product_uom(pricelist_id,product_id,product_qty,product_uom,partner_id, date_order,fiscal_position,date_planned,name,price_unit,notes,context)"/>
+				</xpath>
+
 			</field>
 		</record>
+		
 
 		<!-- INVOICE LINE TREE EDITABLE -->
 
-		<record model="ir.ui.view" id="account_sup_invoice_inherit_editable_form">
-			<field name="name">account.sup.order.editable.form</field>
+		<record model="ir.ui.view" id="invoice_supplier_form_inherit_editable_form">
+			<field name="name">invoice.supplier.form.inherit.editable.form</field>
 			<field name="model">account.invoice</field>
 			<field name="type">form</field>
 			<field name="inherit_id" ref="account.invoice_supplier_form" />
 			<field name="priority" eval="2" />
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='invoice_line']/tree" position="replace">
-					<tree string="Invoice lines" editable="bottom">
-						<field name="product_id"
-							on_change="product_id_change(product_id, uos_id, quantity, name, parent.type, parent.partner_id, parent.fiscal_position, price_unit, parent.address_invoice_id, parent.currency_id, {'company_id': parent.company_id})" />
-						<field
-							domain="[('company_id', '=', parent.company_id), ('journal_id', '=', parent.journal_id), ('type', '&lt;&gt;', 'view')]"
-							name="account_id" on_change="onchange_account_id(parent.fiscal_position,account_id)" />
-						<field name="invoice_line_tax_id" view_mode="2"
-							context="{'type':parent.type}" domain="[('parent_id','=',False)]" />
-						<field
-							domain="[('type','&lt;&gt;','view'), ('company_id', '=', parent.company_id), ('parent_id', '!=', False)]"
-							name="account_analytic_id" groups="analytic.group_analytic_accounting" />
-						<field name="quantity" />
-						<field name="price_unit" />
-						<field name="price_subtotal" />
-						<field name="name" />
-						<field invisible="True" name="uos_id" />
-					</tree>
+				<xpath expr="//field[@name='invoice_line']" position="attributes">
+					<attribute name="context">{'type':type,'partner_id':partner_id,'fiscal_position':fiscal_position,'address_invoice_id':address_invoice_id,'currency_id':currency_id,'company_id':company_id,'journal_id':journal_id}</attribute>
 				</xpath>
+				<xpath expr="//field[@name='invoice_line']/tree" position="attributes">
+					<attribute name="editable">bottom</attribute>
+				</xpath>
+				<xpath expr="//field[@name='invoice_line']/tree//field[@name='invoice_line_tax_id']" position="replace" />
+				<xpath expr="//field[@name='invoice_line']/tree//field[@name='product_id']" position="replace" >
+					<field name="type" invisible="1"/>
+					<field name="partner_id" invisible="1"/>
+					<field name="fiscal_position" invisible="1" />
+					<field name="address_invoice_id" invisible="1" />
+					<field name="currency_id" invisible="1" />
+					<field name="company_id" invisible="1" />
+					<field name="journal_id" invisible="1"/>
+					<field name="note" invisible="1" />
+					<field name="product_id"
+							on_change="product_id_change(product_id, uos_id, quantity, name, type, partner_id, fiscal_position, price_unit, address_invoice_id, currency_id, {'company_id': company_id})" />	
+				</xpath>
+				<xpath expr="//field[@name='invoice_line']/tree//field[@name='account_id']" position="replace" >
+					<field domain="[('company_id', '=', company_id), ('journal_id', '=', journal_id), ('type', '&lt;&gt;', 'view')]" name="account_id" on_change="onchange_account_id(product_id,partner_id,type,fiscal_position,account_id)"/>
+				</xpath>
+
 			</field>
 		</record>
+		
+		<record model="ir.ui.view" id="invoice_form_inherit_editable_form">
+			<field name="name">invoice.form.inherit.editable.form</field>
+			<field name="model">account.invoice</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account.invoice_form" />
+			<field name="priority" eval="2" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='invoice_line']" position="attributes">
+					<attribute name="context">{'type':type,'partner_id':partner_id,'fiscal_position':fiscal_position,'address_invoice_id':address_invoice_id,'currency_id':currency_id,'company_id':company_id,'journal_id':journal_id}</attribute>
+				</xpath>
 
-
-
-		<record id="view_invoice_line_tree_inh" model="ir.ui.view">
-			<field name="name">account.invoice.line.tree.inh</field>
+			</field>
+		</record>
+		
+		<record id="view_invoice_line_inherit_editable_form" model="ir.ui.view">
+			<field name="name">view.invoice.line.inherit.editable.form</field>
 			<field name="model">account.invoice.line</field>
 			<field name="type">tree</field>
 			<field name="inherit_id" ref="account.view_invoice_line_tree" />
 			<field name="arch" type="xml">
-				<xpath expr="/tree" position="replace">
-					<tree string="Invoice Line" editable="bottom">
-						<field name="product_id"
-							on_change="product_id_change(product_id, uos_id, quantity, name, parent.type, parent.partner_id, parent.fiscal_position, price_unit, parent.address_invoice_id, parent.currency_id, {'company_id': parent.company_id})" />
-						<field name="name" />
-						<field name="account_id" groups="account.group_account_user" />
-						<field name="quantity" />
-						<field name="uos_id" />
-						<field name="price_unit" />
-						<field name="discount" groups="base.group_extended" />
-						<field name="price_subtotal" />
-					</tree>
+				<xpath expr="//tree[@string='Invoice Line']" position="attributes">
+					<attribute name="editable">bottom</attribute>
 				</xpath>
+				<field name="name" position="replace">
+					<field name="type" invisible="1"/>
+					<field name="partner_id" invisible="1"/>
+					<field name="fiscal_position" invisible="1" />
+					<field name="address_invoice_id" invisible="1" />
+					<field name="currency_id" invisible="1" />
+					<field name="company_id" invisible="1" />
+					<field name="journal_id" invisible="1"/>
+					<field name="note" invisible="1" />
+					<field name="invoice_line_tax_id" invisible="1"/>
+					<field name="product_id"
+							on_change="product_id_change(product_id, uos_id, quantity, name, type, partner_id, fiscal_position, price_unit, address_invoice_id, currency_id, {'company_id': company_id})" />
+					<field name="name" invisible="1"/>
+				</field>
+
 			</field>
 		</record>
 
