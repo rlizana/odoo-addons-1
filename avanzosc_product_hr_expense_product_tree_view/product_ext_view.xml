@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- Modificación del TREE de productos -->
+		<!-- 
+        <record model="ir.ui.view" id="product_product_tree_view_inh_producthrexpense">
+            <field name="name">product.product.tree.view.inh.producthrexpense</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="6"/>
+			<field name="inherit_id" ref="product.product_product_tree_view" />    
+  
+        </record>
+        -->
+        <record model="ir.ui.view" id="product_product_tree_view">
+            <field name="name">product.product.tree.view</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="6"/>
+        </record>
+        
+        <!--        
+        <record model="ir.ui.view" id="product_expense_installer_tree_view_inh_producthrexpense">
+            <field name="name">product.expense.installer.tree.view.inh.producthrexpense</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="16"/>
+			<field name="inherit_id" ref="hr_expense.product_expense_installer_tree_view" />  
+			       
+        </record>
+        -->
+        <record model="ir.ui.view" id="product_expense_installer_tree_view">
+            <field name="name">product.expense.installer.tree.view</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="16"/> 
+        </record>
+        
+	</data>
+</openerp>
