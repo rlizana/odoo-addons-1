@@ -35,7 +35,7 @@
                     """,
     "author": "AvanzOSC",
     "website" : "http://www.avanzosc.com",
-    "depends" : ["base","crm_claim","mrp_repair"],
+    "depends" : ["base","crm_claim","mrp_repair","stock_supplier_packref"],
     "category" : "Generic Modules",
     "init_xml" : [],
     "demo_xml" : [],

@@ -330,8 +330,6 @@
 			</field>
 		</record>
 
-
-
 		<!-- Res Partner -->
 		<record id="view_partner_form_inherit" model="ir.ui.view">
 			<field name="name">view.partner.form.inherit</field>

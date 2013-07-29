@@ -1,4 +1,5 @@
-# -*- encoding: latin-1 -*-
+
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 # Copyright (c) 2009 Ana Juaristi  (http://www.openerpsite.com) All Rights Reserved.
@@ -34,7 +35,7 @@ class stock_picking(osv.osv):
     _inherit = 'stock.picking'
 
     _columns = {
-        'supplierpack': fields.char('Supplier pack ref', size=34, required=False, readonly=False, select=1, help='Supplier pack number'),
+        'supplierpack': fields.char('Supplier pack ref', size=64, required=False, readonly=False, select=1, help='Supplier pack number'),
     }
 stock_picking()
 
