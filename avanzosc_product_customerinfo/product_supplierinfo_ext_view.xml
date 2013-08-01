@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="product_supplierinfo_form_view_inh_customerinfo">
+			<field name="name">product.supplierinfo.form.view.inh.customerinfo</field>
+			<field name="model">product.supplierinfo</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_supplierinfo_form_view" />
+			<field name="arch" type="xml">
+				<field name="company_id" position="after">
+					<field name="is_customer" invisible="1"/>
+				</field>
+				<field name="name" position="replace">
+					<field name="name" options='{"quick_create": false}'/>
+				</field>						
+			</field>
+		</record>
+
+	</data>
+</openerp>

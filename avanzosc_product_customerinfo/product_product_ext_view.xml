@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="product_normal_form_view_inh_customerinfo">
+			<field name="name">product.normal.form.view.in.customerinfo</field>
+			<field name="model">product.product</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="arch" type="xml">
+				<field name="seller_ids" position="replace">
+					<field colspan="4" name="seller_ids" nolabel="1" domain="[('is_customer','=',False)]" context="{'is_customer':False, 'uom_id': uom_id}"/>
+				</field>
+				<xpath expr='//form/notebook/page[@string="Suppliers"]' position="after">
+					<page string="Customers">
+						<field colspan="4" name="seller_customer_ids" nolabel="1" domain="[('is_customer','=',True)]" context="{'is_customer':True, 'uom_id': uom_id}"/>
+					</page>
+				</xpath>							
+			</field>
+		</record>
+
+	</data>
+</openerp>
