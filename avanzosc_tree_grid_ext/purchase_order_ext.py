@@ -51,9 +51,10 @@ class purchase_order_line(osv.osv):
             uos = prod_uos
 
         qty = qty or 0.0
-        sec_price = prod.list_price        
+        sec_price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
+                    product, qty or 1.0, partner_id, {'uom': uom, 'date': date_order})[pricelist]        
         try:
-            sec_price = prod.list_price / prod.uos_coeff
+            sec_price = sec_price * prod.uos_coeff
         except ZeroDivisionError:
             pass
 
@@ -82,13 +83,25 @@ class purchase_order_line(osv.osv):
             pass
         return {'value': value}
     
+    def uom_change(self, cr, uid, ids, product_uom, product_uom_qty=0, product_id=None):
+        product_obj = self.pool.get('product.product')
+        if not product_id:
+            return {'value': {'product_uos': product_uom,
+                'product_uos_qty': product_uom_qty}, 'domain': {}}
+        product = product_obj.browse(cr, uid, product_id)
+        value = {
+            'product_uos': product.uos_id.id,
+            'product_uos_qty': product_uom_qty * product.uos_coeff,
+        }
+        return {'value': value}
+    
     def calculate_secondary_price(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for po_line in self.browse(cr, uid, ids, context=context):
-            price = 0
+            price = po_line.price_unit
             prod = self.pool.get('product.product').browse(cr, uid, po_line.product_id.id, context=context)
             try:
-                price = prod.list_price / prod.uos_coeff
+                price = price * prod.uos_coeff
             except ZeroDivisionError:
                 pass
 
