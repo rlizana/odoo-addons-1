@@ -48,9 +48,9 @@ class sale_order_line(osv.osv):
         if not uos:
             uos = prod_uos
             
-        price = prod.list_price
+        price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], product, qty or 1.0, partner_id, dict(context, uom=uom,date=date_order, ))[pricelist]
         try:
-            price = prod.list_price / prod.uos_coeff
+            price = price / prod.uos_coeff
         except ZeroDivisionError:
             pass
 
@@ -80,15 +80,16 @@ class sale_order_line(osv.osv):
     def calculate_secondary_price(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for so_line in self.browse(cr, uid, ids, context=context):
-            price = 0
+            price = so_line.price_unit
             prod = self.pool.get('product.product').browse(cr, uid, so_line.product_id.id, context=context)
             try:
-                price = prod.list_price / prod.uos_coeff
+                price = price / prod.uos_coeff
             except ZeroDivisionError:
                 pass
 
             res[so_line.id] = price
         return res
+        
         
     _columns = {'secondary_price': fields.function(calculate_secondary_price, method=True, string='Price', type="float", store=False),
                 }
