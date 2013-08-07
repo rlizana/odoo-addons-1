@@ -26,7 +26,7 @@
     "category": "Custom Modules",
     "description": """
         When you install the module hr_expense, creates a view "product.product.tree" with the same priority as normal view product.
-        This module puts priority 6 to the view of the product, and priority 16 to the viow of hr_expense
+        This module puts priority 6 to the view of the product, and priority 16 to the view of hr_expense
 
     """,
     "init_xml": [],
