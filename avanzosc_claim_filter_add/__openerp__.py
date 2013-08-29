@@ -32,7 +32,7 @@
                     """,
     "author" : "AvanzOSC",
     "website" : "www.avanzosc.com",
-    "depends" : ["base"],
+    "depends" : ["base","crm_claim"],
     "category" : "Generic Modules",
     "init_xml" : [],
     "demo_xml" : [],
