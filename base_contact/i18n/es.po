@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Project-Id-Version: OpenERP Server 6.1\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2011-01-11 11:14+0000\n"
 "PO-Revision-Date: 2011-06-25 07:22+0000\n"
@@ -104,6 +104,7 @@ msgstr "Migrar"
 
 #. module: base_contact
 #: view:res.partner.contact:0
+#: field:res.partner.job,name:0
 msgid "Partner"
 msgstr "Empresa"
 
@@ -134,6 +135,7 @@ msgstr ""
 #. module: base_contact
 #: model:ir.module.module,description:base_contact.module_meta_information
 msgid ""
+"WARNING: This module is a 6.0 module edited to work in 6.1"
 "\n"
 "        This module allows you to manage your contacts entirely.\n"
 "\n"
@@ -154,6 +156,7 @@ msgid ""
 "an other object.\n"
 "    "
 msgstr ""
+"ATENCIÓN: Este módulo es de la versión 6.0 preparado para funcionar en 6.1"
 "\n"
 "        Este módulo le permite gestionar sus contactos de forma completa.\n"
 "\n"
@@ -175,6 +178,7 @@ msgstr ""
 "    "
 
 #. module: base_contact
+#: model:ir.module.module,shortdesc:base_contact.module_meta_information
 #: model:process.process,name:base_contact.process_process_basecontactprocess0
 msgid "Base Contact"
 msgstr "Contacto base"
@@ -227,6 +231,7 @@ msgstr "Cargos y direcciones"
 #. module: base_contact
 #: model:ir.model,name:base_contact.model_res_partner_contact
 #: field:res.partner.address,contact_id:0
+#: field:res.partner.job,contact_id:0
 msgid "Contact"
 msgstr "Contacto"
 
@@ -252,6 +257,7 @@ msgstr "Progreso configuración"
 
 #. module: base_contact
 #: field:res.partner.contact,last_name:0
+#: field:res.partner.contact,name:0
 msgid "Last Name"
 msgstr "Apellido"
 
@@ -298,8 +304,15 @@ msgstr "Buscar contacto"
 #: model:ir.ui.menu,name:base_contact.menu_purchases_partner_contact_form
 #: model:process.node,name:base_contact.process_node_contacts0
 #: field:res.partner.location,job_ids:0
+#: view:res.partner:0
+#: field:res.partner.address,job_ids:0
 msgid "Contacts"
 msgstr "Contactos"
+
+#. module: base_contact
+#: sql_constraint:res.partner.job:0
+msgid "Unique Exception, You can only have one job per contact, address, function and state"
+msgstr "Excepción de unicidad. Sólo puede tener un trabajo por contacto, dirección, función y estado"
 
 #. module: base_contact
 #: view:base.contact.installer:0
@@ -348,6 +361,7 @@ msgstr "Configurar"
 
 #. module: base_contact
 #: field:res.partner.contact,email:0
+#: field:res.partner.job,email:0
 msgid "E-Mail"
 msgstr "Correo electrónico"
 
@@ -491,6 +505,7 @@ msgstr "Abrir trabajos"
 
 #. module: base_contact
 #: field:res.partner.contact,name:0
+#: field:base.contact.installer,name:0
 msgid "Name"
 msgstr "Nombre"
 
@@ -517,6 +532,7 @@ msgstr "Dirección postal"
 
 #. module: base_contact
 #: model:process.node,name:base_contact.process_node_addresses0
+#: view:res.partner:0
 msgid "Addresses"
 msgstr "Direcciones"
 
