@@ -20,6 +20,7 @@
 ##############################################################################
 from osv import osv
 from osv import fields
+from tools.translate import _
 
 class product(osv.osv):
     _name = 'product.product'
@@ -34,16 +35,20 @@ class product(osv.osv):
         
         if density and uom_id:
             if density > 0:
-                uom = uom_obj.browse(cr,uid,uom_id)
-                # Si es peso
-                if uom.category_id.id == 2:
+                uom_ids = uom_obj.search(cr, uid,[('name','=','kg')])
+                if not uom_ids:
+                    raise osv.except_osv('Error', 'Unit of measure KG not found')
+                if uom_ids[0] == uom_id:
                     volume = 1 / density
                     res = {'weight': 1,
                            'volume': volume,
                            }
                 else:
                     # Si es volumen
-                    if uom.category_id.id == 5:
+                    uom_ids = uom_obj.search(cr, uid,[('name','=','Litro')])
+                    if not uom_ids:
+                        raise osv.except_osv('Error', 'Unit of measure LITRO not found')                    
+                    if uom_ids[0] == uom_id:
                         res = {'weight': density,
                                'volume': 1,
                                }
