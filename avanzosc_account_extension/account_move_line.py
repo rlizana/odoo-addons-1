@@ -64,9 +64,10 @@ class account_move_line(osv.osv):
                     a_line_obj.unlink(cr,uid,a_line_list, context=context)
                 context['journal_id'] = line.journal_id.id
                 context['period_id'] = line.period_id.id
+                datos_move_id = line.move_id.id
                 result = super(account_move_line, self).unlink(cr, uid, [line.id], context=context)
                 if check:
-                    move_obj.validate(cr, uid, [line.move_id.id], context=context)
+                    move_obj.validate(cr, uid, [datos_move_id], context=context)
             return result
         
 account_move_line()
