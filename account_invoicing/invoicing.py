@@ -1752,7 +1752,7 @@ class agreement(osv.osv):
                     del res['nextcall']
                 res['active'] = True
                 res['doall'] = row.repeat
-                self.pool.get('ir.cron').write(cr, uid, row.cron_id.id, res)
+                self.pool.get('ir.cron').write(cr, uid, [row.cron_id.id], res)
                 id = row.cron_id.id
             self.write(cr, uid, [row.id], {'cron_id':id})
 
@@ -1817,6 +1817,8 @@ class agreement(osv.osv):
         if not context:
             context={}
         log_obj = self.pool.get('inv.date_list')
+        if isinstance(ids,int):
+            ids = [ids]
         for r in self.browse(cr, uid, ids, {}):
             ################# if change payment #################
             if 'payment' in vals:

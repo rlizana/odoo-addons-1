@@ -28,3 +28,4 @@
 
 import inv_agreement_wizard
 import metod_proc_wiz
+import agreement_process_wiz
