@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	OpenOffice Reports - Sample partner report
+	Autor: Borja López Soilán (Pexego) 
+-->
+<openerp>
+    <data>
+		
+	<!-- Sample ods partner report -->
+        <report id="report_pxgo_openoffice_reports_quality_report_ods"
+			string="OpenOffice Reports Quality report (ODS->XLS)"
+			model="stock.picking"
+			name="pxgo_openoffice_reports.quality_demo_ods"
+			rml="pxg_report_template/quality_report.ods"
+			auto="True"
+			header="False" />
+        <record model="ir.actions.report.xml" id="report_pxgo_openoffice_reports_quality_report_ods">
+            <field name="report_type">oo-xls</field>
+        </record>
+	<!-- Sample ods partner report -->
+        <report id="report_pxgo_openoffice_reports_quality_report_odt"
+			string="OpenOffice Reports Quality report (ODT->PDF)"
+			model="stock.picking"
+			name="pxgo_openoffice_reports.quality_demo_odt"
+			rml="pxg_report_template/quality_report.odt"
+			auto="True"
+			header="False" />
+        <record model="ir.actions.report.xml" id="report_pxgo_openoffice_reports_quality_report_odt">
+            <field name="report_type">oo-pdf</field>
+        </record>
+		
+    </data>
+</openerp>

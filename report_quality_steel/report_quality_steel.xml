@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+	<report id="report_quality_steel"
+			string="Quality report"
+			model="stock.picking"
+			name="stock.picking.report_quality_steel"
+			rml="report_quality_steel/report/report_quality_steel.rml"
+			auto="True"
+			header="False"/>
+	</data>
+</openerp>
+
+

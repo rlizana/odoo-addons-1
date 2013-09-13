@@ -1,0 +1,460 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<record id="qc_proof_method_calidadenproduccin0" model="qc.proof.method">
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;calidad en produccion&quot;&quot;&quot;" name="name"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_c0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;C&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;C&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_mn0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Mn&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Mn&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_si0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Si&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Si&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_p0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;P&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;P&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_s0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;S&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;S&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_al0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Al&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Al&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_cu0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Cu&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Cu&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_ni0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Ni&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Ni&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_cr0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Cr&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Cr&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_mo0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Mo&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Mo&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_sn0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Sn&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Sn&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_v0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;V&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;V&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_nb0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Nb&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Nb&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_ti0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;Ti&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;Ti&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_b0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;B&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;B&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_tl0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;T L&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;T L&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_re0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;RE&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;RE&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_rm0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;RM&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;RM&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_a0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;A&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;A&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_hrb0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;HRB&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;HRB&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_kv0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;KV&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;KV&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_kvc0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;KVC&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;KVC&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_t0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;T&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;T&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data noupdate="1">
+		<record id="product_uom_mg0" model="product.uom">
+			<field eval="&quot;&quot;&quot;mg&quot;&quot;&quot;" name="name"/>
+			<field eval="1.0" name="factor_inv"/>
+			<field eval="0.01" name="rounding"/>
+			<field eval="1.0" name="factor"/>
+			<field eval="1" name="active"/>
+			<field name="category_id" ref="product.product_uom_categ_unit"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_proof_n0" model="qc.proof">
+			<field eval="&quot;&quot;&quot;N&quot;&quot;&quot;" name="name"/>
+			<field eval="[(6,0,[])]" name="posible_values_ids"/>
+			<field eval="&quot;&quot;&quot;quantitative&quot;&quot;&quot;" name="type"/>
+			<field eval="1" name="active"/>
+			<field eval="&quot;&quot;&quot;N&quot;&quot;&quot;" name="ref"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_controlcalidadacero0" model="qc.test.template">
+			<field eval="&quot;&quot;&quot;Control Calidad Acero&quot;&quot;&quot;" name="name"/>
+			<field eval="0" name="fill_correct_values"/>
+			<field eval="1" name="active"/>
+			<field name="category_id" ref="nan_quality_control.qc_test_template_category_generic"/>
+			<field eval="&quot;&quot;&quot;generic&quot;&quot;&quot;" name="type"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_0" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_c0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_1" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_mn0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_2" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_si0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_3" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_p0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_4" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_s0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_5" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_al0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_6" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_cu0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_7" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_ni0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_8" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_cr0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_9" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_mo0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_10" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_sn0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_11" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_v0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_12" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_nb0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_13" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_ti0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_14" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_b0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_15" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_tl0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_16" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_re0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_17" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_rm0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_18" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_a0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_19" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_hrb0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_20" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_kv0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_21" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_kvc0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_22" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_t0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+	<data>
+		<record id="qc_test_template_line_23" model="qc.test.template.line">
+			<field name="proof_id" ref="steel_quality_test.qc_proof_n0"/>
+			<field model="qc.proof.method" name="method_id" search="[('name', '=', u'calidad en produccion')]"/>
+			<field eval="1" name="sequence"/>
+			<field name="test_template_id" ref="qc_test_template_controlcalidadacero0"/>
+			<field name="uom_id" ref="steel_quality_test.product_uom_mg0"/>
+		</record>
+	</data>
+</openerp>
