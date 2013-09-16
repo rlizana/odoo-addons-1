@@ -19,7 +19,7 @@
 #
 ##############################################################################
 from osv import osv, fields
-import decimal_precision as dp
+#import decimal_precision as dp
 import time
 
 from tools.translate import _
