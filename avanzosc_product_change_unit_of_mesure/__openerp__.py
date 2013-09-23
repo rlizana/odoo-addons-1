@@ -20,13 +20,14 @@
 ##############################################################################
 
 {
-    "name": "Avanzosc Product Change Unit Of Mesure",
+    "name": "Avanzosc Product Change Unit Of Measure",
     "version": "1.0",
     "depends": ["product"],
     "author": "Avanzosc",
     "category": "Custom Modules",
     "description": """
-        This module allows you to change the unit of measure of the product.
+        WARNING! This module allows to change the product UOM and the category of the UOM.
+        The UOM defined controls are disabled.
     """,
     "init_xml": [],
     'update_xml': [],
