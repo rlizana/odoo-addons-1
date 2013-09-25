@@ -32,11 +32,12 @@ class account_invoice_line(osv.osv):
     _name = 'account.invoice.line'
     _inherit = 'account.invoice.line'
         
-    _columns = {'type':fields.related('invoice_id', 'type', type="selection", selection=[('out_invoice','Customer Invoice'),
-                                                                                         ('in_invoice','Supplier Invoice'),
-                                                                                         ('out_refund','Customer Refund'),
-                                                                                         ('in_refund','Supplier Refund'),
-                                                                                         ], string="Type"),
+    _columns = {
+#                    'type':fields.related('invoice_id', 'type', type="selection", selection=[('out_invoice','Customer Invoice'),
+#                                                                                         ('in_invoice','Supplier Invoice'),
+#                                                                                         ('out_refund','Customer Refund'),
+#                                                                                         ('in_refund','Supplier Refund'),
+#                                                                                         ], string="Type"),
                 'fiscal_position': fields.related('invoice_id', 'fiscal_position', type='many2one', relation='account.fiscal.position', string='Fiscal Position'),
                 'address_invoice_id': fields.related('invoice_id', 'address_invoice_id', type='many2one', relation='res.partner.address', string='Invoice Address'),
                 'currency_id': fields.related('invoice_id', 'currency_id', type='many2one', relation='res.currency', string='Currency'),
@@ -44,7 +45,7 @@ class account_invoice_line(osv.osv):
                 'company_id': fields.related('invoice_id','company_id',type='many2one',relation='res.company',string='Company', store=True, readonly=True),
                 'partner_id': fields.related('invoice_id','partner_id',type='many2one',relation='res.partner',string='Partner',store=True)
                 }
-    _defaults = {'type': lambda self, cr, uid, c: c.get('type', False),
+    _defaults = {#'type': lambda self, cr, uid, c: c.get('inv_type', False),
                  'fiscal_position': lambda self, cr, uid, c: c.get('fiscal_position', False),
                  'address_invoice_id': lambda self, cr, uid, c: c.get('address_invoice_id', False),
                  'currency_id': lambda self, cr, uid, c: c.get('currency_id', False),
