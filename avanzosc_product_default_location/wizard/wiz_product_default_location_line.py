@@ -21,7 +21,6 @@
 from osv import osv
 from osv import fields
 from tools.translate import _
-import netsvc
  
 class wiz_product_default_location_line(osv.osv_memory):
     

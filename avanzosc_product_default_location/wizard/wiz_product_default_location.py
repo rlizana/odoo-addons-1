@@ -38,7 +38,7 @@ class wiz_product_default_location(osv.osv_memory):
         if context is None:
             context = {}  
         product_obj = self.pool.get('product.product')
-        product_ids = product_obj.search(cr, uid,[('default_code','=', False)])
+        product_ids = product_obj.search(cr, uid,[('default_location','=', False)])
         if not product_ids:
             raise osv.except_osv(_('Wizard Warning'), _('No products found without default location'))
         else:

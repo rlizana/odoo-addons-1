@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
-    
+	<data>
+
 		<record id="wiz_product_default_location_form" model="ir.ui.view">
 			<field name="name">wiz.product.default.location.form</field>
 			<field name="model">wiz.product.default.location</field>
@@ -9,7 +9,7 @@
 			<field name="arch" type="xml">
 				<form string="Products without default location">
 					<field name="name" invisible="1" />
-					<group colspan="4" >
+					<group colspan="4">
 						<field name="data_ids" nolabel="1" colspan="4" />
 					</group>
 					<separator string="" colspan="4" />
@@ -21,7 +21,7 @@
 				</form>
 			</field>
 		</record>
-		
+
 
 		<!-- ***** ACCIÓN PARA LA VENTANA DE LAS VISTAS ***** -->
 
@@ -31,14 +31,63 @@
 			<field name="res_model">wiz.product.default.location</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">form</field>
-            <field name="view_id" ref="wiz_product_default_location_form"/>
-            <field name="target">new</field>
+			<field name="view_id" ref="wiz_product_default_location_form" />
+			<field name="target">new</field>
 		</record>
-		
-		<!-- ********** DISEÑO OPCION DE MENU **********  -->
+
+		<!-- ********** DISEÑO OPCION DE MENU ********** -->
 
 		<menuitem id="wiz_product_default_location_view" name="Products Without Default Location"
 			parent="base.menu_product" action="action_wiz_product_default_location" />
 
-    </data>
+
+		<!-- =================== Wizard Assign Product Default location ============ -->
+
+		<record id="view_assign_pdl_form" model="ir.ui.view">
+			<field name="name">view.assign.pdl.form</field>
+			<field name="model">wiz.assign.pdl</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Product Default Location">
+					<separator string="Select Default Location for the selected Products"
+						colspan="4" />
+					<field name="def_location" widget="selection"/>
+					<group colspan="4">
+						<button icon="gtk-cancel" special="cancel" string="Cancel"
+							colspan="2" />
+						<button icon="gtk-ok" name="action_pdl_assign" string="Assign"
+							type="object" colspan="2" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_assign_pdl" model="ir.actions.act_window">
+			<field name="name">action Assign PDL</field>
+			<field name="res_model">wiz.assign.pdl</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_assign_pdl_form" />
+			<field name="target">new</field>
+		</record>
+
+<!-- 		<record id="action_menu_product_dl_assign" model="ir.values"> -->
+<!-- 		<field name="model_id" ref="product" /> -->
+<!-- 		<field name="src_model">product.product</field> -->
+<!-- 		<field name="res_model">wiz.assign.pdl</field> -->
+<!-- 		<field name="name">Assing Product Default Location</field> -->
+<!-- 		<field name="key2">client_action_multi</field> -->
+<!-- 		<field name="value" eval="'ir.actions.act_window,' + str(ref('action_pdl_assign'))" /> -->
+<!-- 		<field name="key">action</field> -->
+<!-- 		</record> -->
+		
+		<act_window name="Assing Product Default Location"
+            res_model="wiz.assign.pdl"
+            src_model="product.product"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_menu_product_dl_assign"/>
+
+	</data>
 </openerp>
