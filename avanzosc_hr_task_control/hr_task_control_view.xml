@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		
+		<!-- Task view list   -->
+
+	<record id="view_task_list" model="ir.ui.view">
+		<field name="name">view.task.list</field>
+		<field name="model">wizard.task.list</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Task List">
+				<field name="task_list" colspan="4" nolabel="1" widget="one2many_list" width="800" height="400" >
+					<tree  string="Task List" editable="bottom">
+						<field name="task" width="50" domain="[('user_id','=',uid)]"/> 
+						<field name="time" widget="float_time"/>
+						<field name="description" width="100"/>
+					</tree>
+					<form string="Task List">
+						<field name="task" readonly="1" domain="[('user_id','=',uid)]" />
+						<field name="time" nolabel="1" widget="float_time" />
+						<field name="description" nolabel="1"/>
+					</form>
+				</field>
+				<newline/>
+				<button  icon="gtk-ok" name="hour_control"  string="Accept" type="object"/>
+				<button  icon="gtk-stop" special="cancel" string="Cancel" type="object"/>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_task_tree" model="ir.ui.view">
+		<field name="name">view.task.tree</field>
+		<field name="model">wizard.task</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<form string="Task">
+				<field name="task" nolabel="1"/>
+				<field name="time" nolabel="1" widget="float_time"/>
+				<field name="description" nolabel="1"/>
+			</form>
+		</field>
+	</record>
+	
+	<record id="view_task_form" model="ir.ui.view">
+		<field name="name">view.task.form</field>
+		<field name="model">wizard.task</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Task">
+				<field name="task" nolabel="1"/>
+				<field name="time" nolabel="1" />
+				<field name="description" nolabel="1"/>
+			</form>
+		</field>
+	</record>
+	
+	<record id="action_task" model="ir.actions.act_window">
+			<field name="name">Task </field>
+			<field name="res_model">wizard.task</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+	</record>	
+	
+<!-- 	<record id="action_button_view" model="ir.actions.act_window"> -->
+<!-- 			<field name="name">acc.button.view</field> -->
+<!-- 			<field name="res_model">wizard.tirenolog</field> -->
+<!-- 			<field name="view_type">form</field> -->
+<!-- 			<field name="view_mode">form</field> -->
+<!-- 			<field name="target">new</field> -->
+<!-- 	</record> -->
+	
+	</data>
+</openerp>
