@@ -1,0 +1,32 @@
+<openerp>
+    <data>
+    	
+
+            <record model="ir.ui.view" id="manual_cron_launch_form_view">
+                <field name="name">manual.cron.launch.form</field>
+                <field name="model">manual.cron.launch</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Manual Cron Launch">
+                    	<separator colspan="4" string="Select cron you want to launch:"/>
+                        <field name="cron_list" nolabel="1" colspan="4"/>
+                        <separator colspan="4" />
+                        <button special="cancel" string="Cancel" icon="gtk-cancel"/>
+                        <button name="execute_cron" icon="gtk-ok" string="Execute" type="object"/>
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.actions.act_window" id="action_manual_cron_launch_view">
+                <field name="name">Manual Cron Launch</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">manual.cron.launch</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
+
+			<menuitem id="manual_cron_launch_menu" name="Launch manual cron" parent="base.next_id_10" action="action_manual_cron_launch_view"/>
+
+    </data>
+</openerp>
