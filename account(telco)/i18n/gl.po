@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: openobject-addons\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-05-09 10:18+0000\n"
-"PO-Revision-Date: 2012-07-25 11:47+0000\n"
-"Last-Translator: Vicente <jviares@gmail.com>\n"
+"PO-Revision-Date: 2013-10-01 20:48+0000\n"
+"Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-26 05:01+0000\n"
-"X-Generator: Launchpad (build 15679)\n"
+"X-Launchpad-Export-Date: 2013-10-02 05:27+0000\n"
+"X-Generator: Launchpad (build 16774)\n"
 
 #. module: account
 #: model:process.transition,name:account.process_transition_supplierreconcilepaid0
@@ -2026,7 +2026,7 @@ msgstr "Importar dende factura"
 #: selection:report.account.sales,month:0
 #: selection:report.account_type.sales,month:0
 msgid "January"
-msgstr "Enero"
+msgstr "Xaneiro"
 
 #. module: account
 #: view:account.journal:0
@@ -9940,21 +9940,3 @@ msgstr ""
 #: report:account.aged_trial_balance:0
 msgid "Not due"
 msgstr ""
-
-#~ msgid "Ref. :"
-#~ msgstr "Ref.:"
-
-#~ msgid "Canceled"
-#~ msgstr "Cancelado"
-
-#~ msgid "Number:"
-#~ msgstr "Número:"
-
-#~ msgid "Journal:"
-#~ msgstr "Diario"
-
-#~ msgid "Print Voucher"
-#~ msgstr "Imprimir Comprobante de Pago"
-
-#~ msgid "Authorised Signatory"
-#~ msgstr "Sinatura Autorizada"
