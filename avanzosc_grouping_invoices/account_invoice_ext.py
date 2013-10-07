@@ -35,7 +35,27 @@ class account_invoice(osv.osv):
     def _amount_residual_ref(self, cr, uid, ids, name, args, context=None):
         res = {}
         for invoice in self.browse(cr, uid, ids, context=context):
-            residual = invoice.residual
+            if not invoice.currency_id:
+                residual = invoice.residual
+            else:
+                if not invoice.move_id:
+                    if not invoice.currency_id.rate_ids:
+                        residual = invoice.residual
+                    else:
+                        w_rate = 0
+                        for rate in invoice.currency_id.rate_ids:
+                            w_rate = rate.rate
+                        residual = invoice.residual * w_rate        
+                else:
+                    if not invoice.move_id.line_id:
+                        residual = invoice.residual
+                    else:
+                        w_imp = 0
+                        for line in invoice.move_id.line_id:
+                            if invoice.residual == line.amount_currency and line.debit > 0:
+                                w_imp = line.debit
+                        residual = w_imp       
+                                                
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = residual * -1
             else:
@@ -46,7 +66,27 @@ class account_invoice(osv.osv):
     def _amount_untaxed_ref(self, cr, uid, ids, name, args, context=None):
         res = {}
         for invoice in self.browse(cr, uid, ids, context=context):
-            untaxed = invoice.amount_untaxed
+            if not invoice.currency_id:
+                untaxed = invoice.amount_untaxed
+            else:
+                if not invoice.move_id:
+                    if not invoice.currency_id.rate_ids:
+                        untaxed = invoice.amount_untaxed
+                    else:
+                        w_rate = 0
+                        for rate in invoice.currency_id.rate_ids:
+                            w_rate = rate.rate
+                        untaxed = invoice.amount_untaxed * w_rate        
+                else:
+                    if not invoice.move_id.line_id:
+                        untaxed = invoice.amount_untaxed
+                    else:
+                        w_imp = 0
+                        for line in invoice.move_id.line_id:
+                            if invoice.amount_untaxed == line.amount_currency and line.debit > 0:
+                                w_imp = line.debit
+                        untaxed = w_imp 
+
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = untaxed * -1
             else:
@@ -57,7 +97,27 @@ class account_invoice(osv.osv):
     def _amount_all_ref(self, cr, uid, ids, name, args, context=None):
         res = {}
         for invoice in self.browse(cr, uid, ids, context=context):
-            amount = invoice.amount_total
+            if not invoice.currency_id:
+                amount = invoice.amount_total
+            else:
+                if not invoice.move_id:
+                    if not invoice.currency_id.rate_ids:
+                        amount = invoice.amount_total
+                    else:
+                        w_rate = 0
+                        for rate in invoice.currency_id.rate_ids:
+                            w_rate = rate.rate
+                        amount = invoice.amount_total * w_rate        
+                else:
+                    if not invoice.move_id.line_id:
+                        amount = invoice.amount_total
+                    else:
+                        w_imp = 0
+                        for line in invoice.move_id.line_id:
+                            if invoice.amount_total == line.amount_currency and line.debit > 0:
+                                w_imp = line.debit
+                        amount = w_imp 
+
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = amount * -1
             else:
@@ -67,7 +127,27 @@ class account_invoice(osv.osv):
     def _amount_tax_ref(self, cr, uid, ids, name, args, context=None):
         res = {}
         for invoice in self.browse(cr, uid, ids, context=context):
-            tax = invoice.amount_tax
+            if not invoice.currency_id:
+                tax = invoice.amount_tax
+            else:
+                if not invoice.move_id:
+                    if not invoice.currency_id.rate_ids:
+                        tax = invoice.amount_tax
+                    else:
+                        w_rate = 0
+                        for rate in invoice.currency_id.rate_ids:
+                            w_rate = rate.rate
+                        tax = invoice.amount_tax * w_rate        
+                else:
+                    if not invoice.move_id.line_id:
+                        tax = invoice.amount_tax
+                    else:
+                        w_imp = 0
+                        for line in invoice.move_id.line_id:
+                            if invoice.amount_tax == line.amount_currency and line.debit > 0:
+                                w_imp = line.debit
+                        tax = w_imp 
+                        
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = tax * -1
             else:
