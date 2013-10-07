@@ -38,23 +38,26 @@ class account_invoice(osv.osv):
             if not invoice.currency_id:
                 residual = invoice.residual
             else:
-                if not invoice.move_id:
-                    if not invoice.currency_id.rate_ids:
-                        residual = invoice.residual
-                    else:
-                        w_rate = 0
-                        for rate in invoice.currency_id.rate_ids:
-                            w_rate = rate.rate
-                        residual = invoice.residual * w_rate        
+                if invoice.currency_id.name == 'EUR':
+                    residual = invoice.residual
                 else:
-                    if not invoice.move_id.line_id:
-                        residual = invoice.residual
+                    if not invoice.move_id:
+                        if not invoice.currency_id.rate_ids:
+                            residual = invoice.residual
+                        else:
+                            w_rate = 0
+                            for rate in invoice.currency_id.rate_ids:
+                                w_rate = rate.rate
+                            residual = invoice.residual * w_rate        
                     else:
-                        w_imp = 0
-                        for line in invoice.move_id.line_id:
-                            if invoice.residual == line.amount_currency and line.debit > 0:
-                                w_imp = line.debit
-                        residual = w_imp       
+                        if not invoice.move_id.line_id:
+                            residual = invoice.residual
+                        else:
+                            w_imp = 0
+                            for line in invoice.move_id.line_id:
+                                if invoice.residual == line.amount_currency and line.debit > 0:
+                                    w_imp = line.debit
+                            residual = w_imp       
                                                 
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = residual * -1
@@ -69,23 +72,26 @@ class account_invoice(osv.osv):
             if not invoice.currency_id:
                 untaxed = invoice.amount_untaxed
             else:
-                if not invoice.move_id:
-                    if not invoice.currency_id.rate_ids:
-                        untaxed = invoice.amount_untaxed
+                if invoice.currency_id.name == 'EUR':
+                    untaxed = invoice.amount_untaxed
+                else:                   
+                    if not invoice.move_id:
+                        if not invoice.currency_id.rate_ids:
+                            untaxed = invoice.amount_untaxed
+                        else:
+                            w_rate = 0
+                            for rate in invoice.currency_id.rate_ids:
+                                w_rate = rate.rate
+                            untaxed = invoice.amount_untaxed * w_rate        
                     else:
-                        w_rate = 0
-                        for rate in invoice.currency_id.rate_ids:
-                            w_rate = rate.rate
-                        untaxed = invoice.amount_untaxed * w_rate        
-                else:
-                    if not invoice.move_id.line_id:
-                        untaxed = invoice.amount_untaxed
-                    else:
-                        w_imp = 0
-                        for line in invoice.move_id.line_id:
-                            if invoice.amount_untaxed == line.amount_currency and line.debit > 0:
-                                w_imp = line.debit
-                        untaxed = w_imp 
+                        if not invoice.move_id.line_id:
+                            untaxed = invoice.amount_untaxed
+                        else:
+                            w_imp = 0
+                            for line in invoice.move_id.line_id:
+                                if invoice.amount_untaxed == line.amount_currency and line.debit > 0:
+                                    w_imp = line.debit
+                            untaxed = w_imp 
 
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = untaxed * -1
@@ -100,23 +106,26 @@ class account_invoice(osv.osv):
             if not invoice.currency_id:
                 amount = invoice.amount_total
             else:
-                if not invoice.move_id:
-                    if not invoice.currency_id.rate_ids:
-                        amount = invoice.amount_total
+                if invoice.currency_id.name == 'EUR':
+                    amount = invoice.amount_total
+                else:     
+                    if not invoice.move_id:
+                        if not invoice.currency_id.rate_ids:
+                            amount = invoice.amount_total
+                        else:
+                            w_rate = 0
+                            for rate in invoice.currency_id.rate_ids:
+                                w_rate = rate.rate
+                            amount = invoice.amount_total * w_rate        
                     else:
-                        w_rate = 0
-                        for rate in invoice.currency_id.rate_ids:
-                            w_rate = rate.rate
-                        amount = invoice.amount_total * w_rate        
-                else:
-                    if not invoice.move_id.line_id:
-                        amount = invoice.amount_total
-                    else:
-                        w_imp = 0
-                        for line in invoice.move_id.line_id:
-                            if invoice.amount_total == line.amount_currency and line.debit > 0:
-                                w_imp = line.debit
-                        amount = w_imp 
+                        if not invoice.move_id.line_id:
+                            amount = invoice.amount_total
+                        else:
+                            w_imp = 0
+                            for line in invoice.move_id.line_id:
+                                if invoice.amount_total == line.amount_currency and line.debit > 0:
+                                    w_imp = line.debit
+                            amount = w_imp 
 
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = amount * -1
@@ -130,23 +139,26 @@ class account_invoice(osv.osv):
             if not invoice.currency_id:
                 tax = invoice.amount_tax
             else:
-                if not invoice.move_id:
-                    if not invoice.currency_id.rate_ids:
-                        tax = invoice.amount_tax
+                if invoice.currency_id.name == 'EUR':
+                    tax = invoice.amount_tax
+                else:    
+                    if not invoice.move_id:
+                        if not invoice.currency_id.rate_ids:
+                            tax = invoice.amount_tax
+                        else:
+                            w_rate = 0
+                            for rate in invoice.currency_id.rate_ids:
+                                w_rate = rate.rate
+                            tax = invoice.amount_tax * w_rate        
                     else:
-                        w_rate = 0
-                        for rate in invoice.currency_id.rate_ids:
-                            w_rate = rate.rate
-                        tax = invoice.amount_tax * w_rate        
-                else:
-                    if not invoice.move_id.line_id:
-                        tax = invoice.amount_tax
-                    else:
-                        w_imp = 0
-                        for line in invoice.move_id.line_id:
-                            if invoice.amount_tax == line.amount_currency and line.debit > 0:
-                                w_imp = line.debit
-                        tax = w_imp 
+                        if not invoice.move_id.line_id:
+                            tax = invoice.amount_tax
+                        else:
+                            w_imp = 0
+                            for line in invoice.move_id.line_id:
+                                if invoice.amount_tax == line.amount_currency and line.debit > 0:
+                                    w_imp = line.debit
+                            tax = w_imp 
                         
             if invoice.type in ('in_refund', 'out_refund'):
                 res[invoice.id] = tax * -1
