@@ -81,10 +81,7 @@ class sale_order_line(osv.osv):
         res = {}
         for so_line in self.browse(cr, uid, ids, context=context):
             price = so_line.price_unit
-            print '*********** CALCULATE_SECONDARY_PRICE'
-            print '*** product: ' + str(so_line.product_id)
             prod = self.pool.get('product.product').browse(cr, uid, so_line.product_id.id, context=context)
-            print '*** coeficiente: ' + str(prod.uos_coeff)
             try:
                 price = price / prod.uos_coeff
             except ZeroDivisionError:

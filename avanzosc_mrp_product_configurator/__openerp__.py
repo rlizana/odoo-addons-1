@@ -22,7 +22,7 @@
 {
     "name": "MRP Product Configurator",
     "version": "1.0",
-    "depends": ["mrp"],
+    "depends": ["mrp","base_contact"],
     "author": "AvanzOSC",
     "website" : "http://www.avanzosc.com",
     "category": "Custom Modules",
@@ -30,6 +30,7 @@
     This module provide :
     Product configurator feature, which means you will be able to configure phantom BOMs \
     in order to choose corresponding component for each manufacturing order.
+    Warning! This module depends on Base_contact of 6.0
     """,
     "init_xml": [],
     'update_xml': [

@@ -24,7 +24,7 @@ from osv import osv
 from osv import fields
 
 class res_partner(osv.osv):
-    _name = 'res.partner'
+
     _inherit = 'res.partner'
  
     _columns = {
@@ -59,7 +59,7 @@ res_partner()
 #res_partner_job()
 
 class res_partner_address(osv.osv):
-    _name = 'res.partner.address'
+
     _inherit = 'res.partner.address'
     
     def _set_name(self, cr, uid, ids, fields, arg, context=None):
@@ -71,17 +71,16 @@ class res_partner_address(osv.osv):
         res = {}
         contact_obj = self.pool.get('res.partner.contact')
         for address in self.browse(cr, uid, ids):
-		if address.contact_id:		
-			name = contact_obj.name_get(cr, uid, [address.contact_id.id])
-                	if name:
-                        	res[address.id] = name[0][1]
-        
-        if not len(res):
-            return {}
+            if address.contact_id:
+                name = contact_obj.name_get(cr, uid, [address.contact_id.id])
+                if name:
+                    res[address.id] = name[0][1]
         return res
     
-    _columns = {
+    _columns = { 
         'name': fields.function(_set_name, method=True, type='char', size=64, string='Contact Name', store=True),
+        'contact_id': fields.related('job_ids','contact_id',type='many2one',\
+                         relation='res.partner.contact', string='Contact'), # Relation to add contact_id in res.partner.address (Maybe not necesary TODO)
     }
     
 res_partner_address()

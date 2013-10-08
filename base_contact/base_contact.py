@@ -142,7 +142,6 @@ class res_partner_address(osv.osv):
                 res.append((r['id'], addr.strip() or '/'))
         return res
 
-    _name = 'res.partner.address'
     _inherit = 'res.partner.address'
     _description ='Partner Address'
 
