@@ -144,8 +144,9 @@ class sale_order_line(osv.osv):
     }
     
     def create(self, cr, uid, vals={}, context={}):
-        if not (context.has_key('expand') and context['expand']):
-            vals.update({'pack_parent_line_id':False, 'pack_child_line_ids':[(6,0,[])]})
+        if context:
+            if not (context.has_key('expand') and context['expand']):
+                vals.update({'pack_parent_line_id':False, 'pack_child_line_ids':[(6,0,[])]})
         return super(sale_order_line, self).create(cr,uid,vals,context)
 sale_order_line()
 
