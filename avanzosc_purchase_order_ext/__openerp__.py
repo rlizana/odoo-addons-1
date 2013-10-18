@@ -22,18 +22,17 @@
 ##############################################################################
 
 {
-    "name": "Simulator Extension", 
-    "version": "1.0",
+    "name": "Avanzosc Purchase Order Extension", 
+    "version": "1.2",
     "depends": ["purchase"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
-        Avanzosc Custom Modules
+       Este módulo asigna al producto el proveedor en un pedido de compra de no tenerlo asignado
 
     """,
     "init_xml": [],
-#    'update_xml': ['crm_strategy_view.xml',
-#                   ],
+    'update_xml': [],
     'demo_xml': [],
     'installable': True,
     'active': False,

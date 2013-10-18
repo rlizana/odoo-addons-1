@@ -23,24 +23,21 @@
 from osv import osv, fields
 from tools.translate import _
 
-#
-### Heredo esta clase para que cuando confirme el pedido de compra, si 
-### hay algun producto que no tiene como proveedor al del pedido de
+ 
+### Si hay algun producto que no tiene como proveedor al del pedido de
 ### compra, le asigna dicho proveedor al producto
 class purchase_order(osv.osv):
 
-    _name = 'purchase.order'
     _inherit = 'purchase.order'
  
     def wkf_confirm_order(self, cr, uid, ids, context=None):
         todo = []
         for po in self.browse(cr, uid, ids, context=context):
             if not po.order_line:
-                raise osv.except_osv(_('Error !'),_('You cannot confirm a purchase order without any lines.'))
+                res = super(purchase_order, self).wkf_confirm_order(cr, uid, ids = ids, context = context)
+                return res
             for line in po.order_line:
-                #
-                ### MODIFICACION ALFREDO
-                #
+
                 # Cojo los proveedores asignados al producto
                 supplierinfo_obj = self.pool.get('product.supplierinfo')
                 supplierinfo_ids = supplierinfo_obj.search(cr, uid,[('product_id','=', line.product_id.id)],                                                                 
@@ -64,20 +61,12 @@ class purchase_order(osv.osv):
                               'sequence': w_sequence,
                               'product_uom': line.product_uom.id,
                               'min_qty': 1,
-                              'product_id': line.product_id.id,
+                              'product_code': line.product_id.default_code,
+                              'product_id': line.product_id.product_tmpl_id.id,
                               }
                     new_supplierinfo_id = supplierinfo_obj.create(cr, uid, values)
-                #
-                ### FIN MODIFICACION ALFREDO
-                #
-                if line.state=='draft':
-                    todo.append(line.id)
-            message = _("Purchase order '%s' is confirmed.") % (po.name,)
-            self.log(cr, uid, po.id, message)
-#        current_name = self.name_get(cr, uid, ids)[0][1]
-        self.pool.get('purchase.order.line').action_confirm(cr, uid, todo, context)
-        for id in ids:
-            self.write(cr, uid, [id], {'state' : 'confirmed', 'validator' : uid})
-        return True
+
+        res = super(purchase_order, self).wkf_confirm_order(cr, uid, ids = ids, context = context)
+        return res
 
 purchase_order()
