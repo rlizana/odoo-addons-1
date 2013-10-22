@@ -36,14 +36,17 @@ class product_product(osv.osv):
             if arg[0] == 'name':
                 search_term = arg[2]
         if search_term and (type(response)==type([])):
-            product_ids = []
+            product_lst = []
             supinfo_ids = product_supplierinfo.search(cr, uid,['|',('product_name','ilike', search_term),('product_code','ilike', search_term)])
-            products = product_supplierinfo.read(cr, uid, supinfo_ids, ['product_id'])
-            for product_id in products:
-                if product_id['product_id']:
-                    product_ids.append(product_id['product_id'][0])
-            response.extend([element for element in product_ids if element not in response])
-        
+            supinfo_lst = product_supplierinfo.read(cr, uid, supinfo_ids, ['product_id'])
+            for supinfo_reg in supinfo_lst:
+                if supinfo_reg['product_id']:
+                    product_id = self.search(cr, uid, [('product_tmpl_id', '=', supinfo_reg['product_id'][0])], context=context)
+                    if isinstance(product_id, (int, long)):
+                        product_lst.append(product_id)
+                    else:
+                        product_lst.extend(product_id)                    
+            response.extend([element for element in product_lst if element not in response]) 
         return response
     
 product_product()
