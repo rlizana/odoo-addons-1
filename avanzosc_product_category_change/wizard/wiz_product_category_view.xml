@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+		<!-- =================== Wizard Assign Product Default Category ============ -->
+
+		<record id="view_assign_categ_form" model="ir.ui.view">
+			<field name="name">view.assign.categ.form</field>
+			<field name="model">wiz.assign.categ</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Product Category">
+					<separator string="Select Category for the selected Products"
+						colspan="4" />
+					<field name="def_category" widget="selection"/>
+					<group colspan="4">
+						<button icon="gtk-cancel" special="cancel" string="Cancel"
+							colspan="2" />
+						<button icon="gtk-ok" name="action_category_assign" string="Assign"
+							type="object" colspan="2" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_assign_category" model="ir.actions.act_window">
+			<field name="name">action Assign Category</field>
+			<field name="res_model">wiz.assign.categ</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_assign_categ_form" />
+			<field name="target">new</field>
+		</record>
+
+<!-- 		<record id="action_menu_product_dl_assign" model="ir.values"> -->
+<!-- 		<field name="model_id" ref="product" /> -->
+<!-- 		<field name="src_model">product.product</field> -->
+<!-- 		<field name="res_model">wiz.assign.pdl</field> -->
+<!-- 		<field name="name">Assing Product Default Location</field> -->
+<!-- 		<field name="key2">client_action_multi</field> -->
+<!-- 		<field name="value" eval="'ir.actions.act_window,' + str(ref('action_pdl_assign'))" /> -->
+<!-- 		<field name="key">action</field> -->
+<!-- 		</record> -->
+		
+		<act_window name="Assing Product Category"
+            res_model="wiz.assign.categ"
+            src_model="product.product"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_menu_product_categ_assign"/>
+
+	</data>
+</openerp>
