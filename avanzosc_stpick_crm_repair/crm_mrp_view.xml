@@ -15,7 +15,7 @@
 							<separator colspan="4" string="Stock Pickings Related" />
 							
 						<!-- Picking Form View Extended -->
-							<field name="st_picking" colspan="4" mode="tree,form" nolabel="1" >
+							<field name="st_picking" colspan="4" mode="tree,form"  widget="many2many" nolabel="1" >
 							<form string="Internal Picking List">
 									<group colspan="4" col="6">
 										<group colspan="4" col="4">
@@ -177,7 +177,7 @@
 							
 							<!-- 	Repair form View Extended -->
 							
-							<field name="repair_ids"  colspan="4" mode="tree,form" nolabel="1">
+							<field name="repair_ids"  colspan="4" mode="tree,form" widget="many2many" nolabel="1">
 				<form string="Repairs order">
                 <group col="6" colspan="4"> 
                     <field name="name"/>

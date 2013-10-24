@@ -4,7 +4,7 @@
 #
 #    OpenERP, Open Source Management Solution    
 #    Copyright (C) 2008-2013 AvanzOSC (Daniel). All Rights Reserved
-#    Date: 25/09/2013
+#    Date: 23/10/2013
 #    
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
@@ -21,6 +21,4 @@
 #
 ##############################################################################
 
-#import wiz_product_default_location
-#import wiz_product_default_location_line
 import wizard_categ_assign
