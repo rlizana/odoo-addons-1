@@ -61,7 +61,7 @@ class purchase_order_line(osv.osv):
         res['value']['product_qty'] = qty
         res['value']['product_uos'] = uos
         res['value']['secondary_price'] = sec_price
-
+        
         return res
 
     def uos_change(self, cr, uid, ids, product_uos, product_uos_qty=0, product_id=None):

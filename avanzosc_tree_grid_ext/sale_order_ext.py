@@ -41,7 +41,6 @@ class sale_order_line(osv.osv):
             uom, qty_uos, uos, name, partner_id,
             lang, update_tax, date_order, packaging, fiscal_position, flag)
         
-        
         prod = self.pool.get('product.product').browse(cr, uid, product, context=context)
         qty = qty or 0.0
         prod_uos = prod.uos_id.id
@@ -57,6 +56,10 @@ class sale_order_line(osv.osv):
         res['value']['product_uom_qty'] = qty
         res['value']['product_uos'] = uos
         res['value']['secondary_price'] = price
+        
+        value = res['value'] 
+        value.update({'tax_id': value.get('taxes_id')}) 
+        res.update({'value':value})
 
         return res
 
