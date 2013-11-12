@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+	  <record model="ir.ui.view" id="sale_client_ref_view_inh">
+            <field name="name">sale.client.ref.view.inh</field>
+            <field name="model">sale.order</field>
+            <field name="type">tree</field>
+            <!--<field name="priority" eval="6"/>-->
+	        <field name="inherit_id" ref="sale.view_order_tree" />
+	        <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='date_order']" position="after">
+					<field name="client_order_ref"/>
+				</xpath>
+			</field>
+    </record>
+
+    </data>
+</openerp>
