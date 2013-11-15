@@ -13,7 +13,12 @@
 					<label colspan="4"  string=""/>
 					<button name="make_purchase_order_avanzosc" string="Create Purchase Order" type="object" icon="gtk-execute"
                            attrs="{'readonly': [('state', '=', 'done')]}" />
-				</xpath>						
+				</xpath>
+                <xpath expr="/form/notebook/page[@string='Quotations']" position="after">
+                    <page string="Purchase Lines Info">
+                        <field name="purchase_order_line_ids" nolabel="1"/>
+                    </page>
+                </xpath>
 			</field>
 		</record>
 		
