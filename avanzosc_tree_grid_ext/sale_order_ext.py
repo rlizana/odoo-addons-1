@@ -75,7 +75,8 @@ class sale_order_line(osv.osv):
         value = super(sale_order_line, self).uos_change(cr, uid, ids, product_uos, product_uos_qty, product_id)['value']
         
         value.update({
-                'product_uos': product.uos_id.id
+                'product_uos': product.uos_id.id,
+                'product_uom_qty': round(value['product_uom_qty']), 
             })
         
         return {'value': value}
