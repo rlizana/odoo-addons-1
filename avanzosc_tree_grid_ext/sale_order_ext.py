@@ -56,6 +56,7 @@ class sale_order_line(osv.osv):
         res['value']['product_uom_qty'] = qty
         res['value']['product_uos'] = uos
         res['value']['secondary_price'] = price
+        res['value']['product_uos_qty'] = qty / prod.coef_amount
         
         value = res['value'] 
         value.update({'tax_id': value.get('taxes_id')}) 
@@ -74,9 +75,11 @@ class sale_order_line(osv.osv):
         
         value = super(sale_order_line, self).uos_change(cr, uid, ids, product_uos, product_uos_qty, product_id)['value']
         
+        product_uom_qty = product_uos_qty * product.coef_amount
+        
         value.update({
                 'product_uos': product.uos_id.id,
-                'product_uom_qty': round(value['product_uom_qty']), 
+                'product_uom_qty': product_uom_qty, 
             })
         
         return {'value': value}

@@ -23,15 +23,14 @@
 {
     "name": "AvanzOSC - tree_grid extension",
     "version": "1.0",
-    "depends": ["tree_grid","sale","purchase","stock","account"],
+    "depends": ["tree_grid","sale","purchase","stock","account","avanzosc_calculate_coeficient_udv_automatically"],
     "author": "AvanzOSC S.L.",
     "category": "category",
     "description": """
     This module provide :
     """,
     "init_xml": [],
-    'update_xml': [
-                   'sale_order_view_ext.xml',
+    'update_xml': ['sale_order_view_ext.xml',
                    'purchase_order_view_ext.xml',
                    'stock_picking_view_ext.xml',
                    'account_invoice_view_ext.xml',
