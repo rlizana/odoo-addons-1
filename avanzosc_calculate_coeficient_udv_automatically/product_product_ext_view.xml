@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<record model="ir.ui.view" id="product_normal_form_view_inh_udvautomatically">
+			<field name="name">product.normal.form.view.inh.udvautomatically</field>
+			<field name="model">product.product</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr='//form//group[@name="uos"]' position="replace">
+	                <group colspan="2" col="4" name="uos" groups="product.group_uos">
+	                    <separator string="Second UoM" colspan="4"/>
+	                    <field name="uos_id" colspan="4" />
+	                    <field name="uos_coeff" colspan="2" />
+	                    <field name="coef_amount" colspan="2" on_change="onchange_coef_amount(coef_amount)" /> 
+	                    <field name="mes_type" colspan="4" />
+	                </group>
+				</xpath>							
+			</field>
+		</record>
+
+	</data>
+</openerp>
