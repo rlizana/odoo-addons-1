@@ -54,11 +54,16 @@ class sale_order_line(osv.osv):
             price = price / prod.uos_coeff
         except ZeroDivisionError:
             pass
+        
+        if prod.coef_amount:
+            my_qty = qty / prod.coef_amount
+        else:
+            my_qty = qty
 
         res['value']['product_uom_qty'] = qty
         res['value']['product_uos'] = uos
         res['value']['secondary_price'] = price
-        res['value']['product_uos_qty'] = qty / prod.coef_amount
+        res['value']['product_uos_qty'] = my_qty
         
         value = res['value'] 
         value.update({'tax_id': value.get('taxes_id')}) 
@@ -77,7 +82,10 @@ class sale_order_line(osv.osv):
         
         value = super(sale_order_line, self).uos_change(cr, uid, ids, product_uos, product_uos_qty, product_id)['value']
         
-        product_uom_qty = product_uos_qty * product.coef_amount
+        if product.coef_amount:
+            product_uom_qty = product_uos_qty * product.coef_amount
+        else:
+            product_uom_qty = product_uos_qty 
         
         value.update({
                 'product_uos': product.uos_id.id,
