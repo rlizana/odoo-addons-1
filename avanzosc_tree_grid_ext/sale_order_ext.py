@@ -30,6 +30,9 @@ class sale_order_line(osv.osv):
             uom=False, qty_uos=0, uos=False, name='', partner_id=False,
             lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False, flag=False, context={}):
 
+        if context is None:
+            context = {}
+        
         if not product:
             return {'value': {'th_weight': 0, 'product_packaging': False,
                 'product_uos_qty': qty, 'tax_id':[]}, 'domain': {'product_uom': [],
@@ -45,9 +48,8 @@ class sale_order_line(osv.osv):
         qty = qty or 0.0
         prod_uos = prod.uos_id.id
         if not uos:
-            uos = prod_uos
-            
-        price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], product, qty or 1.0, partner_id, dict(context, uom=uom,date=date_order, ))[pricelist]
+            uos = prod_uos       
+        price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], product, qty or 1.0, partner_id, dict(context, uom=uom or res.get('product_uom'),date=date_order, ))[pricelist]
         try:
             price = price / prod.uos_coeff
         except ZeroDivisionError:
