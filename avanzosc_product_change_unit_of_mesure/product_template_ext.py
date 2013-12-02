@@ -23,6 +23,8 @@
 
 from osv import osv
 from osv import fields
+import math
+from _common import rounding
 from tools.translate import _
 import datetime
 #
@@ -45,6 +47,19 @@ class product_uom(osv.osv):
 #                if uom.category_id.id != vals['category_id']:
                     #raise osv.except_osv(_('Warning'),_("Cannot change the category of existing UoM '%s'.") % (uom.name,))
         return super(osv.osv, self).write(cr, uid, ids, vals, context=context)
+    
+    def _compute_qty_obj(self, cr, uid, from_unit, qty, to_unit, context=None):
+        if context is None:
+            context = {}
+#        if from_unit.category_id.id <> to_unit.category_id.id:
+#            if context.get('raise-exception', True):
+#                raise osv.except_osv(_('Error !'), _('Conversion from Product UoM %s to Default UoM %s is not possible as they both belong to different Category!.') % (from_unit.name,to_unit.name,))
+#            else:
+#                return qty
+        amount = qty / from_unit.factor
+        if to_unit:
+            amount = rounding(amount * to_unit.factor, to_unit.rounding)
+        return amount
     
 product_uom()
 
