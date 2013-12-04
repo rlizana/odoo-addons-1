@@ -5,6 +5,7 @@
 	<record id="vpicktree_inherit" model="ir.ui.view">
 		<field name="name">stock.picking.tree.inherit</field>
 		<field name="model">stock.picking</field>
+		<field name="type">tree</field>
 		<field name="inherit_id" ref="stock.vpicktree" />
 		<field name="arch" type="xml">
 			<field name="origin" position="after">
@@ -17,6 +18,7 @@
 	<record id="view_picking_form_inherit" model="ir.ui.view">
 		<field name="name">stock.picking.out.form.inherit</field>
 		<field name="model">stock.picking</field>
+		<field name="type">form</field>
 		<field name="inherit_id" ref="stock.view_picking_form" />
 		<field name="arch" type="xml">
 			<field name="origin" position="after">
@@ -29,6 +31,7 @@
 	<record id="view_picking_internal_search_inherit" model="ir.ui.view">
 		<field name="name">stock.picking.internal.search.inherit</field>
 		<field name="model">stock.picking</field>
+		<field name="type">search</field>
 		<field name="inherit_id" ref="stock.view_picking_internal_search" />
 		<field name="arch" type="xml">
 			<data>
@@ -44,6 +47,7 @@
 		<record id="view_picking_out_tree_inherit" model="ir.ui.view">
       <field name="name">stock.picking.out.tree.inherit</field>
       <field name="model">stock.picking</field>
+      <field name="type">tree</field>
       <field name="inherit_id" ref="stock.view_picking_out_tree"/>
       <field name="arch" type="xml">
         <field name="origin" position="after">
@@ -56,6 +60,7 @@
 		<record id="view_picking_out_form_inherit" model="ir.ui.view">
       <field name="name">stock.picking.form.inherit</field>
       <field name="model">stock.picking</field>
+      <field name="type">form</field>
       <field name="inherit_id" ref="stock.view_picking_out_form"/>
       <field name="arch" type="xml">
         <field name="origin" position="after">
@@ -68,6 +73,7 @@
 	<record id="view_picking_out_search_inherit" model="ir.ui.view">
 		<field name="name">tock.picking.out.search.inherit</field>
 		<field name="model">stock.picking</field>
+		<field name="type">search</field>
 		<field name="inherit_id" ref="stock.view_picking_out_search" />
 		<field name="arch" type="xml">
 			<data>
@@ -82,6 +88,7 @@
 		<record id="view_picking_in_tree_inherit" model="ir.ui.view">
       <field name="name">stock.picking.in.tree.inherit</field>
       <field name="model">stock.picking</field>
+      <field name="type">tree</field>
       <field name="inherit_id" ref="stock.view_picking_in_tree"/>
       <field name="arch" type="xml">
         <field name="origin" position="after">
@@ -95,6 +102,7 @@
 		<record id="view_picking_in_form_inherit" model="ir.ui.view">
       <field name="name">stock.picking.in.form.inherit</field>
       <field name="model">stock.picking</field>
+      <field name="type">form</field>
       <field name="inherit_id" ref="stock.view_picking_in_form"/>
       <field name="arch" type="xml">
         <field name="origin" position="after">
@@ -112,6 +120,7 @@
 	<record id="view_picking_in_search_inherit" model="ir.ui.view">
 		<field name="name">stock.picking.in.search.inherit</field>
 		<field name="model">stock.picking</field>
+		<field name="type">search</field>
 		<field name="inherit_id" ref="stock.view_picking_in_search" />
 		<field name="arch" type="xml">
 			<data>

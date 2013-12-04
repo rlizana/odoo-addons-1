@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 11:03+0000\n"
-"PO-Revision-Date: 2013-12-04 11:03+0000\n"
+"POT-Creation-Date: 2013-12-04 10:46+0000\n"
+"PO-Revision-Date: 2013-12-04 10:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,345 +18,345 @@ msgstr ""
 #. module: avanzosc_stpick_crm_repair
 #: model:ir.model,name:avanzosc_stpick_crm_repair.model_mrp_repair
 msgid "Repair Order"
-msgstr "Repair Order"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Fees Line"
-msgstr "Fees Line"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "New pack"
-msgstr "New pack"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Confirm"
-msgstr "Confirm"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Cancel Availability"
-msgstr "Cancel Availability"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Invoice Control"
-msgstr "Invoice Control"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Scrap"
-msgstr "Scrap"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Check Availability"
-msgstr "Check Availability"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Invoicing"
-msgstr "Invoicing"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Create Invoice"
-msgstr "Create Invoice"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Process Later"
-msgstr "Process Later"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Set to Draft"
-msgstr "Set to Draft"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Recreate Invoice"
-msgstr "Recreate Invoice"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Move Information"
-msgstr "Move Information"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: field:mrp.repair,crm_name:0
 #: field:stock.picking,crm_name:0
 msgid "CRM Claim"
-msgstr "CRM Claim"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: code:addons/avanzosc_stpick_crm_repair/stpick_crm_mrp_repair.py:96
 #, python-format
 msgid "Provide the quantities of the returned products."
-msgstr "Provide the quantities of the returned products."
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: model:ir.model,name:avanzosc_stpick_crm_repair.model_stock_picking
 msgid "Picking List"
-msgstr "Picking List"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: code:addons/avanzosc_stpick_crm_repair/stpick_crm_mrp_repair.py:96
 #, python-format
 msgid "Return lines"
-msgstr "Return lines"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Invoice Corrected"
-msgstr "Invoice Corrected"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Repairs order"
-msgstr "Repairs order"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Repairs Related"
-msgstr "Repairs Related"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Internal Notes"
-msgstr "Internal Notes"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Confirm Repair"
-msgstr "Confirm Repair"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Make Invoice"
-msgstr "Make Invoice"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Total amount"
-msgstr "Total amount"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Quotation Notes"
-msgstr "Quotation Notes"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Process Now"
-msgstr "Process Now"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Dates"
-msgstr "Dates"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Internal Picking List"
-msgstr "Internal Picking List"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Compute"
-msgstr "Compute"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Date Expected"
-msgstr "Date Expected"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:res.partner:0
 #: field:res.partner,crm_claims:0
 msgid "CRM Claims"
-msgstr "CRM Claims"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Notes"
-msgstr "Notes"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "UoM"
-msgstr "UoM"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Traceability"
-msgstr "Traceability"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Products"
-msgstr "Products"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: sql_constraint:stock.picking:0
 msgid "Reference must be unique per Company!"
-msgstr "Reference must be unique per Company!"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: model:ir.model,name:avanzosc_stpick_crm_repair.model_stock_return_picking
 msgid "Return Picking"
-msgstr "Return Picking"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "End Repair"
-msgstr "End Repair"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Put in a new pack"
-msgstr "Put in a new pack"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Force Availability"
-msgstr "Force Availability"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Put in current pack"
-msgstr "Put in current pack"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Additional info"
-msgstr "Additional info"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "History"
-msgstr "History"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Operations"
-msgstr "Operations"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: model:ir.model,name:avanzosc_stpick_crm_repair.model_crm_claim
 msgid "Claim"
-msgstr "Claim"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: field:crm.claim,repair_ids:0
 #: field:crm.claim,st_picking:0
 msgid "Stock Picking"
-msgstr "Stock Picking"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Scrap Products"
-msgstr "Scrap Products"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Repair Line"
-msgstr "Repair Line"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Start Repair"
-msgstr "Start Repair"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Process"
-msgstr "Process"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Extra Information Related"
-msgstr "Extra Information Related"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Cancel Repair"
-msgstr "Cancel Repair"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Locations"
-msgstr "Locations"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Qty"
-msgstr "Qty"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "States"
-msgstr "States"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Extra Info"
-msgstr "Extra Info"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Unit Of Measure"
-msgstr "Unit Of Measure"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "_Cancel"
-msgstr "_Cancel"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Fees"
-msgstr "Fees"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: model:ir.model,name:avanzosc_stpick_crm_repair.model_res_partner
 msgid "Partner"
-msgstr "Partner"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Stock Moves"
-msgstr "Stock Moves"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Untaxed amount"
-msgstr "Untaxed amount"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Stock Pickings Related"
-msgstr "Stock Pickings Related"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Split in production lots"
-msgstr "Split in production lots"
+msgstr ""
 
 #. module: avanzosc_stpick_crm_repair
 #: view:crm.claim:0
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
