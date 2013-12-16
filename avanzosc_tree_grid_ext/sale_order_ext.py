@@ -66,7 +66,8 @@ class sale_order_line(osv.osv):
         res['value']['product_uos_qty'] = my_qty
         
         value = res['value'] 
-        value.update({'tax_id': value.get('taxes_id')}) 
+        if value.get('tax_id') == False:
+            value.update({'tax_id': value.get('taxes_id')}) 
         res.update({'value':value})
 
         return res
