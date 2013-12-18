@@ -84,8 +84,9 @@
 		            context="{'order_id':active_id,'search_default_order_to_review_id': [active_id], 'default_order_to_review_id': active_id,'sale_order_id':active_id,'partner_id':partner_id,'pricelist_id':pricelist_id,'shop_id':shop_id}"
 	            	id="act_saleorder_open_saleorderlines" 
 	            	name="Create Sale Order Line" res_model="sale.order.line" src_model="sale.order"
-	            	view_type="form" view_mode="form,tree" 
-	            	view_id="avanzosc_shorcut_sale_lines_in_sale_order.view_order_line_form2_inh_shortcutsaleline"/>
+	            	view_type="form" 
+	            	view_mode="tree,form"
+	                view_id="sale.view_order_line_tree" />	            	
 
 	</data>
 </openerp>
