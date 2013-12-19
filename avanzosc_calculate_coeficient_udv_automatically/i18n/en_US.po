@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Project-Id-Version: OpenERP Server 6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-29 11:53+0000\n"
-"PO-Revision-Date: 2013-11-29 11:53+0000\n"
+"POT-Creation-Date: 2013-12-19 10:44+0000\n"
+"PO-Revision-Date: 2013-12-19 10:44+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,6 @@ msgstr "Product"
 #: constraint:product.product:0
 msgid "Error: Invalid ean code"
 msgstr "Error: Invalid ean code"
-
-#. module: avanzosc_calculate_coeficient_udv_automatically
-#: constraint:product.product:0
-msgid "Several dimension values for the same dimension type"
-msgstr "Several dimension values for the same dimension type"
 
 #. module: avanzosc_calculate_coeficient_udv_automatically
 #: view:product.product:0

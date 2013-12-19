@@ -22,7 +22,7 @@
 ##############################################################################
 
 {
-    "name": "Simulator Extension", 
+    "name": "AvanzOsc - Purchase Requisition extension", 
     "version": "1.0",
     "depends": ["purchase_requisition"],
     "author": "AvanzOSC",

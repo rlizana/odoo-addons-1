@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 10:44+0000\n"
-"PO-Revision-Date: 2013-12-19 10:44+0000\n"
+"POT-Creation-Date: 2013-12-19 10:43+0000\n"
+"PO-Revision-Date: 2013-12-19 10:43+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,20 +18,20 @@ msgstr ""
 #. module: avanzosc_calculate_coeficient_udv_automatically
 #: model:ir.model,name:avanzosc_calculate_coeficient_udv_automatically.model_product_product
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 #. module: avanzosc_calculate_coeficient_udv_automatically
 #: constraint:product.product:0
 msgid "Error: Invalid ean code"
-msgstr "Error: Código EAN erróneo"
+msgstr ""
 
 #. module: avanzosc_calculate_coeficient_udv_automatically
 #: view:product.product:0
 msgid "Second UoM"
-msgstr "UdM secundaria"
+msgstr ""
 
 #. module: avanzosc_calculate_coeficient_udv_automatically
 #: field:product.product,coef_amount:0
 msgid "Coef Amount"
-msgstr "Cant. Calc. Coef."
+msgstr ""
 
