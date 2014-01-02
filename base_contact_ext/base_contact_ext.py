@@ -23,17 +23,35 @@ from osv import osv, fields
 from tools.translate import _
 
 class res_partner_address(osv.osv):
+    
     _inherit = 'res.partner.address' 
     
     def onchange_contact(self, cr, uid, ids, contact_id, context=None):
         res = {}
         contact_obj = self.pool.get('res.partner.contact')
         if contact_id:
-		for contact in contact_obj.browse(cr, uid, [contact_id]):
-			res = {
+            for contact in contact_obj.browse(cr, uid, [contact_id]):
+                res = {
 		    		'phone': contact.mobile,
 		    		'email': contact.email,
 				}
         return {'value': res}
     
 res_partner_address()
+
+class res_partner_job(osv.osv):
+    
+    _inherit = 'res.partner.job' 
+    
+    def onchange_contact(self, cr, uid, ids, contact_id, context=None):
+        res = {}
+        contact_obj = self.pool.get('res.partner.contact')
+        if contact_id:
+            for contact in contact_obj.browse(cr, uid, [contact_id]):
+                res = {
+                    'phone': contact.mobile,
+                    'email': contact.email,
+                }
+        return {'value': res}
+    
+res_partner_job()
