@@ -38,7 +38,7 @@ class account_move_line(osv.osv):
         journal_obj = self.pool.get('account.journal')
         res = super(account_move_line, self)._default_get(cr, uid, fields, context=context)
         if res:
-            if res.has_key('journal_id'):
+            if 'journal_id' in res and res['journal_id']:
                 journal = journal_obj.browse(cr,uid,[res['journal_id']])
                 if journal:
                     journal = journal[0]
