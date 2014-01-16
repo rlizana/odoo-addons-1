@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="av_stock_move_tree_view_inh">
+            <field name="name">av.stock.move.tree.view.inh</field>
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <!-- <field name="priority" eval="6"/> -->
+	    <field name="inherit_id" ref="stock.view_move_tree" />
+	    <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='date']" position="after">
+                    <field name="day"/>
+				</xpath>
+			</field>
+    </record>
+
+        <record model="ir.ui.view" id="av_stock_move_filter_inh">
+            <field name="name">av.stock.move.filter.inh</field>
+            <field name="model">stock.move</field>
+            <field name="type">search</field>
+            <!--<field name="priority" eval="6"/>-->
+	        <field name="inherit_id" ref="stock.view_move_search" />
+	        <field name="arch" type="xml">
+				<xpath expr="//search/group/filter[@string='Expected']" position="after">
+					<filter string="Date By Day" name="groupby_day" icon="terp-go-month" domain="[]" context="{'group_by':'day'}"/>
+				</xpath>
+			</field>
+
+        </record>
+    </data>
+</openerp>
