@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="secondary_price_product_form_view">
+			<field name="name">secondary.price.product.form</field>
+			<field name="model">product.product</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_normal_form_view"/>
+			<field name="arch" type="xml">
+			    <data>
+			        <xpath expr="//group[@name='uos']" position="after">
+			            <group colspan="2" col="2" groups="product.group_uos">
+			                <separator string="Second UoM Price" colspan="2"/>
+			                <field name="uos_list_price" on_change="onchange_uos_list_price(uos_list_price,coef_amount)"/>
+			            </group>
+			        </xpath>
+			    </data>
+			</field>
+		</record>
+    </data>
+</openerp>
