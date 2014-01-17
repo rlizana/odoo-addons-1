@@ -37,6 +37,13 @@ class stock_move(osv.osv):
     _columns = {
 
         'day':fields.function(_calculate_day, method=True, type="char", size=64, store=True, string="Date Planned by day"),
+        'nbr': fields.integer('# of Lines', readonly=True),
+
+    }
+
+    _defaults = {
+
+        'nbr': 1,
 
     }
 
