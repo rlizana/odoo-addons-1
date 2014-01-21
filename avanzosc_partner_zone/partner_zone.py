@@ -39,6 +39,7 @@ class res_partner_address(osv.osv):
     
     _columns = {
         'zone_id': fields.many2one('partner.zone', 'Zone'),
+        'installer_id' : fields.many2one('res.partner', 'Installer'),
         'analytic': fields.many2one('account.analytic.account', 'Analytic account'),
     }
     
@@ -48,25 +49,47 @@ class res_partner_address(osv.osv):
 
     def change_zone(self, cr, uid, ids, context=None):
         account_obj = self.pool.get('account.analytic.account')
+        partner_obj = self.pool.get('res.partner')
         zone_obj = self.pool.get('partner.zone')
         for address in self.browse(cr, uid, ids):
             if not address.zip:
                 raise osv.except_osv(_('Error!'),_('Zip does not exist!!\nPlease, fill the zip first.'))
-            if not address.zone_id:
-                raise osv.except_osv(_('Error!'),_('You must choose a Project!'))
+#            if not address.zone_id:
+#                raise osv.except_osv(_('Error!'),_('You must choose a Project!'))
+            if not address.installer_id:
+                raise osv.except_osv(_('Error!'),_('You must choose a Installer!'))
             if not address.partner_id.property_product_pricelist:
                 raise osv.except_osv(_('Error!'),_('Partner has no sale pricelist set!'))
             if not address.partner_id.ref:
                 raise osv.except_osv(_('Error!'),_('Partner has no reference set!'))
             
+            installer = partner_obj.browse(cr, uid, address.installer_id.id)
             zone = zone_obj.browse(cr, uid, address.zone_id.id)
+            address_obj = self.pool.get('res.partner.address')
+            inst_add_lst = address_obj.search(cr,uid,[('partner_id','=',installer.id)])
+            zona = False
+            if inst_add_lst == []:
+               raise osv.except_osv(_('Error!'),_('Installer address info not configured!')) 
+            else:
+                for add_id in inst_add_lst:
+                    inst_addr_reg = address_obj.browse(cr, uid, add_id)
+                    zona_instalador = inst_addr_reg.zone_id
+                    lazona = zone.id
+                    if inst_addr_reg.zone_id.id == zone.id:
+                        zona = True
+                        if  inst_addr_reg.analytic:
+                            parent_analy = inst_addr_reg.analytic
+                        else:
+                            raise osv.except_osv(_('Error!'),_('Installer analytic account not configured!'))
+            if not zona:
+                raise osv.except_osv(_('Error!'),_('Installer and Customer zone does not match!'))
             data = {
                 'name': zone.name + ' - ' + address.zip + ' - ' + address.partner_id.name,
                 'code': address.partner_id.ref + '-' + address.zip,
                 'partner_id': address.partner_id.id,
                 'pricelist_id': address.partner_id.property_product_pricelist.id,
                 'to_invoice': self._get_default_invoice_type(cr, uid, context),
-                'parent_id': zone.analytic_acc.id,
+                'parent_id': parent_analy,
             }
             if not address.analytic:
                 id = account_obj.create(cr, uid, data)

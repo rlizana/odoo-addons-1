@@ -69,6 +69,22 @@
 
 		<menuitem id="menu_zone" name="Zones" parent="base.menu_address_book"
 			action="action_partner_zone_tree" groups="account.group_account_manager"/>
+			
+		<!-- Installer Actions -->
+
+		<record id="action_instal_partner_tree" model="ir.actions.act_window">
+			<field name="name">Installer Partners</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_type">form</field>
+			<field name="domain">[('installer','=','TRUE')]</field>
+<!-- 			<field name="view_id" ref="res_partner" /> -->
+<!-- 			<field name="search_view_id" ref="partner_zone_search" /> -->
+			<field name="help">Partner Installers to classify partners in installer</field>
+		</record>
+
+		<menuitem id="menu_installer" name="Installers" parent="base.menu_address_book"
+			action="action_instal_partner_tree" groups="account.group_account_manager"/>
 
 		<!-- Partner Inherit Form -->
 
@@ -83,6 +99,7 @@
 						expr="/form/notebook/page/field[@name='address']/form/group/field[@name='city']"
 						position="after">
 						<field name="zone_id" />
+						<field name="installer_id" domain="[('installer','=','TRUE')]"/>
 					</xpath>
 					<xpath
 						expr="/form/notebook/page/field[@name='address']/form/group/field[@name='email']"
