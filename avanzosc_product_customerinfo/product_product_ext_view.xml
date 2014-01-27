@@ -18,6 +18,30 @@
 				</xpath>							
 			</field>
 		</record>
+		
+		<record model="ir.ui.view" id="product_supplierinfo_form_view_inh_customerinfo">
+			<field name="name">product.supplierinfo.form.view.inh.customerinfo</field>
+			<field name="model">product.supplierinfo</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_supplierinfo_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr='//form[@string="Supplier Information"]' position="attributes">
+					<attribute name="string">Supplier/Customer Information</attribute>
+				</xpath>					
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="product_supplierinfo_tree_view_inh_customerinfo">
+			<field name="name">product.supplierinfo.tree.view.inh.customerinfo</field>
+			<field name="model">product.supplierinfo</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="product.product_supplierinfo_tree_view" />
+			<field name="arch" type="xml">
+				<xpath expr='//tree[@string="Supplier Information"]' position="attributes">
+					<attribute name="string">Supplier/Customer Information</attribute>
+				</xpath>					
+			</field>
+		</record>
 
 	</data>
 </openerp>

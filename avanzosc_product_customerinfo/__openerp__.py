@@ -28,8 +28,7 @@
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
-        This module adds:
-            - Product search extended to search also the product name/code in the supplier name/code.
+        Avanzosc Custom Modules
 
     """,
     "init_xml": [],
