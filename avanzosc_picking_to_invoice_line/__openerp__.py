@@ -20,14 +20,14 @@
 ##############################################################################
 
 {
-    "name": "Avanzosc Product Expiry Extension",
+    "name": "Avanzosc Picking To Invoice Line",
     "version": "1.0",
-    "depends": ["product_expiry"],
+    "depends": ["stock"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
 
-        Add the product_expiry fields in the tree view of production lots
+        Add the picking id to invoice line
 
     """,
     "init_xml": [],
