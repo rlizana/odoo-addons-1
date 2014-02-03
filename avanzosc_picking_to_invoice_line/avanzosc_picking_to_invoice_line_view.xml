@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Vista tree -->
+
+        <record model="ir.ui.view" id="picking_in_invoice_view">
+			<field name="name">picking.in.invoice.view</field>
+			<field name="model">account.invoice.line</field>
+			<field name="type">tree</field>
+			<!-- <field name="priority" eval="17"/> -->
+			<field name="inherit_id" ref="account.view_invoice_line_tree" />
+			<field name="arch" type="xml">
+				<field name="name" position="before">
+                    <field name="picking_id" />
+                </field>
+			</field>
+		</record>
+
+    <!-- Vista form -->
+
+        <record model="ir.ui.view" id="picking_in_invoice_form_view">
+			<field name="name">picking.in.invoice.form.view</field>
+			<field name="model">account.invoice.line</field>
+			<field name="type">form</field>
+			<!-- <field name="priority" eval="17"/> -->
+			<field name="inherit_id" ref="account.view_invoice_line_form" />
+			<field name="arch" type="xml">
+				<field name="name" position="before">
+                    <field name="picking_id" />
+                </field>
+			</field>
+		</record>
+
+    </data>
+</openerp>
