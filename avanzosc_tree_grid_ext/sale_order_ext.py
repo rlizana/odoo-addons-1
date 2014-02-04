@@ -22,6 +22,11 @@
 
 from osv import osv, fields
 
+def rounding(f, r):
+    if not r:
+        return f
+    return round(f / r) * r
+
 class sale_order_line(osv.osv):
     
     _inherit = 'sale.order.line'
@@ -44,26 +49,37 @@ class sale_order_line(osv.osv):
             uom, qty_uos, uos, name, partner_id,
             lang, update_tax, date_order, packaging, fiscal_position, flag)
         
-        prod = self.pool.get('product.product').browse(cr, uid, product, context=context)
+        product_obj = self.pool.get('product.product')
+        pricelist_obj = self.pool.get('product.pricelist')
+        
+        prod = product_obj.browse(cr, uid, product, context=context)
         qty = qty or 0.0
-        prod_uos = prod.uos_id.id
+
+        if not uom or uom <> prod.uom_id.id:
+            uom = prod.uom_id.id
         if not uos:
-            uos = prod_uos       
-        price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist], product, qty or 1.0, partner_id, dict(context, uom=uom or res.get('product_uom'),date=date_order, ))[pricelist]
+            uos = prod.uos_id.id
+
+        price = pricelist_obj.price_get(cr, uid, [pricelist], product, qty or 1.0, partner_id, dict(context, uom=uom or res.get('product_uom'),date=date_order, ))[pricelist]
         try:
-            price = price / prod.uos_coeff
+            price = price / prod.coef_amount
         except ZeroDivisionError:
             pass
-        
-        if prod.coef_amount:
-            my_qty = qty / prod.coef_amount
-        else:
-            my_qty = qty
 
+        if prod.coef_amount:        
+            uos_qty = qty * prod.coef_amount
+        else:
+            uos_qty = qty
+            
+        
+        uos_qty = rounding(uos_qty, prod.uos_id.rounding)
+        qty = rounding(qty, prod.uom_id.rounding)
+
+        res['value']['product_uom'] = uom
         res['value']['product_uom_qty'] = qty
         res['value']['product_uos'] = uos
+        res['value']['product_uos_qty'] = uos_qty
         res['value']['secondary_price'] = price
-        res['value']['product_uos_qty'] = my_qty
         
         value = res['value'] 
         if value.get('tax_id') == False:
@@ -84,11 +100,15 @@ class sale_order_line(osv.osv):
         value = super(sale_order_line, self).uos_change(cr, uid, ids, product_uos, product_uos_qty, product_id)['value']
         
         if product.coef_amount:
-            product_uom_qty = product_uos_qty * product.coef_amount
+            product_uom_qty = product_uos_qty / product.coef_amount
         else:
-            product_uom_qty = product_uos_qty 
+            product_uom_qty = product_uos_qty
+            
+        product_uom_qty = rounding(product_uom_qty, product.uom_id.rounding) or 1.0
+        product_uos_qty = rounding(product_uos_qty, product.uos_id.rounding)
         
         value.update({
+                'product_uos_qty': product_uos_qty,
                 'product_uos': product.uos_id.id,
                 'product_uom_qty': product_uom_qty, 
             })
@@ -101,7 +121,7 @@ class sale_order_line(osv.osv):
             price = so_line.price_unit
             prod = self.pool.get('product.product').browse(cr, uid, so_line.product_id.id, context=context)
             try:
-                price = price / prod.uos_coeff
+                price = price / prod.coef_amount
             except ZeroDivisionError:
                 pass
 

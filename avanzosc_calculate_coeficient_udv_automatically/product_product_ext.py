@@ -26,10 +26,10 @@ class product_template(osv.osv):
     _inherit = 'product.template'
      
     _columns = {# Cantidad para el calculo del coeficiente
-                'coef_amount': fields.float('Coef Amount',  digits=(16,2)),        
+                'coef_amount': fields.float('Coef Amount',  digits=(16,3)),        
                 }
     
-    _default = {
+    _defaults = {
                 'coef_amount' : lambda *a: 1.0,
                 }
     
