@@ -25,7 +25,7 @@
     "version": "1.0",
     "depends": ["tree_grid","sale","purchase","stock","account","avanzosc_calculate_coeficient_udv_automatically"],
     "author": "AvanzOSC S.L.",
-    "category": "category",
+    "category": "Generic",
     "description": """
     This module provide :
     """,

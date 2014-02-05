@@ -33,7 +33,8 @@ class sale_order_line(osv.osv):
     
     def product_id_change(self, cr, uid, ids, pricelist, product, qty=0,
             uom=False, qty_uos=0, uos=False, name='', partner_id=False,
-            lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False, flag=False, context={}):
+            lang=False, update_tax=True, date_order=False, packaging=False, 
+            fiscal_position=False, flag=False, context=None):
 
         if context is None:
             context = {}
@@ -41,7 +42,7 @@ class sale_order_line(osv.osv):
         if not product:
             return {'value': {'th_weight': 0, 'product_packaging': False,
                 'product_uos_qty': qty, 'tax_id':[]}, 'domain': {'product_uom': [],
-                   'product_uos': []}, 'domain':{'product_uom':[]}}  
+                   'product_uos': []}}  
         
         res={}
         
@@ -90,10 +91,14 @@ class sale_order_line(osv.osv):
 
     
     def uos_change(self, cr, uid, ids, product_uos, product_uos_qty=0, product_id=None):
+        
+        if not product_uos:
+            return {'value': {}}
+        
         product_obj = self.pool.get('product.product')
         if not product_id:
             return {'value': {'product_uom': product_uos,
-                'product_uom_qty': product_uos_qty}, 'domain': {}}
+                'product_uom_qty': product_uos_qty}}#, 'domain': {}}
 
         product = product_obj.browse(cr, uid, product_id)
         
