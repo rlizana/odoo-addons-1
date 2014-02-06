@@ -18,9 +18,6 @@
                                'lang' in context and context['lang'], True, parent.date_order, product_packaging,
                                parent.fiscal_position)"
                                context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"/>
-<!-- 			        <field context="{'partner_id':partner_id, 'quantity':product_uom_qty, 'pricelist':pricelist_id, 'shop':shop_id, 'uom':product_uom}" -->
-<!--                            name="product_id" -->
-<!--                            on_change="product_id_change(pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,partner_id, False, True, date_order, product_packaging, fiscal_position, False, context)"/> -->
 
 				        <field name="pricelist_id" invisible="1"/>
 			        	<field name="partner_id" invisible="1"/>
@@ -28,10 +25,8 @@
 				        <field name="fiscal_position" invisible="1"/>
 				        <field name="shop_id" invisible="1"/>
 				    	<field name="th_weight" invisible="1"/>
-<!-- 			    	<field name="product_packaging" invisible="1"/> -->
 				    	<field name="notes" invisible="1"/>
 				    	<field name="delay" invisible="1"/>
-<!-- 			    	<field name="type" invisible="1"/> -->
                         <field name="name" invisible="1" />
                         <field name="product_uom_qty"
                                string="Qty"
@@ -40,7 +35,7 @@
                                product_uom,product_uos_qty,product_uos,name,parent.partner_id,
                                'lang' in context and context['lang'], False, parent.date_order, product_packaging,
                                parent.fiscal_position, True)"
-                               context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom"/>
+                               context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"/>
                         <field name="product_uom"
                                string="UoM"
                                readonly="0"
@@ -58,8 +53,11 @@
                         <field name="type" invisible="1"/>
                         <field
                               name="product_packaging"
-                              context="partner_id=parent.partner_id,quantity=product_uom_qty,pricelist=parent.pricelist_id,shop=parent.shop_id,uom=product_uom"
-                              on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id,context['lang'], False, parent.date_order, product_packaging, parent.fiscal_position)"
+                              context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"
+                              on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,
+                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
+                               'lang' in context and context['lang'], True, parent.date_order, product_packaging,
+                               parent.fiscal_position)"
                               domain="[('product_id','=',product_id)]"
                               invisible="1"/>                        
                         <field name="tax_id" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" invisible="1"/>
@@ -73,9 +71,13 @@
 			        <field name="fiscal_position" invisible="1"/>
 			        <field name="shop_id" invisible="1"/>
 					<field colspan="3"
-                           context="{'partner_id':partner_id, 'quantity':product_uom_qty, 'pricelist':pricelist_id, 'shop':shop_id, 'uom':product_uom}"
+					       context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"
                            name="product_id"
-                           on_change="product_id_change(pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,partner_id, False, True, date_order, product_packaging, fiscal_position, False, context)"/>
+                           on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,
+                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
+                               'lang' in context and context['lang'], True, parent.date_order, product_packaging,
+                               parent.fiscal_position)"/>
+<!--                            on_change="product_id_change(pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,partner_id, False, True, date_order, product_packaging, fiscal_position, False, context)"/> -->
 				</xpath>
 			</field>
 		</record>
