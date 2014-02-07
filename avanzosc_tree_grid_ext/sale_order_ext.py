@@ -63,12 +63,12 @@ class sale_order_line(osv.osv):
 
         price = pricelist_obj.price_get(cr, uid, [pricelist], product, qty or 1.0, partner_id, dict(context, uom=uom or res.get('product_uom'),date=date_order, ))[pricelist]
         try:
-            price = price / prod.coef_amount
+            price = price * prod.coef_amount
         except ZeroDivisionError:
             pass
 
         if prod.coef_amount:        
-            uos_qty = qty * prod.coef_amount
+            uos_qty = qty / prod.coef_amount
         else:
             uos_qty = qty
             
@@ -105,7 +105,7 @@ class sale_order_line(osv.osv):
         value = super(sale_order_line, self).uos_change(cr, uid, ids, product_uos, product_uos_qty, product_id)['value']
         
         if product.coef_amount:
-            product_uom_qty = product_uos_qty / product.coef_amount
+            product_uom_qty = product_uos_qty * product.coef_amount
         else:
             product_uom_qty = product_uos_qty
             
@@ -126,7 +126,7 @@ class sale_order_line(osv.osv):
             price = so_line.price_unit
             prod = self.pool.get('product.product').browse(cr, uid, so_line.product_id.id, context=context)
             try:
-                price = price / prod.coef_amount
+                price = price * prod.coef_amount
             except ZeroDivisionError:
                 pass
 
