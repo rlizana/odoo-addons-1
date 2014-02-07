@@ -67,7 +67,7 @@ class sale_order_line(osv.osv):
         except ZeroDivisionError:
             pass
 
-        if prod.coef_amount:        
+        if prod.coef_amount:    
             uos_qty = qty / prod.coef_amount
         else:
             uos_qty = qty
@@ -121,6 +121,9 @@ class sale_order_line(osv.osv):
         return {'value': value}
 
     def calculate_secondary_price(self, cr, uid, ids, field_name, arg, context=None):
+        if context == None:
+            context = {}
+        
         res = {}
         for so_line in self.browse(cr, uid, ids, context=context):
             price = so_line.price_unit
@@ -137,8 +140,8 @@ class sale_order_line(osv.osv):
     _columns = {'secondary_price': fields.function(calculate_secondary_price, method=True, string='Price', type="float", store=False),
                 }
     
-    _defaults = {'product_uom_qty': 0,
-                 'product_uos_qty': 0,
+    _defaults = {'product_uom_qty': lambda *a: 0.0,
+                 'product_uos_qty': lambda *a: 0.0,
                  }
     
     def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):

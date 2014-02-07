@@ -35,19 +35,20 @@
                                product_uom,product_uos_qty,product_uos,name,parent.partner_id,
                                'lang' in context and context['lang'], False, parent.date_order, product_packaging,
                                parent.fiscal_position, True)"
-                               context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"/>
+                               context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,
+                               'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"/>
                         <field name="product_uom"
                                string="UoM"
-                               readonly="0"
-                               on_change="product_uom_change(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, 'lang' in context and context['lang'], False, parent.date_order)"
-                               context="" invisible="1"/>
-                        
-                        <field name="discount" readonly="0"/>
-                        <field name="price_unit" readonly="0"/>
+                               on_change="product_uom_change(parent.pricelist_id,product_id,product_uom_qty,
+                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
+                               'lang' in context and context['lang'], False, parent.date_order)"/>
+                        <field name="discount"/>
+                        <field name="price_unit"/>
                         <field name="price_subtotal"/>
                         <field name="virtual_avl" invisible="1"/>
                         <field name="qty_avl" invisible="1"/>
-                        <field name="product_uos_qty" on_change="uos_change(product_uos, product_uos_qty, product_id)" invisible="True"/>
+                        <field name="product_uos_qty" invisible="1"
+                            on_change="uos_change(product_uos, product_uos_qty, product_id)" />
                         <field name="product_uos" invisible="1"/>
                         <field name="state" invisible="1"/>
                         <field name="type" invisible="1"/>
@@ -77,13 +78,11 @@
                                product_uom,product_uos_qty,product_uos,name,parent.partner_id,
                                'lang' in context and context['lang'], True, parent.date_order, product_packaging,
                                parent.fiscal_position)"/>
-<!--                            on_change="product_id_change(pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,partner_id, False, True, date_order, product_packaging, fiscal_position, False, context)"/> -->
 				</xpath>
 			</field>
 		</record>
 
 		<!-- PURCHASE ORDER TREE EDITABLE -->
-
 		<record model="ir.ui.view" id="purchase_order_inherit_editable_form">
 			<field name="name">purchase.order.inherit.editable.form</field>
 			<field name="model">purchase.order</field>

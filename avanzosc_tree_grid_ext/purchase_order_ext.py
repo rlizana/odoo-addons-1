@@ -54,36 +54,43 @@ class purchase_order_line(osv.osv):
         sec_price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
                     product, qty or 1.0, partner_id, {'uom': uom, 'date': date_order})[pricelist]        
         try:
-            sec_price = sec_price * prod.uos_coeff
+            sec_price = sec_price * prod.coef_amount
         except ZeroDivisionError:
             pass
 
         res['value']['product_qty'] = qty
         res['value']['product_uos'] = uos
+        res['value']['product_uos_qty'] = qty / prod.coef_amount
         res['value']['secondary_price'] = sec_price
         
         return res
 
-    def uos_change(self, cr, uid, ids, product_uos, product_uos_qty=0, product_id=None):
+    def uos_change(self, cr, uid, ids, product_uos, product_uos_qty=0, product_id=None, context=None):
+        if context == None:
+            context = {}
+        
         product_obj = self.pool.get('product.product')
         if not product_id:
             return {'value': {'product_uom': product_uos,
                 'product_qty': product_uos_qty}, 'domain': {}}
 
-        product = product_obj.browse(cr, uid, product_id)
+        product = product_obj.browse(cr, uid, product_id, context=context)
         value = {
             'product_uom': product.uom_id.id,
         }
         
         try:
             value.update({
-                'product_qty': product_uos_qty / product.uos_coeff,
+                'product_qty': product_uos_qty * product.coef_amount,
             })
         except ZeroDivisionError:
             pass
         return {'value': value}
     
-    def uom_change(self, cr, uid, ids, product_uom, product_uom_qty=0, product_id=None):
+    def uom_change(self, cr, uid, ids, product_uom, product_uom_qty=0, product_id=None, context=None):
+        if context == None:
+            context = {}
+        
         product_obj = self.pool.get('product.product')
         if not product_id:
             return {'value': {'product_uos': product_uom,
@@ -91,11 +98,14 @@ class purchase_order_line(osv.osv):
         product = product_obj.browse(cr, uid, product_id)
         value = {
             'product_uos': product.uos_id.id,
-            'product_uos_qty': product_uom_qty * product.uos_coeff,
+            'product_uos_qty': product_uom_qty / product.coef_amount,
         }
         return {'value': value}
     
     def calculate_secondary_price(self, cr, uid, ids, field_name, arg, context=None):
+        if context == None:
+            context = {}
+        
         res = {}
         for po_line in self.browse(cr, uid, ids, context=context):
             price = po_line.price_unit
@@ -109,18 +119,16 @@ class purchase_order_line(osv.osv):
         return res
     
     _columns = {
-        'product_uos_qty': fields.float('Quantity (UoS)' ,digits_compute= dp.get_precision('Product UoS'), readonly=True, states={'draft': [('readonly', False)]}),
+        'product_uos_qty': fields.float('Quantity (UoS)' ,digits_compute = dp.get_precision('Product UoS'), 
+                                        readonly=True, states={'draft': [('readonly', False)]}),
         'product_uos': fields.many2one('product.uom', 'Product UoS'),
-        'secondary_price': fields.function(calculate_secondary_price,
-                                        method=True,
-                                        string='Price',
-                                        type="float",
-                                        store=False),
+        'secondary_price': fields.function(calculate_secondary_price, method=True, string='Price',
+                                        type="float", store=False),
     }
     
     _defaults = {
-        'product_qty': 0,
-        'product_uos_qty': 0,
+        'product_qty': lambda *a: 0.0,
+        'product_uos_qty': lambda*a: 0.0,
     }
     
 purchase_order_line()
