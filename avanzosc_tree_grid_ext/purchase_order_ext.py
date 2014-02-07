@@ -28,6 +28,8 @@ from dateutil.relativedelta import relativedelta
 import time
 import decimal_precision as dp
 
+from _common import rounding
+
 class purchase_order_line(osv.osv):
     _inherit="purchase.order.line"
     
@@ -51,6 +53,7 @@ class purchase_order_line(osv.osv):
             uos = prod_uos
 
         qty = qty or 0.0
+        qty = rounding(qty, product.uom_id.rounding)
         sec_price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
                     product, qty or 1.0, partner_id, {'uom': uom, 'date': date_order})[pricelist]        
         try:
@@ -81,7 +84,7 @@ class purchase_order_line(osv.osv):
         
         try:
             value.update({
-                'product_qty': product_uos_qty * product.coef_amount,
+                'product_qty': rounding(product_uos_qty * product.coef_amount, product.uom_id.rounding)
             })
         except ZeroDivisionError:
             pass
@@ -98,7 +101,7 @@ class purchase_order_line(osv.osv):
         product = product_obj.browse(cr, uid, product_id)
         value = {
             'product_uos': product.uos_id.id,
-            'product_uos_qty': product_uom_qty / product.coef_amount,
+            'product_uos_qty': rounding(product_uom_qty / product.coef_amount, product.uos_id.rounding),
         }
         return {'value': value}
     

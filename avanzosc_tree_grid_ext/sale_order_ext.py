@@ -22,10 +22,7 @@
 
 from osv import osv, fields
 
-def rounding(f, r):
-    if not r:
-        return f
-    return round(f / r) * r
+from _common import rounding
 
 class sale_order_line(osv.osv):
     
