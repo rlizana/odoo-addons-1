@@ -25,7 +25,6 @@
 				        <field name="fiscal_position" invisible="1"/>
 				        <field name="shop_id" invisible="1"/>
 				    	<field name="th_weight" invisible="1"/>
-				    	<field name="notes" invisible="1"/>
 				    	<field name="delay" invisible="1"/>
                         <field name="name" invisible="1" />
                         <field name="product_uom_qty"
@@ -101,7 +100,6 @@
 			        <field name="partner_id" invisible="1"/>
 			        <field name="date_order" invisible="1"/>
 			        <field name="fiscal_position" invisible="1"/>
-			        <field name="notes" invisible="1"/>
 			        <field name="taxes_id" invisible="1"/>
 					<field name="product_id" colspan="4" on_change="onchange_product_id(pricelist_id,product_id,product_qty,product_uom,partner_id, date_order,fiscal_position,date_planned,name,price_unit,notes,context)" required="1"/>
 					<field name="name" />
