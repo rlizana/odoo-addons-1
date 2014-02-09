@@ -53,7 +53,7 @@ class purchase_order_line(osv.osv):
             uos = prod_uos
 
         qty = qty or 0.0
-        qty = rounding(qty, product.uom_id.rounding)
+        #qty = rounding(qty, product.uom_id.rounding)
         sec_price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
                     product, qty or 1.0, partner_id, {'uom': uom, 'date': date_order})[pricelist]        
         try:
