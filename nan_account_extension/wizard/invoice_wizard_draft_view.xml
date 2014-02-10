@@ -1,0 +1,48 @@
+<openerp>
+	<data>
+    	<act_window 
+    		id= "invoice_draft"
+			name= "Set invoices to draft state" 
+			res_model= "wizard.invoice.draft"
+			src_model= "account.invoice"
+			key2= "client_action_multi"
+			view_id = "view_invoice2draft"
+			target ="new"
+			 />
+		
+		<record id="view_invoice2draft" model="ir.ui.view">
+            <field name="name">view.invoice2draft</field>
+            <field name="model">wizard.invoice.draft</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Invoice to Draft">
+                	<separator string="Set to draft State the selected Invoices?" colspan="4"/>	
+                   <group colspan="4" col="6">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button  icon="gtk-ok" name="invoice_draft" string="Ok" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+        <record id="action_wizard_draft" model="ir.actions.act_window">
+        	<field name="name">action.wizard.draft</field>
+        	<field name="res_model">wizard.invoice.draft</field>
+        	<field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+       		<field name="view_id" ref="view_invoice2draft"/>
+       		<field name="target">new</field>
+    	</record> 
+			 
+<!-- 			 <act_window -->
+<!--             id="stock_move_invoice_action" -->
+<!--             name="Create invoices Test" -->
+<!--             res_model="stock.move.invoice" -->
+<!--             src_model="stock.move" -->
+<!--             target="new" -->
+<!--             view_type="form" -->
+<!--             view_mode="form"/> -->
+			 <!-- 			id="_invoice_draft" -->
+			 
+	</data>
+</openerp>
