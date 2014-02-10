@@ -29,7 +29,7 @@
 
 {
     "name" : "NaN Account Extension",
-    "version" : "1.0",
+    "version" : "1.4",
     "author" : "NaN",
     "category" : "Accounting",
     "website": "http://www.nan-tic.com",
@@ -44,6 +44,8 @@ This module adds some new features to account module, including:
 - Allows ensuring new invoices do not have a date previous to the latest invoice in the journal, as required by the law of some countries such as Spain. (Configurable per journal).
 - Ensures account moves created from bank statements use the sequence of the journal instead of keeping statement's numbering.
 - Allows ensuring all moves of a given account have a partner associated with them.
+- Wizard to cancel and set invoices to draft state (Refactoriced by Daniel (Avanzosc))
+
 """,
     "depends" : [
         'account',
