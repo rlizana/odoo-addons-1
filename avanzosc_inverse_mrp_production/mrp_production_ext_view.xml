@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="mrp_production_form_view_inh_inverseproduction">
+			<field name="name">mrp.production.form.view.inh.inverseproduction</field>
+			<field name="model">mrp.production</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view" />
+			<field name="arch" type="xml">	
+				<xpath expr="//form//group//field[@name='product_id']" position="attributes">
+					<attribute name="domain">[]</attribute>
+			    </xpath>	
+			  
+				<xpath expr="//form/notebook/page[@string='Finished Products']/field[@name='move_created_ids']/tree[@string='Products to Finish']" position="replace">
+		             <tree string="Products to Finish" editable="top">
+		                 <field name="product_id" readonly="1"/>
+		                 <field name="product_qty"  string="Qty"/>
+		                 <field name="product_uom"  string="UOM" readonly="1"/>
+		                 <field name="state" invisible="1"/>
+		                 <button name="%(stock.action_partial_move_server)d"
+		                     string="Partial"
+		                     type="action" states="confirmed,assigned"
+		                     icon="gtk-justify-fill"/>
+		                 <button name="%(stock.move_scrap)d"
+		                     string="Scrap Products" type="action"
+		                     icon="gtk-convert" context="{'scrap': True}"
+		                     states="draft,waiting,confirmed,assigned" />
+		             </tree>				
+
+			    </xpath>	
+		    
+			    
+			    
+			    
+			</field>
+		</record>
+
+		
+	</data>
+</openerp>
