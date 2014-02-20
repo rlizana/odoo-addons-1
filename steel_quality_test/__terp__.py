@@ -5,7 +5,7 @@
         "website" : "http://www.openerpsite.com",
         "category" : "Vertical Modules/Parametrization",
         "description": """This module generate proof and test template for steel industry""",
-        "depends" : ["product"],
+        "depends" : ["product","nan_quality_control"],
         "init_xml" : [ ],
         "demo_xml" : [ ],
         "update_xml" : ["steel_quality_test_data.xml"],
