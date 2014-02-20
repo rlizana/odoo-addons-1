@@ -1,0 +1,31 @@
+<openerp>
+	<data>
+	
+		<record id="view_stpick_expectdate" model="ir.ui.view">
+            <field name="name">view.stpick.expectdate</field>
+            <field name="model">wizard.stpick.expectdate</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Scheduled Date">
+                	<separator string="Set the Scheduled date to the selected pickings" colspan="4"/>
+                	<field name="schel_date"/>	
+                   <group colspan="4" col="6">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button  icon="gtk-ok" name="set_scheduled_date" string="Set Date" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+    	<act_window 
+    		id= "stpick_expectdate"
+			name= "Set scheduled date to picking lines" 
+			res_model= "wizard.stpick.expectdate"
+			src_model= "stock.picking"
+			key2= "client_action_multi"
+			view_id = "view_stpick_expectdate"
+			target ="new"
+			 />
+
+	</data>
+</openerp>
