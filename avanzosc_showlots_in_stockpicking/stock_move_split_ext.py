@@ -39,18 +39,34 @@ class split_in_production_lot(osv.osv_memory):
         vals = []
         
         res = super(split_in_production_lot, self).default_get(cr, uid, fields, context=context)
+        location_id = res.get('location_id')
+        qty = res.get('qty')
+              
         
         if context.get('active_id'):
             move = self.pool.get('stock.move').browse(cr, uid, context['active_id'], context=context)
             if 'use_exist' in fields:
+                context.update({'location_id':location_id})
                 lot_ids = lot_obj.search(cr, uid,[('product_id','=', move.product_id.id),
                                                   ('stock_available', '>', 0)])
                 if lot_ids:
-                    for lot in lot_obj.browse(cr,uid,lot_ids):
-                        line_vals = {'prodlot_id': lot.id,
-                                     'quantity_available': lot.stock_available
-                                    }
-                        vals.append(line_vals)
+                    context.update({'location_id':move.location_id.id})
+                    for lot in lot_obj.browse(cr,uid,lot_ids,context=context):
+                        
+                        w_virtual_stock = 0
+                        if lot.move_ids:
+                            for m in lot.move_ids:
+                                if m.location_id.name == 'Stock':
+                                    if m.state not in ('cancel','done'):
+                                        w_virtual_stock = w_virtual_stock + m.product_qty
+                                        
+                        w_stock_available = lot.stock_available - w_virtual_stock
+                        
+                        if w_stock_available >= qty and w_stock_available > 0:                                   
+                            line_vals = {'prodlot_id': lot.id,
+                                         'quantity_available': lot.stock_available
+                                        }
+                            vals.append(line_vals)
                     res.update({'line_exist_ids': vals})
 
                 if context.get('lot_type'):
