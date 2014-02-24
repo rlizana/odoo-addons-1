@@ -58,6 +58,7 @@ class wizard_invoice_draft(osv.osv_memory):
                     raise osv.except_osv(_('Warning'), _("Selected Invoice(s) cannot be cancelled as they are already in 'Cancelled' or 'Done' state!"))
                 wf_service.trg_validate(uid, 'account.invoice', id, 'invoice_cancel', cr) # cancelar factura
                 invoice_obj.write(cr, uid, id, {'state':'draft'}) # estado draft
+                wf_service.trg_create(uid,'account.invoice',id,cr) #señal draft
         return {}
 
 wizard_invoice_draft()
