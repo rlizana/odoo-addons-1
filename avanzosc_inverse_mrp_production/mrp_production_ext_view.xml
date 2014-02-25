@@ -11,11 +11,22 @@
 				<xpath expr="//form//group//field[@name='product_id']" position="attributes">
 					<attribute name="domain">[]</attribute>
 			    </xpath>	
+			    
+			    <xpath expr="//form/notebook/page[@string='Finished Products']/field[@name='move_created_ids']" position="attributes">
+			    	<attribute name="colspan">4</attribute>
+			    	<attribute name="height">120</attribute>
+			    </xpath>
+			    <xpath expr="//form/notebook/page[@string='Finished Products']/field[@name='move_created_ids2']" position="attributes">
+			    	<attribute name="colspan">4</attribute>
+			    	<attribute name="height">120</attribute>
+			    </xpath>
 			  
 				<xpath expr="//form/notebook/page[@string='Finished Products']/field[@name='move_created_ids']/tree[@string='Products to Finish']" position="replace">
-		             <tree string="Products to Finish" editable="top">
+		             <tree string="Products to Finish" editable="top" >
 		                 <field name="product_id" readonly="1"/>
-		                 <field name="product_qty"  string="Qty"/>
+		                 <field name="product_uos_qty" on_change="onchange_uos_quantity(product_id, product_uos_qty, product_uos, product_uom)" />
+		                 <field name="product_uos" readonly="1" />
+		                 <field name="product_qty"  string="Qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" />
 		                 <field name="product_uom"  string="UOM" readonly="1"/>
 		                 <field name="state" invisible="1"/>
 		                 <button name="%(stock.action_partial_move_server)d"
@@ -29,13 +40,8 @@
 		             </tree>				
 
 			    </xpath>	
-		    
-			    
-			    
-			    
 			</field>
 		</record>
-
 		
 	</data>
 </openerp>

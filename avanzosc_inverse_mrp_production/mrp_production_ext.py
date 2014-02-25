@@ -50,17 +50,16 @@ class mrp_production(osv.osv):
         if ids and found == True:
             production = self.browse(cr,uid,ids[0],context=context)
             for move in production.move_created_ids:
-                qty = move.product_qty * move.product_id.coef_amount
                 # Busco el producto a consumir de la OF
                 move_ids = stock_move_obj.search(cr, uid, [('move_dest_id','=',move.id)])
                 if move_ids:
                     move2 = stock_move_obj.browse(cr,uid,move_ids[0])
-                    stock_move_obj.write(cr,uid,move2.id,{'product_qty': qty})
+                    stock_move_obj.write(cr,uid,move2.id,{'product_qty': move.product_qty})
                     # Busco el producto en albaran interno
                     move_ids = stock_move_obj.search(cr, uid, [('move_dest_id','=',move2.id)])
                     if move_ids:
                         move3 = stock_move_obj.browse(cr,uid,move_ids[0])
-                        stock_move_obj.write(cr,uid,move3.id,{'product_qty': qty})
+                        stock_move_obj.write(cr,uid,move3.id,{'product_qty': move.product_qty})
 
         return result
     
@@ -72,12 +71,17 @@ class mrp_production(osv.osv):
         wf_service = netsvc.LocalService("workflow")
         uncompute_ids = filter(lambda x:x, [not x.product_lines and x.id or False for x in self.browse(cr, uid, ids, context=context)])
         self.action_compute(cr, uid, uncompute_ids, context=context)
+        move_obj = self.pool.get('stock.move')
         for production in self.browse(cr, uid, ids, context=context):
             shipment_id = self._make_production_internal_shipment(cr, uid, production, context=context)
             
             for bom2 in production.bom_id.bom_lines:
 
                 produce_move_id = self._make_production_produce_line2(cr, uid, production, bom2.product_id,context=context)
+                move = move_obj.browse(cr,uid,produce_move_id,context=context)
+                if move.product_id.uos_id.id <> move.product_id.uom_id.id:
+                    move_obj.write(cr,uid,[move.id],{'product_uos': move.product_id.uos_id.id,
+                                                     'product_uos_qty': 1})
                 
                 # Take routing location as a Source Location.
                 source_location_id = production.location_src_id.id

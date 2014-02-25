@@ -21,7 +21,7 @@
 {
     "name": "Avanzosc Inverse MRP Production",
     "version": "1.0",
-    "depends": ["mrp"],
+    "depends": ["mrp","stock"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """

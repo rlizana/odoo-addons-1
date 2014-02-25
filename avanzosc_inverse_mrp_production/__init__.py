@@ -20,3 +20,4 @@
 ##############################################################################
 import mrp_bom_ext
 import mrp_production_ext
+import stock_move_ext
