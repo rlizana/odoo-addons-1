@@ -39,7 +39,7 @@ class mrp_bom(osv.osv):
     
     _inherit = 'mrp.bom'
     
-    def _bom_explode(self, cr, uid, bom, factor, properties=[], addthis=False, level=0, routing_id=False):
+    def _bom_explode2(self, cr, uid, bom, factor, properties=[], addthis=False, level=0, routing_id=False):
         """ Finds Products and Work Centers for related BoM for manufacturing order.
         @param bom: BoM of particular product.
         @param factor: Factor of product UoM.
@@ -61,7 +61,7 @@ class mrp_bom(osv.osv):
             newbom = self._bom_find(cr, uid, bom.product_id.id, bom.product_uom.id, properties)
             
             if newbom:
-                res = self._bom_explode(cr, uid, self.browse(cr, uid, [newbom])[0], factor*bom.product_qty, properties, addthis=True, level=level+10)
+                res = self._bom_explode2(cr, uid, self.browse(cr, uid, [newbom])[0], factor*bom.product_qty, properties, addthis=True, level=level+10)
                 result = result + res[0]
                 result2 = result2 + res[1]
                 phantom = True
