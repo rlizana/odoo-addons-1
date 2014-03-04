@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
-# This file contains the translation of the following modules:
-#	* nan_quality_control
+# Spanish (Spain) translation for avanzosc
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the avanzosc package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
-# Jordi Pasquina <jordi@nan-tic.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 5.0.12\n"
-"Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2010-08-31 07:57:32+0000\n"
-"PO-Revision-Date: 2010-08-31 10:29+0200\n"
-"Last-Translator: Jordi Pasquina <jordi@nan-tic.com>\n"
-"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"Project-Id-Version: avanzosc\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-08-31 07:57+0000\n"
+"PO-Revision-Date: 2014-03-03 13:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (Spain) <es_ES@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
-"X-Generator: Lokalize 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-03-04 08:15+0000\n"
+"X-Generator: Launchpad (build 16948)\n"
 
 #. module: nan_quality_control
 #: view:qc.test.line:0
@@ -59,10 +59,15 @@ msgstr "Uom"
 
 #. module: nan_quality_control
 #: model:ir.module.module,description:nan_quality_control.module_meta_information
-msgid "This module provides a generic infrastructure for quality tests. The idea is that it can be later be reused for doing quality tests in production lots but also in any other areas a company may desire."
+msgid ""
+"This module provides a generic infrastructure for quality tests. The idea is "
+"that it can be later be reused for doing quality tests in production lots "
+"but also in any other areas a company may desire."
 msgstr ""
-"Este módulo proporciona una infraestructura para las pruebas de calidad. La idea es que se pueda volver a utilizarse más adelante para hacer pruebas de calidad en los lotes de producción, pero también en "
-"otras áreas que una empresa pueda desear."
+"Este módulo proporciona una infraestructura para las pruebas de calidad. La "
+"idea es que se pueda volver a utilizarse más adelante para hacer pruebas de "
+"calidad en los lotes de producción, pero también en otras áreas que una "
+"empresa pueda desear."
 
 #. module: nan_quality_control
 #: model:ir.model,name:nan_quality_control.model_qc_test_template_line
@@ -388,8 +393,12 @@ msgstr "Esperando la aprobación del supervisor"
 
 #. module: nan_quality_control
 #: help:qc.test,enabled:0
-msgid "If a quality control test is not enabled it means it can not be moved from \"Quality Success\" or \"Quality Failed\" state."
-msgstr "Si una prueba de control de calidad no está habilitada, significa que no se pueden mover del estado \"Calidad Correcta\" o \"Calidad Errónea\"."
+msgid ""
+"If a quality control test is not enabled it means it can not be moved from "
+"\"Quality Success\" or \"Quality Failed\" state."
+msgstr ""
+"Si una prueba de control de calidad no está habilitada, significa que no se "
+"pueden mover del estado \"Calidad Correcta\" o \"Calidad Errónea\"."
 
 #. module: nan_quality_control
 #: selection:qc.proof,type:0
@@ -430,7 +439,9 @@ msgstr "Sinónimos"
 #. module: nan_quality_control
 #: help:qc.test.line,uom_id:0
 msgid "UoM for minimum and maximum values if it is a quantitative proof."
-msgstr "UoM para el valor Máximo y Mínimo válido, si se trata de una prueba cuantitativa."
+msgstr ""
+"UoM para el valor Máximo y Mínimo válido, si se trata de una prueba "
+"cuantitativa."
 
 #. module: nan_quality_control
 #: view:qc.test:0
@@ -445,8 +456,11 @@ msgstr "Prueba"
 
 #. module: nan_quality_control
 #: constraint:ir.model:0
-msgid "The Object name must start with x_ and not contain any special character !"
-msgstr "El nombre del objeto debe empezar con x_ y no debe contener ningún carácter especial!"
+msgid ""
+"The Object name must start with x_ and not contain any special character !"
+msgstr ""
+"El nombre del objeto debe empezar con x_ y no debe contener ningún carácter "
+"especial!"
 
 #. module: nan_quality_control
 #: field:qc.test.line,min_value:0
@@ -554,5 +568,3 @@ msgstr "Aceptar"
 #: help:qc.test.template.category,active:0
 msgid "The active field allows you to hide the category without removing it."
 msgstr "El campo activo le permite ocultar la categoría sin eliminarlo."
-
-
