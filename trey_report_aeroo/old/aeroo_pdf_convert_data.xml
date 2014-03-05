@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data ><!-- noupdate="1" -->
+
+        <record model="report.mimetypes" id="report_mimetypes_odt_pdf_command" >
+            <field name="name">Pdf command (.pdf)</field>
+            <field name="code">oo-pdf-command</field>
+            <field name="compatible_types">oo-odt</field>
+        </record>
+
+    </data>
+</openerp>
