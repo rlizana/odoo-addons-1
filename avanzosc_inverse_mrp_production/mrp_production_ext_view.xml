@@ -42,13 +42,19 @@
 		                     string="Scrap Products" type="action"
 		                     icon="gtk-convert" context="{'scrap': True}"
 		                     states="draft,waiting,confirmed,assigned" />
-		             </tree>				
+		             </tree>	   
+		   			
 			    </xpath>	
+			    
 			    <xpath expr="//form/notebook/page[@string='Consumed Products']/group/button[@string='Produce']" position="replace">
 			    	<button name="button_inverse_production" states="in_production" string="Produce" icon="gtk-ok" type="object"/>
 			    </xpath>
+			    
+			    
 			</field>
 		</record>
+
+
 		
 	</data>
 </openerp>

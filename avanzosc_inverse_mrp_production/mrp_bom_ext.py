@@ -39,6 +39,11 @@ class mrp_bom(osv.osv):
     
     _inherit = 'mrp.bom'
     
+    _columns = {# Inverse Production
+                'inverse_production':fields.boolean('Inverse Production'), 
+                }
+    
+    
     def _bom_explode2(self, cr, uid, bom, factor, properties=[], addthis=False, level=0, routing_id=False):
         """ Finds Products and Work Centers for related BoM for manufacturing order.
         @param bom: BoM of particular product.

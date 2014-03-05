@@ -73,6 +73,26 @@ class mrp_production(osv.osv):
 
         return result
     
+    def product_id_change(self, cr, uid, ids, product_id, context=None):
+        if context == None:
+            context = {}
+            
+        bom_obj = self.pool.get('mrp.bom')
+            
+        result = super(mrp_production,self).product_id_change(cr, uid, ids, product_id, context=context)
+        
+        if result.get('value'):
+            value = result.get('value')
+            bom_id = value.get('bom_id')
+            bom = bom_obj.browse(cr,uid,bom_id,context=context)
+            value.update({'inverse_production': bom.inverse_production,
+                          })
+            result.update({'value': value})
+
+        
+        return result
+            
+    
     def action_compute(self, cr, uid, ids, properties=[], context=None):
         """ Computes bills of material of a product.
         @param properties: List containing dictionaries of properties.
@@ -100,7 +120,8 @@ class mrp_production(osv.osv):
                     if bom_id:
                         bom_point = bom_obj.browse(cr, uid, bom_id)
                         routing_id = bom_point.routing_id.id or False
-                        self.write(cr, uid, [production.id], {'bom_id': bom_id, 'routing_id': routing_id})
+                        self.write(cr, uid, [production.id], {'bom_id': bom_id, 
+                                                              'routing_id': routing_id})
     
                 if not bom_id:
                     raise osv.except_osv(_('Error'), _("Couldn't find a bill of material for this product."))

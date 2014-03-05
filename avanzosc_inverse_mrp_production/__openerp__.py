@@ -29,7 +29,8 @@
         Also to produce product of BOM list is converted to product to be consumed in the OF, and to consume products of BOM list is converted to product to be produced.
     """,
     "init_xml": [],
-    'update_xml': ['mrp_production_ext_view.xml',              
+    'update_xml': ['mrp_bom_ext_view.xml',
+                   'mrp_production_ext_view.xml',              
                    ],
     'demo_xml': [],
     'installable': True,

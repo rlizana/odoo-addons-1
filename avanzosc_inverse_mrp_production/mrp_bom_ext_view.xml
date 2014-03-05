@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="mrp_bom_form_view_inh_inverseproduction">
+			<field name="name">mrp.bom.form.view.inh.inverseproduction</field>
+			<field name="model">mrp.bom</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="mrp.mrp_bom_form_view" />
+			<field name="arch" type="xml">	
+				<xpath expr="//form//group//field[@name='product_uos']" position="after">
+					<field name="inverse_production" />
+				</xpath>
+
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="mrp_bom_tree_view_inh_inverseproduction">
+			<field name="name">mrp.bom.tree.view.inh.inverseproduction</field>
+			<field name="model">mrp.bom</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="mrp.mrp_bom_tree_view" />
+			<field name="arch" type="xml">	
+				<field name="name" position="before">
+					<field name="inverse_production" />
+				</field>
+
+			</field>
+		</record>
+		
+	</data>
+</openerp>
