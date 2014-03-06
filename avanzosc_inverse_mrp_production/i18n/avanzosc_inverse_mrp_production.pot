@@ -26,7 +26,8 @@ msgid "BoM line product should not be same as BoM product."
 msgstr "BoM line product should not be same as BoM product."
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:143
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:164
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:169
 #, python-format
 msgid "Inverse Production Error"
 msgstr "Inverse Production Error"
@@ -42,27 +43,21 @@ msgid "Lot"
 msgstr "Lot"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:204
-#, python-format
-msgid "Mirar Displays"
-msgstr "Mirar Displays"
+#: view:mrp.production:0
+msgid "UOM"
+msgstr "UOM"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:198
-#, python-format
-msgid "Manufacturing order '%s' is scheduled for the %s."
-msgstr "Manufacturing order '%s' is scheduled for the %s."
-
-#. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:106
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:127
 #, python-format
 msgid "Couldn't find a bill of material for this product."
 msgstr "Couldn't find a bill of material for this product."
 
 #. module: avanzosc_inverse_mrp_production
-#: constraint:stock.move:0
-msgid "You try to assign a lot which is not from the same product"
-msgstr "You try to assign a lot which is not from the same product"
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:169
+#, python-format
+msgid "You must define the unit of sale for product %s."
+msgstr "You must define the unit of sale for product %s."
 
 #. module: avanzosc_inverse_mrp_production
 #: constraint:stock.move:0
@@ -70,7 +65,7 @@ msgid "You can not move products from or to a location of the type view."
 msgstr "You can not move products from or to a location of the type view."
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:106
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:127
 #, python-format
 msgid "Error"
 msgstr "Error"
@@ -81,12 +76,13 @@ msgid "Produce"
 msgstr "Produce"
 
 #. module: avanzosc_inverse_mrp_production
-#: view:mrp.production:0
-msgid "UOM"
-msgstr "UOM"
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:221
+#, python-format
+msgid "Manufacturing order '%s' is scheduled for the %s."
+msgstr "Manufacturing order '%s' is scheduled for the %s."
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:143
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:164
 #, python-format
 msgid "You must define one lot"
 msgstr "You must define one lot"
@@ -124,7 +120,7 @@ msgid "Bill of Material"
 msgstr "Bill of Material"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:212
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:233
 #, python-format
 msgid "PROD: %s"
 msgstr "PROD: %s"
@@ -135,15 +131,10 @@ msgid "Reference must be unique per Company!"
 msgstr "Reference must be unique per Company!"
 
 #. module: avanzosc_inverse_mrp_production
+#: field:mrp.bom,inverse_production:0
 #: field:mrp.production,inverse_production:0
 msgid "Inverse Production"
 msgstr "Inverse Production"
-
-#. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:204
-#, python-format
-msgid "ERROR ALFREDO"
-msgstr "ERROR ALFREDO"
 
 #. module: avanzosc_inverse_mrp_production
 #: view:mrp.production:0
@@ -159,4 +150,9 @@ msgstr "Stock Move"
 #: view:mrp.production:0
 msgid "Qty"
 msgstr "Qty"
+
+#. module: avanzosc_inverse_mrp_production
+#: constraint:stock.move:0
+msgid "You try to assign a lot which is not from the same product"
+msgstr "You try to assign a lot which is not from the same product"
 

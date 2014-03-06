@@ -26,7 +26,8 @@ msgid "BoM line product should not be same as BoM product."
 msgstr "Un producto de línea de LdM no puede ser el mismo que el producto fabricado por la Ldm"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:143
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:164
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:169
 #, python-format
 msgid "Inverse Production Error"
 msgstr "Error Producción Inversa"
@@ -42,27 +43,21 @@ msgid "Lot"
 msgstr "Lote"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:204
-#, python-format
-msgid "Mirar Displays"
-msgstr "Mirar Displays"
+#: view:mrp.production:0
+msgid "UOM"
+msgstr "UdM"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:198
-#, python-format
-msgid "Manufacturing order '%s' is scheduled for the %s."
-msgstr "Orden de Producción '%s' esta programada para el %s."
-
-#. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:106
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:127
 #, python-format
 msgid "Couldn't find a bill of material for this product."
 msgstr "No se encuentra una lista de materiales para este producto."
 
 #. module: avanzosc_inverse_mrp_production
-#: constraint:stock.move:0
-msgid "You try to assign a lot which is not from the same product"
-msgstr "Está intentando asignar un lote que no es del mismo producto"
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:169
+#, python-format
+msgid "You must define the unit of sale for product %s."
+msgstr "Debe definir una unidad de venta para el producto: %s."
 
 #. module: avanzosc_inverse_mrp_production
 #: constraint:stock.move:0
@@ -70,7 +65,7 @@ msgid "You can not move products from or to a location of the type view."
 msgstr "No puede mover productos desde o hacia una ubicación de tipo vista."
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:106
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:127
 #, python-format
 msgid "Error"
 msgstr "Error"
@@ -81,12 +76,13 @@ msgid "Produce"
 msgstr "Producir"
 
 #. module: avanzosc_inverse_mrp_production
-#: view:mrp.production:0
-msgid "UOM"
-msgstr "UdM"
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:221
+#, python-format
+msgid "Manufacturing order '%s' is scheduled for the %s."
+msgstr "Orden de Producción '%s' esta programada para el %s."
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:143
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:164
 #, python-format
 msgid "You must define one lot"
 msgstr "Debe definir un lote"
@@ -126,7 +122,7 @@ msgid "Bill of Material"
 msgstr "Lista de material"
 
 #. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:212
+#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:233
 #, python-format
 msgid "PROD: %s"
 msgstr "PROD: %s"
@@ -137,15 +133,10 @@ msgid "Reference must be unique per Company!"
 msgstr "Referencia debe ser única por compañía!"
 
 #. module: avanzosc_inverse_mrp_production
+#: field:mrp.bom,inverse_production:0
 #: field:mrp.production,inverse_production:0
 msgid "Inverse Production"
 msgstr "Producción Inversa"
-
-#. module: avanzosc_inverse_mrp_production
-#: code:addons/avanzosc_inverse_mrp_production/mrp_production_ext.py:204
-#, python-format
-msgid "ERROR ALFREDO"
-msgstr "ERROR ALFREDO"
 
 #. module: avanzosc_inverse_mrp_production
 #: view:mrp.production:0
@@ -161,4 +152,9 @@ msgstr "Movimiento stock"
 #: view:mrp.production:0
 msgid "Qty"
 msgstr "Ctd."
+
+#. module: avanzosc_inverse_mrp_production
+#: constraint:stock.move:0
+msgid "You try to assign a lot which is not from the same product"
+msgstr "Está intentando asignar un lote que no es del mismo producto"
 

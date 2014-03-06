@@ -165,6 +165,8 @@ class mrp_production(osv.osv):
                 shipment_id = self._make_production_internal_shipment(cr, uid, production, context=context)
                 
                 for bom2 in production.bom_id.bom_lines:
+                    if not bom2.product_id.uos_id:
+                        raise osv.except_osv(_('Inverse Production Error'),  _('You must define the unit of sale for product %s.') % (bom2.product_id.name,))
     
                     produce_move_id = self._make_production_produce_line2(cr, uid, production, bom2.product_id,context=context)
                     move = move_obj.browse(cr,uid,produce_move_id,context=context)
@@ -221,8 +223,6 @@ class mrp_production(osv.osv):
                     datetime.strptime(production.date_planned,'%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y'),
                 )
                 self.log(cr, uid, production.id, message)
-                
-        #raise osv.except_osv(_('ERROR ALFREDO'), _("Mirar Displays"))
         
         return shipment_id
     
