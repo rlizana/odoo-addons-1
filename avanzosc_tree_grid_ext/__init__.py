@@ -23,3 +23,4 @@
 import sale_order_ext
 import purchase_order_ext
 import account_invoice_ext
+import stock_picking_ext
