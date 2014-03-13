@@ -33,6 +33,7 @@
 		                 <field name="product_uos" readonly="1" />
 		                 <field name="product_qty"  string="Qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" />
 		                 <field name="product_uom"  string="UOM" readonly="1"/>
+		                 <field name="percentage" readonly="1" />
 		                 <field name="state" invisible="1"/>
 		                 <button name="%(stock.action_partial_move_server)d"
 		                     string="Partial"
@@ -42,9 +43,12 @@
 		                     string="Scrap Products" type="action"
 		                     icon="gtk-convert" context="{'scrap': True}"
 		                     states="draft,waiting,confirmed,assigned" />
-		             </tree>	   
-		   			
+		             </tree>	   	
 			    </xpath>	
+			    
+			    <xpath expr="//form/notebook/page[@string='Consumed Products']/field[@name='move_lines']/tree[@string='Products to Consume']/field[@name='product_uom']" position="after">
+			    	<field name="percentage" />
+			    </xpath>
 			    
 			    <xpath expr="//form/notebook/page[@string='Consumed Products']/group/button[@string='Produce']" position="replace">
 			    	<button name="button_inverse_production" states="in_production" string="Produce" icon="gtk-ok" type="object"/>
@@ -53,7 +57,6 @@
 			    
 			</field>
 		</record>
-
 
 		
 	</data>

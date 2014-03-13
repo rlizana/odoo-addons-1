@@ -32,7 +32,10 @@ import tools
 class stock_move(osv.osv):
     
     _inherit = 'stock.move'
-    
+
+    _columns = {# Percentage
+                'percentage': fields.float('%',  digits=(3,2)),
+                }
 
     def onchange_quantity(self, cr, uid, ids, product_id, product_qty, product_uom, product_uos):
         """ On change of product quantity finds UoM and UoS quantities

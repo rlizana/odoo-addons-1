@@ -58,18 +58,44 @@ class mrp_production(osv.osv):
                 if production.inverse_production and found == True:
                     for move in production.move_created_ids:
                         # Busco el producto a consumir de la OF
-                        stock_move_obj.write(cr,uid,[move.id],{'prodlot_id': production.prodlot_id.id})
+                        if move.product_qty > 0 and production.product_qty > 0:
+                            percentage = (move.product_qty * 100) / production.product_qty
+                        else:
+                            percentage = 0
+                        stock_move_obj.write(cr,uid,[move.id],{'prodlot_id': production.prodlot_id.id,
+                                                               'percentage': percentage,})
                         move_ids = stock_move_obj.search(cr, uid, [('move_dest_id','=',move.id)],limit=1)
                         if move_ids:
                             move2 = stock_move_obj.browse(cr,uid,move_ids[0])
                             stock_move_obj.write(cr,uid,[move2.id],{'product_qty': move.product_qty,
-                                                                    'prodlot_id': production.prodlot_id.id})
+                                                                    'prodlot_id': production.prodlot_id.id,
+                                                                    'percentage': percentage,})
                             # Busco el producto en albaran interno
                             move_ids = stock_move_obj.search(cr, uid, [('move_dest_id','=',move2.id)],limit=1)
                             if move_ids:
                                 move3 = stock_move_obj.browse(cr,uid,move_ids[0])
                                 stock_move_obj.write(cr,uid,[move3.id],{'product_qty': move.product_qty,
-                                                                        'prodlot_id': production.prodlot_id.id})
+                                                                        'prodlot_id': production.prodlot_id.id,
+                                                                        'percentage': percentage,})
+                else:
+                    if production.inverse_production and production.move_created_ids:
+                        for move in production.move_created_ids:
+                            # Busco el producto a consumir de la OF
+                            if move.product_qty > 0 and production.product_qty > 0:
+                                percentage = (move.product_qty * 100) / production.product_qty
+                            else:
+                                percentage = 0
+                            stock_move_obj.write(cr,uid,[move.id],{'percentage': percentage,})
+                            move_ids = stock_move_obj.search(cr, uid, [('move_dest_id','=',move.id)],limit=1)
+                            if move_ids:
+                                move2 = stock_move_obj.browse(cr,uid,move_ids[0])
+                                stock_move_obj.write(cr,uid,[move2.id],{'percentage': percentage,})
+                                # Busco el producto en albaran interno
+                                move_ids = stock_move_obj.search(cr, uid, [('move_dest_id','=',move2.id)],limit=1)
+                                if move_ids:
+                                    move3 = stock_move_obj.browse(cr,uid,move_ids[0])
+                                    stock_move_obj.write(cr,uid,[move3.id],{'percentage': percentage,})
+                        
 
         return result
     
