@@ -46,7 +46,15 @@
 		             </tree>	   	
 			    </xpath>	
 			    
+			    <xpath expr="//form/notebook/page[@string='Finished Products']/field[@name='move_created_ids2']/tree[@string='Finished Products']/field[@name='product_uom']" position="after">
+			    	<field name="percentage" />
+			    </xpath>
+			    
 			    <xpath expr="//form/notebook/page[@string='Consumed Products']/field[@name='move_lines']/tree[@string='Products to Consume']/field[@name='product_uom']" position="after">
+			    	<field name="percentage" />
+			    </xpath>
+			    
+			    <xpath expr="//form/notebook/page[@string='Consumed Products']/field[@name='move_lines2']/tree[@string='Consumed Products']/field[@name='product_uom']" position="after">
 			    	<field name="percentage" />
 			    </xpath>
 			    
@@ -57,7 +65,6 @@
 			    
 			</field>
 		</record>
-
 		
 	</data>
 </openerp>
