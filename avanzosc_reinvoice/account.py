@@ -19,4 +19,23 @@
 #
 ##############################################################################
 
-import account
+from osv import osv, fields
+
+class account_invoice(osv.osv):
+    
+    _inherit = 'account.invoice'
+    
+    def unlink(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+            
+        sale_obj = self.pool.get('sale.order')
+        stock_obj = self.pool.get('stock.picking')
+        
+        for sale_id in sale_obj.search(cr, uid, [('invoice_ids','in',ids)], context=context):
+            for stock_id in stock_obj.search(cr, uid, [('sale_id','=',sale_id)], context=context):
+                stock_obj.write(cr, uid, stock_id, {'invoice_state':'2binvoiced'}, context=context)
+            
+        return super(account_invoice, self).unlink(cr, uid, ids, context=context)
+    
+account_invoice()

@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<openerp>
-	<!--  Reinvoice wizard view stock.picking -->	   
-	<data>
-		<wizard id="wizard_reinvoice" 
-            string="Reinvoice stock-pickings" model="stock.picking" name="reinvoice.wizard" multi="False" />
-	</data>
-	
-</openerp>

@@ -1,43 +1,38 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
-#    Copyright (c) 2011-2012 Daniel (Avanzosc) <http://www.avanzosc.com>
-#    21/02/2012
-#
+#    OpenERP, Open Source Management Solution    
+#    Copyright (C) 2008-2014 AvanzOSC S.L. (Oihane) All Rights Reserved
+#    
 #    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+#    GNU General Public License for more details.
 #
-#    You should have received a copy of the  GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
 
-
 {
     "name" : "AvanzOSC Reinvoice",
-    "version" : "1.00",
+    "version" : "1.1",
     "description" : """ 
-        This module allows to make an invoice from an already invoiced stock-picking.
+        This module changes the state of the invoiced stock pickings when the related invoice is deleted.
     """,
     "author" : "AvanzOSC",
-    "website" : "www.avanzosc.com",
-    "depends" : ["stock"],
+    "website" : "www.avanzosc.es",
+    "depends" : ["stock","account","sale"],
     "category" : "Generic Modules",
     "init_xml" : [],
     "demo_xml" : [],
-    "update_xml" : [
-                    "wizard/wizard_reinvoice_view.xml"
-                   ],                
+    "update_xml" : [],                
     "active" : False,
     "installable" : True
     
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

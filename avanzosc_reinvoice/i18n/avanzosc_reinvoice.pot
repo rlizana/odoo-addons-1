@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 5.0.15\n"
-"Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2012-03-12 15:42:39+0000\n"
-"PO-Revision-Date: 2012-03-12 15:42:39+0000\n"
+"Project-Id-Version: OpenERP Server 6.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-17 10:21+0000\n"
+"PO-Revision-Date: 2014-03-17 10:21+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,101 +16,43 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: avanzosc_reinvoice
-#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:71
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:73
 #, python-format
 msgid "UserError"
-msgstr "UserError"
+msgstr ""
 
 #. module: avanzosc_reinvoice
-#: selection:reinvoice.wizard,init,type:0
-msgid "Customer Refund"
-msgstr "Customer Refund"
+#: sql_constraint:account.invoice:0
+msgid "Invoice Number must be unique per Company!"
+msgstr ""
 
 #. module: avanzosc_reinvoice
-#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
-#, python-format
-msgid "Invoice is not created"
-msgstr "Invoice is not created"
-
-#. module: avanzosc_reinvoice
-#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:73
 #, python-format
 msgid "Invoice cannot be created from Packing."
-msgstr "Invoice cannot be created from Packing."
+msgstr ""
 
 #. module: avanzosc_reinvoice
-#: model:ir.module.module,description:avanzosc_reinvoice.module_meta_information
-msgid " \n"
-"        This module allows to make an invoice from an already invoiced stock-picking.\n"
-"    "
-msgstr " \n"
-"        This module allows to make an invoice from an already invoiced stock-picking.\n"
-"    "
-
-#. module: avanzosc_reinvoice
-#: selection:reinvoice.wizard,init,type:0
-msgid "Customer Invoice"
-msgstr "Customer Invoice"
-
-#. module: avanzosc_reinvoice
-#: wizard_view:reinvoice.wizard,init:0
-msgid "Create invoices"
-msgstr "Create invoices"
-
-#. module: avanzosc_reinvoice
-#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:71
 #, python-format
 msgid "Invoice is already created."
-msgstr "Invoice is already created."
+msgstr ""
 
 #. module: avanzosc_reinvoice
-#: selection:reinvoice.wizard,init,type:0
-msgid "Supplier Invoice"
-msgstr "Supplier Invoice"
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:115
+#, python-format
+msgid "Invoice is not created"
+msgstr ""
 
 #. module: avanzosc_reinvoice
-#: wizard_button:reinvoice.wizard,init,create_invoice:0
-msgid "Create invoice"
-msgstr "Create invoice"
+#: model:ir.model,name:avanzosc_reinvoice.model_account_invoice
+msgid "Invoice"
+msgstr ""
 
 #. module: avanzosc_reinvoice
-#: model:ir.module.module,shortdesc:avanzosc_reinvoice.module_meta_information
-msgid "AvanzOSC Reinvoice"
-msgstr "AvanzOSC Reinvoice"
-
-#. module: avanzosc_reinvoice
-#: wizard_field:reinvoice.wizard,init,group:0
-msgid "Group by partner"
-msgstr "Group by partner"
-
-#. module: avanzosc_reinvoice
-#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:0
+#: code:addons/avanzosc_reinvoice/wizard/wizard_reinvoice.py:115
 #, python-format
 msgid "Error"
-msgstr "Error"
-
-#. module: avanzosc_reinvoice
-#: wizard_button:reinvoice.wizard,init,end:0
-msgid "Cancel"
-msgstr "Cancel"
-
-#. module: avanzosc_reinvoice
-#: selection:reinvoice.wizard,init,type:0
-msgid "Supplier Refund"
-msgstr "Supplier Refund"
-
-#. module: avanzosc_reinvoice
-#: model:ir.actions.wizard,name:avanzosc_reinvoice.wizard_reinvoice
-msgid "Reinvoice stock-pickings"
-msgstr "Reinvoice stock-pickings"
-
-#. module: avanzosc_reinvoice
-#: wizard_field:reinvoice.wizard,init,type:0
-msgid "Type"
-msgstr "Type"
-
-#. module: avanzosc_reinvoice
-#: wizard_field:reinvoice.wizard,init,journal_id:0
-msgid "Destination Journal"
-msgstr "Destination Journal"
+msgstr ""
 
