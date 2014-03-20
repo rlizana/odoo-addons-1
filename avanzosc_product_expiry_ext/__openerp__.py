@@ -26,8 +26,7 @@
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
-
-
+    This module makes visible expiry dates on lots tree view and includes them on search view
     """,
     "init_xml": [],
     'update_xml': ['avanzosc_product_ext_view.xml'

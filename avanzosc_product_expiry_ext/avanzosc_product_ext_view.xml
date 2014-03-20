@@ -11,7 +11,7 @@
 			<!-- <field name="priority" eval="17"/> -->
 			<field name="inherit_id" ref="stock.view_production_lot_tree" />
 			<field name="arch" type="xml">
-				<field name="date" position="after">
+				<field name="name" position="before">
                     <field name="life_date" />
                     <field name="use_date" />
                     <field name="removal_date" />
@@ -30,8 +30,10 @@
 			<field name="inherit_id" ref="stock.search_product_lot_filter" />
 			<field name="arch" type="xml">
 				<field name="date" position="after">
+                    <newline/>
                     <field name="life_date" />
                     <field name="use_date" />
+                    <newline/>
                     <field name="removal_date" />
                     <field name="alert_date" />
                 </field>
