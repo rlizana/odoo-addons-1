@@ -55,11 +55,16 @@ class mrp_production(osv.osv):
         
         if ids:
             for production in self.browse(cr,uid,ids,context=context):
+                product_qty = 0
                 if production.inverse_production and found == True:
                     for move in production.move_created_ids:
+                        product_qty += move.product_qty
+                    
+                    super(mrp_production, self).write(cr, uid, ids, {'product_qty':product_qty}, context=context)
+                    for move in production.move_created_ids:
                         # Busco el producto a consumir de la OF
-                        if move.product_qty > 0 and production.product_qty > 0:
-                            percentage = (move.product_qty * 100) / production.product_qty
+                        if move.product_qty > 0 and product_qty > 0:
+                            percentage = (move.product_qty / product_qty) * 100
                         else:
                             percentage = 0
                         stock_move_obj.write(cr,uid,[move.id],{'prodlot_id': production.prodlot_id.id,
@@ -80,9 +85,13 @@ class mrp_production(osv.osv):
                 else:
                     if production.inverse_production and production.move_created_ids:
                         for move in production.move_created_ids:
+                            product_qty += move.product_qty
+
+                        super(mrp_production, self).write(cr, uid, ids, {'product_qty':product_qty}, context=context)
+                        for move in production.move_created_ids:
                             # Busco el producto a consumir de la OF
-                            if move.product_qty > 0 and production.product_qty > 0:
-                                percentage = (move.product_qty * 100) / production.product_qty
+                            if move.product_qty > 0 and product_qty > 0:
+                                percentage = (move.product_qty / product_qty) * 100
                             else:
                                 percentage = 0
                             stock_move_obj.write(cr,uid,[move.id],{'percentage': percentage,})
@@ -95,7 +104,6 @@ class mrp_production(osv.osv):
                                 if move_ids:
                                     move3 = stock_move_obj.browse(cr,uid,move_ids[0])
                                     stock_move_obj.write(cr,uid,[move3.id],{'percentage': percentage,})
-                        
 
         return result
     

@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    Avanzosc - Avanced Open Source Consulting
+#    Avanzosc - Advanced Open Source Consulting
 #    Copyright (C) 2011 - 2013 Avanzosc <http://www.avanzosc.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,14 +19,22 @@
 #
 ##############################################################################
 
-import datetime
 from osv import fields, osv
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+import time
 import pooler
 
 class stock_production_lot(osv.osv):
 
     _inherit = 'stock.production.lot'
 
+    _columns = {
+        'current_date':fields.datetime('Current Date'),
+    }
 
+    _defaults = {
+        'current_date': lambda *a: time.strftime('%Y-%m-%d %H:%M:%S'),
+    }
 
 stock_production_lot()

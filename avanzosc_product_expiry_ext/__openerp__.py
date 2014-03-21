@@ -22,7 +22,7 @@
 {
     "name": "Avanzosc Product Expiry Extension",
     "version": "1.0",
-    "depends": ["product_expiry"],
+    "depends": ["stock","product_expiry"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """

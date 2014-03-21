@@ -11,11 +11,28 @@
 			<!-- <field name="priority" eval="17"/> -->
 			<field name="inherit_id" ref="stock.view_production_lot_tree" />
 			<field name="arch" type="xml">
-				<field name="name" position="before">
-                    <field name="life_date" />
-                    <field name="use_date" />
-                    <field name="removal_date" />
-                    <field name="alert_date" />
+                <xpath expr="//tree" position="attributes">
+					<attribute name="colors">#FF4000:alert_date and (alert_date&lt;current_date) and (removal_date&gt;current_date);#FF0080:removal_date and (removal_date&gt;alert_date) and (removal_date&lt;current_date) and (life_date&gt;current_date) ;red:life_date and (life_date&gt;removal_date) and (life_date&lt;current_date) and (removal_date&lt;current_date)</attribute>
+				</xpath>
+                    <field name="name" position="before">
+                        <field name="life_date" />
+                        <field name="use_date" />
+                        <field name="removal_date" />
+                        <field name="alert_date" />
+                        <field name="current_date" invisible="True"/>
+                    </field>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="product_expiry_form_view_ext">
+			<field name="name">product.expiry.form.view.ext</field>
+			<field name="model">stock.production.lot</field>
+			<field name="type">form</field>
+			<!-- <field name="priority" eval="17"/> -->
+			<field name="inherit_id" ref="product_expiry.view_move_form_expiry" />
+			<field name="arch" type="xml">
+                <field name="alert_date" position="after">
+                    <field name="current_date" invisible="True"/>
                 </field>
 			</field>
 		</record>
@@ -29,14 +46,17 @@
 			<!-- <field name="priority" eval="17"/> -->
 			<field name="inherit_id" ref="stock.search_product_lot_filter" />
 			<field name="arch" type="xml">
-				<field name="date" position="after">
+				<xpath expr="//search/group[@string='Group By...']" position="before">
                     <newline/>
-                    <field name="life_date" />
-                    <field name="use_date" />
+                    <group expand="1" string="Extended Filters..." groups="base.group_extended" colspan="4">
+                        <field name="life_date" />
+                        <field name="use_date" />
+                        <newline/>
+                        <field name="removal_date" />
+                        <field name="alert_date" />
+                    </group>
                     <newline/>
-                    <field name="removal_date" />
-                    <field name="alert_date" />
-                </field>
+                </xpath>
                 <xpath expr="//search/group/filter[@string='Product']" position="after">
 					<filter string="Life date" icon="terp-go-month" domain="[]" context="{'group_by':'life_date'}"/>
                     <filter string="Use date" icon="terp-go-month" domain="[]" context="{'group_by':'use_date'}"/>
@@ -45,8 +65,6 @@
 				</xpath>
 			</field>
 		</record>
-
-
 
     </data>
 </openerp>
