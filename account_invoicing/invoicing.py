@@ -1473,6 +1473,7 @@ class agreement(osv.osv):
         return start_date
 
     def _prolong_optimized(self, cr, uid, context={}):
+
         ids = self.search(cr, uid, [])
         for obj in self.browse(cr, uid, ids, context=context):
             if obj.state != 'running':
@@ -1538,7 +1539,7 @@ class agreement(osv.osv):
                 inv_log = self.pool.get('inv.date_list')
                 date_ids = map(int, obj.date_list)
                 if not inv_log.search(cr, uid, [('id','in',date_ids),('status','!=','inv')]):
-                    self.set_done(cr, uid, [obj.id], context=context) 
+                    self.set_done(cr, uid, [obj.id], context=context)
         return True
 
     def onchange_payment(self, cr, uid, ids, signed_date, cur_effect_date, service_id, payment):
@@ -1565,8 +1566,10 @@ class agreement(osv.osv):
         if rec.service.invoicing == 'period':
             date_list = map(int, rec.date_list)
             dl_ids = self.pool.get('inv.date_list').search(cr, uid, [('id','in',date_list)])
-            start_date = self.pool.get('inv.date_list').browse(cr, uid, dl_ids.pop(), {}).date
-
+            if dl_ids !=[]:
+                start_date = self.pool.get('inv.date_list').browse(cr, uid, dl_ids.pop(), {}).date
+            else:
+                start_date = '2014-03-26'
             if rec.service.interval_unit == 'days':
                 increment_size = DateTime.RelativeDateTime(days=rec.service.int_unit_number)
             elif rec.service.interval_unit == 'weeks':
@@ -1612,7 +1615,7 @@ class agreement(osv.osv):
             if not agr_period_data:
                 raise osv.except_osv(_('Invalid action !'), _('System could not calculate period range !'))
             else:
-                self.write(cr, uid, [row.id], {'init_effect_date': agr_period_data.strftime('%Y-%m-%d')})                
+                self.write(cr, uid, [row.id], {'init_effect_date': agr_period_data.date})
             d_list = self.pool.get('inv.date_list')
             date_list = map(int, row.date_list)
             date_error_ids = d_list.search(cr, uid, [('id','in',date_list),('status','=','error')])
@@ -1792,7 +1795,7 @@ class agreement(osv.osv):
     def set_done(self, cr, uid, ids, context={}):
         for r in self.browse(cr, uid, ids, {}):
 	    if r.cron_id:
-	      self.pool.get('ir.cron').write(cr, uid, r.cron_id.id, {'active':False})
+	      self.pool.get('ir.cron').write(cr, uid, [r.cron_id.id], {'active':False})
         self.write(cr, uid, ids, {'state':'done'})
         return True
 
@@ -1865,7 +1868,8 @@ class agreement(osv.osv):
                     cron_ids.append(agr['cron_id'][0])
                 if 'cron_nextdate' in agr and agr['cron_nextdate']:
                     cron_ids.append(agr['cron_nextdate'][0])
-                self.pool.get('ir.cron').unlink(cr, uid, cron_ids)
+                if cron_ids != []: # Mod por si se instala Batch Invoicing # Modulo Tony - Conectum
+                    self.pool.get('ir.cron').unlink(cr, uid, cron_ids)
             else:
                 raise osv.except_osv(_('Invalid action !'), _('Cannot delete agreement(s) which are already running !'))
         osv.osv.unlink(self, cr, uid, unlink_ids)

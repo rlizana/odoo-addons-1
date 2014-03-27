@@ -231,6 +231,8 @@ class method(osv.osv):
             pdate2 = False
             date_list = []
         try:
+            if 'wizard' in context:
+                current_date = date
             if date <= current_date and r.service.invoicing=='period':
                 d_list.write(cr, uid, date_id, {'status':'process'})
             for p in self.browse(cr, uid, ids, {}):

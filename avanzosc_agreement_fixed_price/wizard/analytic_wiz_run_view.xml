@@ -1,0 +1,30 @@
+<openerp>
+	<data>
+	
+		<record id="view_analytic_run" model="ir.ui.view">
+            <field name="name">view.analytic.run</field>
+            <field name="model">wizard.analytic.run</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Create Analytic Lines">
+                	<separator string="Create Analytic Entries for the selected agreements?" colspan="4"/>	
+                   <group colspan="4" col="6">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button  icon="gtk-ok" name="analytic_run" string="Ok" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+    	<act_window 
+    		id= "analytic_run"
+			name= "Executes Analytic Line Creation" 
+			res_model= "wizard.analytic.run"
+			src_model= "inv.agreement"
+			key2= "client_action_multi"
+			view_id = "view_analytic_run"
+			target ="new"
+			 />
+
+	</data>
+</openerp>

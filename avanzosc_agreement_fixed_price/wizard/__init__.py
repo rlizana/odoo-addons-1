@@ -19,28 +19,5 @@
 #
 ##############################################################################
 
-{
-    "name": "Avanzosc Agreement fixed price",
-    "version": "1.0",
-    "depends": [
-                "account_invoice_analytics",
-    ],
-    "author": "AvanzOSC",
-    "website" : "http://www.avanzosc.com",
-    "category": "Custom Module",
-    "description": """
-        This module adds new fields:
-            * fixed price, in invoice agreement.
-            * ref field in the analytic search view 
-            * product field in the analytic tree view    """,
-    "init_xml": [],
-    'update_xml': [
-                   "agreement_view.xml",
-                   "account_analytic_account_view.xml",
-                   "account_analytic_line_view_inh.xml",
-                   "wizard/analytic_wiz_run_view.xml",
-                   ],
-    'demo_xml': [],
-    'installable': True,
-    'active': False,
-}
+import agreement_wiz_analytic_run
+
