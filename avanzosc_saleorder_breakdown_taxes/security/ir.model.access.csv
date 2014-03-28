@@ -1,2 +1,2 @@
-"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_sale_order_tax_breakdown","sale_order_tax_breakdown","avanzosc_saleorder_breakdown_taxes.model_sale_order_tax_breakdown","group_so_breakdown_taxes",1,1,1,1
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_tax_breakdown,tax_breakdown,avanzosc_saleorder_breakdown_taxes.model_tax_breakdown,group_so_breakdown_taxes,1,1,1,1

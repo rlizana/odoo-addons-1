@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    Avanzosc - Avanced Open Source Consulting
+#    Avanzosc - Advanced Open Source Consulting
 #    Copyright (C) 2011 - 2013 Avanzosc <http://www.avanzosc.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,28 +18,27 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
-from osv import osv
-from osv import fields
-from tools.translate import _
+
+from osv import osv, fields
 import decimal_precision as dp
 
-class sale_order_tax_breakdown(osv.osv):
+class tax_breakdown(osv.osv):
 
-    _name = 'sale.order.tax.breakdown'
-    _description = 'Sale Order Tax Breakdown'
+    _name = 'tax.breakdown'
+    _description = 'Tax Breakdown'
 
     _columns = {# Pedido de Venta
-                'sale_order_id':fields.many2one('sale.order', 'Sale Order', ondelete='cascade'),
+                'sale_id': fields.many2one('sale.order', 'Sale Order', ondelete='cascade'),
                 # Albaran
-                'stock_picking_id':fields.many2one('stock.picking', 'Stock Picking', ondelete='cascade'),
+                'picking_id': fields.many2one('stock.picking', 'Stock Picking', ondelete='cascade'),
                 # Impuesto
-                'account_tax_id':fields.many2one('account.tax', 'Tax'),
+                'tax_id': fields.many2one('account.tax', 'Tax'),
                 # Importe Neto
-                'untaxed_amount': fields.float('Untaxed Amount', digits_compute= dp.get_precision('Sale Price')),
+                'untaxed_amount': fields.float('Untaxed Amount', digits_compute=dp.get_precision('Sale Price')),
                 # Impuestos
-                'taxation_amount': fields.float('Taxation', digits_compute= dp.get_precision('Sale Price')),
+                'taxation_amount': fields.float('Taxation', digits_compute=dp.get_precision('Sale Price')),
                 # Total
-                'total_amount': fields.float('Total', digits_compute= dp.get_precision('Sale Price')),
+                'total_amount': fields.float('Total', digits_compute=dp.get_precision('Sale Price')),
                 }
 
-sale_order_tax_breakdown()
+tax_breakdown()

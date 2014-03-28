@@ -18,7 +18,7 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
-import sale_order_tax_breakdown
+
+import tax_breakdown
 import sale_order_ext
 import stock_picking_ext
-

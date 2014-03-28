@@ -31,6 +31,7 @@
     'update_xml': ['security/avanzosc_saleorder_breakdown_taxes.xml',
                    'sale_order_tax_breakdown_view.xml',
                    'sale_order_ext_view.xml',
+                   'stock_picking_view.xml',
                    ],
     'demo_xml': [],
     'installable': True,
