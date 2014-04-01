@@ -84,7 +84,7 @@ class stock_picking(osv.osv):
             context = {}
 
         data.update({'tax_breakdown_ids':[(6,0,[])]})
-        super(stock_picking, self).write(cr, uid, picking.id, data, context=context)
+        super(stock_picking, self).write(cr, uid, ids, data, context=context)
         self._calc_breakdown_taxes(cr, uid, ids, context=context)
 
         return True
