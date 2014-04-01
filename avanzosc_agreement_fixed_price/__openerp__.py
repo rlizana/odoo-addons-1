@@ -32,7 +32,11 @@
         This module adds new fields:
             * fixed price, in invoice agreement.
             * ref field in the analytic search view 
-            * product field in the analytic tree view    """,
+            * product field in the analytic tree view    
+            
+            MOD - Dani
+            Wizard to generate the analytic entri lines
+            Create Invoice Wizard from hr_timesheet_invoice module disabled """,
     "init_xml": [],
     'update_xml': [
                    "agreement_view.xml",

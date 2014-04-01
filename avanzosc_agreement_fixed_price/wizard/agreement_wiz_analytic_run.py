@@ -33,7 +33,7 @@ class wizard_analytic_run(osv.osv_memory):
     """
     
     _name = "wizard.analytic.run"
-    _description = "Scancel the Selected Invoices and set to draft State"
+    _description = "Generate analytic entri lines for selected agreements"
     
     _colummns = {}
     

@@ -6,7 +6,7 @@
             <field name="model">wizard.analytic.run</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Create Analytic Lines">
+                <form string="Create Analytic Entries">
                 	<separator string="Create Analytic Entries for the selected agreements?" colspan="4"/>	
                    <group colspan="4" col="6">
                         <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
@@ -18,13 +18,17 @@
         
     	<act_window 
     		id= "analytic_run"
-			name= "Executes Analytic Line Creation" 
+			name= "Executes Analytic Entries Creation" 
 			res_model= "wizard.analytic.run"
 			src_model= "inv.agreement"
 			key2= "client_action_multi"
 			view_id = "view_analytic_run"
 			target ="new"
 			 />
+			 
+<!-- 	================== hr_timesheet_invoice view wizard disable ========== -->
+	<delete id="hr_timesheet_invoice.action_hr_timesheet_invoice_create" model="ir.actions.act_window"/>
+	<delete id="hr_timesheet_invoice.hr_timesheet_invoice_create_values" model="ir.values"/>
 
 	</data>
 </openerp>
