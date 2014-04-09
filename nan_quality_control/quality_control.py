@@ -437,7 +437,7 @@ class qc_test(osv.osv):
                     'max_value': line.max_value,
                     'uom_id': line.uom_id.id,
                     'test_uom_id': line.uom_id.id,
-                    'proof_type': line.proof_id.type,
+                    'proof_type': line.type,
                 }
                 if fill or force_fill :
                     if line.type == 'qualitative':
