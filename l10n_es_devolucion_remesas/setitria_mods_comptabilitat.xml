@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+ <!-- Import C19 file wizard -->
+        <record model="ir.ui.view" id="c19_dev_file_import_wizard">
+            <field name="name">setitria.mods.import.dev.c19.import.form</field>
+            <field name="model">setitria.mods.import.dev.c19.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Return lines import">
+                    <group colspan="4">
+                        <label string="Arxiu de retornats del Banc:"/>
+                        <newline/>
+                        <field name="file_name" nolabel="1"/>
+                        <field name="file" filename="file_name" nolabel="1"/>
+                    </group>
+                    <group colspan="4" col="12">
+                    	<group colspan="2" col="4">
+                    		<label string="Select journal:"/>
+                    	</group>
+                    	<group colspan="10" col="4">
+                    	<field name="journal_id" nolabel="1"/>
+                    	</group>
+                    </group>
+                    <button icon="gtk-cancel" special="cancel" string="Cancel·lar" type="object"/>
+                    <button icon="gtk-ok" name="import_action" string="Importar" type="object"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_c19_dev_file_import_wizard" model="ir.actions.act_window">
+            <field name="name">Wizard to import return files C19</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">setitria.mods.import.dev.c19.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>    
+        
+  <!-- fi Import C19 file wizard -->
+  
+   <!-- Vistes de les clases dels rebuts retornats -->
+          
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_line_view">
+        	<field name="name">setitria.fitxerretornat.line.form</field>
+        	<field name="model">setitria.fitxerretornat.line</field>
+        	<field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Return lines" >
+            		<field name="partner_id" required="1"/>
+            		<field name="motiu_dev" required="1"/>
+            		<field name="dev_amount" required="1"/>
+           			<field name="date" required="1"/>
+           			<field name="invoice_id" on_change="onchange_invoice(invoice_id)" domain="[('type','=','out_invoice'),('state','=','paid')]"/>
+           			<separator string="Notes" colspan="4"/>
+					<field colspan="4" name="notes" nolabel="1"/>
+					<newline/>
+					<field name="state" readonly="1"/>
+           			<field name="info" readonly="1"/>
+            	</form>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_line_view_tree">
+        	<field name="name">setitria.fitxerretornat.line.tree</field>
+        	<field name="model">setitria.fitxerretornat.line</field>
+        	<field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Return lines" colors="red:state=='incomplete';limegreen:state=='valid'" >
+            		<field name="fitxer_id" invisible = '1'/>
+            		<field name="invoice_id" />
+            		<field name="partner_id"/>
+           			<field name="date"  />
+           			<field name="motiu_dev"  />
+           			<field name="dev_amount" />
+           			<field name="state"/>
+           			<field name="info"/>
+            	</tree>
+            </field>
+        </record>
+          <record model="ir.ui.view" id="setitria_fitxer_retornat_line_search">
+        	<field name="name">setitria.fitxerretornat.line.search</field>
+        	<field name="model">setitria.fitxerretornat.line</field>
+        	<field name="type">search</field>
+            <field name="arch" type="xml">
+            	<search string="Return Files">
+            		<filter string="Complete" domain="[('state','in',('complert'))]"  name="complete" icon="terp-check"/>
+            		<filter string="Incomplete" domain="[('state','in',('incomplert'))]"  name="incomplete" icon="terp-gnome-cpu-frequency-applet+"/>
+            		<field name="invoice_id" />
+            		<field name="partner_id"/>
+            		<field name="fitxer_id"/>
+           			<field name="date"/>
+           			<field name="dev_amount"/>
+           			<newline/>
+           			<group expand="0" string="Extended Filters..." colspan="4" col="8">
+           				<field name="motiu_dev"  />
+	            		<field name="state"/>
+	            	</group>
+	            	<newline/>
+	            	<group expand="0" string="Group By..." colspan="4" col="8">
+	            		<filter string="State" name="group_state" icon="terp-stock_effects-object-colorize" domain="[]"  context="{'group_by':'state'}"/>
+	            		<filter string="Date" name="group_date" icon="terp-go-month" domain="[]"  context="{'group_by':'date'}"/>
+	            		<filter string="Motiu dev" name="group_motiu" icon="terp-stage" domain="[]"  context="{'group_by':'motiu_dev'}"/>
+	            		<filter string="Customer" name="group_partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+	            		<filter string="File" name="group_file" icon="terp-folder-green" domain="[]" context="{'group_by':'fitxer_id'}"/>
+	            	
+	            	</group>
+            	</search>
+            </field>
+        </record>
+        
+       	<record model="ir.actions.act_window" id="setitria_fitxer_retornat_line_open">
+			<field name="name">Return Lines</field>
+			<field name="res_model">setitria.fitxerretornat.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+        
+        
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_view">
+        	<field name="name">setitria.fitxerretornat.form</field>
+        	<field name="model">setitria.fitxerretornat</field>
+        	<field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Return files">
+           			<field name="name" />
+           			<field name="journal_id" />
+           			<field name="banc_id" />
+           			<field name="date" required="1"/>
+           			<field name="date_imp"  invisible="1"/>
+           			<newline></newline>
+           			<button  name="process_lines" string="Procesar Lineas" 
+           			icon="gtk-execute" colspan="2" type="object"/>
+           			<notebook colspan="4">
+           				<page string="Rebuts">
+           					<field colspan="4" name="lines_id" nolabel="1" context="{'dev_date':date}"/>
+           				</page>
+           				<page string="Notes">
+           					<field colspan="4" name="notes" nolabel="1"/>
+           				</page>
+           			</notebook>
+            	</form>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_view_tree">
+        	<field name="name">setitria.fitxerretornat.tree</field>
+        	<field name="model">setitria.fitxerretornat</field>
+        	<field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Return files" colors="red:state=='incomplete'">
+            		<field name="name"  />
+            		<field name="date"  />
+            		<field name="banc_id" />
+            	</tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="setitria_fitxer_retornat_view_search">
+        	<field name="name">setitria.fitxerretornat.search</field>
+        	<field name="model">setitria.fitxerretornat</field>
+        	<field name="type">search</field>
+            <field name="arch" type="xml">
+            	<search string="Return files">
+           			<filter string="Complete" domain="[('state','in',('complert'))]"  name="complete" icon="terp-check"/>
+            		<filter string="Incomplete" domain="[('state','in',('incomplert'))]"  name="incomplete" icon="terp-gnome-cpu-frequency-applet+"/>
+            		<field name="banc_id" />
+            		<field name="name"/>
+           			<field name="date"/>
+					<field name="date_imp" />
+	            	<newline/>
+	            	<group expand="0" string="Group By..." colspan="4" col="8">
+	            		<filter string="State" name="group_state" icon="terp-stock_effects-object-colorize" domain="[]"  context="{'group_by':'state'}"/>
+	            		<filter string="Date" name="group_date" icon="terp-go-month" domain="[]"  context="{'group_by':'date'}"/>
+	            		<filter string="Import Date" name="group_date_imp" icon="terp-go-month" domain="[]"  context="{'group_by':'date_imp'}"/>
+	            		<filter string="Bank" name="group_bank" icon="terp-go-home" domain="[]"  context="{'group_by':'banc_id'}"/>
+	            	</group>
+            	</search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="setitria_fitxer_retornat_open">
+			<field name="name">Return files</field>
+			<field name="res_model">setitria.fitxerretornat</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		
+		<menuitem id="setitria_retornat_menu" name="Devolutions" parent="account_payment.menu_main_payment" sequence="20"/>
+		<menuitem id="setitria_fitxer_retornat_menu" name="Devolution files" parent="setitria_retornat_menu" action="setitria_fitxer_retornat_open" sequence="20"/>
+        <menuitem id="setitria_fitxer_retornat_line_menu" name="Devolution lines" parent="setitria_retornat_menu" action="setitria_fitxer_retornat_line_open" sequence="20"/>
+        <menuitem id="setitria_fitxer_retornat_menu_import" name="Import devolutions" parent="setitria_retornat_menu" action="action_c19_dev_file_import_wizard" sequence="25"/>
+        
+	<!--
+	Fem que el wizard es pugui executar desde on volem 
+
+        <act_window id="action_c19_dev_file_import_wizard"
+    		key2="client_action_multi" name="Import Arxiu Retornats Banc"
+    		res_model="setitria.mods.import.dev.c19.wizard" src_model="account.bank.statement"
+    		view_mode="form" target="new" view_type="form" groups="account.group_account_manager"/>
+	--> 
+
+
+
+
+	    <record model="ir.ui.view" id="payment_line_ext_form_view">
+                <field name="name">payment.line.ext.form</field>
+                <field name="model">payment.line</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                   <form string="Payment Line">
+                            <notebook>
+                                <page string="Payment">
+                                    <field name="order_id"/>
+                                    <field name="move_line_id" on_change="onchange_move_line(move_line_id,parent.mode,parent.date_prefered,parent.date_scheduled,currency,company_currency)" select="1" domain="[('reconcile_id','=', False), ('credit', '&gt;',0),('amount_to_pay','&gt;',0)] "/>
+                                    <separator colspan="4" string="Transaction Information"/>
+                                    <field name="date"/>
+                                    <group colspan="2">
+                                        <field name="amount_currency" on_change="onchange_amount(amount_currency,currency,company_currency)"/>
+                                        <field name="currency" nolabel="1"/>
+                                    </group>
+                                    <field name="partner_id" on_change="onchange_partner(partner_id,parent.mode)" select="1"/>
+                                    <field domain="[('partner_id','=',partner_id)]" name="bank_id"/>
+                                    <separator colspan="2" string="Owner Account"/>
+                                    <separator colspan="2" string="Destination Account"/>
+                                    <field colspan="2" name="info_owner" nolabel="1"/>
+                                    <field colspan="2" name="info_partner" nolabel="1"/>
+                                    <field colspan="4" name="communication"/>
+                                    <field colspan="4" name="communication2"/>
+                                    <field name="name"/>
+                                     <field name="state"/>
+                                </page>
+                                <page string="Information">
+
+                                    <separator colspan="4" string="General Information"/>
+                                    <group colspan="2">
+                                        <field name="amount"/>
+                                        <field name="company_currency" nolabel="1"/>
+                                    </group>
+                                    <separator colspan="4" string="Entry Information"/>
+                                    <field name="create_date" readonly="1"/>
+                                    <field name="ml_maturity_date"/>
+                                    <field name="ml_inv_ref"/>
+                                    <field name="invoiced_amount"/>
+                                    <field name="unpayed_amount"/>
+                                </page>
+                            </notebook>
+                        </form>
+                </field>
+            </record> 
+            
+            
+            
+            <record model="ir.ui.view" id="payment_line_ext_tree_view">
+                <field name="name">payment.line.ext.tree</field>
+                <field name="model">payment.line</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                   <tree string="Payment Line">
+                   			<field name="name" select="1"/>
+                   			<field name="order_id"/>
+                            <field name="ml_inv_ref" select="1"/>
+                            <field name="partner_id" select="1"/>
+                            <field name="date" select="1"/>
+                            <field name="amount_currency" string="Amount payed"/>
+                            <field name="invoiced_amount"/>
+                            <field name="unpayed_amount" select="1"/>
+                            <field name="currency"/>
+                            <field name="amount" sum="Total in Company Currency" invisible="1"/>
+                        </tree>
+                </field>
+            </record> 
+            
+               
+            <record model="ir.actions.act_window" id="action_payment_line_ext">
+				<field name="name">Payment lines</field>
+				<field name="res_model">payment.line</field>
+				<field name="domain">[('type','in',('receivable'))</field>
+				<field name="view_type">form</field>
+				<field name="view_mode">tree,form</field>
+				<field name="view_id" ref="payment_line_ext_tree_view"/>
+			</record> 
+            
+            <menuitem id="payment_line_ext_menu" name="Receivable payment lines" action="action_payment_line_ext" parent="account_payment.menu_main_payment" sequence="2"/>
+     
+    </data>
+</openerp>

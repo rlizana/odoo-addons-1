@@ -1,0 +1,39 @@
+<openerp>
+	<data>
+	
+		<record id="view_remesas_run" model="ir.ui.view">
+            <field name="name">view.remesas.run</field>
+            <field name="model">wizard.remesas.run</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Procesar las Lineas">
+                	<separator string="Procesar las lineas para las remesas?" 
+                	colspan="4"/>	
+                   <group colspan="4" col="6">
+                        <button  icon="gtk-cancel" special="cancel" 
+                        string="Cancel"/>
+                        <button  icon="gtk-ok" name="remesas_run" string="Ok" 
+                        type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+    	<act_window 
+    		id= "remesas_run"
+			name= "Ejecuta Procedimiento en Remesas" 
+			res_model= "wizard.remesas.run"
+			src_model= "setitria.fitxerretornat.line"
+			key2= "client_action_multi"
+			view_id = "view_remesas_run"
+			target ="new"
+			 />
+
+	<!-- ============= hr_timesheet_invoice view wizard disable ========== -->
+	<delete id="hr_timesheet_invoice.action_hr_timesheet_invoice_create"
+		model="ir.actions.act_window" />
+	<delete id="hr_timesheet_invoice.hr_timesheet_invoice_create_values"
+		model="ir.values" />
+
+	</data>
+</openerp>
