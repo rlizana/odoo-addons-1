@@ -1,7 +1,7 @@
 # -*- encoding: latin-1 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 NaN Projectes de Programari Lliure, S.L. All Rights Reserved.
+# Copyright(c)2010 NaN Projectes de Programari Lliure,S.L. All Rights Reserved.
 #                    http://www.NaN-tic.com
 #
 # WARNING: This program as such is intended to be used by professional
@@ -28,48 +28,61 @@
 ##############################################################################
 
 import wizard
-from osv import osv
-from tools.translate import _
 import netsvc
 import pooler
+from osv import osv
+from osv import fields
+from tools.translate import _
 
 class wizard_invoice_draft(osv.osv_memory):
-    """
-    This wizard will cancel the all the selected invoices and them set as draft state
-    If in the journal, the option allow cancelling entry is not selected then it will give warning message.
-    """
     
-    _name = "wizard.invoice.draft"
-    _description = "SCancel the Selected Invoices and set to draft State"
+    _name = 'wizard.invoice.draft'
     
-
-
-    def invoice_draft(self, cr, uid, data, context):
+    def invoice_draft(self, cr, uid, ids, context=None):
+        invoice_obj = self.pool['account.invoice']
         
-        if context is None:
-           context = {}
-        wf_service = netsvc.LocalService('workflow')
-        pool_obj = pooler.get_pool(cr.dbname)
-        invoice_obj = pool_obj.get('account.invoice')
-        if context['active_ids']:
-            for id in context['active_ids']:
-                invoice = invoice_obj.read(cr, uid, id, ['state'], context=context)
-                if invoice['state'] in ('cancel', 'paid'):
-                    raise osv.except_osv(_('Warning'), _("Selected Invoice(s) cannot be cancelled as they are already in 'Cancelled' or 'Done' state!"))
-                wf_service.trg_validate(uid, 'account.invoice', id, 'invoice_cancel', cr) # cancelar factura
-                invoice_obj.write(cr, uid, id, {'state':'draft'}) # estado draft
-                wf_service.trg_create(uid,'account.invoice',id,cr) #señal draft
-        return {}
-
-wizard_invoice_draft()
-#class wizard_invoice_draft(wizard.interface):
-#    states = {
-#        'init': {
-#            'actions': [_invoice_draft],
-#            'result': {'type':'state', 'state':'end'}
-#        }
-##    }
-#wizard_invoice_draft('account.invoice.state.draft')
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
+        if not context:
+            context = {}
+        
+        has_error = False
+        
+        inv_ids = False
+        if 'active_ids' in context:
+            inv_ids = context['active_ids']
+        
+        ids = invoice_obj.search(cr,uid,[('id','in',inv_ids),
+                                         ('state','=','open')])
+        ids.sort()
+        inv_ids.sort()
+        
+        if ids != inv_ids:
+            has_error = True
+            
+        draft_ids = ids[:]
+        cancel_ids = ids[:]
+        
+        for cancel_id in cancel_ids:
+            try:
+                wf_service = netsvc.LocalService("workflow")
+                wf_service.trg_validate(uid, 'account.invoice', cancel_id,
+                                        'invoice_cancel',cr)
+            except:
+                draft_ids.remove(cancel_id)
+                has_error = True            
+                continue
+        cr.commit()
+        
+        for draft_id in draft_ids:
+            try:
+                invoice_obj.write(cr,uid,[draft_id], {'state':'draft'})
+                wf_service2 = netsvc.LocalService("workflow")
+                wf_service2.trg_create(uid, 'account.invoice', draft_id, cr)
+            except:
+                has_error = True
+                continue
+        cr.commit()
+        
+        if has_error:
+            raise osv.except_osv(_('Error!'),_('Some invoices can not be set '
+                                               'to draft state.'))
+        return {'type': 'ir.actions.act_window_close'}
