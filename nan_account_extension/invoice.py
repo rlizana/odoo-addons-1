@@ -79,6 +79,11 @@ class account_invoice(osv.osv):
         return {}
 
     def write(self, cr, uid, ids, vals, context=None):
+        #mod dani
+        if vals.has_key('date_due'):
+            if vals['date_due'] == '':
+                vals.pop("date_due", None)
+        #end mod dani     
         result = super(account_invoice, self).write(cr, uid, ids, vals, context)
         if vals.get('state') == 'open':
             for invoice in self.browse(cr, uid, ids, context):

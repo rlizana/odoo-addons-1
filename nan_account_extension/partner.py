@@ -53,7 +53,7 @@ class res_partner(osv.osv):
 
         if not force_checked is None:
             checked = force_checked
-        
+
         if partner_account:
             if checked:
                 # If account already exists, just check if we need to update account name.
@@ -65,7 +65,7 @@ class res_partner(osv.osv):
                         self.pool.get('account.account').write(cr, uid, [partner_account.id], {
                             'name': partner.name,
                         }, context)
-                        return
+                return
             
             # If it's not possible to unlink the account we will rollback this change
             # so the property remains the same. Note that we cannot try to unlink first, 
@@ -81,8 +81,10 @@ class res_partner(osv.osv):
                 self.pool.get('account.account').unlink(cr, uid, [partner_account.id], context)
             except osv.except_osv:
                 cr.execute('ROLLBACK TO SAVEPOINT remove_account')
+                return
 
             cr.execute('RELEASE SAVEPOINT remove_account')
+            return 
 
         if not checked:
             return
