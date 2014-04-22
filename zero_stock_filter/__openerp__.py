@@ -27,6 +27,7 @@
          stockable products with and without stock availability
        · By default, only products with stock are shown (i.e.
          button is enabled)
+        - Added Special options by Avanzosc
     ''',
     'version' : '0.1',
     'depends' : [

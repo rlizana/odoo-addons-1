@@ -69,9 +69,57 @@ class product_product(osv.osv):
                     if d['virtual_available'] == value:
                         prod_ids.append(d['id'])
         return [('id','in',tuple(prod_ids))]
+    
+    def _qty_available_search(self, cr, uid, obj, name, args, context=None):
+        ops = ['>',]
+        prod_ids = ()
+        if not len(args):
+            return []
+        prod_ids = []
+        for a in args:
+            operator = a[1]
+            value = a[2]
+#            if not operator in ops:
+#                raise osv.except_osv(_('Error !'), _('Operator %s not suported in searches for virtual_available (product.product).' % operator))
+#            if operator == '>':
+            todos = self.search(cr, uid, [])
+            ids = self.read(cr, uid, todos, ['qty_available'], context=context)
+            for d in ids:
+                if operator =='>':
+                    if d['qty_available'] > value:
+                        prod_ids.append(d['id'])
+                elif operator =='>=':
+                    if d['qty_available'] >= value:
+                        prod_ids.append(d['id'])
+                elif operator =='<':
+                    if d['qty_available'] < value:
+                        prod_ids.append(d['id'])
+                elif operator =='<=':
+                    if d['qty_available'] <= value:
+                        prod_ids.append(d['id'])
+                elif operator =='==' or operator =='=':
+                    if d['qty_available'] == value:
+                        prod_ids.append(d['id'])
+        return [('id','in',tuple(prod_ids))]
 
     _columns = {
         'virtual_available': fields.function(_product_available, fnct_search=_virtual_available_search, method=True, type='float', string='Virtual Stock', help="Future stock for this product according to the selected locations or all internal if none have been selected. Computed as: Real Stock - Outgoing + Incoming.", multi='qty_available', digits_compute=dp.get_precision('Product UoM')),
+        'qty_available': fields.function(_product_available, 
+            fnct_search=_qty_available_search, multi='qty_available',
+            type='float',  digits_compute=dp.get_precision('Product UoM'),
+            string='Quantity On Hand',
+            help="Current quantity of products.\n"
+                 "In a context with a single Stock Location, this includes "
+                 "goods stored at this Location, or any of its children.\n"
+                 "In a context with a single Warehouse, this includes "
+                 "goods stored in the Stock Location of this Warehouse, or any "
+                 "of its children.\n"
+                 "In a context with a single Shop, this includes goods "
+                 "stored in the Stock Location of the Warehouse of this Shop, "
+                 "or any of its children.\n"
+                 "Otherwise, this includes goods stored in any Stock Location "
+                 "typed as 'internal'."),
+        
     }
 
 product_product()
