@@ -17,7 +17,7 @@
 					<attribute name="col">10</attribute>
 				</xpath>
 				<xpath expr="/form/notebook/page[@string='Invoice']/group/group" position="inside">
-					<button name="open_test2" states="open" string="Unpaid" icon="terp-stock_effects-object-colorize" groups="l10n_es_devolucion_remesas.admin_fitxerretornat"/>
+					<button name="action_unpaid" states="open" string="Unpaid" type="object" icon="terp-stock_effects-object-colorize" groups="l10n_es_devolucion_remesas.admin_fitxerretornat"/>
 				</xpath>
 			</field>
 		</record>

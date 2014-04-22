@@ -63,9 +63,10 @@ class account_invoice(osv.osv):
     def action_unpaid(self, cr, uid, ids, *args):
         res = False
         for inv_id in ids:
-            wf_service = netsvc.LocalService("workflow")
-            wf_service.trg_validate(uid, 'account.invoice', inv_id, 'open_test2', cr)
-            res = True
+            if self.test_paid2(cr, uid, [inv_id]):
+                wf_service = netsvc.LocalService("workflow")
+                wf_service.trg_validate(uid, 'account.invoice', inv_id, 'open_test2', cr)
+                res = True
         return res
 account_invoice()
     
