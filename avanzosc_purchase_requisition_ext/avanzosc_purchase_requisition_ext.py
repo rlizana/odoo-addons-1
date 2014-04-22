@@ -20,8 +20,8 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
-from osv import osv
-from osv import fields
+from osv import osv, fields
+from tools.translate import _
 
 #
 ### Heredo esta clase para añadirle un nuevo botón, este botón no solicitará
@@ -90,7 +90,8 @@ class purchase_requisition(osv.osv):
                             delivery_address_id = res_partner.address_get(cr, uid, [supplier.id], ['delivery'])['delivery']
                             supplier_pricelist = supplier.property_product_pricelist_purchase or False
                             
-                            
+                            if not requisition.warehouse_id:
+                                raise osv.except_osv(_('Warning'), _('Please select the warehouse'))
                             location_id = requisition.warehouse_id.lot_input_id.id
                             # Creo purchase order
                             purchase_id = purchase_order.create(cr, uid, {'origin': requisition.name,
@@ -149,7 +150,10 @@ class purchase_requisition(osv.osv):
         res = {}
         for requisition in self.browse(cr, uid, ids, context=context):
             if supplier.id in filter(lambda x: x, [rfq.state <> 'cancel' and rfq.partner_id.id or None for rfq in requisition.purchase_ids]):
-                 raise osv.except_osv(_('Warning'), _('You have already one %s purchase order for this partner, you must cancel this purchase order to create a new quotation.') % rfq.state)
+                raise osv.except_osv(_('Warning'), _('You have already one %s purchase order for this partner, you must cancel this purchase order to create a new quotation.') % rfq.state)
+            if not requisition.warehouse_id:
+                raise osv.except_osv(_('Warning'), _('Please select the warehouse'))
+             
             location_id = requisition.warehouse_id.lot_input_id.id
             purchase_id = purchase_order.create(cr, uid, {
                         'origin': requisition.name,
