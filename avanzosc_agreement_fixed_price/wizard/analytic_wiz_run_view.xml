@@ -10,6 +10,7 @@
                 	<separator string="Create Analytic Entries for the selected agreements?" colspan="4"/>	
                 	<group colspan="4" >
                           <field name="date" colspan="2"/>
+                          <field name="all_agreements" colspan="2"/>
                     </group>
                    <group colspan="4" col="6">
                         <button  icon="gtk-cancel" special="cancel" string="Cancel"/>

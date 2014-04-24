@@ -38,6 +38,7 @@ class wizard_analytic_run(osv.osv_memory):
     _columns = {
                 'date': fields.date('Invoicing Date', size=64, 
                     help='If no date is selected current date will be assigned'),
+                'all_agreements':fields.boolean('All agreements'),
                  }
     
     
@@ -53,16 +54,20 @@ class wizard_analytic_run(osv.osv_memory):
         if wiz.date:
             context['current_date'] = wiz.date
         method_obj = self.pool.get('inv.method')
-        if context['active_ids']:
-            for agree_id in context['active_ids']:
-                agrement = agreement_obj.browse(cr,uid,agree_id)
-                if agrement.state != 'running':
-                    raise osv.except_osv(_('Warning'), _("Selected Agreement is not in 'Running' state!"))
-                methods = agrement.service.method_ids
-                if methods:
-                    context['wizard'] = True
-                    for m in methods:
-                        method_obj._run_filters(cr,uid,[m.id],agree_id,context)
+        agree_lst = []
+        if context['active_ids'] and not wiz.all_agreements:
+            agree_lst = context['active_ids']
+        else:
+            agree_lst = agreement_obj.search(cr,uid,[('state','=','running')])
+        for agree_id in agree_lst:
+            agrement = agreement_obj.browse(cr,uid,agree_id)
+            if agrement.state != 'running':
+                raise osv.except_osv(_('Warning'), _("Selected Agreement is not in 'Running' state!"))
+            methods = agrement.service.method_ids
+            if methods:
+                context['wizard'] = True
+                for m in methods:
+                    method_obj._run_filters(cr,uid,[m.id],agree_id,context)
         return res
         
 wizard_analytic_run()
