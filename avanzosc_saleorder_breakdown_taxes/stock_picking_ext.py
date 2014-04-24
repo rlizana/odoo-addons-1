@@ -45,7 +45,10 @@ class stock_picking(osv.osv):
             
         for picking in self.browse(cr, uid, ids, context=context):
             if picking.type == 'out':
-                self.write(cr, uid, picking.id, {'tax_breakdown_ids':[(6,0,[])]})
+                if picking.tax_breakdown_ids:
+                    for tax in picking.tax_breakdown_ids:
+                        breakdown_obj.unlink(cr, uid, [tax.id], context=context)
+                        
                 taxes_datas = {}
                 for line in picking.move_lines:
                     if line.sale_line_id:
