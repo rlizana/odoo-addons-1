@@ -21,7 +21,7 @@
 #
 ##############################################################################
 
-from osv import osv
+from osv import osv,fields
 from tools.translate import _
 import netsvc
 import pooler
@@ -33,12 +33,15 @@ class wizard_analytic_run(osv.osv_memory):
     """
     
     _name = "wizard.analytic.run"
-    _description = "Generate analytic entri lines for selected agreements"
+    _description = "Generate analytic entry lines for selected agreements"
     
-    _colummns = {}
+    _columns = {
+                'date': fields.date('Invoicing Date', size=64, 
+                    help='If no date is selected current date will be assigned'),
+                 }
     
     
-    def analytic_run(self, cr, uid, data, context):
+    def analytic_run(self, cr, uid, ids, context):
         
         if context is None:
             context = {}
@@ -46,6 +49,9 @@ class wizard_analytic_run(osv.osv_memory):
         #wf_service = netsvc.LocalService('workflow')
         #pool_obj = pooler.get_pool(cr.dbname)
         agreement_obj = self.pool.get('inv.agreement')
+        wiz = self.browse(cr,uid,ids[0])
+        if wiz.date:
+            context['current_date'] = wiz.date
         method_obj = self.pool.get('inv.method')
         if context['active_ids']:
             for agree_id in context['active_ids']:

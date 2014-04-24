@@ -8,6 +8,9 @@
             <field name="arch" type="xml">
                 <form string="Create Analytic Entries">
                 	<separator string="Create Analytic Entries for the selected agreements?" colspan="4"/>	
+                	<group colspan="4" >
+                          <field name="date" colspan="2"/>
+                    </group>
                    <group colspan="4" col="6">
                         <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
                         <button  icon="gtk-ok" name="analytic_run" string="Ok" type="object"/>

@@ -208,11 +208,17 @@ class method(osv.osv):
     _inherit = 'inv.method'
  
     def _run_filters(self, cr, uid, ids, agr_id, context={}):
+        
+        if context is None:
+            context = {}
+        current_date = now().strftime('%Y-%m-%d')
+        if 'current_date' in context:
+            current_date = context['current_date']
         acc_lines = []
         agr = self.pool.get('inv.agreement')
         r = agr.browse(cr, uid, agr_id, {})
         d_list = self.pool.get('inv.date_list')
-        current_date = now().strftime('%Y-%m-%d')
+        
         if r.service.invoicing == 'period':
             full_date_list = map(int, r.date_list)
             date_list1 = d_list.search(cr, uid, [('id','in',full_date_list),('status','=','wait')])
@@ -255,6 +261,8 @@ class method(osv.osv):
                                 calc_res = True
                                 line = {"agr_id":agr_id,"user_id":uid,"amount":0}
                                 # Analityc Entries, field Description
+                                if 'current_date' in context:
+                                    line['date'] = context['current_date']
                                 if c.description == 'empty':
                                     line['name'] = ' '
                                 elif c.description == 'date':

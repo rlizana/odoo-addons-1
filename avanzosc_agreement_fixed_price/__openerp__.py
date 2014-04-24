@@ -35,7 +35,7 @@
             * product field in the analytic tree view    
             
             MOD - Dani
-            Wizard to generate the analytic entri lines
+            Wizard to generate the analytic entry lines to Specific date
             Create Invoice Wizard from hr_timesheet_invoice module disabled """,
     "init_xml": [],
     'update_xml': [
