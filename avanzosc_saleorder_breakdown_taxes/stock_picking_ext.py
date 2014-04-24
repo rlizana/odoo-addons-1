@@ -39,6 +39,9 @@ class stock_picking(osv.osv):
         breakdown_obj = self.pool.get('tax.breakdown')
         tax_obj = self.pool.get('account.tax')
         cur_obj = self.pool.get('res.currency')
+        
+        if not isinstance(ids, list):
+            ids = [ids]
             
         for picking in self.browse(cr, uid, ids, context=context):
             if picking.type == 'out':
