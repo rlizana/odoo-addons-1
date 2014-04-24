@@ -42,40 +42,40 @@ class stock_picking(osv.osv):
             
         for picking in self.browse(cr, uid, ids, context=context):
             if picking.type == 'out':
-                
+                self.write(cr, uid, picking.id, {'tax_breakdown_ids':[(6,0,[])]})
+                taxes_datas = {}
                 for line in picking.move_lines:
                     if line.sale_line_id:
-                        cur = line.sale_line_id.order_id.pricelist_id.currency_id
-                        for tax in line.sale_line_id.tax_id:
-                            price = line.sale_line_id.price_unit * (1 - (line.sale_line_id.discount or 0.0) / 100.0)
-                            taxes = tax_obj.compute_all(cr, uid, line.sale_line_id.tax_id, price, line.product_qty, line.sale_line_id.order_id.partner_invoice_id.id, line.product_id, line.sale_line_id.order_id.partner_id)
+                        if line.sale_line_id.tax_id:
+                            for tax in line.sale_line_id.tax_id:
+                                found = 0
+                                for data in taxes_datas:        
+                                    datos_array = taxes_datas[data]
+                                    tax_id = datos_array['tax_id']
+                                    price_subtotal = datos_array['price_subtotal']
+                                    if tax_id == tax.id:
+                                        found = 1
+                                        price_subtotal = price_subtotal + line.sale_line_id.price_subtotal
+                                        taxes_datas[data].update({'price_subtotal': price_subtotal,})
+                                if found == 0:
+                                    taxes_datas[(tax.id)] = {'tax_id': tax.id, 'price_subtotal': line.sale_line_id.price_subtotal} 
                             
-                            val = 0.0
-                            for c in taxes['taxes']:
-                                val += c.get('amount', 0.0)
-                                
-                            breakdown_ids = breakdown_obj.search(cr, uid,[('picking_id','=', picking.id),
-                                                                          ('tax_id', '=', tax.id)])
-                            subtotal = cur_obj.round(cr, uid, cur, taxes['total'])
-                                                                        
-                            if not breakdown_ids:
-                               
-                                total_amount = val + subtotal
-                                line_vals = {'picking_id': picking.id,
-                                             'tax_id': tax.id,
-                                             'untaxed_amount': subtotal,
-                                             'taxation_amount': val,
-                                             'total_amount': total_amount
-                                             }
-                                breakdown_obj.create(cr, uid, line_vals)     
-                            else:
-                                breakdown = breakdown_obj.browse(cr, uid, breakdown_ids[0])   
-                                untaxed_amount = subtotal + breakdown.untaxed_amount
-                                taxation_amount = val + breakdown.taxation_amount
-                                total_amount = untaxed_amount + taxation_amount
-                                breakdown_obj.write(cr,uid,[breakdown.id],{'untaxed_amount': untaxed_amount,
-                                                                       'taxation_amount': taxation_amount,
-                                                                       'total_amount': total_amount})
+                        
+                if taxes_datas:
+                    for data in taxes_datas:        
+                        datos_array = taxes_datas[data]
+                        tax_id = datos_array['tax_id']
+                        price_subtotal = datos_array['price_subtotal']
+                        tax = tax_obj.browse(cr,uid,tax_id)
+                        taxation_amount = price_subtotal * tax.amount
+                        total_amount = price_subtotal + taxation_amount
+                        vals = {'picking_id': picking.id,
+                                'tax_id': tax_id,
+                                'untaxed_amount': price_subtotal,
+                                'taxation_amount': taxation_amount,
+                                'total_amount': total_amount
+                                }
+                        breakdown_obj.create(cr,uid,vals,context=context)         
         
         return True
     
