@@ -44,7 +44,7 @@ class stock_picking(osv.osv):
                     
                     val += cur_obj.round(cr, uid, cur, taxes['total_included'])
                     
-            res[picking.id] = {'amount_total': val}
+            res[picking.id] = val
         return res
     
     def _get_order(self, cr, uid, ids, context=None):
