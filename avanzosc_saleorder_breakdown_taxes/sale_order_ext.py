@@ -40,11 +40,13 @@ class sale_order(osv.osv):
             context = {}
             
         breakdown_obj = self.pool.get('tax.breakdown')
+        cur_obj = self.pool.get('res.currency')
             
         for order in self.browse(cr, uid, ids, context=context):
             self.write(cr, uid, order.id, {'tax_breakdown_ids':[(6,0,[])]})
             
             for line in order.order_line:
+                cur = line.order_id.pricelist_id.currency_id
                 for tax in line.tax_id:
                     price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
                         
@@ -53,16 +55,16 @@ class sale_order(osv.osv):
                     if not breakdown_ids:
                         line_vals = {'sale_id': order.id,
                                      'tax_id': tax.id,
-                                     'untaxed_amount': line.price_subtotal,
-                                     'taxation_amount': line.price_subtotal * tax.amount,
-                                     'total_amount': line.price_subtotal * (1 + tax.amount)
+                                     'untaxed_amount': cur_obj.round(cr, uid, cur, line.price_subtotal),
+                                     'taxation_amount': cur_obj.round(cr, uid, cur, (line.price_subtotal * tax.amount)),
+                                     'total_amount': cur_obj.round(cr, uid, cur, (line.price_subtotal * (1 + tax.amount)))
                                      }
                         breakdown_obj.create(cr, uid, line_vals)     
                     else:
                         breakdown = breakdown_obj.browse(cr, uid, breakdown_ids[0])   
-                        untaxed_amount = line.price_subtotal + breakdown.untaxed_amount
-                        taxation_amount = untaxed_amount * tax.amount #val + breakdown.taxation_amount
-                        total_amount = untaxed_amount + taxation_amount
+                        untaxed_amount = cur_obj.round(cr, uid, cur, line.price_subtotal + breakdown.untaxed_amount)
+                        taxation_amount = cur_obj.round(cr, uid, cur, untaxed_amount * tax.amount)
+                        total_amount = cur_obj.round(cr, uid, cur, untaxed_amount + taxation_amount)
                         breakdown_obj.write(cr,uid,[breakdown.id],{'untaxed_amount': untaxed_amount,
                                                                    'taxation_amount': taxation_amount,
                                                                    'total_amount': total_amount})

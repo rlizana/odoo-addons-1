@@ -28,7 +28,38 @@ class stock_picking(osv.osv):
 
     _inherit = 'stock.picking'
     
-    _columns = {# Impuestos desglosados
+    def _amount_all(self, cr, uid, ids, field_name, arg, context=None):
+        cur_obj = self.pool.get('res.currency')
+        tax_obj = self.pool.get('account.tax')
+        res = {}
+        for picking in self.browse(cr, uid, ids, context=context):
+            val = 0.0
+            
+            for line in picking.move_lines:
+                if line.sale_line_id:
+                    cur = line.sale_line_id.order_id.pricelist_id.currency_id
+                    price = line.sale_line_id.price_unit * (1 - (line.sale_line_id.discount or 0.0) / 100.0)
+                    
+                    taxes = tax_obj.compute_all(cr, uid, line.sale_line_id.tax_id, price, line.product_qty, line.sale_line_id.order_id.partner_invoice_id.id, line.product_id, line.sale_line_id.order_id.partner_id)
+                    
+                    val += cur_obj.round(cr, uid, cur, taxes['total_included'])
+                    
+            res[picking.id] = {'amount_total': val}
+        return res
+    
+    def _get_order(self, cr, uid, ids, context=None):
+        result = {}
+        for move in self.pool.get('stock.move').browse(cr, uid, ids, context=context):
+            result[line.picking_id.id] = True
+        return result.keys()
+    
+    _columns = {
+                'amount_total': fields.function(_amount_all, digits_compute = dp.get_precision('Sale Price'), string='Total',
+                                store = {
+                                         'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 10),
+                                         'stock.move': (_get_order, ['product_qty', 'product_uos_qty'], 10),
+                                }, help="The total amount."),
+                # Impuestos desglosados
                 'tax_breakdown_ids':fields.one2many('tax.breakdown', 'picking_id', 'Tax Breakdown'),
                 }
     
@@ -58,18 +89,18 @@ class stock_picking(osv.osv):
                                 line_vals = {'picking_id': picking.id,
                                              'tax_id': tax.id,
                                              'untaxed_amount': subtotal,
-                                             'taxation_amount': subtotal * tax.amount,
-                                             'total_amount': subtotal * (1 + tax.amount)
+                                             'taxation_amount': cur_obj.round(cr, uid, cur, (subtotal * tax.amount)),
+                                             'total_amount': cur_obj.round(cr, uid, cur, (subtotal * (1 + tax.amount)))
                                              }
                                 breakdown_obj.create(cr, uid, line_vals)     
                             else:
                                 breakdown = breakdown_obj.browse(cr, uid, breakdown_ids[0])   
                                 untaxed_amount = subtotal + breakdown.untaxed_amount
-                                taxation_amount = untaxed_amount * tax.amount
+                                taxation_amount = cur_obj.round(cr, uid, cur, (untaxed_amount * tax.amount))
                                 total_amount = untaxed_amount + taxation_amount
-                                breakdown_obj.write(cr,uid,[breakdown.id],{'untaxed_amount': untaxed_amount,
-                                                                       'taxation_amount': taxation_amount,
-                                                                       'total_amount': total_amount})
+                                breakdown_obj.write(cr, uid, [breakdown.id], {'untaxed_amount': untaxed_amount,
+                                                                              'taxation_amount': taxation_amount,
+                                                                              'total_amount': total_amount})
         
         return True
     
