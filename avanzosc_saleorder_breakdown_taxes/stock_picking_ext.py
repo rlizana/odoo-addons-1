@@ -50,7 +50,7 @@ class stock_picking(osv.osv):
     def _get_order(self, cr, uid, ids, context=None):
         result = {}
         for move in self.pool.get('stock.move').browse(cr, uid, ids, context=context):
-            result[line.picking_id.id] = True
+            result[move.picking_id.id] = True
         return result.keys()
     
     _columns = {
