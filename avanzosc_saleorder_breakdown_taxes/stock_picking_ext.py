@@ -33,7 +33,11 @@ class stock_picking(osv.osv):
         tax_obj = self.pool.get('account.tax')
         res = {}
         for picking in self.browse(cr, uid, ids, context=context):
-            val = 0.0
+            res[picking.id] = {
+                'amount_untaxed': 0.0,
+                'amount_total': 0.0,
+            }
+            val1 = val = 0.0
             
             for line in picking.move_lines:
                 if line.sale_line_id:
@@ -42,9 +46,12 @@ class stock_picking(osv.osv):
                     
                     taxes = tax_obj.compute_all(cr, uid, line.sale_line_id.tax_id, price, line.product_qty, line.sale_line_id.order_id.partner_invoice_id.id, line.product_id, line.sale_line_id.order_id.partner_id)
                     
+                    val1 += cur_obj.round(cr, uid, cur, taxes['total'])
                     val += cur_obj.round(cr, uid, cur, taxes['total_included'])
                     
-            res[picking.id] = val
+            res[picking.id]['amount_untaxed'] = val1
+            res[picking.id]['amount_total'] = val
+#            res[picking.id] = val
         return res
     
     def _get_order(self, cr, uid, ids, context=None):
@@ -54,11 +61,18 @@ class stock_picking(osv.osv):
         return result.keys()
     
     _columns = {
+                'amount_untaxed': fields.function(_amount_all, digits_compute= dp.get_precision('Sale Price'), string='Untaxed Amount',
+                                store = {
+                                    'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 10),
+                                    'stock.move': (_get_order, ['product_qty', 'product_uos_qty'], 10),
+                                },
+                                multi='sums', help="The amount without tax."),
                 'amount_total': fields.function(_amount_all, digits_compute = dp.get_precision('Sale Price'), string='Total',
                                 store = {
                                          'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 10),
                                          'stock.move': (_get_order, ['product_qty', 'product_uos_qty'], 10),
-                                }, help="The total amount."),
+                                },
+                                multi='sums', help="The total amount."),
                 # Impuestos desglosados
                 'tax_breakdown_ids':fields.one2many('tax.breakdown', 'picking_id', 'Tax Breakdown'),
                 }
