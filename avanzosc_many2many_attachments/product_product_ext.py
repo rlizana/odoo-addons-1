@@ -26,7 +26,7 @@ class product_product(osv.osv):
 
     _inherit = 'product.product'
     
-    _columns = {# Adjuntos
+    _columns = {# Adjuntos Compartidos
                 'attachment_ids': fields.many2many('ir.attachment','product_attachment_rel','product_id','attachment_id','Attachments'),
                 }
     

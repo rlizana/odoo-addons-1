@@ -9,7 +9,7 @@
 			<field name="inherit_id" ref="product.product_normal_form_view" />
 			<field name="arch" type="xml">	
 				<xpath expr="//page[@string='Packaging']" position="after">
-	                <page string="Shared Attachment">
+	                <page string="Shared Attachments">
 	                    <field colspan="4" name="attachment_ids" nolabel="1" />
 	                </page>
 				</xpath>

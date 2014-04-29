@@ -13,7 +13,7 @@
 		                <page string="Template Lines">
 		                    <field name="test_template_line_ids" nolabel="1" colspan="4" />
 		                </page>
-		                <page string="Shared Attachment">
+		                <page string="Shared Attachments">
 		                    <field colspan="4" name="attachment_ids" nolabel="1" />
 		                </page>
 		            </notebook>
