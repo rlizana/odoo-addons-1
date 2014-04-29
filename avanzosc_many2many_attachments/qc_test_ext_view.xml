@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="qc_test_form_view_inh_many2manyattachments">
+			<field name="name">qc.test.form.view.inh.many2manyattachments</field>
+			<field name="model">qc.test</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="nan_quality_control.qc_test_form_view" />
+			<field name="arch" type="xml">	
+				<xpath expr="//form//group//separator[@string='Internal Note']/.." position="replace" />
+				<xpath expr="//form//group//separator[@string='External Note']/.." position="replace" />
+				<xpath expr="//form//separator[@string='Values']" position="replace" />
+				<field name="test_line_ids" position="replace">
+					<notebook colspan="4">
+						<page string="Notes">
+							<group col="1" colspan="2" >
+								<separator string="Internal Note"/>
+								<field name="test_internal_note" nolabel="1" select="2"/>
+							</group>
+							<group col="1" colspan="2" >
+								<separator string="External Note"/>
+								<field name="test_external_note" nolabel="1" select="2"/>
+							</group>
+						</page>
+		                <page string="Test Lines">
+		                    <field name="test_line_ids" nolabel="1" colspan="4" />
+		                </page>
+		                <page string="Shared Attachment">
+		                    <field colspan="4" name="attachment_ids" nolabel="1" />
+		                </page>
+		            </notebook>
+				</field>
+			</field>
+		</record>
+
+	</data>
+</openerp>

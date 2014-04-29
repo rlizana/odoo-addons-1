@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="product_normal_form_view_inh_many2manyattachments">
+			<field name="name">product.normal.form.view.inh.many2manyattachments</field>
+			<field name="model">product.product</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="arch" type="xml">	
+				<xpath expr="//page[@string='Packaging']" position="after">
+	                <page string="Shared Attachment">
+	                    <field colspan="4" name="attachment_ids" nolabel="1" />
+	                </page>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</openerp>
