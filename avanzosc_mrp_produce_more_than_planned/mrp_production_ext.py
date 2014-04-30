@@ -21,6 +21,7 @@
 from osv import osv
 from osv import fields
 import decimal_precision as dp
+from tools import float_compare
 
 class mrp_production(osv.osv):
 
