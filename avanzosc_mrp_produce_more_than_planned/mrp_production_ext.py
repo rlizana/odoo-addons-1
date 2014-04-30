@@ -18,10 +18,16 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 ##############################################################################
-from osv import osv
-from osv import fields
+from datetime import datetime
+from osv import osv, fields, orm
 import decimal_precision as dp
 from tools import float_compare
+from tools import DEFAULT_SERVER_DATETIME_FORMAT
+from tools.translate import _
+import netsvc
+import time
+import tools
+from operator import attrgetter
 
 class mrp_production(osv.osv):
 
