@@ -22,3 +22,4 @@
 ##############################################################################
 
 import res_partner_address_ext
+import municipios_cpostal
