@@ -29,6 +29,8 @@ class product_product(osv.osv):
     _inherit = 'product.product'
     
     def write(self, cr, uid, ids, vals, context=None):
+        if not isinstance(ids, list):
+            ids = [ids]
         stock_move_obj = self.pool.get('stock.move')
         res = super(product_product, self).write(cr, uid, ids, vals, context=context)
         stock_move_ids = stock_move_obj.search(cr, uid,[('product_id','in', ids)])
