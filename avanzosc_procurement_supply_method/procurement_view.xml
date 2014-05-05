@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="view_procurement_filter">
+    	    <field name="name">procurement.order.select.extended</field>
+    	    <field name="model">procurement.order</field>
+    	    <field name="type">search</field>
+    	    <field name="inherit_id" ref="procurement.view_procurement_filter"/>
+    	    <field name="arch" type="xml">
+    	        <xpath expr="//group[@string='Group By']" position="inside">
+    	            <separator orientation="vertical"/>
+    	            <filter string="Supply Method" icon="terp-stock_effects-object-colorize" 
+    	                domain="[]" context="{'group_by':'supply_method'}"/>
+    	        </xpath>
+    	    </field>
+    	</record>
+    	
+    	<record model="ir.ui.view" id="procurement_tree_view">
+    	    <field name="name">procurement.order.tree.extended</field>
+    	    <field name="model">procurement.order</field>
+    	    <field name="type">tree</field>
+    	    <field name="inherit_id" ref="procurement.procurement_tree_view"/>
+    	    <field name="arch" type="xml">
+    	        <xpath expr="//field[@name='procure_method']" position="after">
+    	            <field name="supply_method"/>
+    	        </xpath>
+    	    </field>
+    	</record>
+    	
+    	<record model="ir.ui.view" id="procurement_form_view">
+    	    <field name="name">procurement.order.form.extended</field>
+    	    <field name="model">procurement.order</field>
+    	    <field name="type">form</field>
+    	    <field name="inherit_id" ref="procurement.procurement_form_view"/>
+    	    <field name="arch" type="xml">
+    	        <xpath expr="//field[@name='procure_method']" position="after">
+    	            <field name="supply_method"/>
+    	        </xpath>
+    	    </field>
+    	</record> 
+    </data>
+</openerp>
