@@ -27,7 +27,8 @@
     "author": "Avanzosc",
     "category": "Custom Modules",
     "description": """
-    This module introduces in the customers tab new fields: Area and Sector
+    Crea una nueva opción de menú en Compras - Productos - Productos con Proveedor, en la que se muestra
+    el objeto product.supplierinfo.
     """,
     "init_xml": [],
     'update_xml': ["product_supplierinfo_ext_view.xml",
