@@ -27,7 +27,8 @@
     "author": "Avanzosc",
     "category": "Custom Modules",
     "description": """
-    
+    Este módulo crea una nueva opción de menu en Contabilidad - Clientes - Análisis de la Facturación.
+    Permite filtrar y buscar por año, mes, fecha factura, comercial, empresa, area, sector, producto, y categoría.
     """,
     "init_xml": [],
     'update_xml': ["account_invoice_line_ext_view.xml",
