@@ -27,6 +27,7 @@
     "category": "Custom Module",
     "website" : "www.avanzosc.com",
     "description": """
+    Este módulo copia una factura, generando un código nuevo para la nueva factura.
     """,
     "init_xml": [],
     'update_xml': [],
