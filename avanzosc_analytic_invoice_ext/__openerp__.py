@@ -28,7 +28,7 @@
     "website" : "http://www.avanzosc.com",
     "category": "Custom modules",
     "description": """
-    
+    Cuando el agreement pasa a DONE, cancela todas las línes de analítica no facturadas.
     """,
     "init_xml": [],
     'update_xml': ['invoicing_type_data.xml'],
