@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-18 05:43+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-05-08 05:59+0000\n"
+"X-Generator: Launchpad (build 16996)\n"
 
 #. module: account_payment_extension
 #: selection:payment.order,type:0
@@ -151,12 +151,12 @@ msgstr "Hiba !"
 #: view:payment.type:0
 #: field:payment.type,note:0
 msgid "Description"
-msgstr "Leírás"
+msgstr "Leírás"
 
 #. module: account_payment_extension
 #: field:payment.type,company_id:0
 msgid "Company"
-msgstr "Vállalat"
+msgstr "Vállalat"
 
 #. module: account_payment_extension
 #: code:addons/account_payment_extension/payment.py:0
