@@ -28,8 +28,9 @@
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
-        Avanzosc Custom Modules
-
+    Este módulo relaciona la línea de pedido de compra, con la solicitud de compra.
+    Además en la solicitud de compra crea una nueva pestaña, en la que muestra
+    todas las líneas de compra generadas.
     """,
     "init_xml": [],
     'update_xml': ['avanzosc_purchase_requisition_ext_view.xml',
