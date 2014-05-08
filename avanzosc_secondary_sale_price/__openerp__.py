@@ -28,7 +28,9 @@
     "website": "http://www.avanzosc.es",
     "complexity": "easy",
     "description": """
-    This module adds secondary price to be calculated by coef_amount
+    Este módulo define un precio secundario de venta, cuando se modifica
+    este campo calcula el precio de venta dividiento el precio secundario de 
+    venta entre la cantidad de coeficiente.
     """,
     "init_xml": [],
     "update_xml": ["product_view.xml"],
