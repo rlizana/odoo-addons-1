@@ -27,7 +27,8 @@
     "author": "AvanzOSC S.L.",
     "category": "Generic",
     "description": """
-    This module provide :
+    Este módulo añade la unidad de venta, y cantidad de venta editables en los tree de
+    líneas de pedido de compra, y de venta, líneas de factura, y líneas de albaranes.
     """,
     "init_xml": [],
     'update_xml': ['sale_order_view_ext.xml',
