@@ -24,6 +24,10 @@
 							</group>
 						</page>
 		                <page string="Test Lines">
+		                	<group colspan="4" col="8">
+		                		<field name="has_attachments" colspan="2" />
+		                		<group colspan="6" />
+		                	</group>
 		                    <field name="test_line_ids" nolabel="1" colspan="4" />
 		                </page>
 		                <page string="Shared Attachments">

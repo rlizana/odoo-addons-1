@@ -26,8 +26,31 @@ class qc_test(osv.osv):
 
     _inherit = 'qc.test'
     
-    _columns = {# Adjuntos
+    _columns = {# Tiene adjuntos
+                'has_attachments':fields.boolean('Has Attachmets', readonly=True),
+                # Adjuntos
                 'attachment_ids': fields.many2many('ir.attachment','qc_test_attachment_rel','qc_test_id','attachment_id','Attachments'),
                 }
+    
+    def create(self, cr, uid, data, context=None):
+        qc_test_id = super(qc_test, self).create(cr, uid, data, context=context)
+        test = self.browse(cr,uid,qc_test_id,context=context)
+        if test.attachment_ids:
+            self.write(cr,uid,[qc_test_id],{'has_attachments': True},context=context)            
+        return qc_test_id
+    
+    def write(self, cr, uid, ids, vals, context=None):
+        if vals.has_key('attachment_ids'):
+            attachment_ids = vals['attachment_ids']
+            if attachment_ids:
+                if attachment_ids[0][2]:
+                    vals.update({'has_attachments': True})
+                else:
+                    vals.update({'has_attachments': False})
+            else:
+                vals.update({'has_attachments': False})
+
+        result = super(qc_test, self).write(cr, uid, ids, vals, context=context)
+        return result
     
 qc_test()

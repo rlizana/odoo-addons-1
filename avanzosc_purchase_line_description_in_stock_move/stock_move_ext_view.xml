@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="view_picking_in_form_inh_descrip_in_stock_move">
+			<field name="name">view.picking.in.form.inh.descrip.in.stock.move</field>
+			<field name="model">stock.picking</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_picking_in_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='move_lines']/tree/field[@name='product_id']" position="after" >
+					<field name="purchase_name" />
+				</xpath>	
+				<xpath expr="//field[@name='move_lines']/form/group/field[@name='product_id']" position="after" >
+					<field name="purchase_name" colspan="4"/>
+				</xpath>				
+			</field>
+		</record>
+		
+	</data>
+</openerp>
