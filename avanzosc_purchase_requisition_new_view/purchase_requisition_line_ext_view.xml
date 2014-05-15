@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    		<record model="ir.ui.view" id="view_purchase_requisition_form_inh_newview">
+                <field name="name">view.purchase.requisition.form.inh.newview</field>
+                <field name="model">purchase.requisition</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='line_ids']//tree//field[@name='product_uom_id']" position="replace" />    
+                    <xpath expr="//field[@name='line_ids']//tree//field[@name='product_qty']" position="after" >
+                    	<field name="default_supplier" />
+                    	<field name="last_supplier_id" />
+                    	<field name="last_purchase_price" />
+                    	<field name="last_purchase_date" />
+                    </xpath>   
+                    <xpath expr="//field[@name='purchase_ids']//tree//field[@name='company_id']" position="replace" />    
+                    <xpath expr="//field[@name='purchase_ids']//tree//field[@name='location_id']" position="replace" /> 
+                    <xpath expr="//field[@name='purchase_ids']//tree//field[@name='origin']" position="replace" /> 
+                         
+                </field>
+            </record>
+            
+        
+    		<record model="ir.ui.view" id="view_purchase_requisition_form_ext_inh_newview">
+                <field name="name">view.purchase.requisition.form.ext.inh.newview</field>
+                <field name="model">purchase.requisition</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="avanzosc_purchase_requisition_ext.view_purchase_requisition_form_ext"/>
+                <field name="arch" type="xml">
+                	<field name="purchase_order_line_ids" position="replace">
+                		<field name="purchase_order_line_ids" nolabel="1">
+			                <tree string="Purchase Order Lines">
+			                    <field name="order_id"/>
+			                    <field name="name"/>
+			                    <field name="partner_id" string="Supplier" />
+			                    <field name="date_planned"  widget="date" width="135"/>
+			                    <field name="price_unit"/>
+			                    <field name="product_qty"/>
+			                    <field name="price_subtotal"/>
+			                </tree>
+		                </field>
+                	</field>
+                         
+                </field>
+            </record>
+            
+
+    </data>
+</openerp>

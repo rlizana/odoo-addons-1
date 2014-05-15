@@ -1,0 +1,57 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* avanzosc_purchase_requisition_new_view
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-15 14:26+0000\n"
+"PO-Revision-Date: 2014-05-15 16:28+0100\n"
+"Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: model:ir.model,name:avanzosc_purchase_requisition_new_view.model_purchase_requisition_line
+msgid "Purchase Requisition Line"
+msgstr "Línea solicitud de compra"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: model:ir.model,name:avanzosc_purchase_requisition_new_view.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea pedido de compra"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: field:purchase.requisition.line,default_supplier:0
+msgid "Default Supplier"
+msgstr "Proveedor por defecto"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: field:purchase.requisition.line,last_purchase_date:0
+msgid "Last purchase date"
+msgstr "Fecha última compra"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: field:purchase.requisition.line,last_purchase_price:0
+msgid "Last purchase price"
+msgstr "Precio última compra"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: view:purchase.requisition:0
+msgid "Purchase Order Lines"
+msgstr "Líneas de compra"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: view:purchase.requisition:0
+msgid "Supplier"
+msgstr "Proveedor"
+
+#. module: avanzosc_purchase_requisition_new_view
+#: field:purchase.requisition.line,last_supplier_id:0
+msgid "Last Supplier"
+msgstr "Proveedor última compra"
+
