@@ -29,6 +29,7 @@ class product_product(osv.osv):
     _columns = {
                 'last_purchase_price':fields.float('Last purchase price',  readonly=True),
                 'last_purchase_date':fields.date('Last purchase date',  readonly=True),
+                'last_supplier_id':fields.many2one('res.partner', 'Last Supplier'),
                 'last_sale_price':fields.float('Last sale price',  readonly=True),
                 'last_sale_date':fields.date('Last sale date',  readonly=True),
                 'last_manufacturing_cost':fields.float('Last manufacturing cost',  readonly=True),
@@ -63,7 +64,8 @@ class purchase_order(osv.osv):
         for o in self.browse(cr, uid, ids):
             for line in o.order_line:
                 if line.product_id:
-                    self.pool.get('product.product').write(cr,uid,[line.product_id.id],({'last_purchase_date': time.strftime('%Y-%m-%d %H:%M:%S')}))   
+                    self.pool.get('product.product').write(cr,uid,[line.product_id.id],({'last_purchase_date': time.strftime('%Y-%m-%d %H:%M:%S'),
+                                                                                         'last_supplier_id': line.partner_id.id}))   
         return True
     
 purchase_order()

@@ -33,10 +33,9 @@ class purchase_order_line(osv.osv):
 
     _inherit = 'purchase.order.line'
 
-    _columns = {
-
-        'purchase_requisition_id': fields.many2one('purchase.requisition', 'Purchase Requisition'),
-    }
+    _columns = {'purchase_requisition_id': fields.many2one('purchase.requisition', 'Purchase Requisition'),
+                'purchase_requisition_line_id': fields.many2one('purchase.requisition.line', 'Purchase Requisition Line'),
+                }
 
 purchase_order_line()
 
@@ -127,6 +126,7 @@ class purchase_requisition(osv.osv):
                                                              'notes': product.description_purchase,
                                                              'taxes_id': [(6, 0, taxes)],
                                                              'purchase_requisition_id' : requisition.id,
+                                                             'purchase_requisition_line_id': line.id,
                                                              }, context=context)                 
                                       
             res[requisition.id] = purchase_order_datas
@@ -184,6 +184,7 @@ class purchase_requisition(osv.osv):
                     'notes': product.description_purchase,
                     'taxes_id': [(6, 0, taxes)],
                     'purchase_requisition_id' : requisition.id,
+                    'purchase_requisition_line_id': line.id,
                 }, context=context)
 
         return res
