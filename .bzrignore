@@ -1,4 +1,6 @@
 .settings
 .project
 .pydevproject
+.directory
+.bzrignore
 en_US.pot

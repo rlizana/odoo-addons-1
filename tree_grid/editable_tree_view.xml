@@ -10,56 +10,70 @@
 			<field name="inherit_id" ref="sale.view_order_form" />
 			<field name="priority" eval="8" />
 			<field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree" position="replace">
-                    <tree string="Sales order lines" editable="top" colors="red:virtual_avl&lt;=0">
-                        <field name="product_id"
-                               on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,
-                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
-                               'lang' in context and context['lang'], True, parent.date_order, product_packaging,
-                               parent.fiscal_position)"
-                               context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"/>
-
+                <xpath expr="//field[@name='order_line']/tree" 
+                	position="replace">
+                    <tree string="Sales order lines" editable="top" 
+                    colors="red:virtual_avl&lt;=0">
+                        <field name="product_id" 
+                        on_change="product_id_change(parent.pricelist_id,
+                        product_id,product_uom_qty,product_uom,product_uos_qty,
+                        product_uos,name,parent.partner_id)"/>
 				        <field name="pricelist_id" invisible="1"/>
 			        	<field name="partner_id" invisible="1"/>
 				        <field name="date_order" invisible="1"/>
 				        <field name="shop_id" invisible="1"/>
 				    	<field name="th_weight" invisible="1"/>
 				    	<field name="delay" invisible="1"/>
-                        <field name="name" invisible="1" />
+                        <field name="name" invisible="1"/>
                         <field name="product_uom_qty"
                                string="Qty"
                                readonly="0"
-                               on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,
-                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
-                               'lang' in context and context['lang'], False, parent.date_order, product_packaging,
-                               parent.fiscal_position, True)"
-                               context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,
-                               'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"/>
+                               on_change="product_id_change(parent.
+                               pricelist_id,product_id,product_uom_qty,
+                               product_uom,product_uos_qty,product_uos,name,
+                               parent.partner_id,
+                               'lang' in context and context['lang'],True,
+                               parent.date_order,product_packaging,
+                               parent.fiscal_position,True)"
+                               context="{'partner_id':parent.partner_id,
+                               			'quantity':product_uom_qty,
+                               			'pricelist':parent.pricelist_id,
+                               			'shop':parent.shop_id,
+                               			'uom':product_uom}"/>
                         <field name="product_uom"
                                string="UoM"
-                               on_change="product_uom_change(parent.pricelist_id,product_id,product_uom_qty,
-                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
-                               'lang' in context and context['lang'], False, parent.date_order)"/>
+                               on_change="product_uom_change(parent.
+                               pricelist_id,product_id,product_uom_qty,
+                               product_uom,product_uos_qty,product_uos,
+                               name,parent.partner_id,False,False,parent.
+                               date_order)"/>
                         <field name="discount"/>
                         <field name="price_unit"/>
                         <field name="price_subtotal"/>
                         <field name="virtual_avl" invisible="1"/>
                         <field name="qty_avl" invisible="1"/>
                         <field name="product_uos_qty" invisible="1"
-                            on_change="uos_change(product_uos, product_uos_qty, product_id)" />
+                            on_change="uos_change(product_uos, product_uos_qty,
+                            product_id)" />
                         <field name="product_uos" invisible="1"/>
                         <field name="state" invisible="1"/>
                         <field name="type" invisible="1"/>
                         <field
                               name="product_packaging"
-                              context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'shop':parent.shop_id,'uom':product_uom}"
-                              on_change="product_id_change(parent.pricelist_id,product_id,product_uom_qty,
-                               product_uom,product_uos_qty,product_uos,name,parent.partner_id,
-                               'lang' in context and context['lang'], True, parent.date_order, product_packaging,
-                               parent.fiscal_position)"
+                              context="{'partner_id':parent.partner_id,
+                              'quantity':product_uom_qty,
+                              'pricelist':parent.pricelist_id,
+                              'shop':parent.shop_id,'uom':product_uom}"
+                              on_change="product_id_change(parent.pricelist_id,
+                              product_id,product_uom_qty,
+                               product_uom,product_uos_qty,product_uos,name,
+                               parent.partner_id,False,True,parent.date_order,
+                               product_packaging,parent.fiscal_position)"
                               domain="[('product_id','=',product_id)]"
                               invisible="1"/>                        
-                        <field name="tax_id" domain="[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]" invisible="1"/>
+                        <field name="tax_id" domain="[('parent_id','=',False),
+                        ('type_tax_use','&lt;&gt;','purchase')]" 
+                        invisible="1"/>
                     </tree>
                 </xpath>
 
