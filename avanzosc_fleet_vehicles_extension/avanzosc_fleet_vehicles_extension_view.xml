@@ -12,7 +12,7 @@
 				<xpath expr="/form/group/field[@name='location']" position="after">
 						<field name="product_id" domain="[('name','=',name)]" />
 						<field name="depot" />
-				</xpath> 
+				</xpath>
 				<xpath expr="/form/notebook/page[@string='Fuel and Maintainace']" position="replace">
 					<page string="Fuel and Maintainace">
 						<field name="primarymeter" />
@@ -73,9 +73,6 @@
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<data>
-				<xpath  expr="/form/field[@name='invno']" position="replace">
-				<field name="invoiceno"/>
-				</xpath>
 				<xpath expr="/form/field[@name='date']" position="replace">
 				</xpath>
 				<xpath expr="/form/field[@name='costpl']" position="replace">

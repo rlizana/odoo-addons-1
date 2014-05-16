@@ -23,7 +23,7 @@
 
 {
     'name': 'Fleet Management System',
-    'version': '1.11.04',
+    'version': '2.0',
     'category': 'Vertical Modules/Fleet Management',
     'description': """The module is a vertical for fleet operations management""",
     'author': 'Sharoon Thomas (Daniel -Mod)',
