@@ -101,7 +101,8 @@ class wizard_create_preventive (osv.osv_memory):
                         elif op_meas == 'mon':
                             calc_date = time_now + relativedelta(months=op_freq)
                         else:
-                            calc_date = datetime.strptime(last_op_date,"%Y-%m-%d") + relativedelta(years=op_freq)
+                            calc_date = time_now + relativedelta(years=op_freq)
+                            #calc_date = datetime.strptime(last_op_date,"%Y-%m-%d") + relativedelta(years=op_freq)
                         alc_date = datetime.strftime(calc_date,"%Y-%m-%d")
                         last_date = datetime.strftime(time_now,"%Y-%m-%d")
                         res['nextdate'] = calc_date

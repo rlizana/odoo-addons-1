@@ -34,7 +34,7 @@
 			</xpath>
 			</data>
 			</field>
-		</record>-->
+		</record>
 		
 		<record id="preventive_proceed_tree_inherit" model="ir.ui.view">
 			<field name="name">preventive.proceed.tree.inherit</field>
@@ -80,7 +80,7 @@
 			<field name="name">mrp.repair.form.preventive</field>
 			<field name="model">mrp.repair</field>
 			<field name="type">form</field>
-			<field name="inherit_id" ref="pesa_mrp_repair.view_repair_order_form_pesa"/>
+			<field name="inherit_id" ref="mrp_repair.view_repair_order_form"/>
 			<field name="arch" type="xml">
 			<data>			    
 				<xpath expr="/form/notebook/page[@string='Extra Info']" position="after">
