@@ -1113,3 +1113,7 @@ msgstr "Planning Needed"
 msgid "Is a vehicle spare"
 msgstr "Is a vehicle spare"
 
+#. module: fleet_manager
+#: selection:fleet.vehicles,type:0
+msgid "Van"
+msgstr "Van"

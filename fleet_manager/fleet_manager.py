@@ -56,7 +56,8 @@ class fleet_vehicles(osv.osv):
                 'type': fields.selection([
                          ('truck','Truck'),
                          ('bus','Bus'),
-                         ('car','Car')], 'Class', required=True,),        
+                         ('car','Car'),
+                         ('van','Van')], 'Class', required=True,),        
                 'status': fields.selection([
                         ('active','Active'),
                         ('inactive','InActive'),
