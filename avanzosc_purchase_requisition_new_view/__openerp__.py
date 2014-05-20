@@ -24,7 +24,7 @@
 {
     "name": "Avanzosc Purchase Requisition New View", 
     "version": "1.0",
-    "depends": ["purchase_requisition","avanzosc_purchase_requisition_ext","avanzosc_product_extended"],
+    "depends": ["purchase_requisition","avanzosc_purchase_requisition_ext","avanzosc_product_extended_multicompany"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
