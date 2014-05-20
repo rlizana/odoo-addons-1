@@ -66,7 +66,7 @@ class vehicle_prev_op(osv.osv):
         if context is None:
             context = {}
         res = super(vehicle_prev_op, self).default_get(cr, uid, fields, context)
-        if 'name' in context.keys():
+        if 'name' in context:
             if context['name']:
                 opt = self.pool.get('fleet.vehicles').search(cr, uid, [('name', '=', context['name'])])[0]
                 res.update({'vehicle': opt})
@@ -103,7 +103,7 @@ class optype(osv.osv):
             'margin_fre2':fields.integer('Frequency Margin 2'),
             'measUnit2':fields.selection([('day', 'Days'),('week', 'Weeks'),('mon','Months'),('year', 'Years')],'Meas.'),
             'description':fields.text('Description'),
-            'nexttime':fields.time('Operation Time', size=10, help="Expected time for the execution of the operation. hh:mm:ss"),
+            'nexttime':fields.float('Operation Time', size=10, help="Expected time for the execution of the operation. hh:mm:ss"),
         }
     
     def onchange_measUnit(self, cr, uid, fields, measUnit, context=None):
@@ -228,7 +228,7 @@ class operation_material(osv.osv):
         if context is None:
             context = {}
         res = {}
-        if 'name' in context.keys():
+        if 'name' in context:
             if context['name']:
                 opt = self.pool.get('optype').search(cr, uid, [('name', '=', context['name'])])[0]
                 res.update({'op_temp_mat': opt})

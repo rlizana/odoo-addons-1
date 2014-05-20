@@ -47,7 +47,9 @@ class sale_order(osv.osv):
                     else:
                         general_account = line.product_id.categ_id.property_account_income_categ.id
                     if not line.invoice_date:
-                        raise osv.except_osv(_('User error'), _('Invoice Date not found for: %s') %(line.product_id.name))
+                        raise osv.except_osv(_('User error'), 
+                                            _('Invoice Date not found for: %s') 
+                                            %(line.product_id.name))
                     values = {
                             'date': line.invoice_date,
                             'account_id': analytic_account,
@@ -83,7 +85,8 @@ class sale_order(osv.osv):
                         cont = line.installments
                         while cont > 0:
                             obj_account_analytic_line.create(cr,uid,values)
-                            next_date = DateTime.strptime(values['date'], '%Y-%m-%d') + increment_size
+                            next_date = DateTime.strptime(values['date'], 
+                                                '%Y-%m-%d') + increment_size
                             values.update({
                                 'date': next_date.strftime('%Y-%m-%d'),
                             })
@@ -92,9 +95,11 @@ class sale_order(osv.osv):
                         values = {
                             'partner_id': order.partner_id.id,
                             'service': line.product_id.recur_service.id,
-                            'signed_date': line.invoice_date,
+                            'signed_date': order.agreement_date or 
+                                            line.invoice_date,
                             'cur_effect_date': line.expire_date,
-                            'partner_signed_date': line.partner_signed_date or line.invoice_date,
+                            'partner_signed_date': line.partner_signed_date or 
+                                                line.invoice_date,
                             'analytic_account': analytic_account,
                             'payment': line.payment,
                             'recurr_unit_number': line.interval,

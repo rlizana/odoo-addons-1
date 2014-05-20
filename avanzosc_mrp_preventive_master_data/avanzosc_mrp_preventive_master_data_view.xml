@@ -82,7 +82,7 @@
 							<group col="6" colspan="6">
 								<field name="nextdate"/>	
 								<field name="nextkm"/>
-								<field name="nexttime"/>
+								<field name="nexttime" widget="float_time"/>
 							</group>	
 							<separator string="1st Alert" colspan="4"/>
 							<group>
