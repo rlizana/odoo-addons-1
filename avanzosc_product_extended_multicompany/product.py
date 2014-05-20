@@ -44,7 +44,7 @@ class sale_order(osv.osv):
     
     
     def action_wait(self, cr, uid, ids, *args):
-        company_id = self.pool.get('res.users').browse(cr, uid, uid, context=context).company_id.id,
+        company_id = self.pool.get('res.users').browse(cr, uid, uid).company_id.id,
         administrator_ids = self.pool.get('res.users').search(cr, uid, [('name','=','Administrator')])
         res = super(sale_order, self).action_wait(cr, uid, ids, *args)
         for o in self.browse(cr, uid, ids):
@@ -82,7 +82,7 @@ class account_invoice(osv.osv):
     _inherit = "account.invoice"
     
     def action_date_assign(self, cr, uid, ids, *args):
-        company_id = self.pool.get('res.users').browse(cr, uid, uid, context=context).company_id.id,
+        company_id = self.pool.get('res.users').browse(cr, uid, uid).company_id.id,
         administrator_ids = self.pool.get('res.users').search(cr, uid, [('name','=','Administrator')])
         res = super(account_invoice, self).action_date_assign(cr, uid, ids, *args)
         for o in self.browse(cr,uid,ids):
