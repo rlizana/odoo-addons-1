@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 11:21+0000\n"
-"PO-Revision-Date: 2014-05-13 13:22+0100\n"
+"POT-Creation-Date: 2014-05-22 07:50+0000\n"
+"PO-Revision-Date: 2014-05-22 09:52+0100\n"
 "Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,73 +16,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: avanzosc_many2many_attachments
-#: model:ir.model,name:avanzosc_many2many_attachments.model_product_product
-msgid "Product"
-msgstr "Producto"
-
-#. module: avanzosc_many2many_attachments
-#: view:product.product:0
-#: view:qc.test:0
-#: view:qc.test.template:0
-msgid "Shared Attachments"
-msgstr "Adjuntos Compartidos"
-
-#. module: avanzosc_many2many_attachments
-#: field:product.product,attachment_ids:0
-#: field:qc.test,attachment_ids:0
-#: field:qc.test.template,attachment_ids:0
-msgid "Attachments"
-msgstr "Adjuntos"
-
-#. module: avanzosc_many2many_attachments
-#: view:qc.test:0
-msgid "Test Lines"
-msgstr "Líneas de Test"
-
-#. module: avanzosc_many2many_attachments
-#: field:qc.test,has_attachments:0
-msgid "Has Attachmets"
-msgstr "Tiene Adjuntos Compatidos"
-
-#. module: avanzosc_many2many_attachments
-#: view:qc.test:0
-msgid "Notes"
-msgstr "Notas"
-
-#. module: avanzosc_many2many_attachments
-#: field:ir.attachment,test_template_ids:0
-msgid "Test Templates"
-msgstr "Plantillas de Test"
-
-#. module: avanzosc_many2many_attachments
 #: view:ir.attachment:0
 msgid "In Products"
 msgstr "En Productos"
-
-#. module: avanzosc_many2many_attachments
-#: field:ir.attachment,test_ids:0
-msgid "Tests"
-msgstr "Tests"
-
-#. module: avanzosc_many2many_attachments
-#: model:ir.model,name:avanzosc_many2many_attachments.model_qc_test
-msgid "qc.test"
-msgstr "qc.test"
-
-#. module: avanzosc_many2many_attachments
-#: view:qc.test:0
-msgid "External Note"
-msgstr "Nota externa"
-
-#. module: avanzosc_many2many_attachments
-#: constraint:product.product:0
-msgid "Error: Invalid ean code"
-msgstr "Error: Código EAN inválido"
-
-#. module: avanzosc_many2many_attachments
-#: field:ir.attachment,product_ids:0
-msgid "Products"
-msgstr "Productos"
 
 #. module: avanzosc_many2many_attachments
 #: view:ir.attachment:0
@@ -95,14 +31,19 @@ msgid "In Test Templates"
 msgstr "En Plantillas de Test"
 
 #. module: avanzosc_many2many_attachments
-#: view:qc.test.template:0
-msgid "Template Lines"
-msgstr "Líneas de Plantillas"
+#: model:ir.actions.server,name:avanzosc_many2many_attachments.ir_actions_server_action_product_attachment
+msgid "Product attachment shortcut"
+msgstr "Ver Adjuntos Compartidos"
+
+#. module: avanzosc_many2many_attachments
+#: model:ir.model,name:avanzosc_many2many_attachments.model_product_product
+msgid "Product"
+msgstr "Producto"
 
 #. module: avanzosc_many2many_attachments
 #: view:qc.test:0
-msgid "Internal Note"
-msgstr "Nota interna"
+msgid "Test Lines"
+msgstr "Líneas de Test"
 
 #. module: avanzosc_many2many_attachments
 #: model:ir.model,name:avanzosc_many2many_attachments.model_ir_attachment
@@ -110,7 +51,81 @@ msgid "ir.attachment"
 msgstr "ir.attachment"
 
 #. module: avanzosc_many2many_attachments
+#: model:ir.model,name:avanzosc_many2many_attachments.model_wiz_view_product_attachment
+msgid "Wiz View Product Attachment"
+msgstr "Wiz View Product Attachment"
+
+#. module: avanzosc_many2many_attachments
+#: model:ir.model,name:avanzosc_many2many_attachments.model_wiz_view_product_attachment_line
+msgid "Wiz View Product Attachment Line"
+msgstr "Wiz View Product Attachment Line"
+
+#. module: avanzosc_many2many_attachments
+#: view:qc.test:0
+msgid "Internal Note"
+msgstr "Nota interna"
+
+#. module: avanzosc_many2many_attachments
 #: model:ir.model,name:avanzosc_many2many_attachments.model_qc_test_template
 msgid "Test Template"
 msgstr "Plantilla del test"
+
+#. module: avanzosc_many2many_attachments
+#: view:product.product:0
+#: view:qc.test:0
+#: view:qc.test.template:0
+msgid "Shared Attachments"
+msgstr "Adjuntos Compartidos"
+
+#. module: avanzosc_many2many_attachments
+#: view:qc.test:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: avanzosc_many2many_attachments
+#: field:qc.test,has_attachments:0
+msgid "Has Attachmets"
+msgstr "Tiene Adjuntos Compatidos"
+
+#. module: avanzosc_many2many_attachments
+#: field:ir.attachment,test_ids:0
+msgid "Tests"
+msgstr "Tests"
+
+#. module: avanzosc_many2many_attachments
+#: field:ir.attachment,product_ids:0
+msgid "Products"
+msgstr "Productos"
+
+#. module: avanzosc_many2many_attachments
+#: field:product.product,attachment_ids:0
+#: field:qc.test,attachment_ids:0
+#: field:qc.test.template,attachment_ids:0
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: avanzosc_many2many_attachments
+#: model:ir.model,name:avanzosc_many2many_attachments.model_qc_test
+msgid "qc.test"
+msgstr "qc.test"
+
+#. module: avanzosc_many2many_attachments
+#: field:ir.attachment,test_template_ids:0
+msgid "Test Templates"
+msgstr "Plantillas de Test"
+
+#. module: avanzosc_many2many_attachments
+#: view:qc.test:0
+msgid "External Note"
+msgstr "Nota externa"
+
+#. module: avanzosc_many2many_attachments
+#: constraint:product.product:0
+msgid "Error: Invalid ean code"
+msgstr "Error: Código EAN inválido"
+
+#. module: avanzosc_many2many_attachments
+#: view:qc.test.template:0
+msgid "Template Lines"
+msgstr "Líneas de Plantillas"
 
