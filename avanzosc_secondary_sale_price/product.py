@@ -50,8 +50,9 @@ class product_product(osv.osv):
     
     def onchange_uos_list_price(self, cr, uid, ids, uos_list_price, coef_amount, context=None):
         
-        if uos_list_price:
+        if uos_list_price and coef_amount:
             list_price = uos_list_price / coef_amount 
+                
             return {'value':{'list_price': list_price}}
 
         return {}
