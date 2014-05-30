@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-20 13:43+0000\n"
-"PO-Revision-Date: 2014-05-20 13:43+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2014-05-30 11:22+0000\n"
+"PO-Revision-Date: 2014-05-30 13:23+0100\n"
+"Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+
+#. module: avanzosc_product_extended_multicompany
+#: model:res.groups,name:avanzosc_product_extended_multicompany.group_father_company_standard_price
+msgid "Group Father Company Product Standard Price"
+msgstr "Group Father Company Product Standard Price"
 
 #. module: avanzosc_product_extended_multicompany
 #: sql_constraint:purchase.order:0
@@ -32,6 +37,21 @@ msgid "Sales Order"
 msgstr "Pedido de venta"
 
 #. module: avanzosc_product_extended_multicompany
+#: model:ir.model,name:avanzosc_product_extended_multicompany.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: avanzosc_product_extended_multicompany
+#: constraint:stock.move:0
+msgid "You must assign a production lot for this product"
+msgstr "Debe asignar un lote de producción para este producto"
+
+#. module: avanzosc_product_extended_multicompany
+#: constraint:stock.move:0
+msgid "You can not move products from or to a location of the type view."
+msgstr "No puede mover productos desde o hacia una ubicación de tipo vista."
+
+#. module: avanzosc_product_extended_multicompany
 #: view:product.product:0
 msgid "Extra information"
 msgstr "Extra information"
@@ -40,6 +60,11 @@ msgstr "Extra information"
 #: model:ir.model,name:avanzosc_product_extended_multicompany.model_product_product
 msgid "Product"
 msgstr "Producto"
+
+#. module: avanzosc_product_extended_multicompany
+#: constraint:stock.move:0
+msgid "You try to assign a lot which is not from the same product"
+msgstr "Está intentando asignar un lote que no es del mismo producto"
 
 #. module: avanzosc_product_extended_multicompany
 #: constraint:product.product:0
@@ -55,4 +80,9 @@ msgstr "Factura"
 #: model:ir.model,name:avanzosc_product_extended_multicompany.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de compra"
+
+#. module: avanzosc_product_extended_multicompany
+#: field:product.product,parent_company_standard_price:0
+msgid "Multicompany Cost Price"
+msgstr "Precio Coste Multicompañía"
 

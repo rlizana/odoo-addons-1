@@ -21,7 +21,11 @@
                     		</group>                 	
                     	</group>  
                     	<newline/>                  
-                    </xpath>                   
+                    </xpath>     
+
+                    <field name="price_margin" position="before">
+                    	<field name="parent_company_standard_price" groups="avanzosc_product_extended_multicompany.group_father_company_standard_price"/>
+                    </field>          
                 </field>
             </record>
             

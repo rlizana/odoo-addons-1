@@ -19,9 +19,8 @@
 #
 ##############################################################################
 from osv import osv, fields
-#import decimal_precision as dp
+import decimal_precision as dp
 import time
-
 from tools.translate import _
 
 class product_product(osv.osv):
@@ -35,7 +34,9 @@ class product_product(osv.osv):
                 'last_manufacturing_cost':fields.float('Last manufacturing cost',  readonly=True),
                 'last_manufacturing_end_date':fields.date('Last manufacturing end date',  readonly=True),
                 'standard_cost':fields.float('Standard cost'),  
+                'parent_company_standard_price': fields.float('Multicompany Cost Price', readonly=True, digits_compute=dp.get_precision('Purchase Price')),
                 }
+    
 product_product()
 
 

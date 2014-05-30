@@ -22,7 +22,7 @@
 {
     "name": "Avanzosc Product Extended Multicompany",
     "version": "1.0",
-    "depends": ["product", "sale"],
+    "depends": ["product", "sale","stock"],
     "author": "AvanzOSC",
     "website" : "http://www.avanzosc.com",
     "category": "category",
@@ -38,7 +38,8 @@
     en la ficha del producto.
     """,
     "init_xml": [],
-    'update_xml': ['product_view.xml'],
+    'update_xml': ['security/avanzosc_product_extended_multicompany.xml',
+                   'product_view.xml'],
     'demo_xml': [],
     'installable': True,
     'active': False,
