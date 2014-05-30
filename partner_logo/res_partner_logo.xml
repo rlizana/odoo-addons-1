@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+	
+		<record id="view_res_partner_logo_form" model="ir.ui.view">
+			<field name="name">view.res.partner.logo.form</field>
+			<field name="model">res.partner</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/group" position="attributes">
+				<attribute name="col">8</attribute>
+				</xpath>
+				<xpath expr="/form/group//field[@name='customer']/.." position="after">
+					<group>
+						<field name="logo" widget="image" nolabel="1"/>
+					</group>
+				</xpath>
+			</field>
+		</record>
+		
+	</data>
+</openerp>
