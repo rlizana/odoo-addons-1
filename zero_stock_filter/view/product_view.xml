@@ -1,33 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="product_search_form_view_zero_stock" model="ir.ui.view">
-            <field name="name">product.search.form</field>
+       
+	<record id="product_search_form_view_ext" model="ir.ui.view">
+            <field name="name">product.search.form.ext</field>
             <field name="model">product.product</field>
             <field name="type">search</field>
-            <field name="priority">17</field>
-            <field name="inherit_id" ref="product.product_search_form_view"/>
             <field name="arch" type="xml">
-                <field name="name" position="after">
-                    <filter name="stock" string="Stock" 
-                    icon="terp-accessories-archiver" 
+                <search string="Product">
+                   <filter string="Services" icon="terp-accessories-archiver" domain="[('type','=','service')]"/>
+                   <filter string="Products" icon="terp-accessories-archiver" domain="['|',('type','=','product'),('type','=','consu')]" help="Both stockable and consumable products"/>
+                   <separator orientation="vertical"/>
+                   <filter string="To Sell" name="filter_to_sell" icon="terp-accessories-archiver-minus" domain="[('sale_ok','=',1)]"/>
+                   <filter name="filter_to_purchase" string="To Purchase" icon="terp-accessories-archiver+" domain="[('purchase_ok', '=', 1)]" />
+                   <separator orientation="vertical"/>
+                   <field name="name"
+                        filter_domain="['|', ('name','ilike',self),('default_code','ilike',self)]"/>
+                   <filter name="stock" string="Stock"  icon="terp-accessories-archiver" 
                     domain="[('virtual_available','&gt;',0)]" 
                     context="{'location':context.get('location')}"/>
-                    <field name="virtual_available" context="{'location':context.get('location')}"/>
-					<field name="qty_available" context="{'location':context.get('location')}"/>
-                </field>
+                   <field name="virtual_available" context="{'location':context.get('location')}"/>
+                   <field name="qty_available" context="{'location':context.get('location')}"/>
+                   <field name="categ_id" widget="selection" operator="child_of" groups="base.group_extended"/>
+                   <newline/>
+                   <group expand="0" string="Context..." groups="base.group_extended">
+                       <field name="pricelist_id" widget="selection" context="{'pricelist': self}" />
+                       <separator orientation="vertical" groups="base.group_multi_company" />
+                       <field name="company_id" widget="selection" groups="base.group_multi_company" />
+                   </group>
+                   <newline/>
+                   <group  expand='0' string='Group by...' groups="base.group_extended">
+                       <filter string='Category' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'categ_id'}" groups="base.group_extended"/>
+                       <separator orientation="vertical"/>
+                       <filter string='Default UOM' icon="terp-mrp" domain="[]" context="{'group_by' : 'uom_id'}" />
+                       <separator orientation="vertical"/>
+                       <filter string='Type' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'type'}" />
+                       <separator orientation="vertical" groups="base.group_multi_company"/>
+                       <filter string='Company' icon="terp-go-home" domain="[]" context="{'group_by' : 'company_id'}" groups="base.group_multi_company" />
+                   </group>
+
+                </search>
             </field>
         </record>
        
-        <record id="product.product_normal_action" 
+        <record id="product_normal_action_ext" 
         model="ir.actions.act_window">
-            <field name="name">Products</field>
+            <field name="name">Product Stock Filters</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.product</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="product.product_product_tree_view"/>
             <field name="search_view_id" 
-            ref="product.product_search_form_view"/>
+            ref="product_search_form_view_ext"/>
             <field name="context">{'search_default_stock':1, }</field>
             <field name="help">You must define a Product for everything you 
             buy or sell. Products can be raw materials, stockable products, 
@@ -35,6 +59,9 @@
             information about your products related to procurement logistics, 
             sales price, product category, suppliers and so on.</field>
         </record>
+        
+      <menuitem action="product_normal_action_ext" id="menu_stock_filter_products" 
+      		parent="base.menu_product" sequence="4"/>
     </data>
 </openerp>
 
