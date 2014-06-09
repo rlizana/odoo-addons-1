@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="wizar_view_sale_tax">
+            <field name="name">wizard.view.sale.tax</field>
+            <field name="model">sale.tax.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form string="Update Taxes">
+                <separator string="Update sale line Taxes" colspan="4"/>
+                <group col="2" colspan="4">
+                    <button icon="gtk-cancel" special="cancel" string="Close"/>
+                    <button name="update_sale_line_taxes" string="Update" type="object" icon="gtk-ok"/>
+                </group>
+            </form>
+            </field>
+        </record>
+
+<!--        <record id="action_sale_extended" model="ir.actions.act_window">-->
+<!--            <field name="name">Price List</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">sale.extended.wizard</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="view_id" ref="view_sale_inherited"/> -->
+<!--    	</record>-->
+
+    <act_window
+            id="sale_tax_act_window"
+            name="Recalculate Sale Line Taxes"
+            view_mode="form"
+            view_type="form"
+            res_model="sale.tax.wizard"
+            src_model="sale.order"
+            target="new"
+            key2="client_action_multi"	/>
+
+    </data>
+</openerp>
