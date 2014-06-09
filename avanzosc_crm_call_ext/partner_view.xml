@@ -40,9 +40,287 @@
 								<button name="case_pending" string="Not Held" states="open"
 									type="object" icon="gtk-media-pause" />
 							</tree>
+							<form string="Phone Call">
+				                 <group col="8" colspan="8">
+										<group col="6" colspan="6">
+						                    <field name="name" required="1"/>
+						                    <field name="partner_phone"/>
+						                    <field name="duration" widget="float_time"/>
+						                    <field name="date" required="1"/>
+						                    <field name="user_id"/>
+						                    <field name="section_id" colspan="1" widget="selection"/>
+						                    <separator string="Description" colspan="6"/>
+						                	<field name="description" nolabel="1" colspan="6"/>
+						                </group>
+						                <group col="1" colspan="2">
+											<button string="Schedule a Meeting" name="action_make_meeting" icon="gtk-redo" type="object"/>
+											<button string="Convert to Lead" name="%(phonecall_to_lead_act)d" icon="gtk-index" type="action" attrs="{'invisible':[('lead_id','!=',False)]}"/>
+											<button string="Convert to Opportunity" name="%(crm.phonecall2opportunity_act)d" icon="gtk-index" type="action" attrs="{'invisible':[('opportunity_id','!=',False)]}"/>
+											<button string="Convert to Helpdesk" name="%(phonecall_to_technicalcase_act)d" icon="terp-tools" type="action" attrs="{'invisible':[('helpdesk_id','!=',False)]}"/>	
+											<button string="Convert to Claim" name="%(phonecall_to_admincase_act)d" icon="terp-administration" type="action" attrs="{'invisible':[('helpdesk_id','!=',False)]}"/>
+						                    <button string="Schedule Other Call" icon="terp-call-start" name="%(crm.phonecall_to_phonecall_act)d" type="action"/>
+										</group>
+									</group>
+					                <group col="4" colspan="2">
+						                    <separator colspan="4" string="Contacts"/>
+						                    <field name="partner_id" on_change="onchange_partner_id(partner_id)"/>
+						                    <button string="Create a Partner" icon="terp-partner" name="%(crm.action_crm_phonecall2partner)d" type="action" attrs="{'invisible':[('partner_id','!=',False)]}" groups="base.group_partner_manager"/>
+						                    <newline/>
+						                    <field name="partner_address_id" on_change="onchange_partner_address_id(partner_address_id)"/>
+						                    <field name="partner_mobile"/>
+						                    <separator colspan="4" string="Accounting Information"/>
+											<field name="credit"/>
+											<field name="invoice2pay"/>
+											<field name="last_invoice"/>
+											<field name="last_payment"/>
+					                </group>
+					                <group col="2" colspan="2">
+						                    <separator colspan="2" string="Categorization"/>
+						                    <field name="categ_id" widget="selection" domain="[('object_id.model', '=', 'crm.phonecall')]"/>
+						                    <field name="priority"/>
+						                    <field name="lead_id"/>
+						                    <field name="opportunity_id"/>
+						                    <field name="helpdesk_id"/>
+											<field name="claim_id"/>
+					                </group>
+					                <group col="8" colspan="4">
+						                    <field name="state" widget="statusbar" statusbar_visible="open,done" statusbar_colors="{&quot;pending&quot;:&quot;red&quot;}" select="1"/>
+						                    <button name="case_cancel" string="Cancel" states="open,pending" type="object" icon="gtk-cancel"/>
+						                    <button name="case_open" string="Todo" states="pending" type="object" icon="gtk-go-forward"/>
+						                    <button name="case_pending" string="Not Held" states="open" type="object" icon="gtk-media-pause"/>
+						                    <button name="case_close" string="Held" states="open,pending" type="object" icon="gtk-jump-to"/>
+						                    <button name="case_reset" string="Reset to Todo" states="cancel" type="object" icon="gtk-convert"/>
+					                </group>
+			            	</form>
 						</field>
-						<field name="helpdesk_ids" nolabel="1" colspan="4" context="{'default_partner_id': active_id}"/>
-						<field name="claim_ids" nolabel="1" colspan="4" context="{'default_partner_id': active_id}"/>
+						<field name="helpdesk_ids" nolabel="1" colspan="4" context="{'default_partner_id': active_id}">
+							<form string="Helpdesk Support">
+			                    <group colspan="4" col="7">
+			                        <field name="name" select="1" string="Query"/>
+			                        <field name="section_id" widget="selection"/>
+			                        <field name="user_id" select="1"/>
+			                        <button name="remind_user"
+			                            states="open,pending"
+			                            string="Send Reminder" type="object"
+			                            icon="gtk-go-forward" />
+			                        <field name="date" select="1"/>
+			                        <field name="date_deadline"/>
+			                    </group>
+			                    <notebook colspan="4">
+			                        <page string="General">
+			                        <group colspan="4" col="6">
+			                            <group col="3" colspan="2">
+			                                <separator colspan="4" string="Communication"/>
+			                                <field name="partner_id" colspan="2"
+			                                    on_change="onchange_partner_id(partner_id, email_from)"
+			                                    select="1" />
+			                                <field name="partner_address_id" colspan="2"
+			                                    on_change="onchange_partner_address_id(partner_address_id, email_from)"
+			                                />
+			                                <newline/>
+			                                <field name="email_from" colspan="2"/>
+			                                <button name="remind_partner"
+			                                    states="open,pending"
+			                                    string="Send Reminder" type="object"
+			                                    icon="gtk-go-forward" />
+			                            </group>
+			
+			                            <group col="2" colspan="2">
+			                                <separator colspan="4" string="Categorization"/>
+			                                <field name="priority"/>
+			                                <field name="categ_id" context="{'object_id':'crm.helpdesk'}"/>
+			                                <field name="channel_id"/>
+			                            </group>
+										<group col="2" colspan="2">
+											<separator colspan="2" string="Accounting Information"/>
+											<field name="credit"/>
+											<field name="invoice2pay"/>
+											<field name="last_invoice"/>
+											<field name="last_payment"/>
+										</group>
+									</group>
+									<group col="8" colspan="4">
+			                                <field name="state" select="1" widget="statusbar" statusbar_visible="draft,open,done" statusbar_colors='{"pending":"blue"}'/>
+			                                <button name="case_cancel"
+			                                    states="draft,open,pending" string="Cancel"
+			                                    type="object" icon="gtk-cancel" />
+			                                <button name="case_open"
+			                                    states="draft,pending" string="Open"
+			                                    type="object" icon="gtk-go-forward" />
+			                                <button name="case_pending"
+			                                    states="draft,open" string="Pending"
+			                                    type="object" icon="gtk-media-pause" />
+			                                <button name="case_escalate"
+			                                    states="open,draft,pending"
+			                                    string="Escalate" type="object"
+			                                    icon="gtk-go-up" />
+			                                <button name="case_close"
+			                                    states="open,draft,pending" string="Close"
+			                                    type="object" icon="gtk-jump-to" />
+			                                <button name="case_reset"
+			                                    states="done,cancel"
+			                                    string="Reset to Draft" type="object"
+			                                    icon="gtk-convert" />
+			                            </group>
+									</page>
+									<page string="Notes">
+			                            <separator colspan="4" string="Notes"/>
+			                            <field name="description" colspan="4" nolabel="1" />
+			                        </page>
+			                        <page string="Communication &amp; History" groups="base.group_extended">
+			                            <group colspan="4">
+			                                <field colspan="4" name="email_cc" string="Global CC" widget="char"/>
+			                            </group>
+			                            <field name="message_ids" colspan="4" nolabel="1" mode="tree" readonly="1">
+			                                <tree string="History">
+			                                    <field name="display_text" string="History Information"/>
+			                                    <field name="email_from" invisible="1"/>
+			                                    <button
+			                                        string="Reply" attrs="{'invisible': [('email_from', '=', False)]}"
+			                                        name="%(mail.action_email_compose_message_wizard)d"
+			                                        context="{'mail.compose.message.mode':'reply', 'message_id':active_id}"
+			                                        icon="terp-mail-replied" type="action" />
+			                                </tree>
+			                            </field>
+			                             <button string="Add Internal Note"
+			                                name="%(crm.action_crm_add_note)d"
+			                                context="{'model': 'crm.lead' }"
+			                                icon="terp-document-new" type="action" />
+			                            <button string="Send New Email"
+			                                name="%(mail.action_email_compose_message_wizard)d"
+			                                icon="terp-mail-message-new" type="action"/>
+			                        </page>
+			                        <page string="Extra Info" groups="base.group_extended">
+			                            <group colspan="2" col="2">
+			                                <separator colspan="4" string="Dates"/>
+			                                <field name="create_date"/>
+			                                <field name="write_date"/>
+			                                <field name="date_closed"/>
+			                            </group>
+			                            <group colspan="2" col="2">
+			                                <separator colspan="4" string="Misc"/>
+			                                <field name="id" select="1"/>
+			                                <field name="active"/>
+			                            </group>
+			                            <group colspan="2" col="2">
+			                                <separator colspan="4" string="Estimates"/>
+			                                <field name="planned_cost"/>
+			                            </group>
+			                            <newline/>
+			                            <group colspan="4" col="2">
+			                                <separator colspan="4" string="References"/>
+			                                <field colspan="4" name="ref"/>
+			                                <field colspan="4" name="ref2"/>
+			                            </group>
+			                        </page>
+			                    </notebook>
+			                </form>
+						</field>
+						
+						
+						<field name="claim_ids" nolabel="1" colspan="4" context="{'default_partner_id': active_id}">
+							<form string="Claim">
+								<group colspan="4" col="6">
+			                        <field name="name"/>
+			                        <field name="date"/>
+				                    <button name="%(claim_to_meeting_act)d" string="Create meeting" type="action" icon="gtk-jump-to" />
+                    			</group>
+			                    <group colspan="4" col="6">
+			                        <field name="user_id"/>
+			                        <field name="section_id" widget="selection"/>
+			                        <group colspan="2" col="4">
+			                            <field name="stage_id" domain="[('section_ids','=',section_id)]"/>
+			                            <button name="stage_previous" string="" type="object" icon="gtk-go-back"/>
+			                            <button name="stage_next" string="" type="object" icon="gtk-go-forward"/>
+			                        </group>
+			                        <newline/>
+			                        <field name="priority"/>
+			                        <field name="date_deadline"/>
+			                    </group>
+			                    <group colspan="4" col="4">
+			                        <notebook>
+			                            <page string="Claim Description">
+			                            	<group colspan="4" col="6">
+			                                <group colspan="2" col="2">
+			                                    <separator colspan="2" string="Claim Reporter"/>
+			                                    <field name="partner_id" string="Partner" on_change="onchange_partner_id(partner_id)"/>
+			                                    <field name="partner_address_id" string="Contact" on_change="onchange_partner_address_id(partner_address_id, email_from)"/>
+			                                    <field name="partner_phone"/>
+			                                    <field name="email_from" widget="email"/>
+			                                </group>
+			                                <group colspan="2" col="2">
+			                                    <separator colspan="2" string="Responsibilities"/>
+			                                    <field name="user_fault"/>
+			                                    <field name="categ_id" widget="selection" domain="[('object_id.model', '=', 'crm.claim')]"/>
+			                                    <field name="ref"/>
+			                                </group>
+			                                <group col="2" colspan="2">
+													<separator colspan="2" string="Accounting Information"/>
+													<field name="credit"/>
+													<field name="invoice2pay"/>
+													<field name="last_invoice"/>
+													<field name="last_payment"/>
+											</group>
+											</group>
+			                                <separator colspan="4" string=""/>
+			                                <group col="8" colspan="4">
+			                                    <field name="state" select="1" widget="statusbar" statusbar_visible="draft,open,done" statusbar_colors="{&quot;pending&quot;:&quot;blue&quot;}"/>
+			                                    <button name="case_cancel" string="Cancel" states="draft,open,pending" type="object" icon="gtk-cancel"/>
+			                                    <button name="case_pending" string="Pending" states="draft,open" type="object" icon="gtk-media-pause"/>
+			                                    <button name="case_open" string="Open" states="draft,pending" type="object" icon="gtk-go-forward"/>
+			                                    <button name="case_close" string="Done" states="open,pending" type="object" icon="gtk-jump-to"/>
+			                                    <button name="case_reset" string="Reset to Draft" states="done,cancel" type="object" icon="gtk-convert"/>
+			                                </group>
+			                            </page>
+			                            <page string="Description">
+			                            	<separator colspan="4" string="Claim/Action Description"/>
+			                                <field name="description" colspan="4" nolabel="1"/>
+			                            </page>
+			                            <page string="Follow Up">
+			                                <group colspan="2" col="2">
+			                                    <separator colspan="2" string="Actions"/>
+			                                    <field name="date_action_next"/>
+			                                    <field name="action_next"/>
+			                                </group>
+			                                <group colspan="2" col="2">
+			                                    <separator colspan="2" string="Dates"/>
+			                                    <field name="create_date"/>
+			                                    <field name="date_closed"/>
+			                                    <field name="write_date"/>
+			                                </group>
+			
+			                                <group colspan="2" col="2">
+			                                    <separator colspan="2" string="Root Causes"/>
+			                                    <field name="cause" colspan="2" nolabel="1"/>
+			                                </group>
+			                                <group colspan="2" col="2">
+			                                    <separator colspan="2" string="Resolution Actions"/>
+			                                    <field name="type_action"/>
+			                                    <field name="resolution" colspan="2" nolabel="1"/>
+			                                </group>
+			                            </page>
+			                            <page string="Communication &amp; History" groups="base.group_extended">
+			                                <group colspan="4">
+			                                    <field colspan="4" name="email_cc" string="Global CC" widget="char"/>
+			                                </group>
+			                                <field name="message_ids" colspan="4" nolabel="1" mode="tree" readonly="1">
+			                                    <tree string="History">
+			                                        <field name="display_text" string="History Information"/>
+			                                        <field name="email_from" invisible="1"/>
+			                                        <button string="Reply" attrs="{'invisible': [('email_from', '=', False)]}" name="%(mail.action_email_compose_message_wizard)d" context="{'mail.compose.message.mode':'reply'}" icon="terp-mail-replied" type="action"/>
+			                                    </tree>
+			                                </field>
+			                                <button string="Add Internal Note" name="%(crm.action_crm_add_note)d" context="{'model': 'crm.lead' }" icon="terp-document-new" type="action"/>
+			                                <button string="Send New Email" name="%(mail.action_email_compose_message_wizard)d" icon="terp-mail-message-new" type="action"/>
+			                            </page>
+			                        </notebook>
+			                    </group>
+                    
+							
+							</form>
+						</field>
+
+						
 						<field name="meeting_ids" nolabel="1" colspan="4" context="{'default_partner_id': active_id}">
 							<tree string="Meetings"
 								colors="gray:state in ('draft', 'cancel','done','pending')">
@@ -52,9 +330,153 @@
 								<field name="date_deadline" string="End Date" />
 								<field name="state" invisible="1" />
 							</tree>
-						</field>
-					</page>
-				</page>
+							
+							<form string="Meetings">
+			                <group col="6" colspan="4">
+			                    <field name="name" select="1" string="Summary"
+			                           required="1" />
+			                    <field name="categ_id" widget="selection"
+			                        string="Meeting Type" groups="base.group_extended"
+			                        domain="[('object_id.model', '=', 'crm.meeting')]" />
+			                    <field name="sale_order_id"/>
+			                    <newline/>
+			                    <field name="date" string="Start Date" required="1"
+			                        on_change="onchange_dates(date,duration,False,allday)" />
+			                    <field name="duration" widget="float_time"
+			                        on_change="onchange_dates(date,duration,False,allday)" />
+			                    <field name="date_deadline" string="End Date" required="1"
+			                        on_change="onchange_dates(date,False,date_deadline)" />
+			                    <field name="location" />
+			                    <field name="alarm_id" string="Reminder"
+			                        widget="selection" />
+			                    <field name="crm_claim_id"/>
+			                    <field name="allday" on_change="onchange_dates(date,False,False,allday)"/>
+			                    <group colspan="2" col="4" attrs="{'readonly': ['|', ('recurrent_uid','!=',False), ('state','=','done')]}">
+			                           <field name="recurrency"/>
+			                    </group>
+			                </group>
+			                <notebook colspan="4">
+			                <page string="Meeting">
+			                    <group col="6" colspan="4">
+			                        <group col="2" colspan="2">
+			                            <separator colspan="2" string="Assignment"/>
+			                            <field name="user_id" />
+			                            <field name="organizer" groups="base.group_extended"/>
+			                            <field name="section_id" widget="selection" on_change="onchange_team(section_id)"
+			                                groups="base.group_extended"/>
+			                        </group><group col="2" colspan="2">
+			                            <separator colspan="2" string="Contacts"/>
+			                            <field name="partner_id" string="Partner"
+			                                on_change="onchange_partner_id(partner_id)" />
+			                            <field name="partner_address_id"
+			                                string="Contact"
+			                                on_change="onchange_partner_address_id(partner_address_id, email_from)" />
+			                            <field name="email_from"/>
+			                            <field name="partner_phone"/>
+			                        </group><group col="2" colspan="2">
+			                            <separator colspan="2" string="Visibility"/>
+			                            <field name="class" string="Privacy" groups="base.group_extended"/>
+			                            <field name="show_as" string="Show time as" groups="base.group_extended"/>
+			                            <field name="rrule" invisible="1" readonly="1"/>
+			                            <field name="recurrent_id" invisible="1"/>
+			                            <field name="recurrent_uid" invisible="1"/>
+			                        </group>
+			                    </group>
+			                    <separator colspan="4"/>
+			                    <group col="8" colspan="4" groups="base.group_extended">
+			                        <field name="state" />
+			                        <button name="case_close" string="Done" states="open,released" type="object" icon="gtk-jump-to"/>
+				  					<button name="case_released" string="Release" states="open" type="object" icon="gtk-jump-to"/>
+			                        <button name="case_reset" string="Reset to Unconfirmed" states="open,done,released" type="object" icon="gtk-convert"/>
+			                        <button name="case_open" string="Confirm"
+			                            states="draft" type="object"
+			                            icon="gtk-go-forward" />
+			                    </group>
+			                    </page>
+			                    <page string="Description">
+				                    <separator string="Description" colspan="4" />
+				                    <field name="description" nolabel="1" colspan="4" />
+			                    </page>
+			                    <page string="Invitation Detail">
+			                        <button string="Invite People"
+			                            name="%(base_calendar.action_view_calendar_invite_attendee_wizard)d"
+			                            icon="terp-partner" type="action"
+			                            attrs="{'readonly': [('state', '=', 'done')]}"
+			                            context="{'model' : 'crm.meeting', 'attendee_field':'attendee_ids'}" colspan="2"/>
+			                        <field name="attendee_ids" colspan="4"
+			                            nolabel="1" widget="one2many" mode="tree,form">
+			                            <tree string="Invitation details" editable="top">
+			                                <field name="sent_by_uid" string="From"/>
+			                                <field name="user_id" string="To"/>
+			                                <field name="email" string="Mail To"/>
+			                                <field name="role" select="1" />
+			                                <field name="state" />
+			                                <button name="do_tentative"
+			                                    states="needs-action,declined,accepted"
+			                                    string="Uncertain" type="object"
+			                                    icon="terp-crm" />
+			                                <button name="do_accept" string="Accept"
+			                                    states="needs-action,tentative,declined"
+			                                    type="object" icon="gtk-apply" />
+			                                <button name="do_decline" string="Decline"
+			                                    states="needs-action,tentative,accepted"
+			                                    type="object" icon="gtk-cancel" />
+			                                <button
+			                                    name="%(base_calendar.action_view_calendar_invite_attendee_wizard)d"
+			                                    string="Delegate" type="action"
+			                                    icon="gtk-sort-descending"
+			                                    states="needs-action,tentative,declined,accepted"
+			                                    context="{'model' : 'calendar.attendee', 'attendee_field' : 'child_ids'}" />
+			                            </tree>
+			                            <form string="Invitation details">
+			                                <notebook colspan="4">
+			                                    <page string="Details">
+			                                        <field name="email" />
+			                                        <field name="rsvp" select="1" />
+			                                        <field name="cutype" select="1" />
+			                                        <field name="role" select="1" />
+			                                        <separator colspan="4" string="" />
+			                                        <group col="6" colspan="4">
+			                                            <field name="state" />
+			                                            <button name="do_tentative"
+			                                                states="needs-action,declined,accepted"
+			                                                string="Uncertain"
+			                                                type="object"
+			                                                icon="terp-crm" />
+			                                            <button name="do_accept"
+			                                                string="Accept"
+			                                                states="needs-action,tentative,declined"
+			                                                type="object"
+			                                                icon="gtk-apply" />
+			                                            <button name="do_decline"
+			                                                string="Decline"
+			                                                states="needs-action,tentative,accepted"
+			                                                type="object"
+			                                                icon="gtk-cancel" />
+			                                            <button
+			                                                name="%(base_calendar.action_view_calendar_invite_attendee_wizard)d"
+			                                                string="Delegate"
+			                                                type="action"
+			                                                icon="gtk-sort-descending"
+			                                                states="needs-action,tentative,declined,accepted"
+			                                                context="{'model' : 'calendar.attendee', 'attendee_field' : 'child_ids'}" />
+			                                        </group>
+			                                    </page>
+			                                    <page string="Other">
+			                                        <field name="user_id"/>
+			                                        <field name="partner_address_id" select="1" />
+			                                        <newline />
+			                                    </page>
+			                                </notebook>
+			                            </form>
+										
+									</field>
+								</page>
+							</notebook>		
+				</form>		
+			</field>
+			</page>
+			</page>
 			</field>
 		</record>
 
