@@ -20,11 +20,12 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
-
 {
     "name" : "Avanzosc Stock Picking CRM Repair",
     "version" : "1.6",
+    "depends" : ["base","stock","crm_claim","mrp_repair","stock_supplier_packref"],
+    "author": "AvanzOSC",
+    "category": "Generic Modules",
     "description": """ 
                 This module adds:
                  - A link to crm claims in the stock pickings 
@@ -33,15 +34,13 @@
                  - For any product return it must have a crm claim linked.
                  - Filters Added / Automatic procedures added
                     """,
-    "author": "AvanzOSC",
-    "website" : "http://www.avanzosc.com",
-    "depends" : ["base","crm_claim","mrp_repair","stock_supplier_packref"],
-    "category" : "Generic Modules",
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : ["stock_crm_picking_view.xml",
-                    "crm_mrp_view.xml"],
-    "active" : False,
-    "installable" : True
-    
+    "init_xml": [],
+    'update_xml': ['stock_crm_picking_view.xml',
+                   'crm_mrp_view.xml',
+                   ],    
+
+    'demo_xml': [],   
+    'installable': True,
+    'active': False, 
+#    'certificate': 'certificate',
 }

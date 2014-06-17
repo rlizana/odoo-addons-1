@@ -2,8 +2,8 @@
 	<data>
 	
 	<!-- Stock Picking (internal) tree view -->
-	<record id="vpicktree_inherit" model="ir.ui.view">
-		<field name="name">stock.picking.tree.inherit</field>
+	<record id="vpicktree_inh_stpickcrmrepair" model="ir.ui.view">
+		<field name="name">vpicktree.inh.stpickcrmrepair</field>
 		<field name="model">stock.picking</field>
 		<field name="type">tree</field>
 		<field name="inherit_id" ref="stock.vpicktree" />
@@ -15,8 +15,8 @@
 	</record>
 
 	<!-- Stock Picking (internal) form view -->
-	<record id="view_picking_form_inherit" model="ir.ui.view">
-		<field name="name">stock.picking.out.form.inherit</field>
+	<record id="view_picking_form_inh_stpickcrmrepair" model="ir.ui.view">
+		<field name="name">view.picking.form.inh.stpickcrmrepair</field>
 		<field name="model">stock.picking</field>
 		<field name="type">form</field>
 		<field name="inherit_id" ref="stock.view_picking_form" />
@@ -28,8 +28,8 @@
 	</record>
 
 	<!-- Stock Picking (internal) search view -->
-	<record id="view_picking_internal_search_inherit" model="ir.ui.view">
-		<field name="name">stock.picking.internal.search.inherit</field>
+	<record id="view_picking_internal_search_inh_stpickcrmrepair" model="ir.ui.view">
+		<field name="name">view.picking.internal.search.inh.stpickcrmrepair</field>
 		<field name="model">stock.picking</field>
 		<field name="type">search</field>
 		<field name="inherit_id" ref="stock.view_picking_internal_search" />
@@ -44,8 +44,8 @@
     
     
     <!--		Stock Picking (out) tree view   -->
-		<record id="view_picking_out_tree_inherit" model="ir.ui.view">
-      <field name="name">stock.picking.out.tree.inherit</field>
+		<record id="view_picking_out_tree_inh_stpickcrmrepair" model="ir.ui.view">
+      <field name="name">view.picking.out.tree.inh.stpickcrmrepair</field>
       <field name="model">stock.picking</field>
       <field name="type">tree</field>
       <field name="inherit_id" ref="stock.view_picking_out_tree"/>
@@ -57,8 +57,8 @@
     </record>
     
     <!--		Stock Picking (out) form view   -->
-		<record id="view_picking_out_form_inherit" model="ir.ui.view">
-      <field name="name">stock.picking.form.inherit</field>
+		<record id="view_picking_out_form_inh_stpickcrmrepair" model="ir.ui.view">
+      <field name="name">view.picking.out.form.inh.stpickcrmrepair</field>
       <field name="model">stock.picking</field>
       <field name="type">form</field>
       <field name="inherit_id" ref="stock.view_picking_out_form"/>
@@ -70,8 +70,8 @@
     </record>
     
     	<!-- Stock Picking (out) search view -->
-	<record id="view_picking_out_search_inherit" model="ir.ui.view">
-		<field name="name">tock.picking.out.search.inherit</field>
+	<record id="view_picking_out_search_inh_stpickcrmrepair" model="ir.ui.view">
+		<field name="name">view.picking.out.search.inh.stpickcrmrepair</field>
 		<field name="model">stock.picking</field>
 		<field name="type">search</field>
 		<field name="inherit_id" ref="stock.view_picking_out_search" />
@@ -85,8 +85,8 @@
 	</record>
     
         <!--		Stock Picking (in) tree view   -->
-		<record id="view_picking_in_tree_inherit" model="ir.ui.view">
-      <field name="name">stock.picking.in.tree.inherit</field>
+		<record id="view_picking_in_tree_inh_stpickcrmrepair" model="ir.ui.view">
+      <field name="name">view.picking.in.tree.inh.stpickcrmrepair</field>
       <field name="model">stock.picking</field>
       <field name="type">tree</field>
       <field name="inherit_id" ref="stock.view_picking_in_tree"/>
@@ -99,8 +99,8 @@
     
         
     <!--		Stock Picking (in) view   -->
-		<record id="view_picking_in_form_inherit" model="ir.ui.view">
-      <field name="name">stock.picking.in.form.inherit</field>
+		<record id="view_picking_in_form_inh_stpickcrmrepair" model="ir.ui.view">
+      <field name="name">view.picking.in.form.inh.stpickcrmrepair</field>
       <field name="model">stock.picking</field>
       <field name="type">form</field>
       <field name="inherit_id" ref="stock.view_picking_in_form"/>
@@ -117,8 +117,8 @@
     </record>
     
         	<!-- Stock Picking (in) search view -->
-	<record id="view_picking_in_search_inherit" model="ir.ui.view">
-		<field name="name">stock.picking.in.search.inherit</field>
+	<record id="view_picking_in_search_inh_stpickcrmrepair" model="ir.ui.view">
+		<field name="name">view.picking.in.search.inh.stpickcrmrepair</field>
 		<field name="model">stock.picking</field>
 		<field name="type">search</field>
 		<field name="inherit_id" ref="stock.view_picking_in_search" />

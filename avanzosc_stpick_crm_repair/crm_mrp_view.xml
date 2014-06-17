@@ -2,15 +2,15 @@
 	<data>
 
 		<!-- CRM Claim -->
-		<record id="crm_case_claims_form_view_inherit" model="ir.ui.view">
-			<field name="name">CRM - Claims Form.inherit</field>
+		<record id="crm_case_claims_form_view_inh_stpickcrmrepair" model="ir.ui.view">
+			<field name="name">crm.case.claims.form.view.inh.stpickcrmrepair</field>
 			<field name="model">crm.claim</field>
 			<field name="type">form</field>
 			<field name="inherit_id" ref="crm_claim.crm_case_claims_form_view" />
 			<field name="arch" type="xml">
 				<data>
 					<xpath
-						expr="/form/group/notebook/page[@string='Communication &amp; History']"
+						expr="//page[@string='Communication &amp; History']"
 						position="after">
 						<page string="Extra Information Related">
 							<separator colspan="4" string="Stock Pickings Related" />
@@ -332,14 +332,14 @@
 		</record>
 
 		<!-- Res Partner -->
-		<record id="view_partner_form_inherit" model="ir.ui.view">
-			<field name="name">view.partner.form.inherit</field>
+		<record id="view_partner_form_inh_stpickcrmrepair" model="ir.ui.view">
+			<field name="name">view.partner.form.inh.stpickcrmrepair</field>
 			<field name="model">res.partner</field>
 			<field name="type">form</field>
 			<field name="inherit_id" ref="base.view_partner_form" />
 			<field name="arch" type="xml">
 				<data>
-					<xpath expr="/form/notebook/page[@string='Notes']" position="after">
+					<xpath expr="//page[@string='Notes']" position="after">
 						<page string="CRM Claims">
 							<field name="crm_claims" colspan="4" nolabel="1" />
 						</page>
@@ -349,8 +349,8 @@
 		</record>
 
 		<!-- MRP Repair tree view -->
-		<record id="view_repair_order_tree_inherit" model="ir.ui.view">
-			<field name="name">view.repair.order.tree.inherit</field>
+		<record id="view_repair_order_tree_inh_stpickcrmrepair" model="ir.ui.view">
+			<field name="name">view.repair.order.tree.inh.stpickcrmrepair</field>
 			<field name="model">mrp.repair</field>
 			<field name="type">tree</field>
 			<field name="inherit_id" ref="mrp_repair.view_repair_order_tree" />
@@ -362,8 +362,8 @@
 		</record>
 
 		<!-- MRP Repair Form view -->
-		<record id="view_repair_order_form_inherit" model="ir.ui.view">
-			<field name="name">view.repair.order.form.inherit</field>
+		<record id="view_repair_order_form_inh_stpickcrmrepair" model="ir.ui.view">
+			<field name="name">view.repair.order.form.inh.stpickcrmrepair</field>
 			<field name="model">mrp.repair</field>
 			<field name="type">form</field>
 			<field name="inherit_id" ref="mrp_repair.view_repair_order_form" />
@@ -375,8 +375,8 @@
 		</record>
 
 		<!-- MRP Repair search view -->
-		<record id="view_repair_order_form_filter_inherit" model="ir.ui.view">
-			<field name="name">mrp.repair.select.inherit</field>
+		<record id="view_repair_order_form_filter_inh_stpickcrmrepair" model="ir.ui.view">
+			<field name="name">view.repair.order.form.filter.inh.stpickcrmrepair</field>
 			<field name="model">mrp.repair</field>
 			<field name="type">search</field>
 			<field name="inherit_id" ref="mrp_repair.view_repair_order_form_filter" />
