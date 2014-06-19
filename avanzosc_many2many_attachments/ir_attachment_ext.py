@@ -34,12 +34,5 @@ class ir_attachment(osv.osv):
                 # Tests
                 'test_ids': fields.many2many('qc.test','qc_test_attachment_rel','attachment_id','qc_test_id','Tests'),
                 }
-                
-    def create(self, cr, uid, data, context=None):
-        qc_test_id = super(qc_test, self).create(cr, uid, data, context=context)
-        test = self.browse(cr,uid,qc_test_id,context=context)
-        if test.attachment_ids:
-            self.write(cr,uid,[qc_test_id],{'has_attachments': True},context=context)            
-        return qc_test_id
     
 ir_attachment()
