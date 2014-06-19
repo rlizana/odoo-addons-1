@@ -362,12 +362,12 @@
 			<form string="Test Line" >
 				<group colspan="4" attrs="{'invisible':[('proof_type','=','qualitative')]}" >
 					<separator string="Test Result" colspan="4"/>
-					<field name="actual_value_qt" />
+					<field name="actual_value_qt" on_change="onchange_actual_value_qt(uom_id, test_uom_id, actual_value_qt, min_value, max_value)"/>
 					<field name="test_uom_id"/>
 				</group>
 				<group col="2" colspan="4" attrs="{'invisible':[('proof_type','!=','qualitative')]}" >
 					<separator string="Test Values" colspan="2"/>
-					<field name="actual_value_ql" />
+					<field name="actual_value_ql" on_change="onchange_actual_value_ql(actual_value_ql, valid_value_ids)" />
 				</group>
 				<group  colspan="4" >
 					<separator string="Check Values" colspan="4" />

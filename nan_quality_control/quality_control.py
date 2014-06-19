@@ -506,6 +506,27 @@ class qc_test_line(osv.osv):
         'proof_type': fields.selection([('qualitative','Qualitative'),('quantitative','Quantitative')], 'Proof Type', readonly=True),
         'success': fields.function( quality_test_check,type='boolean',method=True, string="Success?", select="1"),
     }
+    
+    def onchange_actual_value_qt(self, cr, uid, ids, uom_id, test_uom_id, actual_value_qt, min_value, max_value ,context=None):
+        res={}
+        if actual_value_qt:
+            amount = self.pool.get('product.uom')._compute_qty( cr, uid, uom_id, actual_value_qt, test_uom_id)
+            if amount >=  min_value and amount <= max_value:
+                res.update({'success': True})
+            else:
+                res.update({'success': False})
+        return {'value': res}     
+    
+    def onchange_actual_value_ql(self, cr, uid, ids, actual_value_ql, valid_value_ids, context=None):
+        res={}
+        if actual_value_ql:
+            valid = valid_value_ids[0][2]
+            if actual_value_ql in valid:
+                res.update({'success': True})
+            else:
+                res.update({'success': False})
+        return {'value': res}       
+    
 qc_test_line()
 
 
