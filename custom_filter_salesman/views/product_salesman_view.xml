@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="view_product_tree_inherit" model="ir.ui.view">
+			<field name="name">view.product.tree.inherit</field>
+			<field name="model">product.product</field>
+			<field name="type">tree</field>
+			<field name="inherit_id" ref="product.product_product_tree_view" />
+			<field name="arch" type="xml">
+				<data>
+				<field name="standard_price" position="attributes">
+					<attribute name="groups">custom_filter_salesman.group_salesman_filter</attribute>
+				</field>
+				</data>
+			</field>
+	</record>
+	</data>
+</openerp>
