@@ -28,7 +28,6 @@ class stock_move(osv.osv):
     _inherit="stock.move"
     
     def write(self, cr, uid, ids, vals, context=None):
-        print '*** ESTOY EN MI WRITE'
         user_obj = self.pool.get('res.users')
         product_obj = self.pool.get('product.product')
         found = False   
@@ -40,12 +39,8 @@ class stock_move(osv.osv):
         result = super(stock_move, self).write(cr, uid, ids, vals)
         
         if ids and found:
-            print '*** ids: ' + str(ids)
             for move in self.browse(cr,uid,ids,context=context):
-                print '*** move id: ' + str(move.id)
-                print '*** product_id: ' + str(move.product_id)
                 if move.product_id:
-                    print '*** realizo mi tratamiento'
                     administrator_ids = user_obj.search(cr, uid, [('name','=','Administrator'),
                                                                   ('active','=', True),])
                     administrator = user_obj.browse(cr,uid,administrator_ids[0])
