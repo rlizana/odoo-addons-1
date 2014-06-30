@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    <!-- Import Inventory Wizard form -->
+
+          <record id="view_import_inventory" model="ir.ui.view">
+            <field name="name">import.inventory.form</field>
+            <field name="model">import.inventory</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import Inventory">
+                    <group colspan="4" >
+                          <separator string="" colspan="4"/>
+                          <field name="location" />
+                          <field name="data" filename="name" />
+                          <field name="name" colspan="2"/>     
+                    </group>
+                   <separator string="" colspan="4"/>
+                   <group colspan="4" col="6">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button  icon="gtk-ok" name="action_import" string="Import" type="object"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+        
+	<!-- Result Window -->
+	        
+<!-- 	    <record id="view_import_fuellog_result" model="ir.ui.view"> -->
+<!--             <field name="name">import.refuellog.result.form</field> -->
+<!--             <field name="model">import.fuellog</field> -->
+<!--             <field name="type">form</field> -->
+<!--             <field name="arch" type="xml"> -->
+<!--                 <form string="Import Refuel Log Info"> -->
+<!--                    <separator string="Fuel Data Log Loaded!" colspan="4"/> -->
+<!--                    <button  icon="gtk-ok" special="end" string="Accept"/> -->
+<!--                </form> -->
+<!--             </field> -->
+<!--         </record> -->
+	        
+    <!--  Action of Import inventory wizard -->
+
+    <record id="action_import_inventory" model="ir.actions.act_window">
+        <field name="name">Import Inventory</field>
+        <field name="res_model">import.inventory</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="view_import_inventory"/>
+       <field name="target">new</field>
+    </record> 
+   
+    <menuitem  id="menu_import_inventory" name="Import Inventory" action="action_import_inventory" parent="stock.menu_stock_inventory_control"/>
+    
+	</data>
+</openerp>   
