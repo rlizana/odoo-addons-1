@@ -294,7 +294,7 @@ class ExtraFunctions(object):
             return res[index]
         return len(res)==1 and res[0] or res
 
-    def _asimage(self, field_value, rotate=None, size_x=None, size_y=None, uom='px'):
+    def _asimage(self, field_value, rotate=None, size_x=None, size_y=None, uom='px', hold_ratio=False):
         def size_by_uom(val, uom, dpi):
             if uom=='px':
                 result=str(val/dpi)+'in'
