@@ -299,7 +299,7 @@ class ExtraFunctions(object):
             if uom=='px':
                 result=str(val/dpi)+'in'
             elif uom=='cm':
-                result=str(val/dpi/2.54)+'in'
+                result=str(val/2.54)+'in'
             elif uom=='in':
                 result=str(val)+'in'
             return result
@@ -319,6 +319,21 @@ class ExtraFunctions(object):
                 im.save(tf, format)
         except Exception, e:
             print e
+
+        if hold_ratio:
+            img_ratio = im.size[0] / float(im.size[1]) # width / height
+            if size_x and not size_y:
+                size_y = size_x / img_ratio
+            elif not size_x and size_y:
+                size_x = size_y * img_ratio
+            elif size_x and size_y:
+                size_y2 = size_x / img_ratio
+                size_x2 = size_y * img_ratio
+                if size_y2 > size_y:
+                    size_x = size_x2
+                elif size_x2 > size_x:
+                    size_y = size_y2
+
         size_x = size_x and size_by_uom(size_x, uom, dpi_x) or str(im.size[0]/dpi_x)+'in'
         size_y = size_y and size_by_uom(size_y, uom, dpi_y) or str(im.size[1]/dpi_y)+'in'
         return tf, 'image/%s' % format, size_x, size_y
