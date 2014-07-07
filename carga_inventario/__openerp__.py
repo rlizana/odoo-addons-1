@@ -28,7 +28,7 @@
     'category': "Generic Modules",
     'author': 'AvanzOSC',
     'website': 'www.avanzosc.com',
-    'depends': [],
+    'depends': ['stock'],
     'init_xml': [],
     'update_xml': [
                    "wizard/import_inventory_view.xml"],
@@ -37,7 +37,6 @@
     'active': False,
     'description': """
         - Wizard para importación de archivos csv con inventario
-
  		""",
 }
 

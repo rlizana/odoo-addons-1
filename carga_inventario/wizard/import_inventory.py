@@ -1,14 +1,15 @@
 
+
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution    
-#    Copyright (C) 2008-2012 Daniel (AvanzOSC). All Rights Reserved
-#    25/07/2012
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2008-2014 AvanzOSC (Daniel). All Rights Reserved
+#    Date: 25/07/2012
 #
 #    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
 #
 #    This program is distributed in the hope that it will be useful,
@@ -22,35 +23,31 @@
 ##############################################################################
 
 
-from osv import fields, osv, orm
-from tools import ustr
+from osv import fields, osv
 from tools.translate import _
-import StringIO
 import base64
 import csv
-import tools
 import cStringIO
-import string
-from collections import defaultdict
 import os
 import tempfile
 from datetime import datetime
 import time
 
-try:
-    import pyExcelerator as xl
-except:
-    print 'pyExcelerator Python module not installed'
+# try:
+#     import pyExcelerator as xl
+# except:
+#     print 'pyExcelerator Python module not installed'
 
-
-class import_inventory(osv.osv_memory):
+class ImportInventory(osv.osv_memory):
     """Import inventory"""
     _name = 'import.inventory'
     _description = 'Import inventory'
     _columns = {
         'data': fields.binary('File', required=True),
         'name': fields.char('Filename', 256, required=False),
-        'location': fields.many2one('stock.location','Ubicacion')
+        'location': fields.many2one('stock.location','Ubicacion'),
+        'delimeter': fields.char('Delimeter', 1,
+                                 help='Default delimeter is ","'),
     }
 
     def action_import(self, cr, uid, ids, context=None):
@@ -65,10 +62,11 @@ class import_inventory(osv.osv_memory):
         inventory_line_obj = self.pool.get('stock.inventory.line')
         model_obj  = self.pool.get('ir.model.data')
         product_obj = self.pool.get('product.product')
-        
+        user_obj = self.pool['res.users']
         for wiz in self.browse(cr, uid, ids, context):
             if not wiz.data:
-                raise osv.except_osv(_('UserError'), _("You need to select a file!"))
+                raise osv.except_osv(_('UserError'),
+                                     _("You need to select a file!"))
             # Decode the file data
             data = base64.b64decode(wiz.data)
             file_type = (wiz.name).split('.')[1]
@@ -78,7 +76,6 @@ class import_inventory(osv.osv_memory):
             filename = wiz.name
             location = wiz.location
             #base_provider_location = stoc_loc_obj.search(cr,uid,[('name','=','Suppliers')])
-            
 #            prov_loc_name = locat_provideer.name
 #            if locat_provideer.name == 'Proveedores' or not provideer.property_stock_supplier :
 #                provi_view = {'name': provideer.name,'location_id': base_provider_location[0],'active':True ,'usage':'view', 'chained_location_type':'none','chained_auto_packing' :'manual'}
@@ -87,36 +84,41 @@ class import_inventory(osv.osv_memory):
 #                provi_location = stoc_loc_obj.create(cr,uid,provi_val)
 #                supplier_obj.write(cr,uid,provideer.id,{'property_stock_supplier':provi_location})
 #            else:
-                
             provi_location = location.id
-            
-            reader_info = []       
-             
+            reader_info = []
             if ext == 'csv':
+                if wiz.delimeter:
+                    delimeter = wiz.delimeter
+                else:
+                    delimeter = ','
                 reader = csv.reader(input,
-                                    delimiter=',',
+                                    delimiter = delimeter,
                                     lineterminator='\r\n'
                                     )
-                
                 reader_info.extend(reader)
+                keys = reader_info[0]
                 del reader_info[0]
-
-                keys = []
                 values= {}
                 # crear inventario
                 fecha = time.strftime('%Y%m%d')
-                company_lst = company_obj.search(cr,uid,[])
-                invent_val = {'name': fecha, 'date': fecha, 'company_id':company_lst[0] }
+                user = user_obj.browse(cr,uid,uid)
+                if location.company_id:
+                    company_id = location.company_id.id
+                else:
+                    company_id = user.company_id.id
+                invent_val = {'name': fecha, 
+                              'date': fecha,
+                              'company_id': company_id}
                 inventory = inventory_obj.create(cr,uid,invent_val)
                 # Inventario creado
-                
-                keys= ['ref', 'sto_qty']
                 for i in range(len(reader_info)):
                     val = {}
                     field = reader_info[i]
                     values = dict(zip(keys, field))
                     prod_list = []
-                    prod_list = product_obj.search(cr,uid,[('default_code','=',values['ref'])])
+                    prod_list = product_obj.search(cr,uid,
+                                                   [('default_code','=',
+                                                     values['default_code'])])
                     if prod_list != []  : # Crear linea de inventario
                         product = product_obj.browse(cr,uid,prod_list[0])
                         val['product_id'] = product.id
@@ -131,8 +133,4 @@ class import_inventory(osv.osv_memory):
             else:
                     print "Not a .csv file"
         return res
-
-      
-import_inventory()
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
