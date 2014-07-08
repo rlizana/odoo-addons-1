@@ -1,0 +1,32 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* product_unique_default_code
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 15:48+0000\n"
+"PO-Revision-Date: 2014-07-08 17:49+0100\n"
+"Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: product_unique_default_code
+#: model:ir.model,name:product_unique_default_code.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: product_unique_default_code
+#: constraint:product.product:0
+msgid "Error: Invalid ean code"
+msgstr "Error: Código EAN inválido"
+
+#. module: product_unique_default_code
+#: sql_constraint:product.product:0
+msgid "The code of Product must be unique !"
+msgstr "El código del producto debe ser único!"
+
