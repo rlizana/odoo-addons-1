@@ -41,17 +41,13 @@
             <field name="arch" type="xml">
                 <search string="Search Product Supplier">
                  <group>
-<!--                     <separator orientation="vertical"/> -->
-<!--                     <filter icon="terp-emblem-important" name="exception" string="Exception" domain="[('state','in',('except_invoice','except_picking'))]"  help="Purchase order which are in the exception state"/> -->
-<!--                     <separator orientation="vertical"/> -->
-<!--                     <filter icon="terp-gtk-go-back-rtl" name="not_invoiced" string="Not invoiced" domain="[('invoice_ids','=', False)]"  help="Purchase orders that include lines not invoiced." groups="base.group_extended"/> -->
-<!--                     <separator orientation="vertical"/> -->
                     <field name="name" string="Supplier"/>
                     <field name="product_id"/>
                     <field name="product_name"/>
+                    <field name="product_code"/>
                 </group>
                 <newline/>
-                  <group expand="0" string="Group By..." groups="base.group_extended">
+                  <group expand="1" string="Group By..." groups="base.group_extended">
                     <filter string="Supplier" icon="terp-partner" domain="[]" context="{'group_by':'name'}"/>
                      <separator orientation="vertical"/>
                     <filter string="Product" icon="terp-gtk-jump-to-rtl" domain="[]" context="{'group_by':'product_id'}"/>
