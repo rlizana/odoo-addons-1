@@ -155,8 +155,12 @@ class purchase_requisition(osv.osv):
                 raise osv.except_osv(_('Warning'), _('Please select the warehouse'))
              
             location_id = requisition.warehouse_id.lot_input_id.id
+            if requisition.origin:
+                origin = requisition.origin + ' - ' + requisition.name
+            else:
+                origin = requisition.name
             purchase_id = purchase_order.create(cr, uid, {
-                        'origin': requisition.origin + ' - ' + requisition.name,
+                        'origin': origin,
                         'partner_id': supplier.id,
                         'partner_address_id': delivery_address_id,
                         'pricelist_id': supplier_pricelist.id,
