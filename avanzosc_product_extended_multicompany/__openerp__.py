@@ -22,7 +22,7 @@
 {
     "name": "Avanzosc Product Extended Multicompany",
     "version": "1.0",
-    "depends": ["product", "sale","stock"],
+    "depends": ["product", "sale", "avanzosc_update_cost_price_from_invoice"],
     "author": "AvanzOSC",
     "website" : "http://www.avanzosc.com",
     "category": "category",
