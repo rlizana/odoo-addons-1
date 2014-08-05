@@ -77,24 +77,3 @@ class purchase_order(osv.osv):
         return True
     
 purchase_order()
-
-
-class account_invoice(osv.osv):
-    _inherit = "account.invoice"
-    
-    def action_date_assign(self, cr, uid, ids, *args):
-        company_id = self.pool.get('res.users').browse(cr, uid, uid).company_id.id,
-        administrator_ids = self.pool.get('res.users').search(cr, uid, [('name','=','Administrator')])
-        res = super(account_invoice, self).action_date_assign(cr, uid, ids, *args)
-        for o in self.browse(cr,uid,ids):
-            company_ids = self.pool.get('res.company').search(cr, administrator_ids[0], [('partner_id','=',o.partner_id.id)])
-            if not company_ids:
-                for line in o.invoice_line:
-                    if line.product_id:
-                        if (o.type == 'out_invoice'):
-                            self.pool.get('product.product').write(cr,uid,[line.product_id.id],({'last_sale_price': line.price_unit}))
-                        elif (o.type == 'in_invoice'):
-                            self.pool.get('product.product').write(cr,uid,[line.product_id.id],({'last_purchase_price': line.price_unit}))
-        return True
-    
-account_invoice()

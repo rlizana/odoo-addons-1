@@ -36,8 +36,21 @@ class account_invoice(osv.osv):
                                                     context)
         if found:
             invoice = self.browse(cr, uid, ids[0], context)
-            if invoice.type == 'in_invoice' and invoice.move_id.id:
-                if invoice.move_id.line_id:
+            if invoice.move_id and invoice.type == 'in_invoice':
+                for line in invoice.move_id.line_id:
+                    if line.product_id and line.debit > 0:
+                        price = line.tax_amount / line.quantity
+                        nvals = {'last_purchase_price': price}
+                        product_obj.write(cr, uid, [line.product_id.id],
+                                          nvals, context=context)
+            if invoice.move_id and invoice.type == 'out_invoice':
+                for line in invoice.move_id.line_id:
+                    if line.product_id and line.credit > 0:
+                        price = line.tax_amount / line.quantity
+                        nvals = {'last_sale_price': price}
+                        product_obj.write(cr, uid, [line.product_id.id],
+                                          nvals, context=context)
+                if invoice.move_id.line_id and invoice.type == 'in_invoice':
                     for line in invoice.move_id.line_id:
                         if line.product_id and line.debit > 0:
                             if line.product_id.cost_method == 'average':
@@ -45,7 +58,8 @@ class account_invoice(osv.osv):
                                     cr, uid, line.product_id.id, context)
                                 cond = [('name', '=', 'Administrator'),
                                         ('active', '=', True),]
-                                administrator_ids = user_obj.search(cr, uid, cond)
+                                administrator_ids = user_obj.search(
+                                    cr, uid, cond)
                                 administrator = user_obj.browse(
                                     cr, uid, administrator_ids[0])
                                 cond = [('name', 'ilike','Admin'),
