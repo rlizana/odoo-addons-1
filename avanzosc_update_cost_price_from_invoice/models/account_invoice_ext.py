@@ -32,10 +32,12 @@ class AccountInvoice(orm.Model):
         found = False
         if 'move_id' in vals:
             found = True
+        if not ids[0]:
+            return False
         result = super(AccountInvoice, self).write(cr, uid, ids, vals,
-                                                   context)
+                                                   context=context)
         if found:
-            invoice = self.browse(cr, uid, ids[0], context)
+            invoice = self.browse(cr, uid, ids[0], context=context)
             if invoice.type == 'in_invoice' and invoice.move_id.id:
                 if invoice.move_id.line_id:
                     for line in invoice.move_id.line_id:

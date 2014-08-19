@@ -27,10 +27,8 @@ class ProductProduct(orm.Model):
     def write(self, cr, uid, ids, vals, context=None):
         if context is None:
             context = {}
-        print '*** estoy en mi write, vals: ' + str(vals) + ', context: ' + str(context)
         if 'standard_price' in vals:
             if not 'stprice_from_invoice' in context:
-                print '*** borro standard_price de vals'
                 vals.pop('standard_price')
 
         return super(ProductProduct, self).write(cr, uid, ids, vals, context)
