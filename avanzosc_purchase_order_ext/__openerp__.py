@@ -2,10 +2,6 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution    
-#    Copyright (C) 2004-2010 Tiny SPRL (http://tiny.be). All Rights Reserved
-#    
-#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -22,19 +18,18 @@
 ##############################################################################
 
 {
-    "name": "Avanzosc Purchase Order Extension", 
+    "name": "Avanzosc Purchase Order Extension",
     "version": "1.2",
     "depends": ["purchase"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
-       Este módulo asigna al producto el proveedor en un pedido de compra de no tenerlo asignado
-
+    Este módulo asigna al producto el proveedor en un pedido de compra de no
+    tenerlo asignado
     """,
     "init_xml": [],
     'update_xml': [],
     'demo_xml': [],
     'installable': True,
     'active': False,
-#    'certificate': 'certificate',
 }

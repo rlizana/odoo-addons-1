@@ -17,4 +17,4 @@
 #
 ##############################################################################
 
-from . import models
+from . import avanzosc_purchase_order_ext
