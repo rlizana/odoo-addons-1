@@ -2,6 +2,18 @@
 <openerp>
 	<data>
 	
+        <record model="ir.ui.view" id="inventory_line_editable_tree_inh_calc">
+            <field name="name">inventory.line.editable.tree.inh.calc</field>
+            <field name="model">stock.inventory.line</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="avanzosc_inventory.inventory_line_editable_tree" />
+            <field name="arch" type="xml">
+                <field name="product_id" position="after">
+                    <field name="cost_price" />
+                </field>
+            </field>
+        </record>
+	
 	   <record id="view_stock_fill_inventory_cost" model="ir.ui.view">
             <field name="name">Import Inventory Cost</field>
             <field name="model">stock.fill.inventory.cost</field>
