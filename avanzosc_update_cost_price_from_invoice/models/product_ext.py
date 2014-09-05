@@ -27,8 +27,9 @@ class ProductProduct(orm.Model):
     def write(self, cr, uid, ids, vals, context=None):
         if context is None:
             context = {}
+        product = self.browse(cr, uid, ids[0], context=context)
         if 'standard_price' in vals:
-            if not 'stprice_from_invoice' in context:
+            if product.cost_method != 'standard' and not 'stprice_from_invoice' in context:
                 vals.pop('standard_price')
 
         return super(ProductProduct, self).write(cr, uid, ids, vals, context)
