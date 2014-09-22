@@ -1,0 +1,38 @@
+# -*- encoding: utf-8 -*-
+##############################################################################
+#
+#    Avanzosc - Avanced Open Source Consulting
+#    Copyright (C) 2011 - 2013 Avanzosc <http://www.avanzosc.com>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see http://www.gnu.org/licenses/.
+#
+##############################################################################
+from osv import osv
+from osv import fields
+from tools.translate import _
+import decimal_precision as dp
+
+class AccountInvoiceLine(osv.osv):
+    _inherit = 'account.invoice.line'
+
+    _columns = {
+        'number': fields.related('invoice_id','number', type='char', readonly=True, size=64, relation='account.invoice', store=True, string='Number'),
+        'date_invoice':fields.related('invoice_id', 'date_invoice', type="date", string="Invoice Date", store=True),
+        'standard_price': fields.related('product_id', 'standard_price', type='float', string='Cost Price', store=True),
+        'currency_id': fields.related('invoice_id', 'currency_id', type='many2one', relation='res.currency', string='Currency', store=True),
+        'price_unit_eur': fields.float('Unit Price EUR', readonly=True, digits_compute= dp.get_precision('Account')),
+        'price_subtotal_eur': fields.float('Subtotal EUR', readonly=True, digits_compute= dp.get_precision('Account')),
+    }
+
+AccountInvoiceLine()
