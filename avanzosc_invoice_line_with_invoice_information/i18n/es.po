@@ -1,13 +1,13 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* avanzosc_from_asterisc_product_update_cost_price
+#	* avanzosc_invoice_line_with_invoice_information
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.1-20120523-233315\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-19 09:32+0000\n"
-"PO-Revision-Date: 2014-09-19 11:35+0100\n"
+"POT-Creation-Date: 2014-09-22 10:45+0000\n"
+"PO-Revision-Date: 2014-09-22 12:46+0100\n"
 "Last-Translator: Alfredo <alfredodelafuente@avanzosc.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,36 +15,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 
-#. module: avanzosc_from_asterisc_product_update_cost_price
-#: model:ir.model,name:avanzosc_from_asterisc_product_update_cost_price.model_wiz_update_cost_price
-msgid "Wiz Update Cost Price"
-msgstr "Wizard Actualizar Precio Coste"
+#. module: avanzosc_invoice_line_with_invoice_information
+#: field:account.invoice.line,standard_price:0
+msgid "Cost Price"
+msgstr "Precio Coste"
 
-#. module: avanzosc_from_asterisc_product_update_cost_price
-#: field:wiz.update.cost.price,name:0
-msgid "Name"
-msgstr "Descripción"
+#. module: avanzosc_invoice_line_with_invoice_information
+#: field:account.invoice.line,price_unit_eur:0
+msgid "Unit Price EUR"
+msgstr "Precio Unitario EUR"
 
-#. module: avanzosc_from_asterisc_product_update_cost_price
-#: view:wiz.update.cost.price:0
-msgid "Wiz Update Cost Price From Product*"
-msgstr "Wizar Actualizar Precio Coste Desde Producto*"
+#. module: avanzosc_invoice_line_with_invoice_information
+#: field:account.invoice.line,date_invoice:0
+msgid "Invoice Date"
+msgstr "Fecha Factura"
 
-#. module: avanzosc_from_asterisc_product_update_cost_price
-#: model:ir.actions.act_window,name:avanzosc_from_asterisc_product_update_cost_price.action_wiz_update_cost_price
-#: model:ir.ui.menu,name:avanzosc_from_asterisc_product_update_cost_price.menu_wiz_update_cost_price
-#: model:ir.ui.menu,name:avanzosc_from_asterisc_product_update_cost_price.menu_wiz_update_cost_price2
-#: view:wiz.update.cost.price:0
-msgid "Update Cost Price"
-msgstr "Actualizar Precio Coste"
+#. module: avanzosc_invoice_line_with_invoice_information
+#: field:account.invoice.line,price_subtotal_eur:0
+msgid "Subtotal EUR"
+msgstr "Subtotal EUR"
 
-#. module: avanzosc_from_asterisc_product_update_cost_price
-#: view:wiz.update.cost.price:0
-msgid "You are going to Update Cost Price Product From Product*"
-msgstr "Va a actualizar el Precio de Coste desde Producto*"
+#. module: avanzosc_invoice_line_with_invoice_information
+#: sql_constraint:account.invoice:0
+msgid "Invoice Number must be unique per Company!"
+msgstr "¡El número de factura debe ser único por compañía!"
 
-#. module: avanzosc_from_asterisc_product_update_cost_price
-#: view:wiz.update.cost.price:0
-msgid "Cancel"
-msgstr "Cancelar"
+#. module: avanzosc_invoice_line_with_invoice_information
+#: model:ir.model,name:avanzosc_invoice_line_with_invoice_information.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+#. module: avanzosc_invoice_line_with_invoice_information
+#: field:account.invoice.line,currency_id:0
+msgid "Currency"
+msgstr "Currency"
+
+#. module: avanzosc_invoice_line_with_invoice_information
+#: model:ir.model,name:avanzosc_invoice_line_with_invoice_information.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: avanzosc_invoice_line_with_invoice_information
+#: field:account.invoice.line,number:0
+msgid "Number"
+msgstr "Número"
 
