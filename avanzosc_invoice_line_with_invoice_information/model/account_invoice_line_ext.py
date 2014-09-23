@@ -33,6 +33,7 @@ class AccountInvoiceLine(osv.osv):
         'currency_id': fields.related('invoice_id', 'currency_id', type='many2one', relation='res.currency', string='Currency', store=True),
         'price_unit_eur': fields.float('Unit Price EUR', readonly=True, digits_compute= dp.get_precision('Account')),
         'price_subtotal_eur': fields.float('Subtotal EUR', readonly=True, digits_compute= dp.get_precision('Account')),
+        'invoice_type': fields.related('invoice_id', 'type', type="selection", selection=[('out_invoice','Customer Invoice'),('in_invoice','Supplier Invoice'),('out_refund','Customer Refund'),('in_refund','Supplier Refund')], string="Invoice type", store=True),
     }
 
 AccountInvoiceLine()
