@@ -38,7 +38,9 @@ class StockMove(osv.osv):
         move = self.browse(cr, uid, new_id, context=context)
         if move.price_unit:
             if move.price_unit > 0 and move.purchase_line_id:
-                ctx = context.copy()
+                ctx = {}
+                if context:
+                    ctx = context.copy()
                 ctx['date'] = move.purchase_line_id.order_id.date_order
                 price_unit_eur = currency_obj.compute(
                     cr, uid, move.company_id.currency_id.id,
@@ -49,6 +51,7 @@ class StockMove(osv.osv):
         return new_id
 
     def write(self, cr, uid, ids, vals, context=None):
+        currency_obj = self.pool.get('res.currency')
         purchase_line_obj = self.pool.get('purchase.order.line')
         if 'price_unit' in vals:
             price_unit =  vals.get('price_unit')
@@ -61,10 +64,12 @@ class StockMove(osv.osv):
                         if purchase_line_id:
                             purchase_line = purchase_line_obj.browse(cr, uid, purchase_line_id, context=context)
                     if not purchase_line:
-                        if move.purchase_line.id:
+                        if move.purchase_line_id:
                             purchase_line = move.purchase_line_id
                     if purchase_line:
-                        ctx = context.copy()
+                        ctx = {}
+                        if context:
+                            ctx = context.copy()
                         ctx['date'] = purchase_line.order_id.date_order
                         price_unit_eur = currency_obj.compute(
                             cr, uid, move.company_id.currency_id.id,
