@@ -29,11 +29,30 @@ class AccountInvoiceLine(osv.osv):
     _columns = {
         'number': fields.related('invoice_id','number', type='char', readonly=True, size=64, relation='account.invoice', store=True, string='Number'),
         'date_invoice':fields.related('invoice_id', 'date_invoice', type="date", string="Invoice Date", store=True),
-        'standard_price': fields.related('product_id', 'standard_price', type='float', string='Cost Price', store=True),
+        'standard_price': fields.float('Cost Price', readonly=True, digits_compute=dp.get_precision('Purchase Price')),
         'currency_id': fields.related('invoice_id', 'currency_id', type='many2one', relation='res.currency', string='Currency', store=True),
         'price_unit_eur': fields.float('Unit Price EUR', readonly=True, digits_compute= dp.get_precision('Account')),
         'price_subtotal_eur': fields.float('Subtotal EUR', readonly=True, digits_compute= dp.get_precision('Account')),
         'invoice_type': fields.related('invoice_id', 'type', type="selection", selection=[('out_invoice','Customer Invoice'),('in_invoice','Supplier Invoice'),('out_refund','Customer Refund'),('in_refund','Supplier Refund')], string="Invoice type", store=True),
     }
+
+    def create(self, cr, uid, data, context=None):
+        product_obj = self.pool.get('product.product')
+        if 'product_id' in data:
+            product_id =  data.get('product_id')
+            if product_id:
+                product = product_obj.browse(cr, uid, product_id, context=context)
+                data.update({'standard_price': product.standard_price})
+        return super(AccountInvoiceLine, self).create(cr,uid,data,context)
+
+    def write(self, cr, uid, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+        if 'product_id' in vals:
+            product_id =  vals.get('product_id')
+            if product_id:
+                product = product_obj.browse(cr, uid, product_id, context=context)
+                vals.update({'standard_price': product.standar_price})
+        result = super(osv.osv, self).write(cr, uid, ids, vals, context=context)
+        return result
 
 AccountInvoiceLine()
