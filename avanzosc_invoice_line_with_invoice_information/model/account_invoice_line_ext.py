@@ -59,7 +59,7 @@ class AccountInvoiceLine(osv.osv):
             product_id =  vals.get('product_id')
             if product_id:
                 product = product_obj.browse(cr, uid, product_id, context=context)
-                vals.update({'standard_price': product.standar_price})
+                vals.update({'standard_price': product.standard_price})
         if 'invoice_id' in vals:
             invoice_id =  vals.get('invoice_id')
             if invoice_id:
