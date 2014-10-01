@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Duplicate Forecast Wizard form -->
+
+        <record id="view_df_form" model="ir.ui.view">
+            <field name="name">view.df.form</field>
+            <field name="model">wiz.forecast</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import File">
+                    <separator string="Duplicate the forecast Line?"
+                        colspan="4" />
+                    <group colspan="4" col="6">
+                        <button icon="gtk-cancel" special="cancel"
+                            string="Cancel" />
+                        <button icon="gtk-dnd-multiple" name="action_duplicate"
+                            string="Duplicate" type="object" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action of Import Products wizard -->
+
+        <record id="action_duplicate_forecast" model="ir.actions.act_window">
+            <field name="name">Duplicate Forecast Line</field>
+            <field name="res_model">wiz.forecast</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_df_form" />
+            <field name="target">new</field>
+        </record>
+
+        <!-- Recalculate Forecast Wizard form -->
+
+        <record id="view_rf_form" model="ir.ui.view">
+            <field name="name">view.rf.form</field>
+            <field name="model">wiz.forecast</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import File">
+                    <separator string="Recalculate forecast Lines?"
+                        colspan="4" />
+                    <group colspan="4" col="6">
+                        <button icon="gtk-cancel" special="cancel"
+                            string="Cancel" />
+                        <button icon="gtk-refresh" name="action_recalculate"
+                            string="Recalculate" type="object" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Recalculate Forecast wizard -->
+
+        <record id="action_recalculate_forecast" model="ir.actions.act_window">
+            <field name="name">Recalculate Forecast Line</field>
+            <field name="res_model">wiz.forecast</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_rf_form" />
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

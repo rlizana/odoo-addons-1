@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ====== Tree de plantilla de pagos periodicos =============== -->
+
+        <record model="ir.ui.view" id="tes_pagos_tree_view_inherit">
+            <field name="name">tes.pagos.tree.view.inherit</field>
+            <field name="model">l10n.es.tesoreria.pagos.period.plan
+            </field>
+            <field eval="10" name="priority" />
+            <field name="inherit_id"
+                ref="l10n_es_prev_tesoreria.l10n_es_tesoreria_pla_pagos_period_tree_view" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="name" position="after">
+                        <field name="paytypeforec" />
+                    </field>
+                    <field name="diario" position="after">
+                        <field name="forecast" />
+                    </field>
+                    <field name="pagado" position="after">
+                        <button name="%(action_duplicate_forecast)d"
+                            string="Duplicate Line" type="action"
+                            icon="gtk-dnd-multiple" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!-- ====== Form de plantilla de pagos periodicos =============== -->
+        <record model="ir.ui.view" id="tes_pagos_form_view_inherit">
+            <field name="name">tes.pagos.form.view.inherit</field>
+            <field name="model">l10n.es.tesoreria.pagos.period.plan</field>
+            <field name="inherit_id"
+                ref="l10n_es_prev_tesoreria.l10n_es_tesoreria_pagos_period_plan_form_view" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="diario" position="after">
+                        <field name="paytypeforec" />
+                        <field name="forecast" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <!-- ====== Search de plantilla de pagos periodicos =============== -->
+        <record model="ir.ui.view" id="tes_pagos_search_view">
+            <field name="name">tes.pagos.search.view</field>
+            <field name="model">l10n.es.tesoreria.pagos.period.plan</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search TES Lines">
+                    <group>
+                        <field name="fecha" />
+                        <field name="name" />
+                        <field name="partner_id" />
+                        <field name="paytypeforec" />
+                        <field name="forecast" />
+                    </group>
+                    <newline />
+                    <group expand="0" string="More filters...">
+                        <field name="factura_id"/>
+                        <field name="diario"/>
+                        <field name="importe"/>
+                        <field name="pagado"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- ========= Action Payment Type Forecast ===================== -->
+        <record id="action_payment_type_forecast" model="ir.actions.act_window">
+            <field name="name">Payment Type Forecast</field>
+            <field name="res_model">payment.type.forecast</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help">Payment Type Forecast</field>
+        </record>
+
+       <act_window name="Filtrado de Lineas"
+            domain="[('plan_tesoreria_id', '=', active_id)]"
+            res_model="l10n.es.tesoreria.pagos.period.plan"
+            src_model="l10n.es.tesoreria.plantilla"
+            id="act_filtrado_lineas"/>
+            
+<!--                         context="{'file_load':active_id}" -->
+            
+        <!-- ============ Menús de plantilla de tesorería ================ -->
+
+        <menuitem id="menu_payment_type_forecast" name="Payment Type Forecast"
+            parent="l10n_es_prev_tesoreria.menu_finance_tesoreria" sequence="8" groups="l10n_es_prev_tesoreria.tesoreria_manager" />
+        <menuitem action="action_payment_type_forecast" id="menu_action_payment_type_forecast"
+            parent="menu_payment_type_forecast" groups="l10n_es_prev_tesoreria.tesoreria_manager" />
+
+    </data>
+</openerp>
