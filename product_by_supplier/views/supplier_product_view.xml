@@ -42,7 +42,7 @@
                 <search string="Search Product Supplier">
                     <group>
                         <field name="supplier" />
-<!--                         <field name="product" /> -->
+                        <field name="product" />
                         <field name="default_code" />
                         <field name="supplier_code" />
                     </group>
