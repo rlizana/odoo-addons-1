@@ -6,9 +6,7 @@
 
         <record model="ir.ui.view" id="tes_pagos_tree_view_inherit">
             <field name="name">tes.pagos.tree.view.inherit</field>
-            <field name="model">l10n.es.tesoreria.pagos.period.plan
-            </field>
-            <field eval="10" name="priority" />
+            <field name="model">l10n.es.tesoreria.pagos.period.plan</field>
             <field name="inherit_id"
                 ref="l10n_es_prev_tesoreria.l10n_es_tesoreria_pla_pagos_period_tree_view" />
             <field name="arch" type="xml">
@@ -89,7 +87,8 @@
         <!-- ============ Menús de plantilla de tesorería ================ -->
 
         <menuitem id="menu_payment_type_forecast" name="Payment Type Forecast"
-            parent="l10n_es_prev_tesoreria.menu_finance_tesoreria" sequence="8" groups="l10n_es_prev_tesoreria.tesoreria_manager" />
+            parent="l10n_es_prev_tesoreria.menu_finance_tesoreria" sequence="8"
+            groups="l10n_es_prev_tesoreria.tesoreria_manager" />
         <menuitem action="action_payment_type_forecast" id="menu_action_payment_type_forecast"
             parent="menu_payment_type_forecast" groups="l10n_es_prev_tesoreria.tesoreria_manager" />
 
