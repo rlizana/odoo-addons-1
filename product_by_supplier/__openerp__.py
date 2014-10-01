@@ -26,7 +26,7 @@
     "version": "1.0",
     "description": """
                 This module adds:
-                - Entry menu and filters for supplier - product relation
+                - Report for suppliers by product and vice versa
                 """,
     "author": "AvanzOSC",
     "website": "www.avanzosc.com",
@@ -34,7 +34,7 @@
     "category": "Generic Modules",
     "init_xml": [],
     "demo_xml": [],
-    "update_xml": ["views/product_supplier_view.xml",
+    "update_xml": ["views/supplier_product_view.xml",
                    ],
     "active": False,
     "installable": True

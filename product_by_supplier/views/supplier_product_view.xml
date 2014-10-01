@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- ================ Product Supplier View ================= -->
+
+        <record id="product_supplier_tree_view" model="ir.ui.view">
+            <field name="name">product.supplier.tree.view</field>
+            <field name="model">product.supplier.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Product Supplier Info">
+                    <field name="supplier" />
+                    <field name="product" />
+                    <field name="default_code" />
+                    <field name="supplier_code" />
+                </tree>
+            </field>
+        </record>
+
+<!--         <record id="product_supplier_form_view" model="ir.ui.view"> -->
+<!--             <field name="name">product.supplier.form.view</field> -->
+<!--             <field name="model">product.supplierinfo</field> -->
+<!--             <field name="arch" type="xml"> -->
+<!--                 <form string="Product Supplier Info"> -->
+<!--                     <field name="name" /> -->
+<!--                     <field name="sequence" /> -->
+<!--                     <field name="product_name" /> -->
+<!--                     <field name="product_code" /> -->
+<!--                     <field name="min_qty" /> -->
+<!--                     <field name="product_uom" /> -->
+<!--                     <field name="delay" /> -->
+<!--                 </form> -->
+<!--             </field> -->
+<!--         </record> -->
+
+        <record id="product_supplier_search_view" model="ir.ui.view">
+            <field name="name">product.supplier.search.view</field>
+            <field name="model">product.supplier.report</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Product Supplier">
+                    <group>
+                        <field name="supplier" />
+<!--                         <field name="product" /> -->
+                        <field name="default_code" />
+                        <field name="supplier_code" />
+                    </group>
+                    <newline />
+                    <group expand="1" string="Group By..." groups="base.group_extended">
+                        <filter string="Proveedor" icon="terp-partner"
+                            domain="[]" context="{'group_by':'supplier'}" />
+                        <separator orientation="vertical" />
+                        <filter string="Producto" icon="terp-gtk-jump-to-rtl"
+                            domain="[]" context="{'group_by':'product'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="product_supplier_action" model="ir.actions.act_window">
+            <field name="name">Product Supplier</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.supplier.report</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="menu_product_supplier" name="Product - Supplier"
+            action="product_supplier_action" parent="purchase.menu_procurement_management_product" />
+    </data>
+</openerp>
