@@ -32,7 +32,9 @@ class account_invoice(osv.osv):
             You can merge invoices and refund invoices with echa other.
             Moves all lines on the first invoice.
         """
-
+        picking_obj = self.pool.get('stock.picking')
+        purchase_obj = self.pool.get('purchase.order')
+        sale_obj = self.pool.get('sale.order')
         if len(invoices) <= 1:
             return False
         parent = self.pool.get('account.invoice').browse(cr,uid,context['active_id'])
@@ -73,6 +75,33 @@ class account_invoice(osv.osv):
             self.unlink(cr, uid, [inv.id])
 
         self.button_reset_taxes(cr, uid, [parent.id])
+        invoice = self.browse(cr, uid, parent.id)
+        if invoice.type in ('out_invoice', 'out_refund'):
+            if invoice.name:
+                if invoice.name.find(",") >= 0:
+                    origins = invoice.name.split(',')
+                    for origin in origins:
+                        picking_ids = picking_obj.search(cr, uid, [('name','=',origin.strip())], limit=1)
+                        if picking_ids:
+                            picking = picking_obj.browse(cr, uid, picking_ids[0])
+                            if picking.sale_id:
+                                if not picking.sale_id.invoice_ids:
+                                    sale_obj.write(cr, uid, [picking.sale_id.id], {'invoice_ids': [(6,0,[parent.id])]})
+        else:
+            if invoice.origin:
+                if invoice.origin.find(",") >= 0:
+                    origins = invoice.origin.split(',')
+                    for origin in origins:
+                        if origin.find(":") >= 0:
+                            porigin = origin.split(':')
+                            name = porigin[1]
+                        else:
+                            name = origin.strip()
+                        purchase_ids = purchase_obj.search(cr, uid, [('name','=',name)], limit=1)
+                        if purchase_ids:
+                            purchase = purchase_obj.browse(cr, uid, purchase_ids[0])
+                            if not purchase.invoice_ids:
+                                purchase_obj.write(cr, uid, [purchase.id], {'invoice_ids': [(6,0,[parent.id])]})
         return parent.id
 
 account_invoice()
