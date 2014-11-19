@@ -27,6 +27,7 @@
     "description": """
                 This module adds:
                 - Report for suppliers by product and vice versa
+                - No Product Supplier group option in product menu.
                 """,
     "author": "AvanzOSC",
     "website": "www.avanzosc.com",
@@ -35,6 +36,7 @@
     "init_xml": [],
     "demo_xml": [],
     "update_xml": ["views/supplier_product_view.xml",
+                   "views/product_view.xml"
                    ],
     "active": False,
     "installable": True

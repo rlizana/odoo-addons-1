@@ -18,22 +18,6 @@
             </field>
         </record>
 
-<!--         <record id="product_supplier_form_view" model="ir.ui.view"> -->
-<!--             <field name="name">product.supplier.form.view</field> -->
-<!--             <field name="model">product.supplierinfo</field> -->
-<!--             <field name="arch" type="xml"> -->
-<!--                 <form string="Product Supplier Info"> -->
-<!--                     <field name="name" /> -->
-<!--                     <field name="sequence" /> -->
-<!--                     <field name="product_name" /> -->
-<!--                     <field name="product_code" /> -->
-<!--                     <field name="min_qty" /> -->
-<!--                     <field name="product_uom" /> -->
-<!--                     <field name="delay" /> -->
-<!--                 </form> -->
-<!--             </field> -->
-<!--         </record> -->
-
         <record id="product_supplier_search_view" model="ir.ui.view">
             <field name="name">product.supplier.search.view</field>
             <field name="model">product.supplier.report</field>
