@@ -45,6 +45,10 @@ class AccountInvoice(orm.Model):
                             if line.product_id.cost_method == 'average':
                                 product = product_obj.browse(
                                     cr, uid, line.product_id.id, context)
+                                
+                                company_currency_id = invoice.company_id.currency_id.id
+                                invoice_currency_id = invoice.currency_id.id
+                                
                                 move_currency_id = line.company_id.currency_id.id
                                 context['currency_id'] = move_currency_id
                                 qty = uom_obj._compute_qty(
@@ -55,8 +59,11 @@ class AccountInvoice(orm.Model):
                                                      line.quantity)
                                     product_currency = move_currency_id
                                     product_price = line.tax_amount / line.quantity
+#                                    new_price = currency_obj.compute(
+#                                        cr, uid, product_currency, move_currency_id,
+#                                        product_price)
                                     new_price = currency_obj.compute(
-                                        cr, uid, product_currency, move_currency_id,
+                                        cr, uid, company_currency_id, invoice_currency_id,
                                         product_price)
                                     new_price = uom_obj._compute_price(
                                         cr, uid, line.product_id.uom_id.id, new_price,
