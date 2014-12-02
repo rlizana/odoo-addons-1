@@ -28,6 +28,7 @@ class AccountInvoice(orm.Model):
         uom_obj = self.pool['product.uom']
         product_obj = self.pool['product.product']
         currency_obj = self.pool['res.currency']
+        purchase_line_obj = self.pool['purchase.order.line']
         move_obj = self.pool['account.move']
         found = False
         if 'move_id' in vals:
@@ -39,48 +40,52 @@ class AccountInvoice(orm.Model):
         if found:
             invoice = self.browse(cr, uid, ids[0], context=context)
             if invoice.type == 'in_invoice' and invoice.move_id.id:
-                if invoice.move_id.line_id:
-                    for line in invoice.move_id.line_id:
-                        if line.product_id and line.debit > 0:
-                            if line.product_id.cost_method == 'average':
-                                product = product_obj.browse(
-                                    cr, uid, line.product_id.id, context)
-                                
-                                company_currency_id = invoice.company_id.currency_id.id
-                                invoice_currency_id = invoice.currency_id.id
-                                
-                                move_currency_id = line.company_id.currency_id.id
-                                context['currency_id'] = move_currency_id
-                                qty = uom_obj._compute_qty(
-                                    cr, uid, line.product_id.uom_id.id, line.quantity,
-                                    line.product_id.uom_id.id)
-                                if qty > 0:
-                                    product_avail = (product.qty_available -
-                                                     line.quantity)
-                                    product_currency = move_currency_id
-                                    product_price = line.tax_amount / line.quantity
-#                                    new_price = currency_obj.compute(
-#                                        cr, uid, product_currency, move_currency_id,
-#                                        product_price)
-                                    new_price = currency_obj.compute(
-                                        cr, uid, company_currency_id, invoice_currency_id,
-                                        product_price)
-                                    new_price = uom_obj._compute_price(
-                                        cr, uid, line.product_id.uom_id.id, new_price,
-                                        line.product_id.uom_id.id)
-                                    if line.product_id.qty_available <= 0:
-                                        newstd_price = new_price
-                                    else:
-                                        # Get the standard price
-                                        amount_unit = product.price_get(
-                                            'standard_price',
-                                            context=context)[product.id]
-                                        newstd_price = ((amount_unit * product_avail)\
-                                            + (new_price * qty))/(product_avail + qty)
-                                    # Write the field according to price type field
-                                    nvals = {'standard_price': newstd_price}
-                                    context.update({'stprice_from_invoice': True})
-                                    product_obj.write(cr, uid, [product.id], nvals,
-                                                      context)
+#                if invoice.move_id.line_id:
+                for line in invoice.invoice_line:
+                    product = line.product_id
+                    if product and line.price_unit > 0:
+                        if product.cost_method == 'average':
+                            processed_qty = 0
+                            purchase_lines = purchase_line_obj.search(
+                                cr, uid, [('invoice_lines', '=', line.id)],
+                                context=context)
+                            for purchase_line in purchase_line_obj.browse(
+                                    cr, uid, purchase_lines, context=context):
+                                for move in purchase_line.move_ids:
+                                    if move.state == 'done':
+                                        processed_qty += move.product_qty
+                            company_cur_id = invoice.company_id.currency_id.id
+                            invoice_cur_id = invoice.currency_id.id
+                            move_currency_id = line.company_id.currency_id.id
+                            context['currency_id'] = move_currency_id
+                            qty = uom_obj._compute_qty(
+                                cr, uid, product.uom_id.id, line.quantity,
+                                product.uom_id.id)
+                            if qty > 0:
+                                product_avail = (product.qty_available -
+                                                 processed_qty)
+                                product_price = line.price_unit
+                                new_price = currency_obj.compute(
+                                    cr, uid, invoice_cur_id, company_cur_id,
+                                    product_price)
+                                new_price = uom_obj._compute_price(
+                                    cr, uid, product.uom_id.id, new_price,
+                                    product.uom_id.id)
+                                if product.qty_available <= 0:
+                                    newstd_price = new_price
+                                else:
+                                    # Get the standard price
+                                    amount_unit = product.price_get(
+                                        'standard_price',
+                                        context=context)[product.id]
+                                    newstd_price = ((amount_unit *
+                                                     product_avail) + \
+                                                    (new_price * qty))/ \
+                                                    (product_avail + qty)
+                                # Write the field according to price type field
+                                nvals = {'standard_price': newstd_price}
+                                context.update({'stprice_from_invoice': True})
+                                product_obj.write(cr, uid, [product.id], nvals,
+                                                  context)
 
         return result
