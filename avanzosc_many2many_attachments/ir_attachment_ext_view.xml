@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
-
 		<record model="ir.ui.view" id="view_attachment_form_inh_many2manyattachments">
 			<field name="name">view.attachment.form.inh.many2manyattachments</field>
 			<field name="model">ir.attachment</field>
@@ -22,5 +21,24 @@
 			</field>
 		</record>
 
+        <record model="ir.ui.view" id="view_document_file_form_inh_many2manyattachments">
+            <field name="name">view.document.file.form.inh.many2manyattachments</field>
+            <field name="model">ir.attachment</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="document.view_document_file_form" />
+            <field name="arch" type="xml">  
+                <xpath expr="//page[@string='Notes']" position="after">
+                    <page string="In Products">
+                        <field name="product_ids" nolabel="1" colspan="4" />
+                    </page>
+                    <page string="In Test Templates">
+                        <field name="test_template_ids" nolabel="1" colspan="4" />
+                    </page>
+                    <page string="In Tests">
+                        <field name="test_ids" nolabel="1" colspan="4" />
+                    </page>
+                </xpath>
+            </field>
+        </record>
 	</data>
 </openerp>

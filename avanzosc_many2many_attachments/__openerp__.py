@@ -21,7 +21,7 @@
 {
     "name": "Avanzosc many2many Attachments",
     "version": "1.0",
-    "depends": ["base","product","nan_quality_control"],
+    "depends": ["base","product","nan_quality_control","document"],
     "author": "AvanzOSC",
     "category": "Custom Modules",
     "description": """
