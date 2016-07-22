@@ -26,7 +26,7 @@ class ProductTemplate(models.Model):
                                          compute='_compute_dimensions')
     uos_coeff = fields.Float(
         string='Unit of Measure -> UOS Coeff',
-        digits= dp.get_precision('Product UoS'),
+        digits=dp.get_precision('Product UoS'),
         help='Coefficient to convert default Unit '
              'of Measure to Unit of Sale\n uos = uom * coeff',
         compute='_compute_dimensions'
@@ -114,7 +114,7 @@ class ProductTemplate(models.Model):
 
     def _get_val(self, val):
         try:
-           return float(val)
+            return float(val)
         except ValueError:
             field = val.split('.')
             res = False
@@ -125,8 +125,8 @@ class ProductTemplate(models.Model):
                     res = float(self.product_tmpl_id[field[1]])
             elif field:
                 res = self.attribute_value_ids.filtered(
-                    lambda x: x.attribute_id.attribute_code == field[0]
-                                                              ).numeric_value
+                    lambda x: x.attribute_id.attribute_code == field[
+                        0]).numeric_value
         return res
 
     def eval_expression(self, formula):

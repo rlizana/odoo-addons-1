@@ -5,8 +5,10 @@
     "name": "BOM lines configurator",
     "version": "8.0.1.0.0",
     "license": "AGPL-3",
-    "depends": [
-        "mrp_product_variants", "mrp_hook_extension"
+    "depends": ["product_attribute_code_field",
+                "product_variant_default_code",
+                "mrp_product_variants",
+                "mrp_hook_extension"
     ],
     "author": "OdooMRP team, "
               "AvanzOSC, ",

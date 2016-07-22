@@ -21,7 +21,7 @@
             <field name="arch" type="xml">
                 <form>
                     <field name="product_id" readonly="1"/>
-                    <field name="possible_attribute_ids"/>
+                    <field name="possible_attribute_ids" invisible="1"/>
                     <group string="Attribute Selector">
                     <field name="attribute_selections_ids" nolabel="1">
                         <tree editable="bottom">

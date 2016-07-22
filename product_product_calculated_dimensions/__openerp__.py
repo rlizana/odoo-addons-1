@@ -8,10 +8,11 @@
     "depends": [
         "product_attribute_code_field",
         "product_attribute_types",
-        "purchase_secondary_unit"
+        "purchase_secondary_unit",
     ],
     "author": "OdooMRP team, "
-              "AvanzOSC, ",
+              "AvanzOSC, "
+              "Odoo Community Association (OCA)",
     "website": "http://www.odoomrp.com",
     "contributors": [
         "Mikel Arregi <mikelarregi@avanzosc.es>",
@@ -20,7 +21,7 @@
     "category": "Product",
     "summary": "",
     "data": [
-         "views/product_view.xml"
+        "views/product_view.xml"
     ],
     "installable": True,
 }

@@ -19,8 +19,6 @@
     ],
     "category": "product",
     "summary": "",
-    "data": [
-         "views/product_attribute_view.xml"
-    ],
+    "data": ["views/product_attribute_view.xml"],
     "installable": True,
 }

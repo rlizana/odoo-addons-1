@@ -8,7 +8,14 @@ class ProductAttribute(models.Model):
 
     _inherit = 'product.attribute'
 
-    attribute_code = fields.Char(string='Code', required=True)
+    @api.one
+    @api.onchange('name')
+    def onchange_name(self):
+        if self.name:
+            self.attribute_code = self.name[0:2]
+
+    attribute_code = fields.Char(string='Code', default=onchange_name,
+                                 required=True)
 
     @api.constrains('attribute_code')
     def _code_unique(self):
