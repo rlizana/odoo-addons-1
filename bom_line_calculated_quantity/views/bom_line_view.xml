@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="formula_bom_line_tree">
+            <field name="name">formula.bom.line.tree</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath
+                        expr="//tree[@string='Components']/field[@name='product_qty']"
+                        position="after">
+                <field name="formula"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+
+

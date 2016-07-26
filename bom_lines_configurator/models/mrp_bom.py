@@ -143,7 +143,7 @@ class MrpBomLine(models.Model):
     @api.multi
     @api.onchange('product_tmpl_id')
     def onchange_product_tmpl_id(self):
-        res = super(MrpBomLine, self).onchange_product_tmpl_id
+        res = super(MrpBomLine, self).onchange_product_tmpl_id()
         if self.product_tmpl_id:
             self.attribute_rule_ids = self.attribute_rule_ids.mapped(
                 lambda x: (2, x.id))
