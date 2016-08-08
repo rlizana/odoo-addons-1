@@ -4,8 +4,11 @@
 {
     "name": "Bom line calculated quantity",
     "version": "1.0",
-    "depends": [
-        "mrp_hook_extension",
+    "depends": ["product_attribute_code_field",
+                "product_variant_default_code",
+                "mrp_product_variants",
+                "mrp_hook_extension",
+                "product_attribute_types"
     ],
     "author": "OdooMRP team, "
               "AvanzOSC, ",

@@ -25,33 +25,49 @@ class MrpBomLine(models.Model):
 
     formula = fields.Text(string='Formula')
 
+    def _prepare_acts(self):
+        production = self.env.context.get('production')
+        return production.product_attribute_ids
+
     def _normalize_formula(self):
         return self.formula.strip().split(' ')
 
     def calculate_expression(self):
         if self.formula:
             normalized_formula = self._normalize_formula()
-            return self.eval_expression(normalized_formula)
+            acts = self._prepare_acts()
+            return self.eval_expression(normalized_formula, acts)
 
-    def _get_val(self, val):
+    def _get_val(self, val, acts):
         field = val.split('.')
         res = False
-        if field and field[0] in ['self', 'parent']:
-            if field[0] == 'self':
-                res = float(self.product_id[field[1]])
-            else:
-                res = float(self.bom_id.product_tmpl_id[field[
-                    1]])
-        elif field:
-            if not self.product_id:
-                pass
-            else:
-                res = self.product_id.attribute_value_ids.filtered(
+        try:
+            return float(val)
+        except ValueError:
+            if field and field[0] in ['self', 'parent']:
+                if field[0] == 'self':
+                    value = self.product_id.attribute_value_ids.filtered(
+                        lambda x: x.attribute_code == field[1])
+                    if not value.attribute_id.attr_type == 'numeric':
+                        raise exceptions.ValidationError(
+                            "attribute with code {} must be numeric".format(
+                            value.attribute_id.attribute_code))
+                    res = value.numeric_value
+                else:
+                    res = float(self.bom_id.product_tmpl_id[field[
+                        1]])
+            elif field:
+                value = acts.filtered(
                     lambda x: x.attribute_id.attribute_code == field[0]
-                                                              ).numeric_value
+                )
+                if not value.attribute_id.attr_type == 'numeric':
+                    raise exceptions.ValidationError(
+                        "attribute with code {} must be numeric".format(
+                        value.attribute_id.attribute_code))
+                res = value.value_id.numeric_value
         return res
 
-    def eval_expression(self, formula):
+    def eval_expression(self, formula, acts):
         operators = ['-', '+', '*', '/']
         stack = []
         for val in formula:
@@ -61,6 +77,6 @@ class MrpBomLine(models.Model):
                 result = eval('{} {} {}'.format(op2, val, op1))
                 stack.append(result)
             else:
-                stack.append(self._get_val(val))
+                stack.append(self._get_val(val, acts))
         return stack.pop()
 

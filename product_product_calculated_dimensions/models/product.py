@@ -93,16 +93,16 @@ class ProductTemplate(models.Model):
                 tmpl.weight_net_formula)
             if product.custom_uos_coeff_check:
                 product.uos_coeff = product.calculate_expression(
-                    product.custom_uos_coeff)
+                    product.custom_uos_coeff) or 1
             else:
                 product.uos_coeff = product.calculate_expression(
-                    tmpl.uos_coeff_formula)
+                    tmpl.uos_coeff_formula) or 1
             if product.custom_uop_coeff_check:
                 product.uop_coeff = product.calculate_expression(
-                    product.custom_uop_coeff)
+                    product.custom_uop_coeff) or 1
             else:
                 product.uop_coeff = product.calculate_expression(
-                    tmpl.uop_coeff_formula)
+                    tmpl.uop_coeff_formula) or 1
 
     def _normalize_formula(self, formula):
         return formula.strip().split(' ')
@@ -129,6 +129,16 @@ class ProductTemplate(models.Model):
                         0]).numeric_value
         return res
 
+    def _do_operation(self, op2, val, op1):
+        if val == '+':
+            return op2 + op1
+        elif val == '-':
+            return op2 - op1
+        elif val == '/':
+            return op2 / op1
+        elif val == '*':
+            return op2 * op1
+
     def eval_expression(self, formula):
         operators = ['-', '+', '*', '/']
         stack = []
@@ -136,7 +146,7 @@ class ProductTemplate(models.Model):
             if val in operators:
                 op1 = stack.pop()
                 op2 = stack.pop()
-                result = eval('{} {} {}'.format(op2, val, op1))
+                result = self._do_operation(op2, val, op1)
                 stack.append(result)
             else:
                 stack.append(self._get_val(val))

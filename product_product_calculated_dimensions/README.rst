@@ -25,4 +25,3 @@ Contributors
 ------------
 * Mikel Arregi <mikelarregi@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>
-
