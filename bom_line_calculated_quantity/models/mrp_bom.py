@@ -3,6 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from openerp import models, api, fields, tools, exceptions, _
 from openerp.exceptions import Warning as UserError
+from openerp.tools.safe_eval import safe_eval as eval
 
 
 class MrpBom(models.Model):
@@ -60,11 +61,16 @@ class MrpBomLine(models.Model):
                 value = acts.filtered(
                     lambda x: x.attribute_id.attribute_code == field[0]
                 )
-                if not value.attribute_id.attr_type == 'numeric':
+                attr_type = value.attribute_id.attr_type
+                if value.attribute_id.attr_type == 'numeric':
+                    res = value.value_id.numeric_value
+                elif attr_type == 'range':
+                    res = value.custom_value
+                else:
                     raise exceptions.ValidationError(
-                        "attribute with code {} must be numeric".format(
-                        value.attribute_id.attribute_code))
-                res = value.value_id.numeric_value
+                        "attribute with code {} must be numeric or "
+                        "range".format(value.attribute_id.attribute_code))
+
         return res
 
     def eval_expression(self, formula, acts):
