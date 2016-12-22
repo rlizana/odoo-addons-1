@@ -67,10 +67,14 @@ class MrpBomLine(models.Model):
                 elif attr_type == 'range':
                     res = value.custom_value
                 else:
-                    raise exceptions.ValidationError(
-                        "attribute with code {} must be numeric or "
-                        "range".format(value.attribute_id.attribute_code))
-
+                    if value:
+                        raise exceptions.ValidationError(
+                            "attribute with code {} must be numeric or "
+                            "range".format(value.attribute_id.attribute_code))
+                    else:
+                        raise exceptions.ValidationError(
+                            u"{} code value not in settled values".format(
+                                field[0]))
         return res
 
     def eval_expression(self, formula, acts):
