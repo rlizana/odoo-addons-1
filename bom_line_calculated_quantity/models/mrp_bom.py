@@ -42,6 +42,8 @@ class MrpBomLine(models.Model):
             normalized_formula = self._normalize_formula()
             acts = self._prepare_acts()
             return self.eval_expression(normalized_formula, acts)
+        else:
+            return False
 
     def _get_val(self, val, acts):
         field = val.split('.')
