@@ -16,7 +16,11 @@ class MrpBom(models.Model):
         if not bom_line:
             return super(MrpBom, self)._factor(
                 factor, product_efficiency, product_rounding)
-        formula_qty = bom_line.calculate_expression() or 1
+        qty = bom_line.calculate_expression()
+        # if None it means that at least one of the attributes on formula
+        # not exists in product attributes. In this case product qty going to
+        # be 0
+        formula_qty = 0 if qty is None else qty or 1
         return super(MrpBom, self)._factor(
             factor*formula_qty, product_efficiency, product_rounding)
 
@@ -72,9 +76,10 @@ class MrpBomLine(models.Model):
                             "attribute with code {} must be numeric or "
                             "range".format(value.attribute_id.attribute_code))
                     else:
-                        raise exceptions.ValidationError(
-                            u"{} code value not in settled values".format(
-                                field[0]))
+                        # value attribute is not in the attributes of
+                        # production product
+                        return None
+
         return res
 
     def eval_expression(self, formula, acts):
@@ -87,6 +92,8 @@ class MrpBomLine(models.Model):
                 result = eval('{} {} {}'.format(op2, val, op1))
                 stack.append(result)
             else:
-                stack.append(self._get_val(val, acts))
+                value = self._get_val(val, acts)
+                if value is None:
+                    return value
+                stack.append(value)
         return stack.pop()
-
