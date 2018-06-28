@@ -6,20 +6,22 @@
     "version": "8.0.1.0.0",
     "license": "AGPL-3",
     "depends": [
-        "base", "website_sale"
+        "base",
+        "product_training_plan",
+        "website_sale"
     ],
-    "author": "OdooMRP team, "
-              "AvanzOSC, "
-              "Odoo Community Association (OCA)",
-    "website": "http://www.odoomrp.com",
+    "author": "AvanzOSC",
+    "website": "http://www.avanzosc.es",
     "contributors": [
         "Mikel Arregi <mikelarregi@avanzosc.es>",
         "Ana Juaristi <anajuaristi@avanzosc.es>",
     ],
     "category": "Product",
-    "summary": "",
     "data": [
-        "templates/product_training_plan_template.xml"
+        "security/ir.model.access.csv",
+        "templates/website.xml",
+        "templates/website_product_training_plan.xml",
+        "templates/website_sale.xml"
     ],
     "installable": True,
 }

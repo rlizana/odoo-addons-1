@@ -58,7 +58,7 @@ class ImportPriceFile(models.TransientModel):
                  'info': values.get('ProductSupplierName', ''),
                  'delay': values.get('Delay', 0),
                  'price': values.get('Price', 0.00).replace(',', '.'),
-                 'min_qty': values.get('MinQty', 0.00),
+                 'min_qty': values.get('MinQty', 1.00),
                  'fail': True,
                  'fail_reason': _('No processed'),
                  'file_load': load_id})
@@ -75,7 +75,7 @@ class ImportPriceFile(models.TransientModel):
         try:
             import xlrd
         except ImportError:
-            exceptions.Warning(_("xlrd python lib  not installed"))
+            raise exceptions.Warning(_("xlrd python lib  not installed"))
         file_line_obj = self.env['product.supplierinfo.load.line']
         file_1 = base64.decodestring(file_data)
         (fileno, fp_name) = tempfile.mkstemp('.xls', 'openerp_')
